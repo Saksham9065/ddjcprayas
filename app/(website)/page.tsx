@@ -1,0 +1,347 @@
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { 
+  FaBalanceScale, 
+  FaBookOpen, 
+  FaHandsHelping, 
+  FaArrowRight, 
+  FaChevronDown, 
+  FaPhoneAlt, 
+  FaMapMarkerAlt 
+} from "react-icons/fa";
+
+export default function HomePage() {
+  // State for interactive FAQ accordion
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  return (
+    <div className="bg-white min-h-screen font-sans text-slate-800">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative bg-gradient-to-b from-[#0A2540] to-slate-900 text-white py-20 md:py-28 overflow-hidden">
+        <div className="container mx-auto px-6 max-w-6xl relative z-10 text-center">
+          <span className="bg-blue-500/20 border border-blue-400/30 text-blue-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-6">
+            Access to Justice • Equality • Human Rights
+          </span>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6 leading-tight">
+            Dalit Dignity & Justice Centre <span className="text-blue-400">(DDJC)</span>
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-blue-200 mb-6">
+            Justice For Every Citizen
+          </p>
+          <blockquote className="max-w-2xl mx-auto italic text-slate-300 text-sm md:text-base mb-10 border-l-4 border-blue-500 pl-4 py-1">
+            &ldquo;Justice is the first virtue of social institutions.&rdquo; — Dr. B.R. Ambedkar
+          </blockquote>
+          <p className="max-w-3xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed mb-10">
+            We provide free legal aid, constitutional awareness, human rights advocacy, and support for marginalized communities to ensure dignity, equality, and justice.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/complaint"
+              className="bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2"
+            >
+              File a Complaint
+              <FaArrowRight size={14} />
+            </Link>
+            <Link
+              href="/donate"
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-xl transition-all backdrop-blur-sm"
+            >
+              Support Our Cause
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. WHY DDJC IS NEEDED SECTION */}
+      <section className="py-20 bg-slate-50 border-b border-slate-200">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="bg-white p-8 md:p-14 rounded-3xl shadow-sm border border-slate-200">
+            <span className="text-xs font-bold text-[#2563EB] uppercase tracking-wider block mb-2">Background & Purpose</span>
+            <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] mb-6 tracking-tight">
+              Why is the Dalit Dignity & Justice Centre (DDJC) needed?
+            </h2>
+            <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+              <p>
+                Every day, through newspapers, TV channels, social media, and our surroundings, we witness various incidents. After these incidents, we see victims struggling in courts and legal offices. They strive for justice at police stations and courts; however, often due to a lack of proper information and legal knowledge, they fail to reach justice. The impact of this is most severe on the victims, affecting their entire families and communities in various ways.
+              </p>
+              <p>
+                To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was launched in October 2023 by the Bundelkhand Dalit Adhikar Manch.
+              </p>
+            </div>
+            <div className="mt-8">
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-[#2563EB] font-bold text-sm hover:underline"
+              >
+                Learn More About Us <FaArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. KEY SERVICES SECTION */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-3">
+              What We Do
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
+              Our Key Services
+            </h2>
+            <p className="text-slate-600 text-sm md:text-base">
+              DDJC works to ensure justice, equality, and dignity through legal assistance, public awareness, and community engagement.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl mb-6">
+                <FaBalanceScale />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Free Legal Aid</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                We provide legal guidance, case support, and assistance to help individuals understand and exercise their legal rights.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl mb-6">
+                <FaBookOpen />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Awareness Programs</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                DDJC conducts workshops, seminars, and awareness campaigns on constitutional rights, equality, and social justice.
+              </p>
+            </div>
+
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-blue-100 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl mb-6">
+                <FaHandsHelping />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Human Rights Advocacy</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                We advocate for dignity, equality, and justice by supporting marginalized communities through outreach and policy awareness.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. IMPACT COUNTERS SECTION */}
+      <section className="py-20 bg-[#0A2540] text-white">
+        <div className="container mx-auto px-6 max-w-6xl text-center">
+          <span className="bg-blue-500/20 text-blue-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3 border border-blue-400/30">
+            Our Impact
+          </span>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">
+            Creating Change Through Justice
+          </h2>
+          <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-16">
+            Every number reflects our commitment to protecting rights, empowering communities, and ensuring equal access to justice.
+          </p>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+              <span className="text-4xl md:text-5xl font-black text-blue-400 block mb-2">15,000+</span>
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+              <span className="text-4xl md:text-5xl font-black text-blue-400 block mb-2">500+</span>
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+              <span className="text-4xl md:text-5xl font-black text-blue-400 block mb-2">300+</span>
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Court Matters</span>
+            </div>
+            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+              <span className="text-4xl md:text-5xl font-black text-blue-400 block mb-2">100+</span>
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Awareness Camps</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. LEGAL ACTION & EMERGENCY GUIDE SECTION */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-3">
+              Legal Action
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
+              Legal Support When You Need It Most
+            </h2>
+            <p className="text-slate-600 text-sm md:text-base">
+              DDJC provides free legal guidance, constitutional awareness, and court assistance to ensure equal protection under the law.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="text-[#2563EB] text-2xl font-black mb-4">01</div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-2">Report Immediately</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Follow our professional protocol to ensure your case is documented and supported legally from day one.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="text-[#2563EB] text-2xl font-black mb-4">02</div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-2">Preserve Evidence</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Secure photographs, medical reports, and witness details to establish a strong statutory basis for justice.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <div className="text-[#2563EB] text-2xl font-black mb-4">03</div>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-2">Seek Assistance</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Connect directly with our Tehsil coordinators and legal advocates for step-by-step judicial guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. COMPLAINT PROCESS SECTION */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-3">
+              Step-by-Step Guide
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
+              Our Complaint Process
+            </h2>
+            <p className="text-slate-600 text-sm md:text-base">
+              Clear pathways designed to transition victims from distress to secure judicial intervention.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+              <span className="text-xs font-black bg-blue-100 text-[#2563EB] px-2.5 py-1 rounded-md">Step 01</span>
+              <h3 className="text-lg font-bold text-[#0A2540] mt-4 mb-2">Report the Incident</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                Immediately report the incident to the nearest police station or contact DDJC for guidance.
+              </p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+              <span className="text-xs font-black bg-blue-100 text-[#2563EB] px-2.5 py-1 rounded-md">Step 02</span>
+              <h3 className="text-lg font-bold text-[#0A2540] mt-4 mb-2">Collect Evidence</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                Preserve photographs, videos, medical reports, and witness details related to the incident.
+              </p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+              <span className="text-xs font-black bg-blue-100 text-[#2563EB] px-2.5 py-1 rounded-md">Step 03</span>
+              <h3 className="text-lg font-bold text-[#0A2540] mt-4 mb-2">Legal Consultation</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                Meet our team to understand your rights, prepare documentation, and receive free advice.
+              </p>
+            </div>
+            <div className="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+              <span className="text-xs font-black bg-blue-100 text-[#2563EB] px-2.5 py-1 rounded-md">Step 04</span>
+              <h3 className="text-lg font-bold text-[#0A2540] mt-4 mb-2">Court Support</h3>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                DDJC assists with legal representation, case monitoring, and ongoing judicial guidance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ ACCORDION SECTION */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-16">
+            <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-3">
+              Got Questions?
+            </span>
+            <h2 className="text-3xl font-black text-[#0A2540] tracking-tight">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Who can receive free legal aid?",
+                a: "Free legal aid is provided to marginalized individuals, victims of atrocities, Dalits, and economically weaker sections who lack resources to hire legal counsel."
+              },
+              {
+                q: "Are services free?",
+                a: "Yes, consultation, legal guidance, and support provided through DDJC and its panel advocates are completely free of charge."
+              },
+              {
+                q: "How to report a case?",
+                a: "You can file an online complaint through our portal, contact our helpline numbers directly, or visit our district office in Orai, Jalaun."
+              },
+              {
+                q: "Can I become a volunteer?",
+                a: "Yes! Law students, activists, and community members passionate about human rights are welcome to join our volunteer network."
+              }
+            ].map((faq, index) => (
+              <div 
+                key={index} 
+                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm transition-all"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-6 py-4 text-left font-bold text-[#0A2540] flex justify-between items-center focus:outline-none"
+                >
+                  <span className="text-sm md:text-base">{faq.q}</span>
+                  <FaChevronDown 
+                    className={`text-[#2563EB] transition-transform duration-300 ${openFaq === index ? "rotate-180" : ""}`} 
+                  />
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. QUOTE & CONTACT BANNER */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 max-w-5xl text-center">
+          <div className="bg-gradient-to-br from-[#0A2540] to-slate-900 text-white p-10 md:p-16 rounded-3xl shadow-xl relative overflow-hidden">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Need more help? Contact Us</h3>
+            <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+              &ldquo;Justice has always evoked ideas of equality, of proportion of compensation. In short, Justice is another name of Liberty, Equality and Fraternity.&rdquo; — Babasaheb Dr. B.R. Ambedkar
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 text-xs md:text-sm font-semibold mb-8">
+              <span className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl">
+                <FaMapMarkerAlt className="text-blue-400" /> Police Line – Baghaura, Orai – Jalaun, UP - 285001
+              </span>
+              <span className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl">
+                <FaPhoneAlt className="text-blue-400" /> +91 9235737691 / 9453645931
+              </span>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:scale-105 text-sm"
+            >
+              Get in Touch <FaArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  );
+}
