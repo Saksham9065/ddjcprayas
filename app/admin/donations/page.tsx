@@ -46,7 +46,7 @@ export default function AdminDonationsPage() {
             <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Donations</h1>
             <p className="text-xs text-slate-500 mt-1">Manage and track all donations received</p>
           </div>
-          <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#2563EB] font-bold text-sm hover:underline">
+          <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
             <FaArrowLeft size={12} /> Back to Dashboard
           </Link>
         </div>

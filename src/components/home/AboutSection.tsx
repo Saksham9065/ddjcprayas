@@ -9,7 +9,7 @@ export default function AboutSection() {
     <section className="py-16 bg-white border-y border-slate-200">
       <div className="container mx-auto px-6 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             Who We Are
           </span>
           <h2 className="text-3xl font-black text-[#0A2540] tracking-tight">
@@ -21,7 +21,7 @@ export default function AboutSection() {
           <div>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-[#2563EB] hover:text-blue-700 font-bold text-xs uppercase tracking-wider"
+              className="inline-flex items-center gap-2 text-[#000000] hover:text-slate-700 font-bold text-xs uppercase tracking-wider"
             >
               Read More About Us <FaArrowRight size={10} />
             </Link>

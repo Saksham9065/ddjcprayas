@@ -31,7 +31,7 @@ export default function ContactPage() {
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Get in Touch
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
@@ -53,7 +53,7 @@ export default function ContactPage() {
               
               <div className="space-y-6 text-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center shrink-0 text-blue-400">
+                  <div className="w-10 h-10 rounded-xl bg-black/30 border border-black/30 flex items-center justify-center shrink-0 text-slate-400">
                     <FaMapMarkerAlt />
                   </div>
                   <div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center shrink-0 text-blue-400">
+                  <div className="w-10 h-10 rounded-xl bg-black/30 border border-black/30 flex items-center justify-center shrink-0 text-slate-400">
                     <FaPhoneAlt />
                   </div>
                   <div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/30 border border-blue-400/30 flex items-center justify-center shrink-0 text-blue-400">
+                  <div className="w-10 h-10 rounded-xl bg-black/30 border border-black/30 flex items-center justify-center shrink-0 text-slate-400">
                     <FaEnvelope />
                   </div>
                   <div>
@@ -111,7 +111,7 @@ export default function ContactPage() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="Ramesh Kumar"
                   />
                 </div>
@@ -122,7 +122,7 @@ export default function ContactPage() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="ramesh@example.com"
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function ContactPage() {
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="Legal Consultation Inquiry"
                   />
                 </div>
@@ -159,7 +159,7 @@ export default function ContactPage() {
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   placeholder="Please describe your inquiry or details..."
                 />
               </div>

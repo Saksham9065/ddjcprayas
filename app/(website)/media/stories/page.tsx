@@ -6,14 +6,14 @@ import { FaQuoteLeft } from "react-icons/fa";
 export default function StoriesPage() {
   const stories = [
     {
-      name: "Ramlal Vanvasi",
-      location: "Jalaun District",
-      story: "After facing severe land encroachment and police inaction, DDJC stepped in with panel lawyers. Within 3 months, our land ownership was formally restored and legal protection secured.",
+      name: "Vijay Valmiki",
+      location: "Valmiki Nagar, Jalaun (20 km from Orai)",
+      story: "Coming from a family where my father worked as a contractual sanitation worker and my mother engaged in manual scavenging, I faced untouchability and discrimination every day of my life—from school to trying to run an auto-rickshaw, and even when my wedding alliance broke down abruptly. When false threats and casteist abuse escalated into a violent attack, DDJC stepped in with a fact-finding mission. Through their legal leadership training, I enrolled in law school and donned the black coat. Today, I stand proudly as my Bundelkhand Valmiki community's first Dalit youth lawyer, fighting my own cases and representing others with complete dignity.",
     },
     {
-      name: "Sunita Devi",
-      location: "Orai Tehsil",
-      story: "The legal awareness camp conducted in our village taught us how to file prompt FIRs under the Atrocity Act. DDJC's support gave my family courage and justice.",
+      name: "Goldy Devi",
+      location: "Nibhana Village, Tehsil Mehwa, Jalaun",
+      story: "As a young woman from the Chambal ravines dreaming of becoming a doctor to serve our region where female doctors are non-existent, I faced a horrific assault and attempted abuse on my way to my medical practice in Mehwa. After filing an FIR, we faced immense pressure to compromise. DDJC intervened with rigorous counseling and legal backing. Not only did our team ensure the chargesheet was filed, but they successfully opposed and secured the rejection of the accused's bail all the way up to the Allahabad High Court. Furthermore, through a High Court writ petition filed by DDJC, the DM and SWO were directed to immediately credit ₹1,50,000 in statutory compensation to my account. Today, my dream of becoming a doctor is alive once more.",
     },
   ];
 
@@ -21,7 +21,7 @@ export default function StoriesPage() {
     <div className="bg-white min-h-screen py-16">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Impact & Lives
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
@@ -34,8 +34,8 @@ export default function StoriesPage() {
 
         <div className="space-y-8">
           {stories.map((item, index) => (
-            <div key={index} className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 space-y-4">
-              <FaQuoteLeft className="text-[#2563EB] text-3xl opacity-40" />
+            <div key={index} className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 space-y-4 shadow-sm">
+              <FaQuoteLeft className="text-[#000000] text-3xl opacity-40" />
               <p className="text-slate-700 text-base md:text-lg italic leading-relaxed">
                 &ldquo;{item.story}&rdquo;
               </p>

@@ -40,7 +40,7 @@ export default function AdminLoginPage() {
         
         {/* Header */}
         <div className="text-center space-y-3">
-          <div className="w-16 h-16 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center mx-auto text-2xl border border-blue-100 shadow-sm">
+          <div className="w-16 h-16 bg-slate-50 text-[#000000] rounded-2xl flex items-center justify-center mx-auto text-2xl border border-slate-100 shadow-sm">
             <FaShieldAlt />
           </div>
           <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Admin Portal Sign In</h1>
@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@ddjc.org"
-                className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
               />
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
               />
             </div>
           </div>

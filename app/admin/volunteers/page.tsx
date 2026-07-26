@@ -59,11 +59,11 @@ export default function AdminVolunteersPage() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="flex items-center gap-2 bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
+              className="flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
             >
               <FaUserPlus size={12} /> Add Volunteer
             </button>
-            <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#2563EB] font-bold text-sm hover:underline">
+            <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
               <FaArrowLeft size={12} /> Back to Dashboard
             </Link>
           </div>
@@ -72,7 +72,7 @@ export default function AdminVolunteersPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-[#2563EB] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center">
                 <FaUsers size={18} />
               </div>
               <div>
@@ -128,7 +128,7 @@ export default function AdminVolunteersPage() {
                     </td>
                     <td className="py-4 px-6 text-slate-600">{volunteer.role}</td>
                     <td className="py-4 px-6">
-                      <span className="font-bold text-[#2563EB]">{volunteer.casesAssigned}</span>
+                      <span className="font-bold text-[#000000]">{volunteer.casesAssigned}</span>
                     </td>
                     <td className="py-4 px-6">
                       <span

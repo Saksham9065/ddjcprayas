@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex items-center gap-3 text-slate-600 font-medium">
-          <FaSpinner className="animate-spin text-[#2563EB]" size={24} />
+          <FaSpinner className="animate-spin text-[#000000]" size={24} />
           <span>Verifying Admin Session...</span>
         </div>
       </div>
@@ -55,12 +55,12 @@ export default function AdminDashboardPage() {
       <header className="bg-[#0A2540] text-white py-6 border-b border-slate-800">
         <div className="container mx-auto px-6 max-w-7xl flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#2563EB] text-white flex items-center justify-center text-lg shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-[#000000] text-white flex items-center justify-center text-lg shadow-md">
               <FaShieldAlt />
             </div>
             <div>
               <h1 className="font-black text-base tracking-tight">DDJC Admin Portal</h1>
-              <p className="text-xs text-blue-300">Grievance & Case Management System</p>
+              <p className="text-xs text-slate-300">Grievance & Case Management System</p>
             </div>
           </div>
           <button
@@ -91,8 +91,8 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#2563EB]">In Progress</p>
-            <p className="text-3xl font-black text-[#2563EB]">{stats.inProgress}</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#000000]">In Progress</p>
+            <p className="text-3xl font-black text-[#000000]">{stats.inProgress}</p>
             <p className="text-xs text-slate-400">Active legal representation</p>
           </div>
 
@@ -166,12 +166,12 @@ export default function AdminDashboardPage() {
                       </td>
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-1 text-slate-600">
-                          <FaMapMarkerAlt className="text-[#2563EB] shrink-0" size={10} />
+                          <FaMapMarkerAlt className="text-[#000000] shrink-0" size={10} />
                           <span>{item.district} ({item.tehsil})</span>
                         </div>
                       </td>
                       <td className="py-4 px-6">
-                        <span className="bg-blue-50 text-[#2563EB] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-blue-100">
+                        <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
                           {item.category}
                         </span>
                       </td>
@@ -184,7 +184,7 @@ export default function AdminDashboardPage() {
                             item.status === "Pending Review"
                               ? "bg-amber-50 text-amber-700 border border-amber-200"
                               : item.status === "In Progress"
-                              ? "bg-blue-50 text-[#2563EB] border border-blue-200"
+                              ? "bg-slate-50 text-[#000000] border border-slate-200"
                               : "bg-emerald-50 text-emerald-700 border border-emerald-200"
                           }`}
                         >
@@ -198,7 +198,7 @@ export default function AdminDashboardPage() {
                         <select
                           value={item.status}
                           onChange={(e) => updateComplaintStatus(item.id, e.target.value as any)}
-                          className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs bg-white font-medium text-slate-700 focus:outline-none focus:border-[#2563EB]"
+                          className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs bg-white font-medium text-slate-700 focus:outline-none focus:border-[#000000]"
                         >
                           <option value="Pending Review">Pending Review</option>
                           <option value="In Progress">In Progress</option>

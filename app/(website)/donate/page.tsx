@@ -30,7 +30,7 @@ export default function DonatePage() {
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Support Justice & Equality
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
@@ -75,7 +75,7 @@ export default function DonatePage() {
                       }}
                       className={`py-4 rounded-2xl font-bold text-sm border transition-all ${
                         amount === val && !customAmount
-                          ? "bg-[#2563EB] text-white border-[#2563EB] shadow-md"
+                          ? "bg-[#000000] text-white border-[#000000] shadow-md"
                           : "bg-slate-50 text-[#0A2540] border-slate-200 hover:bg-slate-100"
                       }`}
                     >
@@ -89,7 +89,7 @@ export default function DonatePage() {
                     placeholder="Or enter custom amount (₹)"
                     value={customAmount}
                     onChange={(e) => setCustomAmount(e.target.value)}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -104,7 +104,7 @@ export default function DonatePage() {
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
                     placeholder="Supporter Name"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
@@ -115,7 +115,7 @@ export default function DonatePage() {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -128,12 +128,12 @@ export default function DonatePage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="supporter@example.com"
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                 />
               </div>
 
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center gap-3 text-xs text-slate-500">
-                <FaLock className="text-[#2563EB] shrink-0 text-base" />
+                <FaLock className="text-[#000000] shrink-0 text-base" />
                 <span>All transactions are encrypted and secured via industry-standard protocols.</span>
               </div>
 

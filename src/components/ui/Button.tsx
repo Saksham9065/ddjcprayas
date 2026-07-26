@@ -22,7 +22,7 @@ export default function Button({
 
   const variantStyles = {
     primary:
-      "bg-[#2563EB] hover:bg-blue-600 text-white shadow-blue-500/20 shadow-lg",
+      "bg-[#000000] hover:bg-slate-600 text-white shadow-black/20 shadow-lg",
     secondary:
       "bg-[#0A2540] hover:bg-slate-800 text-white shadow-slate-900/10",
     outline:

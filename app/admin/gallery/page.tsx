@@ -25,11 +25,11 @@ export default function AdminGalleryPage() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              className="flex items-center gap-2 bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
+              className="flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
             >
               <FaUpload size={12} /> Upload Media
             </button>
-            <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#2563EB] font-bold text-sm hover:underline">
+            <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
               <FaArrowLeft size={12} /> Back to Dashboard
             </Link>
           </div>
@@ -45,7 +45,7 @@ export default function AdminGalleryPage() {
                 <h3 className="font-bold text-[#0A2540] text-sm mb-1">{item.title}</h3>
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-slate-500">{item.date}</span>
-                  <span className="text-[10px] bg-blue-50 text-[#2563EB] px-2 py-0.5 rounded-full font-bold">{item.category}</span>
+                  <span className="text-[10px] bg-slate-50 text-[#000000] px-2 py-0.5 rounded-full font-bold">{item.category}</span>
                 </div>
                 <div className="mt-3 flex justify-end">
                   <button

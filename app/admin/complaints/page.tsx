@@ -29,7 +29,7 @@ export default function AdminComplaintsPage() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
           <div>
-            <Link href="/admin/dashboard" className="text-xs font-bold text-[#2563EB] flex items-center gap-1 mb-1 hover:underline">
+            <Link href="/admin/dashboard" className="text-xs font-bold text-[#000000] flex items-center gap-1 mb-1 hover:underline">
               <FaArrowLeft size={10} /> Back to Dashboard
             </Link>
             <h1 className="text-2xl font-black text-[#0A2540]">Manage Grievances & Complaints</h1>
@@ -63,7 +63,7 @@ export default function AdminComplaintsPage() {
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
                         c.status === "Pending Review" 
                           ? "bg-amber-50 text-amber-700 border border-amber-200" 
-                          : "bg-blue-50 text-blue-700 border border-blue-200"
+                          : "bg-slate-50 text-slate-700 border border-slate-200"
                       }`}>
                         <FaClock size={10} /> {c.status}
                       </span>

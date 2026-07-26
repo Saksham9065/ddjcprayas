@@ -34,7 +34,7 @@ export default function ComplaintPage() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Grievance Redressal
           </span>
           <h1 className="text-3xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-4">
@@ -95,7 +95,7 @@ export default function ComplaintPage() {
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     placeholder="Enter full name"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
 
@@ -107,7 +107,7 @@ export default function ComplaintPage() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -118,7 +118,7 @@ export default function ComplaintPage() {
                   <select
                     value={formData.district}
                     onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
                   >
                     <option value="Jalaun">Jalaun</option>
                     <option value="Jhansi">Jhansi</option>
@@ -138,7 +138,7 @@ export default function ComplaintPage() {
                     value={formData.tehsil}
                     onChange={(e) => setFormData({ ...formData, tehsil: e.target.value })}
                     placeholder="e.g. Orai, Konch, Kalpi"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ export default function ComplaintPage() {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
                   >
                     <option value="Atrocity / Violence">Atrocity / Physical Violence</option>
                     <option value="Police Inaction">Police Inaction / Refusal to Register FIR</option>
@@ -167,7 +167,7 @@ export default function ComplaintPage() {
                     required
                     value={formData.incidentDate}
                     onChange={(e) => setFormData({ ...formData, incidentDate: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
                   />
                 </div>
               </div>
@@ -180,12 +180,12 @@ export default function ComplaintPage() {
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   placeholder="Provide a factual summary of what happened, persons involved, and current status with local police..."
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                 />
               </div>
 
-              <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl flex items-start gap-3 text-xs text-blue-900">
-                <FaExclamationTriangle className="text-[#2563EB] shrink-0 mt-0.5" size={14} />
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-start gap-3 text-xs text-slate-900">
+                <FaExclamationTriangle className="text-[#000000] shrink-0 mt-0.5" size={14} />
                 <span>All submitted details are kept confidential under advocate-client privilege guidelines and handled strictly by authorized DDJC legal personnel.</span>
               </div>
 

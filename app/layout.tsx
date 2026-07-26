@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geist } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
+import TopBar from "@/components/layout/TopBar";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import Footer from "@/components/layout/Footer";
 import { AppProvider } from "@/context/AppContext";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,12 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-white text-slate-800 antialiased`}>
+    <html lang="en" className={cn("font-sans", geist.variable)}>
+      <body className={`${inter.className} bg-slate-900 text-slate-200 antialiased`}>
         <AppProvider>
+          <TopBar />
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <WhatsAppButton />
         </AppProvider>
       </body>
     </html>

@@ -14,7 +14,7 @@ export default function ImpactStats() {
           </div>
 
           <div className="space-y-1">
-            <p className="text-3xl md:text-4xl font-black text-[#2563EB]">9 Bundelkhand</p>
+            <p className="text-3xl md:text-4xl font-black text-[#000000]">9 Bundelkhand</p>
             <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Districts Covered</p>
           </div>
 

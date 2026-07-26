@@ -2,59 +2,85 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaNewspaper, FaCalendarAlt, FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
+import { FaArrowLeft } from "react-icons/fa";
+
+const NEWS_IMAGES = [
+  { src: "/images/news/Advocate Meeting News- आज की पहचान.jpeg", alt: "Advocate Meeting News - Aaj Ki Pehchaan" },
+  { src: "/images/news/Advocate Meeting News- परिधि समाचार.jpeg", alt: "Advocate Meeting News - Paridhi Samachar" },
+  { src: "/images/news/Advocate Meeting News- यूथ इंडिया.jpeg", alt: "Advocate Meeting News - Youth India" },
+  { src: "/images/news/Advocate Meeting News- स्वतंत्र भारत.jpeg", alt: "Advocate Meeting News - Swatantra Bharat" },
+  { src: "/images/news/Case Study News.jpeg", alt: "Case Study News" },
+  { src: "/images/news/DDJC News - 2.jpeg", alt: "DDJC News 2" },
+  { src: "/images/news/DDJC News - 3.jpeg", alt: "DDJC News 3" },
+  { src: "/images/news/DDJC News - 4.jpeg", alt: "DDJC News 4" },
+  { src: "/images/news/DDJC News - 7.jpeg", alt: "DDJC News 7" },
+  { src: "/images/news/FB_IMG_1746865199215.jpg", alt: "FB Image 1" },
+  { src: "/images/news/FB_IMG_1746865205794.jpg", alt: "FB Image 2" },
+  { src: "/images/news/FB_IMG_1746865247223.jpg", alt: "FB Image 3" },
+  { src: "/images/news/FB_IMG_1746865257388.jpg", alt: "FB Image 4" },
+  { src: "/images/news/FB_IMG_1746865262041.jpg", alt: "FB Image 5" },
+  { src: "/images/news/Legal & Leadership Training - 1.jpeg", alt: "Legal & Leadership Training 1" },
+  { src: "/images/news/Legal & Leadership Training - 2.jpeg", alt: "Legal & Leadership Training 2" },
+  { src: "/images/news/Legal & Leadership Training - 4.jpeg", alt: "Legal & Leadership Training 4" },
+  { src: "/images/news/Meeting with SWO - 3.jpeg", alt: "Meeting with SWO 3" },
+  { src: "/images/news/News - 1.jpg", alt: "News 1" },
+  { src: "/images/news/News - 4.jpg", alt: "News 4" },
+  { src: "/images/news/News - DM Memo 1.jpeg", alt: "News - DM Memo 1" },
+  { src: "/images/news/News - DM Memo 3.jpeg", alt: "News - DM Memo 3" },
+  { src: "/images/news/News - DM Memo 4.jpeg", alt: "News - DM Memo 4" },
+  { src: "/images/news/News-Advocate Meeting.jpeg", alt: "News - Advocate Meeting" },
+  { src: "/images/news/WhatsApp Image 2025-05-07 at 10.56.07.jpeg", alt: "WhatsApp Image May 2025" },
+  { src: "/images/news/WhatsApp Image 2026-04-02 at 8.27.00 AM.jpeg", alt: "WhatsApp Image Apr 2026" },
+  { src: "/images/news/WhatsApp Image 2026-04-15 at 3.20.27 PM - Copy.jpeg", alt: "WhatsApp Image Apr 2026 Copy" },
+  { src: "/images/news/WhatsApp Image 2026-04-15 at 8.15.12 AM - Copy.jpeg", alt: "WhatsApp Image Apr 2026 Copy 2" },
+  { src: "/images/news/WhatsApp Image 2026-04-15 at 8.57.11 AM.jpeg", alt: "WhatsApp Image Apr 2026 3" },
+  { src: "/images/news/WhatsApp Image 2026-05-01 at 7.42.16 AM.jpeg", alt: "WhatsApp Image May 2026" },
+  { src: "/images/news/WhatsApp Image 2026-05-02 at 9.30.32 AM.jpeg", alt: "WhatsApp Image May 2026 2" },
+  { src: "/images/news/WhatsApp Image 2026-05-02 at 9.32.11 AM.jpeg", alt: "WhatsApp Image May 2026 3" },
+  { src: "/images/news/WhatsApp Image 2026-05-14 at 9.56.30 AM (1) - Copy.jpeg", alt: "WhatsApp Image May 2026 Copy" },
+  { src: "/images/news/WhatsApp Image 2026-05-19 at 2.34.24 PM.jpeg", alt: "WhatsApp Image May 2026 4" },
+  { src: "/images/news/WhatsApp Image 2026-05-19 at 2.34.25 PM (2).jpeg", alt: "WhatsApp Image May 2026 5" },
+  { src: "/images/news/WhatsApp Image 2026-05-19 at 2.34.25 PM.jpeg", alt: "WhatsApp Image May 2026 6" },
+  { src: "/images/news/WhatsApp Image 2026-06-14 at 11.44.12 PM.jpeg", alt: "WhatsApp Image Jun 2026" },
+];
 
 export default function NewsPage() {
-  const newsItems = [
-    {
-      title: "DDJC Organizes Legal Literacy Camp in Orai Tehsils",
-      date: "October 14, 2025",
-      desc: "Hundreds of villagers gathered to understand constitutional rights and SC/ST atrocity act compensation protocols.",
-    },
-    {
-      title: "Press Conference on Rising Atrocities and Police Accountability",
-      date: "September 28, 2025",
-      desc: "DDJC coordinators released an independent fact-finding report highlighting delayed investigations in Bundelkhand.",
-    },
-    {
-      title: "Free Legal Aid Clinic Expanded to Rural Jalaun",
-      date: "August 15, 2025",
-      desc: "New panel advocates appointed to offer direct litigation support and lower court representation.",
-    },
-  ];
 
   return (
-    <div className="bg-white min-h-screen py-16">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="bg-blue-50 text-[#2563EB] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-200 inline-block mb-4">
+    <div className="bg-slate-900 min-h-screen py-16">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div className="mb-8">
+          <Link href="/" className="flex items-center gap-2 text-[#1ab9cb] font-bold text-sm hover:underline">
+            <FaArrowLeft size={12} /> Back to Home
+          </Link>
+        </div>
+
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="bg-black/30 text-[#1ab9cb] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-700 inline-block mb-4">
             Press & Media
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
             News & Press Releases
           </h1>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            Stay updated with our latest press coverage, field reports, and public statements on human rights issues.
+          <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+            Stay updated with our latest press coverage and field reports.
           </p>
         </div>
 
-        <div className="space-y-6">
-          {newsItems.map((item, index) => (
-            <div key={index} className="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs font-bold text-[#2563EB]">
-                  <FaCalendarAlt size={12} />
-                  <span>{item.date}</span>
-                </div>
-                <h3 className="text-xl font-bold text-[#0A2540]">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed max-w-2xl">{item.desc}</p>
-              </div>
-              <button 
-                onClick={() => alert("Full press statement view coming soon.")}
-                className="shrink-0 inline-flex items-center gap-2 bg-[#2563EB] text-white px-5 py-2.5 rounded-xl text-xs font-bold"
-              >
-                Read More <FaArrowRight size={12} />
-              </button>
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+          {NEWS_IMAGES.map((img, index) => (
+            <div
+              key={index}
+              className="break-inside-avoid rounded-2xl overflow-hidden bg-slate-800 shadow-lg"
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-auto block object-contain"
+                width={600}
+                height={400}
+              />
             </div>
           ))}
         </div>

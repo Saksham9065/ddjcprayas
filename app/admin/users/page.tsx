@@ -52,7 +52,7 @@ export default function AdminUsersPage() {
             <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Users</h1>
             <p className="text-xs text-slate-500 mt-1">Manage registered users and their roles</p>
           </div>
-          <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#2563EB] font-bold text-sm hover:underline">
+          <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
             <FaArrowLeft size={12} /> Back to Dashboard
           </Link>
         </div>
@@ -76,7 +76,7 @@ export default function AdminUsersPage() {
                     <td className="py-4 px-6 font-mono font-bold text-[#0A2540]">{user.id}</td>
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-xl bg-blue-100 text-[#2563EB] flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center">
                           <FaUser size={12} />
                         </div>
                         <span className="font-bold block text-slate-900">{user.name}</span>
