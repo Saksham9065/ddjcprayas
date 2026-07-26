@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { FaQuoteLeft } from "react-icons/fa";
 
 export default function StoriesPage() {
@@ -21,6 +22,16 @@ export default function StoriesPage() {
     <div className="bg-white min-h-screen py-16">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="flex justify-center mb-6">
+            <div className="relative h-20 w-20 rounded-full overflow-hidden shadow-md border border-slate-200 bg-slate-50">
+              <Image
+                src="/images/logo/ddjc-logo.jpg"
+                alt="DDJC Logo"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Impact & Lives
           </span>
