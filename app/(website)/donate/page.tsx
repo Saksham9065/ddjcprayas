@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaLock, FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 
 export default function DonatePage() {
@@ -217,11 +217,6 @@ export default function DonatePage() {
                   )}
                 </div>
                 {error && <p className="text-red-600 text-xs font-bold mt-2">{error}</p>}
-              </div>
-
-              <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center gap-3 text-xs text-slate-500">
-                <FaLock className="text-[#000000] shrink-0 text-base" />
-                <span>Your payment screenshot is encrypted and sent securely to our admin panel for verification.</span>
               </div>
 
               <Button type="submit" isLoading={loading} className="w-full py-4 text-sm">
