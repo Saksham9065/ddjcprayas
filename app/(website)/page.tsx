@@ -289,7 +289,7 @@ export default function HomePage() {
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={50} suffix="+" />
+                <AnimatedCounter target={200} suffix="+" />
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
