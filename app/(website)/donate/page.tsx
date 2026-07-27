@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaHandHoldingUsd, FaShieldAlt, FaCheckCircle, FaLock } from "react-icons/fa";
+import Image from "next/image";
+import { FaHandHoldingUsd, FaLock, FaUniversity, FaQrcode } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 
 export default function DonatePage() {
@@ -27,13 +28,13 @@ export default function DonatePage() {
 
   return (
     <div className="bg-slate-50 min-h-screen py-16">
-      <div className="container mx-auto px-6 max-w-4xl">
+      <div className="container mx-auto px-6 max-w-4xl space-y-12">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
+        <div className="text-center max-w-2xl mx-auto space-y-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             Support Justice & Equality
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
             Contribute to DDJC
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
@@ -41,7 +42,45 @@ export default function DonatePage() {
           </p>
         </div>
 
+        {/* Bank Details & QR Information Box */}
+        <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl grid md:grid-cols-2 gap-8 items-center">
+          <div className="space-y-4">
+            <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-400/30 inline-block">
+              Direct Bank Transfer / UPI
+            </span>
+            <h3 className="text-2xl font-bold">Official Bank Details</h3>
+            <div className="space-y-2 text-sm text-slate-300">
+              <p><strong className="text-white">Account Name:</strong> Prayas Jan Utthan Samiti</p>
+              <p><strong className="text-white">A/C Number:</strong> <span className="font-mono">7108466367</span></p>
+              <p><strong className="text-white">Bank Name:</strong> Indian Bank</p>
+              <p><strong className="text-white">IFSC Code:</strong> <span className="font-mono">IDIB000O029</span></p>
+              <p><strong className="text-white">Branch Address:</strong> Orai Branch, Prakash Complex, Opp District Court, Orai – Jalaun, UP.</p>
+            </div>
+          </div>
+
+          <div className="bg-white/10 p-6 rounded-2xl border border-white/20 text-center space-y-4 backdrop-blur-sm">
+            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto text-blue-400 text-2xl">
+              <FaQrcode />
+            </div>
+            <div>
+              <h4 className="font-bold text-base mb-1">Scan & Donate via QR</h4>
+              <p className="text-xs text-slate-300">Scan using any UPI app (Google Pay, PhonePe, Paytm)</p>
+            </div>
+            {/* QR Code Image Container */}
+            <div className="relative w-48 h-48 mx-auto bg-white rounded-xl overflow-hidden p-2 shadow-inner">
+              <Image
+                src="/images/qr/qr.jpeg" 
+                alt="Prayas Jan Utthan Samiti Donation QR Code"
+                fill
+                className="object-contain p-2"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Online Gateway Simulation Form */}
         <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm">
+          <h3 className="text-xl font-bold text-[#0A2540] mb-6">Or Contribute Online</h3>
           {success ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
