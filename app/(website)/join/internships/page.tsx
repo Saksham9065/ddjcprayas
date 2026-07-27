@@ -254,49 +254,6 @@ export default function InternshipsPage() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Current Occupation *</label>
-                  <div className="flex flex-wrap gap-4">
-                    {[
-                      { value: "Student", label: "Student" },
-                      { value: "Working Professional", label: "Working Professional" },
-                      { value: "Social Worker", label: "Social Worker" },
-                      { value: "Other", label: "Other" },
-                    ].map((opt) => (
-                      <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="radio"
-                          name="occupation"
-                          value={opt.value}
-                          required
-                          checked={formData.occupation === opt.value}
-                          onChange={handleChange}
-                          className="accent-[#000000] w-4 h-4"
-                        />
-                        <span className="text-sm text-slate-700">{opt.label}</span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Experience *</label>
-                  <select
-                    name="experience"
-                    required
-                    value={formData.experience}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
-                  >
-                    <option value="">Select experience level</option>
-                    <option value="Fresher">Fresher (0-1 year)</option>
-                    <option value="1-2 Years">1-2 Years</option>
-                    <option value="2-3 Years">2-3 Years</option>
-                    <option value="3-5 Years">3-5 Years</option>
-                    <option value="5+ Years">5+ Years</option>
-                  </select>
-                </div>
-
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-xs font-bold uppercase text-slate-700 mb-2">University / Institution</label>
