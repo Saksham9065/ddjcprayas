@@ -67,6 +67,7 @@ export default function CareersPage() {
         email: "",
         address: "",
         occupation: "",
+        experience: "",
         position: "",
         resume: "",
         statement: "",
