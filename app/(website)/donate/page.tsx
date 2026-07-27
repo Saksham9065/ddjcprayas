@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaUniversity, FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 
 export default function DonatePage() {
@@ -94,8 +94,15 @@ export default function DonatePage() {
           </div>
 
           <div className="bg-white/10 p-6 rounded-2xl border border-white/20 text-center space-y-4 backdrop-blur-sm">
-            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mx-auto text-blue-400 text-2xl">
-              <FaQrcode />
+            <div className="flex justify-center mb-2">
+              <div className="relative h-14 w-14 rounded-full overflow-hidden shadow-md border border-white/20 bg-slate-50">
+                <Image
+                  src="/images/logo/ddjc-logo.jpg"
+                  alt="DDJC Logo"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
             </div>
             <div>
               <h4 className="font-bold text-base mb-1">Scan & Donate via QR</h4>
