@@ -2,12 +2,10 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaHandHoldingUsd, FaLock, FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaLock, FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 
 export default function DonatePage() {
-  const [amount, setAmount] = useState("1000");
-  const [customAmount, setCustomAmount] = useState("");
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -28,7 +26,6 @@ export default function DonatePage() {
       formData.append("donorName", donorName);
       formData.append("phone", phone);
       formData.append("email", email);
-      formData.append("amount", customAmount || amount);
       if (screenshot) {
         formData.append("screenshot", screenshot);
       }
@@ -46,8 +43,6 @@ export default function DonatePage() {
       setDonorName("");
       setPhone("");
       setEmail("");
-      setCustomAmount("");
-      setAmount("1000");
       setScreenshot(null);
       setPreviewUrl(null);
       if (fileInputRef.current) {
@@ -67,8 +62,6 @@ export default function DonatePage() {
       setPreviewUrl(URL.createObjectURL(file));
     }
   };
-
-  const selectedValue = customAmount || amount;
 
   return (
     <div className="bg-slate-50 min-h-screen py-16">
@@ -140,38 +133,6 @@ export default function DonatePage() {
             </div>
           ) : (
             <form onSubmit={handleDonate} className="space-y-8">
-              <div>
-                <label className="block text-xs font-bold uppercase text-slate-700 mb-3">Select Contribution Amount (₹)</label>
-                <div className="grid grid-cols-3 gap-4 mb-4">
-                  {["500", "1000", "5000"].map((val) => (
-                    <button
-                      key={val}
-                      type="button"
-                      onClick={() => {
-                        setAmount(val);
-                        setCustomAmount("");
-                      }}
-                      className={`py-4 rounded-2xl font-bold text-sm border transition-all ${
-                        amount === val && !customAmount
-                          ? "bg-[#000000] text-white border-[#000000] shadow-md"
-                          : "bg-slate-50 text-[#0A2540] border-slate-200 hover:bg-slate-100"
-                      }`}
-                    >
-                      ₹{val}
-                    </button>
-                  ))}
-                </div>
-                <div>
-                  <input
-                    type="number"
-                    placeholder="Or enter custom amount (₹)"
-                    value={customAmount}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
-                  />
-                </div>
-              </div>
-
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Full Name</label>

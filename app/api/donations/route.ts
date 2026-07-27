@@ -10,10 +10,9 @@ export async function POST(request: Request) {
     const donorName = formData.get("donorName") as string;
     const phone = formData.get("phone") as string;
     const email = formData.get("email") as string;
-    const amount = formData.get("amount") as string;
     const screenshot = formData.get("screenshot") as File | null;
 
-    if (!donorName || !phone || !email || !amount) {
+    if (!donorName || !phone || !email) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -45,7 +44,6 @@ export async function POST(request: Request) {
         donorName,
         phone,
         email,
-        amount,
         screenshotPath,
       },
     });
