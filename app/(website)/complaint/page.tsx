@@ -77,7 +77,7 @@ export default function ComplaintPage() {
                       description: "",
                     });
                   }}
-                  className="bg-[#0A2540] text-white px-6 py-3 rounded-xl text-xs font-bold"
+                  className="bg-slate-800 text-white px-6 py-3 rounded-xl text-xs font-bold"
                 >
                   File Another Complaint
                 </button>

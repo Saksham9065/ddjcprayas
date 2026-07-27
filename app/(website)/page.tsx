@@ -176,14 +176,14 @@ export default function HomePage() {
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/complaint"
-                  className="bg-[#1ab9cb] hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2"
+                  className="bg-[#000000] hover:bg-slate-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2"
                 >
                   File a Complaint
                   <FaArrowRight size={14} />
                 </Link>
                 <Link
                   href="/donate"
-                  className="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-xl transition-all backdrop-blur-sm"
+                  className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-8 py-4 rounded-xl transition-all backdrop-blur-sm"
                 >
                   Support Our Cause
                 </Link>

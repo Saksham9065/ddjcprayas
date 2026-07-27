@@ -24,7 +24,7 @@ export default function Button({
     primary:
       "bg-[#000000] hover:bg-slate-600 text-white shadow-black/20 shadow-lg",
     secondary:
-      "bg-[#0A2540] hover:bg-slate-800 text-white shadow-slate-900/10",
+      "bg-slate-800 hover:bg-slate-700 text-white shadow-slate-900/10",
     outline:
       "bg-white border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50",
   };

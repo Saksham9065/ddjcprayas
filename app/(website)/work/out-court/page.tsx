@@ -176,7 +176,7 @@ export default function OutCourtPage() {
             &ldquo;DDJC केवल अदालतों के कमरों में न्याय की गुहार नहीं लगाता, बल्कि समाज की रगों में न्याय का हौसला भरता है। भयमुक्त, समतामूलक और जाति-मुक्त भारत का निर्माण तब तक असंभव है, जब तक हमारे गांवों का हर नागरिक निडर होकर अपने अधिकारों के लिए खड़ा न हो जाए। हम इसी बदलाव का जरिया हैं।&rdquo;
           </blockquote>
           <div className="pt-4">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
               Contact Field Coordinators <FaArrowRight size={14} />
             </Link>
           </div>

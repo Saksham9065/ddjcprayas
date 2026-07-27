@@ -114,7 +114,7 @@ export default function AboutPage() {
           <div className="pt-4 flex flex-wrap gap-4">
             <Link
               href="/team"
-              className="inline-flex items-center gap-2 bg-[#2563EB] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
+              className="inline-flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
             >
               Meet Our Team
               <FaArrowRight size={14} />

@@ -133,7 +133,7 @@ export default function DonatePage() {
               <button
                 type="button"
                 onClick={() => setSuccess(false)}
-                className="mt-4 bg-[#0A2540] text-white px-6 py-2.5 rounded-xl text-xs font-bold"
+                className="mt-4 bg-slate-800 text-white px-6 py-2.5 rounded-xl text-xs font-bold"
               >
                 Make Another Contribution
               </button>

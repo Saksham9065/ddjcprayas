@@ -161,7 +161,7 @@ export default function InCourtPage() {
             &ldquo;Until the court&apos;s verdict is delivered in favor of the victim with full dignity, DDJC&apos;s legal battle never stops. We transform every suppressed voice into a powerful roar inside the threshold of the court.&rdquo;
           </blockquote>
           <div className="pt-4">
-            <Link href="/complaint" className="inline-flex items-center gap-2 bg-[#1ab9cb] hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
+            <Link href="/complaint" className="inline-flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
               Request Court Support <FaArrowRight size={14} />
             </Link>
           </div>
