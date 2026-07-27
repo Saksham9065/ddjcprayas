@@ -16,6 +16,7 @@ export default function CareersPage() {
     email: "",
     address: "",
     occupation: "",
+    experience: "",
     position: "",
     resume: "",
     statement: "",
@@ -47,6 +48,7 @@ export default function CareersPage() {
           email: "",
           address: "",
           occupation: "",
+          experience: "",
           position: "",
           resume: "",
           statement: "",
@@ -271,6 +273,24 @@ export default function CareersPage() {
                       </label>
                     ))}
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Experience *</label>
+                  <select
+                    name="experience"
+                    required
+                    value={formData.experience}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                  >
+                    <option value="">Select experience level</option>
+                    <option value="Fresher">Fresher (0-1 year)</option>
+                    <option value="1-2 Years">1-2 Years</option>
+                    <option value="2-3 Years">2-3 Years</option>
+                    <option value="3-5 Years">3-5 Years</option>
+                    <option value="5+ Years">5+ Years</option>
+                  </select>
                 </div>
 
                 <div>
