@@ -226,9 +226,11 @@ export default function DonatePage() {
                 {error && <p className="text-red-600 text-xs font-bold mt-2">{error}</p>}
               </div>
 
-              <Button type="submit" isLoading={loading} className="w-auto px-8 py-2 text-xs">
-                <FaUpload /> Submit Payment Proof
-              </Button>
+              <div className="flex justify-center">
+                <Button type="submit" isLoading={loading} className="w-auto px-8 py-2 text-xs">
+                  <FaUpload /> Submit Payment Proof
+                </Button>
+              </div>
             </form>
           )}
         </div>
