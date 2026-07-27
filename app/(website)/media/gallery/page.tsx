@@ -74,22 +74,22 @@ const GALLERY_IMAGES = [
 
 export default function GalleryPage() {
   return (
-    <div className="bg-slate-900 min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="mb-8">
-          <Link href="/" className="flex items-center gap-2 text-[#1ab9cb] font-bold text-sm hover:underline">
+          <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
             <FaArrowLeft size={12} /> Back to Home
           </Link>
         </div>
 
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="bg-black/30 text-[#1ab9cb] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-700 inline-block mb-4">
+          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Photo Gallery
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">
+          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-4">
             Gallery
           </h1>
-          <p className="text-slate-400 text-base md:text-lg leading-relaxed">
+          <p className="text-slate-600 text-base md:text-lg leading-relaxed">
             Glimpses from our legal camps, village awareness drives, and community gatherings across Bundelkhand.
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function GalleryPage() {
           {GALLERY_IMAGES.map((img, index) => (
             <div
               key={index}
-              className="break-inside-avoid rounded-2xl overflow-hidden bg-slate-800 shadow-lg"
+              className="break-inside-avoid rounded-2xl overflow-hidden bg-white shadow-lg"
             >
               <Image
                 src={img.src}
