@@ -271,36 +271,36 @@ export default function HomePage() {
       </section>
 
       {/* 4. IMPACT COUNTERS SECTION */}
-      <section className="py-20 bg-[#0A2540] text-white">
+      <section className="py-20 bg-white text-slate-800">
         <div className="container mx-auto px-6 max-w-6xl text-center">
-          <span className="bg-black/20 text-slate-300 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3 border border-black/30">
+          <span className="bg-slate-100 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3 border border-slate-200">
             Our Impact
           </span>
-          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4 text-[#0A2540]">
             Creating Change Through Justice
           </h2>
-          <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-16">
+          <p className="text-slate-600 text-sm md:text-base max-w-xl mx-auto mb-16">
             Every number reflects our commitment to protecting rights, empowering communities, and ensuring equal access to justice.
           </p>
 
-<div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={2000} suffix="+" />
-                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={200} suffix="+" />
-                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={150} suffix="+" />
-                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Court Matters</span>
-              </div>
-              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={70} suffix="+" />
-                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Awareness Camps</span>
-              </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <AnimatedCounter target={2000} suffix="+" />
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-500">People Reached</span>
             </div>
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <AnimatedCounter target={200} suffix="+" />
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-500">Legal Cases</span>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <AnimatedCounter target={150} suffix="+" />
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-500">Court Matters</span>
+            </div>
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm">
+              <AnimatedCounter target={70} suffix="+" />
+              <span className="text-xs uppercase font-bold tracking-wider text-slate-500">Awareness Camps</span>
+            </div>
+          </div>
         </div>
       </section>
 
