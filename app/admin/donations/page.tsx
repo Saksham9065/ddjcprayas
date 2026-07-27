@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaArrowLeft, FaCheckCircle, FaClock, FaExclamationCircle, FaRupeeSign } from "react-icons/fa";
+import Image from "next/image";
+import { FaArrowLeft, FaCheckCircle, FaClock, FaExclamationCircle, FaRupeeSign, FaImage } from "react-icons/fa";
 
 export default function AdminDonationsPage() {
   const [donations] = useState([
@@ -15,6 +16,7 @@ export default function AdminDonationsPage() {
       transactionId: "TXN-9876543210",
       date: "2026-06-24",
       status: "Completed",
+      screenshot: null,
     },
     {
       id: "DON-2026-002",
@@ -25,6 +27,7 @@ export default function AdminDonationsPage() {
       transactionId: "TXN-9123456789",
       date: "2026-06-22",
       status: "Completed",
+      screenshot: null,
     },
     {
       id: "DON-2026-003",
@@ -35,6 +38,7 @@ export default function AdminDonationsPage() {
       transactionId: "TXN-9988776655",
       date: "2026-06-20",
       status: "Pending",
+      screenshot: null,
     },
   ]);
 
@@ -60,6 +64,7 @@ export default function AdminDonationsPage() {
                   <th className="py-4 px-6 font-bold">Donor</th>
                   <th className="py-4 px-6 font-bold">Amount</th>
                   <th className="py-4 px-6 font-bold">Transaction ID</th>
+                  <th className="py-4 px-6 font-bold">Proof</th>
                   <th className="py-4 px-6 font-bold">Date</th>
                   <th className="py-4 px-6 font-bold">Status</th>
                 </tr>
@@ -71,6 +76,7 @@ export default function AdminDonationsPage() {
                     <td className="py-4 px-6">
                       <span className="font-bold block text-slate-900">{donation.donorName}</span>
                       <span className="text-slate-500 font-mono text-[10px]">{donation.email}</span>
+                      <span className="text-slate-400 font-mono text-[10px] block">{donation.phone}</span>
                     </td>
                     <td className="py-4 px-6">
                       <span className="flex items-center gap-1 text-emerald-600 font-bold">
@@ -79,6 +85,20 @@ export default function AdminDonationsPage() {
                       </span>
                     </td>
                     <td className="py-4 px-6 font-mono text-slate-500">{donation.transactionId}</td>
+                    <td className="py-4 px-6">
+                      {donation.screenshot ? (
+                        <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-slate-200">
+                          <Image
+                            src={donation.screenshot}
+                            alt="Payment proof"
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <span className="text-slate-400 text-xs">—</span>
+                      )}
+                    </td>
                     <td className="py-4 px-6 text-slate-600">{donation.date}</td>
                     <td className="py-4 px-6">
                       <span

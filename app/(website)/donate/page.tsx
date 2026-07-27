@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaHandHoldingUsd, FaLock, FaUniversity, FaQrcode } from "react-icons/fa";
+import { FaHandHoldingUsd, FaLock, FaUniversity, FaQrcode, FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 
 export default function DonatePage() {
@@ -11,17 +11,61 @@ export default function DonatePage() {
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [screenshot, setScreenshot] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleDonate = (e: React.FormEvent) => {
+  const handleDonate = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const formData = new FormData();
+      formData.append("donorName", donorName);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("amount", customAmount || amount);
+      if (screenshot) {
+        formData.append("screenshot", screenshot);
+      }
+
+      const res = await fetch("/api/donations", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!res.ok) {
+        throw new Error("Submission failed. Please try again.");
+      }
+
       setSuccess(true);
-    }, 1500);
+      setDonorName("");
+      setPhone("");
+      setEmail("");
+      setCustomAmount("");
+      setAmount("1000");
+      setScreenshot(null);
+      setPreviewUrl(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setScreenshot(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    }
   };
 
   const selectedValue = customAmount || amount;
@@ -29,7 +73,6 @@ export default function DonatePage() {
   return (
     <div className="bg-slate-50 min-h-screen py-16">
       <div className="container mx-auto px-6 max-w-4xl space-y-12">
-        {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             Support Justice & Equality
@@ -42,7 +85,6 @@ export default function DonatePage() {
           </p>
         </div>
 
-        {/* Bank Details & QR Information Box */}
         <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-4">
             <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-400/30 inline-block">
@@ -66,10 +108,9 @@ export default function DonatePage() {
               <h4 className="font-bold text-base mb-1">Scan & Donate via QR</h4>
               <p className="text-xs text-slate-300">Scan using any UPI app (Google Pay, PhonePe, Paytm)</p>
             </div>
-            {/* QR Code Image Container */}
             <div className="relative w-48 h-48 mx-auto bg-white rounded-xl overflow-hidden p-2 shadow-inner">
               <Image
-                src="/images/qr/qr.jpeg" 
+                src="/images/qr/qr.jpeg"
                 alt="Prayas Jan Utthan Samiti Donation QR Code"
                 fill
                 className="object-contain p-2"
@@ -78,17 +119,16 @@ export default function DonatePage() {
           </div>
         </div>
 
-        {/* Online Gateway Simulation Form */}
         <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm">
-          <h3 className="text-xl font-bold text-[#0A2540] mb-6">Or Contribute Online</h3>
+          <h3 className="text-xl font-bold text-[#0A2540] mb-6">Upload Payment Proof</h3>
           {success ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
-                ✓
+                <FaCheckCircle />
               </div>
-              <h4 className="text-xl font-bold text-emerald-800">Thank You for Your Support!</h4>
+              <h4 className="text-xl font-bold text-emerald-800">Thank You for Your Contribution!</h4>
               <p className="text-xs text-emerald-700 max-w-md mx-auto">
-                Your donation of ₹{selectedValue} has been successfully simulated through our secure payment gateway. A receipt has been emailed to you.
+                Your payment proof has been received. Our team will verify the transaction and update the status shortly.
               </p>
               <button
                 type="button"
@@ -100,7 +140,6 @@ export default function DonatePage() {
             </div>
           ) : (
             <form onSubmit={handleDonate} className="space-y-8">
-              {/* Amount Selection */}
               <div>
                 <label className="block text-xs font-bold uppercase text-slate-700 mb-3">Select Contribution Amount (₹)</label>
                 <div className="grid grid-cols-3 gap-4 mb-4">
@@ -133,7 +172,6 @@ export default function DonatePage() {
                 </div>
               </div>
 
-              {/* Donor Details */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Full Name</label>
@@ -142,7 +180,7 @@ export default function DonatePage() {
                     required
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    placeholder="Supporter Name"
+                    placeholder="Your Name"
                     className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
@@ -171,13 +209,62 @@ export default function DonatePage() {
                 />
               </div>
 
+              <div>
+                <label className="block text-xs font-bold uppercase text-slate-700 mb-3">Upload Payment Screenshot</label>
+                <div
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-colors ${
+                    screenshot
+                      ? "border-emerald-400 bg-emerald-50"
+                      : "border-slate-300 bg-slate-50 hover:border-slate-400 hover:bg-slate-100"
+                  }`}
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                  {screenshot ? (
+                    <div className="space-y-3">
+                      <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden border border-slate-200">
+                        {previewUrl && (
+                          <Image
+                            src={previewUrl}
+                            alt="Payment screenshot preview"
+                            width={96}
+                            height={96}
+                            className="object-cover w-full h-full"
+                          />
+                        )}
+                      </div>
+                      <p className="text-sm font-bold text-emerald-700">{screenshot.name}</p>
+                      <p className="text-xs text-slate-500">Click to replace</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto text-slate-400 border border-slate-200">
+                        <FaUpload size={28} />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-slate-700">Click to upload payment proof</p>
+                        <p className="text-xs text-slate-500 mt-1">Supports JPG, PNG, WebP (max 10MB)</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {error && <p className="text-red-600 text-xs font-bold mt-2">{error}</p>}
+              </div>
+
               <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex items-center gap-3 text-xs text-slate-500">
                 <FaLock className="text-[#000000] shrink-0 text-base" />
-                <span>All transactions are encrypted and secured via industry-standard protocols.</span>
+                <span>Your payment screenshot is encrypted and sent securely to our admin panel for verification.</span>
               </div>
 
               <Button type="submit" isLoading={loading} className="w-full py-4 text-sm">
-                <FaHandHoldingUsd className="mr-2" /> Proceed to Pay ₹{selectedValue || "0"}
+                <FaUpload /> Submit Payment Proof
               </Button>
             </form>
           )}
