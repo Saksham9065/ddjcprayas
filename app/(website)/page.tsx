@@ -15,6 +15,52 @@ import {
   FaChevronRight,
 } from "react-icons/fa";
 
+function AnimatedCounter({ target, suffix = "+", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          const start = 0;
+          const startTime = performance.now();
+          const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(start + (target - start) * eased);
+            setCount(current);
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [target, duration]);
+
+  return (
+    <span ref={ref} className="text-4xl md:text-5xl font-black text-slate-400 block mb-2">
+      {count.toLocaleString("en-IN")}{suffix}
+    </span>
+  );
+}
+
 const HERO_IMAGES = [
   "/images/hero/1.jpg",
   "/images/hero/2.jpg",
@@ -237,24 +283,24 @@ export default function HomePage() {
             Every number reflects our commitment to protecting rights, empowering communities, and ensuring equal access to justice.
           </p>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-              <span className="text-4xl md:text-5xl font-black text-slate-400 block mb-2">15,000+</span>
-              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
+<div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                <AnimatedCounter target={1500} suffix="+" />
+                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                <AnimatedCounter target={50} suffix="+" />
+                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                <AnimatedCounter target={30} suffix="+" />
+                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Court Matters</span>
+              </div>
+              <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
+                <AnimatedCounter target={10} suffix="+" />
+                <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Awareness Camps</span>
+              </div>
             </div>
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-              <span className="text-4xl md:text-5xl font-black text-slate-400 block mb-2">500+</span>
-              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
-            </div>
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-              <span className="text-4xl md:text-5xl font-black text-slate-400 block mb-2">300+</span>
-              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Court Matters</span>
-            </div>
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-              <span className="text-4xl md:text-5xl font-black text-slate-400 block mb-2">100+</span>
-              <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Awareness Camps</span>
-            </div>
-          </div>
         </div>
       </section>
 
