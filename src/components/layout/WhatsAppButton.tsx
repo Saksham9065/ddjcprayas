@@ -16,13 +16,12 @@ function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with DDJC on WhatsApp"
-      className="fixed bottom-6 left-6 z-50 group"
+      className="fixed bottom-4 right-4 z-50 group"
     >
-      <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-105 transition duration-300">
-        <FaWhatsapp className="text-white text-3xl" />
+      <div className="relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-105 transition duration-300">
+        <FaWhatsapp className="text-white text-2xl md:text-3xl" />
       </div>
-
-      <div className="absolute left-20 top-1/2 -translate-y-1/2 bg-white text-[#0A2540] px-4 py-2 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300">
+      <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-white text-[#0A2540] px-4 py-2 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition duration-300 text-xs md:text-sm font-semibold">
         Chat with DDJC
       </div>
     </a>

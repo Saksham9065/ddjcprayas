@@ -106,7 +106,7 @@ export default function HomePage() {
       <section className="relative bg-slate-900 text-white overflow-hidden">
         
         {/* Image Slider */}
-        <div className="relative h-[500px] md:h-[600px] lg:h-[700px] overflow-hidden">
+        <div className="relative h-[300px] md:h-[500px] lg:h-[700px] overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -116,11 +116,11 @@ export default function HomePage() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-              <img
-                src={HERO_IMAGES[currentSlide]}
-                alt={`Hero slide ${currentSlide + 1}`}
-                className="w-full h-full object-cover"
-              />
+<img
+              src={HERO_IMAGES[currentSlide]}
+              alt={`Hero slide ${currentSlide + 1}`}
+              className="w-full h-full object-cover"
+            />
             </motion.div>
           </AnimatePresence>
 
@@ -130,19 +130,19 @@ export default function HomePage() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors md:w-10 md:h-10 md:left-4"
           >
-            <FaChevronLeft size={16} />
+            <FaChevronLeft size={14} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/40 transition-colors md:w-10 md:h-10 md:right-4"
           >
-            <FaChevronRight size={16} />
+            <FaChevronRight size={14} />
           </button>
 
           {/* Slide Indicators */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
             {HERO_IMAGES.map((_, index) => (
               <button
                 key={index}
@@ -285,7 +285,7 @@ export default function HomePage() {
 
 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={1500} suffix="+" />
+                <AnimatedCounter target={2000} suffix="+" />
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">People Reached</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
@@ -293,11 +293,11 @@ export default function HomePage() {
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Legal Cases</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={30} suffix="+" />
+                <AnimatedCounter target={150} suffix="+" />
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Court Matters</span>
               </div>
               <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-sm">
-                <AnimatedCounter target={10} suffix="+" />
+                <AnimatedCounter target={70} suffix="+" />
                 <span className="text-xs uppercase font-bold tracking-wider text-slate-300">Awareness Camps</span>
               </div>
             </div>

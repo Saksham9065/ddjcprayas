@@ -110,7 +110,7 @@ export default function DonatePage() {
             </div>
             <div className="relative w-48 h-48 mx-auto bg-white rounded-xl overflow-hidden p-2 shadow-inner">
               <Image
-                src="/images/qr/qr.jpeg"
+                src="/images/qr/qr.png"
                 alt="Prayas Jan Utthan Samiti Donation QR Code"
                 fill
                 className="object-contain p-2"

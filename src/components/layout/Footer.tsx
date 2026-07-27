@@ -121,13 +121,23 @@ function Footer() {
             </ul>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-col text-left lg:pr-4">
-            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-[0.15em]">
-             
+          <motion.div variants={itemVariants} className="flex flex-col text-left">
+            <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-widest">
+              Our Video
             </h3>
-            
-            <div className="flex flex-col gap-3">
-              
+
+            <div className="relative rounded-xl overflow-hidden border border-white/10 bg-black/30">
+              <video
+                controls
+                preload="metadata"
+                className="w-full aspect-video object-cover rounded-xl"
+              >
+                <source
+                  src="/images/video/vidssave.com सूखा, पानी की किल्लत और जाति आधारित भेदभाव, Climate Change के कारण ग्रामीण भारत ऐसा असर (BBC Hindi) 720P.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </motion.div>
 

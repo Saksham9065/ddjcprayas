@@ -121,7 +121,7 @@ function Navbar() {
             <SocialIcons links={SOCIAL_LINKS} />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="xl:hidden relative w-11 h-11 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-[#0A2540] hover:bg-slate-50 hover:text-[#2563EB] transition-all duration-300 overflow-hidden"
+              className="md:hidden relative w-11 h-11 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-[#0A2540] hover:bg-slate-50 hover:text-[#2563EB] transition-all duration-300 overflow-hidden"
             >
               <AnimatePresence mode="wait">
                 <motion.div key={menuOpen ? "close" : "open"} initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
@@ -152,7 +152,7 @@ interface DesktopMenuProps {
 
 function DesktopMenu({ menuItems, activeDropdown, setActiveDropdown, pathname }: DesktopMenuProps) {
   return (
-    <ul className="hidden xl:flex items-center justify-center gap-6 2xl:gap-8 flex-1 px-4 h-full list-none m-0 p-0">
+    <ul className="hidden md:flex items-center justify-center gap-6 2xl:gap-8 flex-1 px-4 h-full list-none m-0 p-0">
       {menuItems.map((item) => {
         return item.dropdown ? (
           <DesktopDropdownItem key={item.name} item={item} activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
@@ -223,7 +223,7 @@ interface SocialIconsProps {
 
 function SocialIcons({ links }: SocialIconsProps) {
   return (
-    <div className="hidden xl:flex items-center gap-2.5 border-l border-slate-200 pl-6 ml-2 shrink-0">
+    <div className="hidden md:flex items-center gap-2.5 border-l border-slate-200 pl-6 ml-2 shrink-0">
       {links.map(({ Icon, href, hoverColor }, index) => (
         <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-[#0A2540] ${hoverColor} transition-all`}>
           <Icon size={16} />
@@ -245,7 +245,7 @@ function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, close
   return (
     <AnimatePresence>
       {menuOpen && (
-        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="xl:hidden overflow-hidden bg-slate-50 absolute w-full z-40">
+        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="md:hidden overflow-hidden bg-slate-50 absolute w-full z-40">
           <div className="flex flex-col items-center py-6 gap-4">
             {menuItems.map((item) => (
               <div key={item.name} className="w-full text-center">
