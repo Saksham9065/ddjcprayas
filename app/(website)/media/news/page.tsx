@@ -48,7 +48,7 @@ const NEWS_IMAGES = [
 export default function NewsPage() {
 
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">

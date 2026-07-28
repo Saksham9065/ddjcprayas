@@ -6,7 +6,7 @@ import { FaBullseye, FaEye, FaArrowRight, FaShieldAlt, FaBalanceScale, FaBookOpe
 
 export default function AboutPage() {
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
         
          {/* Header Banner */}

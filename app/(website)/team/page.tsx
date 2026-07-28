@@ -36,7 +36,7 @@ function Team() {
   };
 
   return (
-<section className="py-16 md:py-24 bg-white">
+<section className="py-16 pt-24 md:py-24 bg-white">
       <motion.div 
         variants={containerVariants} 
         initial="hidden" 

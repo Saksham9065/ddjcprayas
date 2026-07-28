@@ -6,7 +6,7 @@ import { FaBalanceScale, FaCheckCircle, FaArrowRight } from "react-icons/fa";
 
 export default function LegalAidPage() {
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">

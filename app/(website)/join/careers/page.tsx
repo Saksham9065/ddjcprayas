@@ -84,7 +84,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen py-16">
+    <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">

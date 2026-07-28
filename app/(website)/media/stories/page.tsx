@@ -27,7 +27,7 @@ export default function StoriesPage() {
           </div>
         </div>
       </div>
-      <div className="py-16">
+      <div className="py-16 pt-24">
         <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex justify-center mb-6">

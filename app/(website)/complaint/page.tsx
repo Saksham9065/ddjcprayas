@@ -29,7 +29,7 @@ export default function ComplaintPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-16">
+    <div className="bg-slate-50 min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-4xl">
         
         {/* Header */}
