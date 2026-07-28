@@ -4,8 +4,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaCheckCircle, FaArrowRight, FaUsers, FaShieldAlt, FaBookOpen, FaHandHoldingUsd, FaUniversity } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function OutCourtPage() {
+  const { language } = useApp();
+  const isHindi = language === "hi";
   return (
     <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
@@ -13,10 +16,10 @@ export default function OutCourtPage() {
         {/* Header Banner */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-            Community & Administrative Action
+            {isHindi ? "समुदाय और प्रशासनिक कार्रवाई" : "Community & Administrative Action"}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
-            Out-of-Court Interventions & Community Empowerment
+            {isHindi ? "अदालत-बहिरा हस्तक्षेप और समुदाय सशक्तिकरण" : "Out-of-Court Interventions & Community Empowerment"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#2563EB] pl-4 py-1 mx-auto max-w-2xl text-left">
             &ldquo;जब तक आप सामाजिक स्वतंत्रता हासिल नहीं कर लेते, कानून आपको जो भी स्वतंत्रता देता है, वह आपके किसी काम की नहीं है।&rdquo; — बाबासाहब डॉ. बी. आर. आंबेडकर
@@ -46,7 +49,7 @@ export default function OutCourtPage() {
 
         {/* Introduction Philosophy */}
         <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 space-y-6">
-          <h2 className="text-2xl font-black text-[#0A2540]">Community Empowerment & Ground Foundation</h2>
+          <h2 className="text-2xl font-black text-[#0A2540]">{isHindi ? "समुदाय सशक्तिकरण और जमीन-स्तर का आधार" : "Community Empowerment & Ground Foundation"}</h2>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed">
             The Dalit Dignity & Justice Center (DDJC) believes that the foundation of justice is laid long before stepping into a courtroom—at the societal and administrative levels. Unless a victim family receives social, administrative, and psychological support on the ground, the legal battle remains incomplete. Therefore, DDJC works robustly on the ground outside courts to protect victims&apos; rights, secure prompt justice, and foster community self-reliance.
           </p>
@@ -177,7 +180,7 @@ export default function OutCourtPage() {
           </blockquote>
           <div className="pt-4">
             <Link href="/contact" className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
-              Contact Field Coordinators <FaArrowRight size={14} />
+              {isHindi ? "फील्ड समन्वयकों से संपर्क करें" : "Contact Field Coordinators"} <FaArrowRight size={14} />
             </Link>
           </div>
         </div>

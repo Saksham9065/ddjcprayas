@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { connectToDatabase } from "@/utils/db";
+import { JoinApplication } from "@/models/JoinApplication";
 
 export async function POST(request: Request) {
   try {
@@ -20,22 +22,43 @@ export async function POST(request: Request) {
       statement,
     } = body;
 
-    if (!fullName || !mobile || !joinType) {
+    const cleanedPayload = {
+      fullName: String(fullName || "").trim(),
+      fatherHusbandName: String(fatherHusbandName || "").trim(),
+      age: age ? Number(age) : undefined,
+      category: String(category || "").trim(),
+      gender: String(gender || "").trim(),
+      education: String(education || "").trim(),
+      mobile: String(mobile || "").trim(),
+      email: String(email || "").trim(),
+      address: String(address || "").trim(),
+      occupation: String(occupation || "").trim(),
+      joinType: String(joinType || "Volunteer").trim(),
+      workMode: String(workMode || "").trim(),
+      statement: String(statement || "").trim(),
+    };
+
+    if (!cleanedPayload.fullName || !cleanedPayload.mobile || !cleanedPayload.joinType) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Please fill in the required fields" },
         { status: 400 }
       );
     }
 
+    await connectToDatabase();
+
+    const application = await JoinApplication.create(cleanedPayload);
+
     return NextResponse.json({
       success: true,
       message: "Application received successfully",
-      applicationId: `JOIN-${Date.now()}`,
+      applicationId: application._id.toString(),
     });
-  } catch {
+  } catch (error) {
+    console.error("Join application error:", error);
     return NextResponse.json(
-      { error: "Invalid request" },
-      { status: 400 }
+      { error: "Failed to save application" },
+      { status: 500 }
     );
   }
 }

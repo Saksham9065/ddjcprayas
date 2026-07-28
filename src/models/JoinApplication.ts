@@ -1,6 +1,6 @@
 import { Schema, model, models, type Document } from "mongoose";
 
-export interface IVolunteer extends Document {
+export interface IJoinApplication extends Document {
   fullName: string;
   fatherHusbandName?: string;
   age?: number;
@@ -16,7 +16,7 @@ export interface IVolunteer extends Document {
   statement?: string;
 }
 
-const volunteerSchema = new Schema<IVolunteer>(
+const joinApplicationSchema = new Schema<IJoinApplication>(
   {
     fullName: { type: String, required: true, trim: true },
     fatherHusbandName: { type: String, trim: true },
@@ -37,4 +37,5 @@ const volunteerSchema = new Schema<IVolunteer>(
   }
 );
 
-export const Volunteer = models.Volunteer || model<IVolunteer>("Volunteer", volunteerSchema);
+export const JoinApplication =
+  models.JoinApplication || model<IJoinApplication>("JoinApplication", joinApplicationSchema);

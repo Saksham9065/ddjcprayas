@@ -2,8 +2,11 @@
 
 import React from "react";
 import { FaBook, FaDownload, FaFilePdf } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function ResourcesPage() {
+  const { language } = useApp();
+  const isHindi = language === "hi";
   const documents = [
     {
       title: "SC/ST Prevention of Atrocities Act - Handbook",
@@ -25,13 +28,13 @@ export default function ResourcesPage() {
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            Knowledge Hub
+            {isHindi ? "ज्ञान केंद्र" : "Knowledge Hub"}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
-            Legal Resources & Guides
+            {isHindi ? "कानूनी संसाधन और गाइड" : "Legal Resources & Guides"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            Download educational pamphlets, constitutional guides, and statutory handbooks to empower yourself with legal knowledge.
+            {isHindi ? "कानूनी ज्ञान से अपने आप को सशक्त बनाने के लिए शैक्षिक pamphlets, संवैधानिक गाइड और वैधानिक हैंडबुक डाउनलोड करें।" : "Download educational pamphlets, constitutional guides, and statutory handbooks to empower yourself with legal knowledge."}
           </p>
         </div>
 

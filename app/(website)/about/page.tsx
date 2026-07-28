@@ -3,8 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { FaBullseye, FaEye, FaArrowRight, FaShieldAlt, FaBalanceScale, FaBookOpen, FaUsers } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
+import { translations } from "@/lib/i18n";
 
 export default function AboutPage() {
+  const { language } = useApp();
+  const content = translations[language];
   return (
     <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
@@ -12,20 +16,20 @@ export default function AboutPage() {
          {/* Header Banner */}
          <div className="text-center max-w-3xl mx-auto space-y-4">
            <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-             Who We Are
+             {language === "en" ? "Who We Are" : "हम हम हैं"}
            </span>
            <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
-             About Dalit Dignity & Justice Center (DDJC)
+             {language === "en" ? "About Dalit Dignity & Justice Center (DDJC)" : "दलित गरिमा एवं न्याय केंद्र (DDJC) के बारे में"}
            </h1>
            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-             Step Towards Justice and Dignity. Founded on October 9, 2023, by the Bundelkhand Dalit Adhikar Manch.
+             {language === "en" ? "Step Towards Justice and Dignity. Founded on October 9, 2023, by the Bundelkhand Dalit Adhikar Manch." : "न्याय और गरिमा की दिशा में कदम। 9 अक्टूबर 2023 को बुंदेलखंड दलित अधिकार मंच द्वारा स्थापित।"}
            </p>
          </div>
 
          {/* Why DDJC is Needed */}
          <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 space-y-6">
            <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] tracking-tight">
-             Why is DDJC Needed?
+             {language === "en" ? "Why is DDJC Needed?" : "DDJC की आवश्यकता क्यों है?"}
            </h2>
            <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
              <p>
@@ -47,9 +51,9 @@ export default function AboutPage() {
             <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center text-xl">
               <FaBullseye />
             </div>
-            <h2 className="text-2xl font-bold text-[#0A2540]">Our Mission</h2>
+            <h2 className="text-2xl font-bold text-[#0A2540]">{language === "en" ? "Our Mission" : "हमारा मिशन"}</h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-              To provide uncompromised legal aid, institutional representation, and constitutional awareness to marginalized communities, ensuring that systemic barriers never deny any individual their right to justice and dignity.
+              {language === "en" ? "To provide uncompromised legal aid, institutional representation, and constitutional awareness to marginalized communities, ensuring that systemic barriers never deny any individual their right to justice and dignity." : "वंचित समुदायों को बिना किसी समझौते के कानूनी सहायता, संस्थागत प्रतिनिधित्व और संवैधानिक जागरूकता प्रदान करना, ताकि सिस्टमिक बाधाएँ किसी भी व्यक्ति के न्याय और गरिमा के अधिकार से वंचित न हों।"}
             </p>
           </div>
 
@@ -57,16 +61,16 @@ export default function AboutPage() {
             <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center text-xl">
               <FaEye />
             </div>
-            <h2 className="text-2xl font-bold text-[#0A2540]">Our Vision</h2>
+            <h2 className="text-2xl font-bold text-[#0A2540]">{language === "en" ? "Our Vision" : "हमारी दृष्टि"}</h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed">
-              &ldquo;The creation of a fear-free, egalitarian, and caste-free India where every citizen enjoys the right to dignified justice, equality, and liberty.&rdquo;
+              {language === "en" ? "“The creation of a fear-free, egalitarian, and caste-free India where every citizen enjoys the right to dignified justice, equality, and liberty.”" : "“एक भयमुक्त, समतामूलक और जातिहीन भारत की रचना जहाँ प्रत्येक नागरिक को गरिमापूर्ण न्याय, समानता और स्वतंत्रता का अधिकार प्राप्त हो।”"}
             </p>
           </div>
         </div>
 
         {/* DDJC Main Focus Areas */}
         <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h2 className="text-2xl font-black text-[#0A2540]">Core Focus Areas of DDJC</h2>
+          <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "Core Focus Areas of DDJC" : "DDJC के प्रमुख फोकस क्षेत्र"}</h2>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-slate-700">
             <div className="flex items-start gap-3">
               <span className="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 font-bold">1</span>
@@ -111,7 +115,7 @@ export default function AboutPage() {
 
         {/* Rooted in Bundelkhand's Grassroots */}
         <div className="bg-[#0A2540] text-white p-8 md:p-12 rounded-3xl shadow-xl space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold">Rooted in Bundelkhand&apos;s Grassroots</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">{language === "en" ? "Rooted in Bundelkhand's Grassroots" : "बुंदेलखंड की जड़ता से जुड़ा"}</h2>
           <p className="text-slate-300 text-sm md:text-base leading-relaxed">
             Operating out of Orai, Jalaun, our team works tirelessly at tehsil and district levels. We bridge the gap between vulnerable victims and judicial systems by combining field fact-findings, police station follow-ups, and professional courtroom litigation.
           </p>
@@ -120,7 +124,7 @@ export default function AboutPage() {
               href="/team"
               className="inline-flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-6 py-3.5 rounded-xl transition-all shadow-md text-sm"
             >
-              Meet Our Team
+              {language === "en" ? "Meet Our Team" : "हमारी टीम से मिलें"}
               <FaArrowRight size={14} />
             </Link>
           </div>

@@ -1,28 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-import { FaArrowLeft, FaCheckCircle, FaClock, FaExclamationCircle } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
+import { FaArrowLeft, FaClock } from "react-icons/fa";
 
 export default function AdminComplaintsPage() {
-  const [complaints] = useState([
-    {
-      id: "CMP-2026-001",
-      name: "Ramlal Vanvasi",
-      category: "Atrocity / Violence",
-      district: "Jalaun",
-      date: "2026-06-20",
-      status: "Pending Review",
-    },
-    {
-      id: "CMP-2026-002",
-      name: "Sunita Devi",
-      category: "Police Inaction",
-      district: "Orai",
-      date: "2026-06-22",
-      status: "In Progress",
-    },
-  ]);
+  const { complaints, updateComplaintStatus } = useApp();
 
   return (
     <div className="bg-slate-50 min-h-screen py-10 px-6">
@@ -54,9 +38,9 @@ export default function AdminComplaintsPage() {
                   <tr key={c.id} className="hover:bg-slate-50/50">
                     <td className="p-6 font-medium text-[#0A2540]">
                       <span className="block font-bold">{c.id}</span>
-                      <span className="text-xs text-slate-400">{c.date}</span>
+                      <span className="text-xs text-slate-400">{c.createdAt || c.incidentDate}</span>
                     </td>
-                    <td className="p-6 font-semibold text-slate-700">{c.name}</td>
+                    <td className="p-6 font-semibold text-slate-700">{c.fullName}</td>
                     <td className="p-6 text-slate-600">{c.category}</td>
                     <td className="p-6 text-slate-600">{c.district}</td>
                     <td className="p-6">

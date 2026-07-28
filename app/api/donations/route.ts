@@ -1,20 +1,22 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { connectToDatabase } from "@/utils/db";
+import { Donation } from "@/models/Donation";
 
 const UPLOADS_DIR = path.join(process.cwd(), "public", "uploads", "donations");
 
 export async function POST(request: Request) {
   try {
     const formData = await request.formData();
-    const donorName = formData.get("donorName") as string;
-    const phone = formData.get("phone") as string;
-    const email = formData.get("email") as string;
+    const donorName = String(formData.get("donorName") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const email = String(formData.get("email") || "").trim();
     const screenshot = formData.get("screenshot") as File | null;
 
     if (!donorName || !phone || !email) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { error: "Please fill in the donor details" },
         { status: 400 }
       );
     }
@@ -37,6 +39,15 @@ export async function POST(request: Request) {
       screenshotPath = `/uploads/donations/${filename}`;
     }
 
+    await connectToDatabase();
+
+    const donation = await Donation.create({
+      donorName,
+      phone,
+      email,
+      screenshotPath,
+    });
+
     return NextResponse.json({
       success: true,
       message: "Donation submitted successfully",
@@ -45,6 +56,7 @@ export async function POST(request: Request) {
         phone,
         email,
         screenshotPath,
+        donationId: donation._id.toString(),
       },
     });
   } catch (error) {

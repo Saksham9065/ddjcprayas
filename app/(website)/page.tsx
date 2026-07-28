@@ -14,6 +14,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 function AnimatedCounter({ target, suffix = "+", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -76,9 +77,11 @@ const HERO_IMAGES = [
 ];
 
 export default function HomePage() {
+  const { language } = useApp();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideInterval = useRef<NodeJS.Timeout | null>(null);
+  const isHindi = language === "hi";
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -158,19 +161,19 @@ export default function HomePage() {
 <div className="absolute inset-0 flex items-center z-10">
              <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10 text-center pt-24 md:pt-16">
                <span className="bg-black/30 border border-white/20 text-white px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest inline-block mb-6">
-                 Access to Justice • Equality • Human Rights
+                 {isHindi ? "न्याय तक पहुंच • समानता • मानवाधिकार" : "Access to Justice • Equality • Human Rights"}
                </span>
                <h1 className="text-2xl md:text-4xl lg:text-6xl font-black tracking-tight mb-4 md:mb-6 leading-tight text-white">
-                 Dalit Dignity & Justice Centre
+                 {isHindi ? "दलित गरिमा एवं न्याय केंद्र" : "Dalit Dignity & Justice Centre"}
                </h1>
                <p className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">
-                 Justice For Every Citizen
+                 {isHindi ? "हर नागरिक के लिए न्याय" : "Justice For Every Citizen"}
                </p>
                <blockquote className="max-w-2xl mx-auto italic text-white/80 text-xs md:text-sm lg:text-base mb-6 md:mb-10 pl-4 py-1">
-                 &ldquo;Justice is the first virtue of social institutions.&rdquo; — Dr. B.R. Ambedkar
+                 {isHindi ? "“न्याय सामाजिक संस्थानों की पहली vertu है।” — डॉ. बी.आर. अम्बेडकर" : "“Justice is the first virtue of social institutions.” — Dr. B.R. Ambedkar"}
                </blockquote>
                <p className="max-w-3xl mx-auto text-white/80 text-xs md:text-sm lg:text-base leading-relaxed mb-6 md:mb-10">
-                 We provide free legal aid, constitutional awareness, human rights advocacy, and support for marginalized communities to ensure dignity, equality, and justice.
+                 {isHindi ? "हम वंचित समुदायों को मुफ्त कानूनी सहायता, संवैधानिक जागरूकता, मानवाधिकार वकालत और समर्थन प्रदान करते हैं ताकि गरिमा, समानता और न्याय सुनिश्चित हो।" : "We provide free legal aid, constitutional awareness, human rights advocacy, and support for marginalized communities to ensure dignity, equality, and justice."}
                </p>
                
                <div className="flex flex-wrap justify-center gap-3 md:gap-4">
@@ -178,14 +181,14 @@ export default function HomePage() {
                    href="/complaint"
                    className="bg-[#000000] hover:bg-slate-600 text-white font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2 text-xs md:text-sm"
                  >
-                   File a Complaint
+                   {isHindi ? "शिकायत दर्ज करें" : "File a Complaint"}
                    <FaArrowRight size={14} />
                  </Link>
                  <Link
                    href="/donate"
                    className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all backdrop-blur-sm text-xs md:text-sm"
                  >
-                   Support Our Cause
+                   {isHindi ? "हमारे उद्देश्य का समर्थन करें" : "Support Our Cause"}
                  </Link>
                </div>
              </div>
@@ -197,9 +200,9 @@ export default function HomePage() {
       <section className="py-20 pt-24 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="bg-white p-8 md:p-14 rounded-3xl shadow-sm border border-slate-200">
-            <span className="text-xs font-bold text-[#000000] uppercase tracking-wider block mb-2">Background & Purpose</span>
+            <span className="text-xs font-bold text-[#000000] uppercase tracking-wider block mb-2">{isHindi ? "पृष्ठभूमि और उद्देश्य" : "Background & Purpose"}</span>
             <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] mb-6 tracking-tight">
-              Why is the Dalit Dignity & Justice Centre (DDJC) needed?
+              {isHindi ? "दलित गरिमा एवं न्याय केंद्र (DDJC) की आवश्यकता क्यों है?" : "Why is the Dalit Dignity & Justice Centre (DDJC) needed?"}
             </h2>
               <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
                 <p>
@@ -215,7 +218,7 @@ export default function HomePage() {
                   href="/about"
                   className="inline-flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline"
                 >
-                  Learn More About Us <FaArrowRight size={12} />
+                  {isHindi ? "हमारे बारे में और जानें" : "Learn More About Us"} <FaArrowRight size={12} />
                 </Link>
               </div>
           </div>
@@ -227,13 +230,13 @@ export default function HomePage() {
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
-              What We Do
+              {isHindi ? "हम क्या करते हैं" : "What We Do"}
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
-              Our Key Services
+              {isHindi ? "हमारी प्रमुख सेवाएँ" : "Our Key Services"}
             </h2>
             <p className="text-slate-600 text-sm md:text-base">
-              DDJC works to ensure justice, equality, and dignity through legal assistance, public awareness, and community engagement.
+              {isHindi ? "DDJC कानूनी सहायता, सार्वजनिक जागरूकता और समुदाय सहभागिता के माध्यम से न्याय, समानता और गरिमा सुनिश्चित करने का काम करता है।" : "DDJC works to ensure justice, equality, and dignity through legal assistance, public awareness, and community engagement."}
             </p>
           </div>
 
@@ -242,9 +245,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl mb-6">
                 <FaBalanceScale />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Free Legal Aid</h3>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-3">{isHindi ? "मुफ्त कानूनी सहायता" : "Free Legal Aid"}</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                We provide legal guidance, case support, and assistance to help individuals understand and exercise their legal rights.
+                {isHindi ? "हम व्यक्तियों को उनके कानूनी अधिकारों को समझने और उन्हें लागू करने में मदद करने के लिए कानूनी मार्गदर्शन, मामला समर्थन और सहायता प्रदान करते हैं।" : "We provide legal guidance, case support, and assistance to help individuals understand and exercise their legal rights."}
               </p>
             </div>
 
@@ -252,9 +255,9 @@ export default function HomePage() {
               <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl mb-6">
                 <FaBookOpen />
               </div>
-              <h3 className="text-xl font-bold text-[#0A2540] mb-3">Awareness Programs</h3>
+              <h3 className="text-xl font-bold text-[#0A2540] mb-3">{isHindi ? "जागरूकता कार्यक्रम" : "Awareness Programs"}</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                DDJC conducts workshops, seminars, and awareness campaigns on constitutional rights, equality, and social justice.
+                {isHindi ? "DDJC संवैधानिक अधिकार, समानता और सामाजिक न्याय पर कार्यशालाएँ, सेमिनार और जागरूकता अभियान चलाता है।" : "DDJC conducts workshops, seminars, and awareness campaigns on constitutional rights, equality, and social justice."}
               </p>
             </div>
 

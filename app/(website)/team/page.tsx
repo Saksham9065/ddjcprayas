@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
+import { useApp } from "@/context/AppContext";
 
 function Team() {
+  const { language } = useApp();
   const leadership = [
     { name: "Adv. Kuldeep Kumar Baudh", role: "Founder - DDJC", education: "MSW, LLB", experience: "15 Yrs Exp", image: "/images/team/kuldeep.jpg" },
     { name: "Adv. Nikhat Parveen", role: "Prog. & Legal Coordinator", education: "LLB, M.Sc. CS", experience: "5 Yrs Exp", image: "/images/team/nikaht.jpg" },
@@ -47,13 +49,13 @@ function Team() {
         
         <div className="text-center mb-12 flex flex-col items-center">
           <span className="text-xs font-bold uppercase tracking-widest text-[#000000] bg-slate-50 px-2.5 py-1 rounded-md mb-2 border border-slate-200">
-            Leadership & Advocates
+            {language === "en" ? "Leadership & Advocates" : "नेतृत्व एवं वकील"}
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight">
-            Meet the DDJC Team
+            {language === "en" ? "Meet the DDJC Team" : "DDJC टीम से मिलें"}
           </h2>
           <p className="max-w-xl mx-auto mt-2 text-sm md:text-base text-slate-600 leading-relaxed">
-            Our dedicated team of lawyers, social activists, and field coordinators working tirelessly for justice and dignity.
+            {language === "en" ? "Our dedicated team of lawyers, social activists, and field coordinators working tirelessly for justice and dignity." : "न्याय और गरिमा के लिए tirelessly काम कर रही हमारे वकीलों, सामाजिक कार्यकर्ताओं और क्षेत्रीय समन्वयकों की टीम।"}
           </p>
         </div>
 
@@ -67,7 +69,7 @@ function Team() {
                   variants={itemVariants} 
                   className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
                 >
-                  <div className="w-full aspect-[4/3] bg-slate-100 overflow-hidden">
+                  <div className="w-full aspect-4/3 bg-slate-100 overflow-hidden">
                     <img src={person.image} alt={person.name} className={`w-full h-full object-cover ${person.name === "Adv. Nikhat Parveen" || person.name === "Pradeep Kumar Singh" ? "object-top" : "object-center"}`} />
                   </div>
                   

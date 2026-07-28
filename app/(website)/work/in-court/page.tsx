@@ -4,8 +4,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaGavel, FaCheckCircle, FaArrowRight, FaBalanceScale, FaShieldAlt, FaFileAlt, FaHandHoldingUsd } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function InCourtPage() {
+  const { language } = useApp();
+  const isHindi = language === "hi";
   return (
     <div className="bg-white min-h-screen py-16 pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
@@ -13,13 +16,13 @@ export default function InCourtPage() {
         {/* Header Banner */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="bg-slate-100 text-[#1ab9cb] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-            Judicial Intervention
+            {isHindi ? "न्यायिक हस्तक्षेप" : "Judicial Intervention"}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
-            In-Court Operations & Legal Advocacy
+            {isHindi ? "अदालत में संचालन और कानूनी वकालत" : "In-Court Operations & Legal Advocacy"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#1ab9cb] pl-4 py-1 mx-auto max-w-2xl text-left">
-            &ldquo;Injustice anywhere is a threat to justice everywhere.&rdquo; — Dr. Martin Luther King Jr.
+            {isHindi ? "“किसी भी जगह अन्याय justice everywhere के लिए खतरा है।” — डॉ. मार्टिन लूथर किंग जूनियर" : "“Injustice anywhere is a threat to justice everywhere.” — Dr. Martin Luther King Jr."}
           </blockquote>
         </div>
 
@@ -56,7 +59,7 @@ export default function InCourtPage() {
             <div className="w-10 h-10 rounded-xl bg-white text-[#1ab9cb] flex items-center justify-center text-lg border border-slate-200">
               <FaBalanceScale />
             </div>
-            <h3 className="text-xl font-bold">Active Case Portfolio</h3>
+            <h3 className="text-xl font-bold">{isHindi ? "सक्रिय मामले पोर्टफोलियो" : "Active Case Portfolio"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
               DDJC is currently providing free legal aid in <strong className="text-slate-900 font-mono">191+ cases</strong> (including SC/ST PoA atrocities, POCSO, and domestic violence crimes), direct in-court advocacy in <strong className="text-slate-900 font-mono">95+ cases</strong>, and active court monitoring in <strong className="text-slate-900 font-mono">105+ matters</strong>.
             </p>
@@ -66,7 +69,7 @@ export default function InCourtPage() {
             <div className="w-10 h-10 rounded-xl bg-white text-[#1ab9cb] flex items-center justify-center text-lg border border-slate-200">
               <FaHandHoldingUsd />
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Compensation Secured</h3>
+            <h3 className="text-xl font-bold text-slate-900">{isHindi ? "मुआवजा सुरक्षित" : "Compensation Secured"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
               Through proactive district administration coordination and rigorous court advocacy, DDJC has successfully secured over <strong className="text-slate-900 font-mono">₹75 Lakh+</strong> in statutory relief and compensation for victims across <strong className="text-slate-900 font-mono">45+ cases</strong>.
             </p>
@@ -75,7 +78,7 @@ export default function InCourtPage() {
 
         {/* Core Belief & Description */}
         <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 shadow-lg space-y-6">
-          <h2 className="text-2xl font-black text-slate-900">The Real Test of Justice</h2>
+          <h2 className="text-2xl font-black text-slate-900">{isHindi ? "न्याय की असली परीक्षा" : "The Real Test of Justice"}</h2>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed">
             The Dalit Dignity & Justice Center (DDJC) firmly believes that the true test of justice takes place within the courtroom walls. To ensure that no victim is deprived of justice due to a lack of proper legal information and financial constraints, DDJC&apos;s legal team provides committed and effective advocacy from District Courts up to the High Court and Supreme Court.
           </p>
@@ -162,7 +165,7 @@ export default function InCourtPage() {
           </blockquote>
           <div className="pt-4">
             <Link href="/complaint" className="inline-flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
-              Request Court Support <FaArrowRight size={14} />
+              {isHindi ? "अदालत सहायता का अनुरोध करें" : "Request Court Support"} <FaArrowRight size={14} />
             </Link>
           </div>
         </div>
