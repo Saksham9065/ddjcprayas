@@ -201,22 +201,23 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] mb-6 tracking-tight">
               Why is the Dalit Dignity & Justice Centre (DDJC) needed?
             </h2>
-            <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
-              <p>
-                Every day, through newspapers, TV channels, social media, and our surroundings, we witness various incidents. After these incidents, we see victims struggling in courts and legal offices. They strive for justice at police stations and courts; however, often due to a lack of proper information and legal knowledge, they fail to reach justice. The impact of this is most severe on the victims, affecting their entire families and communities in various ways.
-              </p>
-              <p>
-                To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was launched in October 2023 by the Bundelkhand Dalit Adhikar Manch.
-              </p>
-            </div>
-            <div className="mt-8">
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline"
-              >
-                Learn More About Us <FaArrowRight size={12} />
-              </Link>
-            </div>
+              <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+                <p>
+                  Every day, through newspapers, TV channels, social media, and our surroundings, we witness various incidents. After these incidents, we see victims struggling in courts and legal offices. They strive for justice at police stations and courts; however, often due to a lack of proper information and legal knowledge, they fail to reach justice. The impact of this is most severe on the victims, affecting their entire families and communities in various ways.
+                </p>
+                <p>
+                  To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was launched in October 2023 by the Bundelkhand Dalit Adhikar Manch.
+                </p>
+              </div>
+              <img src="/images/contact/office.jpg" alt="DDJC Office" />
+              <div className="mt-8">
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline"
+                >
+                  Learn More About Us <FaArrowRight size={12} />
+                </Link>
+              </div>
           </div>
         </div>
       </section>

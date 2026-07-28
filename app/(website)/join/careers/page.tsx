@@ -104,7 +104,7 @@ export default function CareersPage() {
           </p>
         </div>
 
-        <div className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           {success ? (
             <div className="text-center p-8 bg-emerald-50 border border-emerald-200 rounded-2xl space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
@@ -132,7 +132,7 @@ export default function CareersPage() {
                       required
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                       placeholder="Your full name"
                     />
                   </div>
@@ -144,7 +144,7 @@ export default function CareersPage() {
                       required
                       value={formData.fatherHusbandName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                       placeholder="Father&apos;s or husband&apos;s name"
                     />
                   </div>
@@ -161,7 +161,7 @@ export default function CareersPage() {
                       max="100"
                       value={formData.age}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                       placeholder="25"
                     />
                   </div>
@@ -172,7 +172,7 @@ export default function CareersPage() {
                       required
                       value={formData.category}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     >
                       <option value="">Select</option>
                       <option value="SC">SC</option>
@@ -189,7 +189,7 @@ export default function CareersPage() {
                       required
                       value={formData.gender}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     >
                       <option value="">Select</option>
                       <option value="Male">Male</option>
@@ -207,7 +207,7 @@ export default function CareersPage() {
                     required
                     value={formData.education}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="e.g., B.A., LLB, M.A., Ph.D."
                   />
                 </div>
@@ -221,7 +221,7 @@ export default function CareersPage() {
                       required
                       value={formData.mobile}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                       placeholder="+91 XXXXX XXXXX"
                     />
                   </div>
@@ -232,7 +232,7 @@ export default function CareersPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -246,7 +246,7 @@ export default function CareersPage() {
                     rows={2}
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="Full address with village/city, district, state, pin code"
                   />
                 </div>
@@ -283,7 +283,7 @@ export default function CareersPage() {
                     required
                     value={formData.experience}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   >
                     <option value="">Select experience level</option>
                     <option value="Fresher">Fresher (0-1 year)</option>
@@ -301,7 +301,7 @@ export default function CareersPage() {
                     required
                     value={formData.position}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   >
                     <option value="">Select a position</option>
                     <option value="Legal Advocate">Legal Advocate</option>
@@ -364,7 +364,7 @@ export default function CareersPage() {
                     rows={4}
                     value={formData.statement}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-800 text-sm focus:outline-none focus:border-[#000000]"
+                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                     placeholder="Tell us why you want to join DDJC and share any relevant past experience..."
                   />
                 </div>

@@ -46,7 +46,7 @@ export default function ComplaintPage() {
         </div>
 
         {/* Form Container */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm">
+            <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           {successId ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
@@ -118,7 +118,7 @@ export default function ComplaintPage() {
                   <select
                     value={formData.district}
                     onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   >
                     <option value="Jalaun">Jalaun</option>
                     <option value="Jhansi">Jhansi</option>
@@ -149,7 +149,7 @@ export default function ComplaintPage() {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   >
                     <option value="Atrocity / Violence">Atrocity / Physical Violence</option>
                     <option value="Police Inaction">Police Inaction / Refusal to Register FIR</option>
@@ -167,7 +167,7 @@ export default function ComplaintPage() {
                     required
                     value={formData.incidentDate}
                     onChange={(e) => setFormData({ ...formData, incidentDate: e.target.value })}
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] bg-white"
+                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>

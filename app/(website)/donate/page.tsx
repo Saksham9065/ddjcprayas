@@ -119,7 +119,7 @@ export default function DonatePage() {
           </div>
         </div>
 
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <h3 className="text-xl font-bold text-[#0A2540] mb-6">Upload Payment Proof</h3>
           {success ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">

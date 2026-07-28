@@ -9,33 +9,37 @@ export default function AboutPage() {
     <div className="bg-white min-h-screen py-16">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
         
-        {/* Header Banner */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-            Who We Are
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
-            About Dalit Dignity & Justice Center (DDJC)
-          </h1>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            Step Towards Justice and Dignity. Founded on October 9, 2023, by the Bundelkhand Dalit Adhikar Manch.
-          </p>
-        </div>
+         {/* Header Banner */}
+         <div className="text-center max-w-3xl mx-auto space-y-4">
+           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
+             Who We Are
+           </span>
+           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
+             About Dalit Dignity & Justice Center (DDJC)
+           </h1>
+           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+             Step Towards Justice and Dignity. Founded on October 9, 2023, by the Bundelkhand Dalit Adhikar Manch.
+           </p>
+         </div>
 
-        {/* Why DDJC is Needed */}
-        <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 space-y-6">
-          <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] tracking-tight">
-            Why is DDJC Needed?
-          </h2>
-          <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
-            <p>
-              Every day through newspapers, television channels, social media, and our surroundings, we witness various incidents. Following such incidents, victims are frequently seen struggling through courts and legal offices. They strive for justice at police stations and courts; however, often due to a lack of proper information and legal knowledge, they fail to reach justice. The impact of this is most severe on the victims, affecting their entire families and communities in various ways.
-            </p>
-            <p>
-              To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was established on October 9, 2023.
-            </p>
-          </div>
-        </div>
+         {/* Why DDJC is Needed */}
+         <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 space-y-6">
+           <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] tracking-tight">
+             Why is DDJC Needed?
+           </h2>
+           <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+             <p>
+               Every day through newspapers, television channels, social media, and our surroundings, we witness various incidents. Following such incidents, victims are frequently seen struggling through courts and legal offices. They strive for justice at police stations and courts; however, often due to a lack of proper information and legal knowledge, they fail to reach justice. The impact of this is most severe on the victims, affecting their entire families and communities in various ways.
+             </p>
+             <p>
+               To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was established on October 9, 2023.
+             </p>
+           </div>
+           <div className="grid md:grid-cols-2 gap-6">
+             <img src="/images/contact/office.jpg" alt="DDJC Office" />
+             <img src="/images/hero/1.jpg" alt="DDJC Team" />
+           </div>
+         </div>
 
         {/* Core Purpose & Vision / Mission */}
         <div className="grid md:grid-cols-2 gap-8">

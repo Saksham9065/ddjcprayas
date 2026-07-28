@@ -8,17 +8,15 @@ export default function ResourcesPage() {
     {
       title: "SC/ST Prevention of Atrocities Act - Handbook",
       desc: "Complete statutory guide on provisions, penalties, and immediate relief compensation rules.",
-      size: "2.4 MB",
+      pdf: "/pdf/SC:ST.pdf",
     },
     {
       title: "Constitutional Rights & Legal Safeguards Guide",
       desc: "An educational booklet detailing fundamental rights and remedies against discrimination.",
-      size: "1.8 MB",
     },
     {
       title: "DDJC Annual Fact-Finding Report",
       desc: "Comprehensive documentation of legal cases, camp statistics, and field interventions.",
-      size: "4.1 MB",
     },
   ];
 
@@ -48,13 +46,22 @@ export default function ResourcesPage() {
                 <p className="text-slate-600 text-xs leading-relaxed mb-6">{doc.desc}</p>
               </div>
               <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-bold">
-                <span className="text-slate-400">{doc.size}</span>
-                <button 
-                  onClick={() => alert("Download started...")}
-                  className="inline-flex items-center gap-1.5 text-[#000000] hover:underline"
-                >
-                  <FaDownload size={11} /> Download PDF
-                </button>
+                {doc.pdf ? (
+                  <a
+                    href={doc.pdf}
+                    download
+                    className="inline-flex items-center gap-1.5 text-[#000000] hover:underline"
+                  >
+                    <FaDownload size={11} /> Download PDF
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => alert("Download started...")}
+                    className="inline-flex items-center gap-1.5 text-[#000000] hover:underline"
+                  >
+                    <FaDownload size={11} /> Download PDF
+                  </button>
+                )}
               </div>
             </div>
           ))}
