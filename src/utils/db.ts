@@ -7,10 +7,6 @@ type MongooseCache = {
 
 const MONGODB_URI = process.env.MONGODB_URI ?? "";
 
-if (MONGODB_URI.length === 0) {
-  throw new Error("Please define the MONGODB_URI environment variable in .env.local");
-}
-
 const globalWithMongoose = globalThis as typeof globalThis & {
   mongoose?: MongooseCache;
 };
@@ -23,6 +19,10 @@ if (!cached) {
 }
 
 export async function connectToDatabase() {
+  if (MONGODB_URI.length === 0) {
+    throw new Error("Please define the MONGODB_URI environment variable in .env.local");
+  }
+
   if (cached?.conn) {
     return cached.conn;
   }
