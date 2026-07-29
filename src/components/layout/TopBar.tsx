@@ -20,11 +20,11 @@ function TopBar() {
             </a>
 
             <a
-              href="mailto:help@ddjc.org"
+              href="mailto:ddjc.prayas@gmail.com"
               className="flex items-center gap-2 hover:text-slate-300 transition"
             >
               <FaEnvelope />
-              <span>help@ddjc.org</span>
+              <span>ddjc.prayas@gmail.com</span>
             </a>
 
             <div className="flex items-center gap-2">
