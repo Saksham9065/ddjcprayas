@@ -2,30 +2,80 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useApp } from "@/context/AppContext";
-import { checkAdminAuth, setAdminAuth } from "@/lib/auth";
-import { calculateDashboardStats } from "@/utils/analytics";
-import { formatDate } from "@/utils/formatters";
-import { FaShieldAlt, FaSignOutAlt, FaExclamationCircle, FaSpinner, FaCheckCircle, FaMapMarkerAlt } from "react-icons/fa";
+import { FaShieldAlt, FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBriefcase, FaSpinner } from "react-icons/fa";
+import { checkAdminAuth } from "@/lib/auth";
 
 export default function AdminDashboardPage() {
   const router = useRouter();
-  const { complaints, updateComplaintStatus, isAdminLoggedIn, setIsAdminLoggedIn } = useApp();
-  
-  const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [stats, setStats] = useState({
+    contacts: 0,
+    complaints: 0,
+    donations: 0,
+    volunteers: 0,
+    internships: 0,
+    jobs: 0,
+  });
+  const [authStatus, setAuthStatus] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const authStatus = checkAdminAuth();
-    if (!authStatus && !isAdminLoggedIn) {
+    const isAuth = checkAdminAuth();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setAuthStatus(isAuth);
+    if (!isAuth) {
       router.push("/admin/login");
-    } else {
-      setIsAdminLoggedIn(true);
-      setLoading(false);
     }
-  }, [isAdminLoggedIn, router, setIsAdminLoggedIn]);
+  }, [router]);
 
-  if (loading) {
+  const handleLogout = () => {
+    localStorage.removeItem("ddjc_admin_session");
+    router.push("/admin/login");
+  };
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const [contactsRes, complaintsRes, donationsRes, joinRes] = await Promise.all([
+          fetch("/api/admin/contacts"),
+          fetch("/api/admin/complaints"),
+          fetch("/api/admin/donations"),
+          fetch("/api/admin/join-applications"),
+        ]);
+
+        const contactsData = contactsRes.ok ? await contactsRes.json() : { total: 0 };
+        const complaintsData = complaintsRes.ok ? await complaintsRes.json() : { total: 0 };
+        const donationsData = donationsRes.ok ? await donationsRes.json() : { total: 0 };
+        const joinData = joinRes.ok ? await joinRes.json() : { data: [] };
+
+        const volunteerCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Volunteer").length;
+        const internshipCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Internship").length;
+        const jobsCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Career" || a.joinType === "Jobs").length;
+
+        setStats({
+          contacts: contactsData.total || 0,
+          complaints: complaintsData.total || 0,
+          donations: donationsData.total || 0,
+          volunteers: volunteerCount,
+          internships: internshipCount,
+          jobs: jobsCount,
+        });
+      } catch (error) {
+        console.error("Failed to fetch stats:", error);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
+  const modules = [
+    { label: "Contact Us", value: stats.contacts, href: "/admin/contacts", color: "bg-blue-500" },
+    { label: "Complaints", value: stats.complaints, href: "/admin/complaints", color: "bg-amber-500" },
+    { label: "Donations", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
+    { label: "Volunteers", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
+    { label: "Internships", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
+    { label: "Jobs & Career", value: stats.jobs, href: "/admin/jobs", color: "bg-slate-800" },
+  ];
+
+  if (authStatus === null) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex items-center gap-3 text-slate-600 font-medium">
@@ -36,31 +86,21 @@ export default function AdminDashboardPage() {
     );
   }
 
-  const stats = calculateDashboardStats(complaints);
-
-  const filteredComplaints = selectedCategory === "All"
-    ? complaints
-    : complaints.filter((c) => c.status === selectedCategory);
-
-  const handleLogout = () => {
-    setAdminAuth(false);
-    setIsAdminLoggedIn(false);
-    router.push("/admin/login");
-  };
+  if (!authStatus) {
+    return null;
+  }
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-20">
-      
-      {/* Admin Top Navigation Bar */}
-      <header className="bg-[#0A2540] text-white py-6 border-b border-slate-800">
-        <div className="container mx-auto px-6 max-w-7xl flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div className="bg-slate-50 min-h-screen">
+      <header className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#000000] text-white flex items-center justify-center text-lg shadow-md">
               <FaShieldAlt />
             </div>
             <div>
-              <h1 className="font-black text-base tracking-tight">DDJC Admin Portal</h1>
-              <p className="text-xs text-slate-300">Grievance & Case Management System</p>
+              <h1 className="font-black text-base tracking-tight text-[#0A2540]">DDJC Admin Portal</h1>
+              <p className="text-xs text-slate-500">Grievance & Case Management System</p>
             </div>
           </div>
           <button
@@ -73,149 +113,29 @@ export default function AdminDashboardPage() {
         </div>
       </header>
 
-      <div className="container mx-auto px-6 max-w-7xl pt-10">
-        
-        {/* Metric Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
-          
-          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Total Cases</p>
-            <p className="text-3xl font-black text-[#0A2540]">{stats.totalComplaints}</p>
-            <p className="text-xs text-slate-400">Logged across Bundelkhand</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-amber-600">Pending Review</p>
-            <p className="text-3xl font-black text-amber-600">{stats.pendingReview}</p>
-            <p className="text-xs text-slate-400">Requiring initial assessment</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#000000]">In Progress</p>
-            <p className="text-3xl font-black text-[#000000]">{stats.inProgress}</p>
-            <p className="text-xs text-slate-400">Active legal representation</p>
-          </div>
-
-          <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-2">
-            <p className="text-xs font-bold uppercase tracking-widest text-emerald-600">Resolved</p>
-            <p className="text-3xl font-black text-emerald-600">{stats.resolved}</p>
-            <p className="text-xs text-slate-400">Successfully concluded</p>
-          </div>
-
-        </div>
-
-        {/* Complaints Section */}
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-          
-          <div className="p-6 md:p-8 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div>
-              <h2 className="text-xl font-bold text-[#0A2540]">Grievance Records</h2>
-              <p className="text-xs text-slate-500">Manage and update status of citizen complaints in real time.</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {modules.map((mod) => (
+          <a
+            key={mod.label}
+            href={mod.href}
+            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group"
+          >
+            <div className="flex items-center justify-between mb-4">
+              <div className={`w-12 h-12 rounded-2xl ${mod.color} text-white flex items-center justify-center text-xl shadow-md`}>
+                {mod.label === "Contact Us" && <FaUsers size={20} />}
+                {mod.label === "Complaints" && <FaFileAlt size={20} />}
+                {mod.label === "Donations" && <FaHandHoldingHeart size={20} />}
+                {mod.label === "Volunteers" && <FaUserPlus size={20} />}
+                {mod.label === "Internships" && <FaGraduationCap size={20} />}
+                {mod.label === "Jobs & Career" && <FaBriefcase size={20} />}
+              </div>
+              <span className="text-3xl font-black text-[#0A2540]">{mod.value}</span>
             </div>
-
-            {/* Filter Tabs */}
-            <div className="flex items-center gap-2 bg-slate-100 p-1 rounded-xl text-xs font-semibold overflow-x-auto max-w-full">
-              {["All", "Pending Review", "In Progress", "Resolved"].map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  onClick={() => setSelectedCategory(tab)}
-                  className={`px-3 py-2 rounded-lg transition-all whitespace-nowrap ${
-                    selectedCategory === tab
-                      ? "bg-white text-[#0A2540] shadow-sm font-bold"
-                      : "text-slate-600 hover:text-[#0A2540]"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Table Container */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead>
-                <tr className="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-200">
-                  <th className="py-4 px-6 font-bold">ID & Date</th>
-                  <th className="py-4 px-6 font-bold">Complainant</th>
-                  <th className="py-4 px-6 font-bold">Location</th>
-                  <th className="py-4 px-6 font-bold">Category</th>
-                  <th className="py-4 px-6 font-bold">Description</th>
-                  <th className="py-4 px-6 font-bold">Status</th>
-                  <th className="py-4 px-6 font-bold text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
-                {filteredComplaints.length === 0 ? (
-                  <tr>
-                    <td colSpan={7} className="py-12 text-center text-slate-400">
-                      No complaints found matching this filter.
-                    </td>
-                  </tr>
-                ) : (
-                  filteredComplaints.map((item) => (
-                    <tr key={item.id} className="hover:bg-slate-50/60 transition-colors">
-                      <td className="py-4 px-6">
-                        <span className="font-mono font-bold text-[#0A2540] block">{item.id}</span>
-                        <span className="text-slate-400 text-[10px]">{formatDate(item.createdAt)}</span>
-                      </td>
-                      <td className="py-4 px-6">
-                        <span className="font-bold block text-slate-900">{item.fullName}</span>
-                        <span className="text-slate-500 font-mono text-[10px]">{item.phone}</span>
-                      </td>
-                      <td className="py-4 px-6">
-                        <div className="flex items-center gap-1 text-slate-600">
-                          <FaMapMarkerAlt className="text-[#000000] shrink-0" size={10} />
-                          <span>{item.district} ({item.tehsil})</span>
-                        </div>
-                      </td>
-                      <td className="py-4 px-6">
-                        <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
-                          {item.category}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 max-w-xs truncate text-slate-600" title={item.description}>
-                        {item.description}
-                      </td>
-                      <td className="py-4 px-6">
-                        <span
-                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold ${
-                            item.status === "Pending Review"
-                              ? "bg-amber-50 text-amber-700 border border-amber-200"
-                              : item.status === "In Progress"
-                              ? "bg-slate-50 text-[#000000] border border-slate-200"
-                              : "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                          }`}
-                        >
-                          {item.status === "Pending Review" && <FaExclamationCircle size={10} />}
-                          {item.status === "In Progress" && <FaSpinner className="animate-spin" size={10} />}
-                          {item.status === "Resolved" && <FaCheckCircle size={10} />}
-                          {item.status}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6 text-right">
-                        <select
-                          value={item.status}
-                          onChange={(e) => updateComplaintStatus(item.id, e.target.value as any)}
-                          className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs bg-white font-medium text-slate-700 focus:outline-none focus:border-[#000000]"
-                        >
-                          <option value="Pending Review">Pending Review</option>
-                          <option value="In Progress">In Progress</option>
-                          <option value="Resolved">Resolved</option>
-                        </select>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-
+            <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{mod.label}</p>
+            <p className="text-[10px] text-slate-400 mt-1 group-hover:text-[#000000] transition-colors">Click to manage records</p>
+          </a>
+        ))}
       </div>
-
     </div>
   );
 }

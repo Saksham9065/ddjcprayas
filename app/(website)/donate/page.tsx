@@ -4,8 +4,10 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { FaUniversity, FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
+import { useApp } from "@/context/AppContext";
 
 export default function DonatePage() {
+  const { language } = useApp();
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -23,9 +25,9 @@ export default function DonatePage() {
 
     try {
       const formData = new FormData();
-      formData.append("donorName", donorName);
-      formData.append("phone", phone);
-      formData.append("email", email);
+      formData.append("donorName", donorName.trim());
+      formData.append("phone", phone.trim());
+      formData.append("email", email.trim());
       if (screenshot) {
         formData.append("screenshot", screenshot);
       }
@@ -35,8 +37,10 @@ export default function DonatePage() {
         body: formData,
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (!res.ok) {
-        throw new Error("Submission failed. Please try again.");
+        throw new Error(data.error || "Submission failed. Please try again.");
       }
 
       setSuccess(true);
@@ -68,13 +72,13 @@ export default function DonatePage() {
       <div className="container mx-auto px-6 max-w-4xl space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-            Support Justice & Equality
+            {language === "en" ? "Support Justice & Equality" : "न्याय और समानता का समर्थन करें"}
           </span>
           <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
-            Contribute to DDJC
+            {language === "en" ? "Contribute to DDJC" : "DDJC में योगदान दें"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            Your generous contribution directly funds free legal aid, courtroom advocacy, and grassroots legal awareness camps for marginalized victims.
+            {language === "en" ? "Your generous contribution directly funds free legal aid, courtroom advocacy, and grassroots legal awareness camps for marginalized victims." : "आपका उदार योगदान सीधे वंचित पीड़ितों के लिए मुफ्त कानूनी सहायता, कोर्टरूम वकालत और जमीनी स्तर पर कानूनी जागरूकता शिविरों में खर्च होता है।"}
           </p>
         </div>
 
@@ -105,8 +109,8 @@ export default function DonatePage() {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-base mb-1">Scan & Donate via QR</h4>
-              <p className="text-xs text-slate-300">Scan using any UPI app (Google Pay, PhonePe, Paytm)</p>
+              <h4 className="font-bold text-base mb-1">{language === "en" ? "Scan & Donate via QR" : "QR से स्कैन करके दान करें"}</h4>
+              <p className="text-xs text-slate-300">{language === "en" ? "Scan using any UPI app (Google Pay, PhonePe, Paytm)" : "किसी भी UPI ऐप (Google Pay, PhonePe, Paytm) से स्कैन करें"}</p>
             </div>
             <div className="relative w-48 h-48 mx-auto bg-white rounded-xl overflow-hidden p-2 shadow-inner">
               <Image
@@ -120,22 +124,22 @@ export default function DonatePage() {
         </div>
 
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h3 className="text-xl font-bold text-[#0A2540] mb-6">Upload Payment Proof</h3>
+          <h3 className="text-xl font-bold text-[#0A2540] mb-6">{language === "en" ? "Upload Payment Proof" : "भुगतान प्रमाण अपलोड करें"}</h3>
           {success ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
                 <FaCheckCircle />
               </div>
-              <h4 className="text-xl font-bold text-emerald-800">Thank You for Your Contribution!</h4>
+              <h4 className="text-xl font-bold text-emerald-800">{language === "en" ? "Thank You for Your Contribution!" : "आपके योगदान के लिए धन्यवाद!"}</h4>
               <p className="text-xs text-emerald-700 max-w-md mx-auto">
-                Your payment proof has been received. Our team will verify the transaction and update the status shortly.
+                {language === "en" ? "Your payment proof has been received. Our team will verify the transaction and update the status shortly." : "आपका भुगतान प्रमाण प्राप्त हो चुका है। हमारी टीम लेन-देन की पुष्टि करेगी और स्थिति जल्द अपडेट करेगी।"}
               </p>
               <button
                 type="button"
                 onClick={() => setSuccess(false)}
                 className="mt-4 bg-slate-800 text-white px-6 py-2.5 rounded-xl text-xs font-bold"
               >
-                Make Another Contribution
+                {language === "en" ? "Make Another Contribution" : "एक और योगदान करें"}
               </button>
             </div>
           ) : (
@@ -228,7 +232,7 @@ export default function DonatePage() {
 
               <div className="flex justify-center">
                 <Button type="submit" isLoading={loading} className="w-auto px-8 py-2 text-xs">
-                  <FaUpload /> Submit Payment Proof
+                  <FaUpload /> {language === "en" ? "Submit Payment Proof" : "भुगतान प्रमाण जमा करें"}
                 </Button>
               </div>
             </form>

@@ -1,11 +1,19 @@
+"use client";
+
+import { useContext } from "react";
 import {
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
   FaGlobe,
 } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
+import { translations } from "@/lib/i18n";
 
 function TopBar() {
+  const { language, toggleLanguage } = useApp();
+  const content = translations[language];
+
   return (
     <div className="hidden lg:block bg-[#0A2540] text-white text-sm">
       <div className="container mx-auto px-6">
@@ -29,20 +37,21 @@ function TopBar() {
 
             <div className="flex items-center gap-2">
               <FaMapMarkerAlt />
-              <span>
-                Police Line, Baghaura, Orai, Jalaun, Uttar Pradesh
-              </span>
+              <span>{language === "en" ? "Police Line, Baghaura, Orai, Jalaun, Uttar Pradesh" : "पुलिस लाइन, बघौरा, ओराई, जालौन, उत्तर प्रदेश"}</span>
             </div>
           </div>
 
           <div className="flex items-center gap-6">
-            <button className="flex items-center gap-2 hover:text-slate-300 transition">
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1.5 text-xs font-semibold transition hover:bg-white/20"
+            >
               <FaGlobe />
-              EN | हिन्दी
+              <span>{language === "en" ? "EN | हिन्दी" : "हिंदी | EN"}</span>
             </button>
 
             <span className="text-slate-300 font-semibold">
-              Justice • Equality • Human Rights
+              {content.topbarTagline}
             </span>
           </div>
         </div>

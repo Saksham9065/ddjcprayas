@@ -1,88 +1,120 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { FaArrowLeft, FaCheckCircle, FaClock, FaExclamationCircle } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function AdminComplaintsPage() {
-  const [complaints] = useState([
-    {
-      id: "CMP-2026-001",
-      name: "Ramlal Vanvasi",
-      category: "Atrocity / Violence",
-      district: "Jalaun",
-      date: "2026-06-20",
-      status: "Pending Review",
-    },
-    {
-      id: "CMP-2026-002",
-      name: "Sunita Devi",
-      category: "Police Inaction",
-      district: "Orai",
-      date: "2026-06-22",
-      status: "In Progress",
-    },
+  const [stats, setStats] = useState<StatDef[]>([
+    { label: "Total Cases", value: 0, color: "bg-slate-800" },
+    { label: "Pending Review", value: 0, color: "bg-amber-500" },
+    { label: "In Progress", value: 0, color: "bg-[#000000]" },
+    { label: "Resolved", value: 0, color: "bg-emerald-500" },
   ]);
 
-  return (
-    <div className="bg-slate-50 min-h-screen py-10 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-          <div>
-            <Link href="/admin/dashboard" className="text-xs font-bold text-[#000000] flex items-center gap-1 mb-1 hover:underline">
-              <FaArrowLeft size={10} /> Back to Dashboard
-            </Link>
-            <h1 className="text-2xl font-black text-[#0A2540]">Manage Grievances & Complaints</h1>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-xs uppercase font-bold text-slate-500">
-                  <th className="p-6">ID / Date</th>
-                  <th className="p-6">Complainant</th>
-                  <th className="p-6">Category</th>
-                  <th className="p-6">District</th>
-                  <th className="p-6">Status</th>
-                  <th className="p-6 text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-sm">
-                {complaints.map((c) => (
-                  <tr key={c.id} className="hover:bg-slate-50/50">
-                    <td className="p-6 font-medium text-[#0A2540]">
-                      <span className="block font-bold">{c.id}</span>
-                      <span className="text-xs text-slate-400">{c.date}</span>
-                    </td>
-                    <td className="p-6 font-semibold text-slate-700">{c.name}</td>
-                    <td className="p-6 text-slate-600">{c.category}</td>
-                    <td className="p-6 text-slate-600">{c.district}</td>
-                    <td className="p-6">
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${
-                        c.status === "Pending Review" 
-                          ? "bg-amber-50 text-amber-700 border border-amber-200" 
-                          : "bg-slate-50 text-slate-700 border border-slate-200"
-                      }`}>
-                        <FaClock size={10} /> {c.status}
-                      </span>
-                    </td>
-                    <td className="p-6 text-right">
-                      <button 
-                        onClick={() => alert(`Reviewing complaint ${c.id}`)}
-                        className="bg-slate-100 hover:bg-slate-200 text-[#0A2540] font-bold px-4 py-2 rounded-xl text-xs transition-all"
-                      >
-                        Review
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+  const columns: ColumnDef[] = [
+    { key: "id", label: "ID", width: "100px", render: (item) => (
+      <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
+    )},
+    { key: "fullName", label: "Complainant", render: (item) => (
+      <div>
+        <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
+        <span className="text-slate-500 font-mono text-[10px]">{String(item.phone ?? "")}</span>
       </div>
-    </div>
+    )},
+    { key: "district", label: "Location", render: (item) => (
+      <div className="flex items-center gap-1 text-slate-600">
+        <FaMapMarkerAlt className="text-[#000000] shrink-0" size={10} />
+        <span>{String(item.district ?? "")} ({String(item.tehsil ?? "")})</span>
+      </div>
+    )},
+    { key: "category", label: "Category", render: (item) => (
+      <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
+        {String(item.category ?? "N/A")}
+      </span>
+    )},
+    { key: "description", label: "Description", render: (item) => (
+      <span className="truncate block max-w-xs" title={String(item.description ?? "")}>{String(item.description ?? "")}</span>
+    )},
+    { key: "status", label: "Status", render: (item) => {
+      const styles: Record<string, string> = {
+        "Pending Review": "bg-amber-50 text-amber-700 border border-amber-200",
+        "In Progress": "bg-slate-50 text-[#000000] border border-slate-200",
+        Resolved: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+      };
+      return (
+        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold ${styles[item.status as string] || styles["Pending Review"]}`}>
+          {item.status as string}
+        </span>
+      );
+    }},
+    { key: "createdAt", label: "Date", render: (item) => {
+      const d = new Date(String(item.createdAt ?? ""));
+      return isNaN(d.getTime()) ? String(item.createdAt ?? "") : d.toLocaleDateString("en-IN");
+    }},
+  ];
+
+  const filters: FilterDef[] = [
+    { label: "Status", key: "status", options: [
+      { label: "All", value: "" },
+      { label: "Pending Review", value: "Pending Review" },
+      { label: "In Progress", value: "In Progress" },
+      { label: "Resolved", value: "Resolved" },
+    ]},
+    { label: "Category", key: "category", options: [
+      { label: "All Categories", value: "" },
+      { label: "Atrocity / Violence", value: "Atrocity / Violence" },
+      { label: "Police Inaction", value: "Police Inaction" },
+      { label: "Land Dispute", value: "Land Dispute" },
+      { label: "Social Boycott", value: "Social Boycott" },
+      { label: "Compensation Delay", value: "Compensation Delay" },
+      { label: "Other", value: "Other" },
+    ]},
+  ];
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch("/api/admin/complaints?limit=1000");
+        const json = await res.json();
+        const data = json.data || [];
+        const total = data.length;
+        const pending = data.filter((c: Record<string, unknown>) => c.status === "Pending Review").length;
+        const inProgress = data.filter((c: Record<string, unknown>) => c.status === "In Progress").length;
+        const resolved = data.filter((c: Record<string, unknown>) => c.status === "Resolved").length;
+        setStats([
+          { label: "Total Cases", value: total, color: "bg-slate-800" },
+          { label: "Pending Review", value: pending, color: "bg-amber-500" },
+          { label: "In Progress", value: inProgress, color: "bg-[#000000]" },
+          { label: "Resolved", value: resolved, color: "bg-emerald-500" },
+        ]);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchStats();
+  }, []);
+
+  return (
+    <AdminPageShell
+      title="Complaints"
+      description="Manage and update status of citizen complaints in real time"
+      apiEndpoint="/api/admin/complaints"
+      columns={columns}
+      stats={stats}
+      filters={filters}
+      statusOptions={[
+        { label: "Pending Review", value: "Pending Review" },
+        { label: "In Progress", value: "In Progress" },
+        { label: "Resolved", value: "Resolved" },
+      ]}
+      onStatusUpdate={async (id, status) => {
+        await fetch("/api/admin/complaints", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, status }),
+        });
+      }}
+    />
   );
 }

@@ -17,15 +17,30 @@ export default function ComplaintPage() {
   const [loading, setLoading] = useState(false);
   const [successId, setSuccessId] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/complaints", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit complaint");
+      }
+
+      setSuccessId(data.complaintId || `CMP-${Date.now()}`);
+    } catch (error) {
+      console.error("Complaint submission error:", error);
+      alert(error instanceof Error ? error.message : "Unable to submit complaint");
+    } finally {
       setLoading(false);
-      const generatedId = `CMP-2026-${Math.floor(100 + Math.random() * 900)}`;
-      setSuccessId(generatedId);
-    }, 1500);
+    }
   };
 
   return (

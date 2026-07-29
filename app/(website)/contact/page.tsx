@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Button from "@/components/ui/Button";
+import { useApp } from "@/context/AppContext";
 
 export default function ContactPage() {
+  const { language } = useApp();
   const [formData, setFormData] = useState({
     fullName: "",
     fatherHusbandName: "",
@@ -20,12 +22,22 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to submit form");
+      }
+
       setSuccess(true);
       setFormData({
         fullName: "",
@@ -40,7 +52,12 @@ export default function ContactPage() {
         incidentDescription: "",
         helpType: "",
       });
-    }, 1000);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,13 +66,13 @@ export default function ContactPage() {
          {/* Header */}
          <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
-             Get Help &amp; Legal Support
+             {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन प्राप्त करें"}
            </h1>
            <p className="text-slate-600 text-xs md:text-sm lg:text-base leading-relaxed mb-4">
-             न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आपके या आपके किसी परिचित के साथ कोई अन्याय, जातिगत अत्याचार या हिंसा हुई है, तो नीचे दिए गए फॉर्म (Intake Form) को भरें। Dalit Dignity & Justice Centre की कानूनी टीम जल्द से जल्द आपसे संपर्क करेगी।
+             {language === "en" ? "You are not alone in this fight for justice. If you or someone you know has faced injustice, caste-based atrocity, or violence, please fill out the form below. DDJC’s legal team will contact you shortly." : "न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।"}
            </p>
            <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-             Reach out to our legal coordinators, support staff, or visit our office in Orai for urgent assistance and inquiries.
+             {language === "en" ? "Reach out to our legal coordinators, support staff, or visit our office in Orai for urgent assistance and inquiries." : "आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या ओराई स्थित हमारे कार्यालय में आएँ।"}
            </p>
          </div>
 
@@ -68,7 +85,7 @@ export default function ContactPage() {
          {/* Intake Form */}
          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
            <div className="bg-white p-4 md:p-8 lg:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
-             <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">Contact Us</h3>
+             <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Contact Us" : "हमसे संपर्क करें"}</h3>
 
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                <div>

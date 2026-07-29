@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
 
-export default function AdminVolunteersPage() {
+export default function AdminJobsPage() {
   const [stats, setStats] = useState<StatDef[]>([
     { label: "Total", value: 0, color: "bg-slate-800" },
     { label: "Pending", value: 0, color: "bg-amber-500" },
@@ -21,6 +21,12 @@ export default function AdminVolunteersPage() {
         <span className="text-slate-500 font-mono text-[10px]">{String(item.education ?? "")}</span>
       </div>
     )},
+    { key: "experience", label: "Experience", render: (item) => String(item.experience ?? "N/A") },
+    { key: "position", label: "Position", render: (item) => (
+      <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
+        {String(item.position ?? "N/A")}
+      </span>
+    )},
     { key: "mobile", label: "Contact", render: (item) => {
       const emailVal = item.email;
       return (
@@ -30,8 +36,6 @@ export default function AdminVolunteersPage() {
         </div>
       );
     }},
-    { key: "occupation", label: "Occupation", render: (item) => String(item.occupation ?? "N/A") },
-    { key: "workMode", label: "Work Mode", render: (item) => String(item.workMode ?? "N/A") },
     { key: "status", label: "Status", render: (item) => {
       const styles: Record<string, string> = {
         Pending: "bg-amber-50 text-amber-700 border border-amber-200",
@@ -60,7 +64,7 @@ export default function AdminVolunteersPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("/api/admin/join-applications?joinType=Volunteer&limit=1000");
+        const res = await fetch("/api/admin/join-applications?joinType=Career&limit=1000");
         const json = await res.json();
         const data = json.data || [];
         const total = data.length;
@@ -82,13 +86,13 @@ export default function AdminVolunteersPage() {
 
   return (
     <AdminPageShell
-      title="Volunteers"
-      description="Manage volunteer applications from DDJC website"
+      title="Jobs & Career"
+      description="Manage job and career applications from DDJC website"
       apiEndpoint="/api/admin/join-applications"
       columns={columns}
       stats={stats}
       filters={filters}
-      baseUrlParams={{ joinType: "Volunteer" }}
+      baseUrlParams={{ joinType: "Career" }}
       statusOptions={[
         { label: "Pending", value: "Pending" },
         { label: "Reviewed", value: "Reviewed" },

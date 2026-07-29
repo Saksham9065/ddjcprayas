@@ -3,8 +3,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaArrowLeft, FaUserPlus, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function InternshipsPage() {
+  const { language } = useApp();
+  const isHindi = language === "hi";
   const [formData, setFormData] = useState({
     fullName: "",
     fatherHusbandName: "",
@@ -85,16 +88,16 @@ export default function InternshipsPage() {
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
-            <FaArrowLeft size={12} /> Back to Home
+            <FaArrowLeft size={12} /> {isHindi ? "होम पर वापस जाएँ" : "Back to Home"}
           </Link>
         </div>
 
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            Internships
+            {isHindi ? "इन्टर्नशिप" : "Internships"}
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
-            Join as an Intern
+            {isHindi ? "इन्टर्न के रूप में शामिल हों" : "Join as an Intern"}
           </h1>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
             Change begins with oneself. If you wish to contribute your time, skills, and energy to social justice, human rights, and the upliftment of marginalized communities, you are welcome to the DDJC family.
@@ -107,14 +110,14 @@ export default function InternshipsPage() {
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
                 <FaCheckCircle />
               </div>
-              <h3 className="text-xl font-bold text-emerald-900">Application Submitted Successfully!</h3>
+              <h3 className="text-xl font-bold text-emerald-900">{isHindi ? "आवेदन सफलतापूर्वक जमा हुआ!" : "Application Submitted Successfully!"}</h3>
               <p className="text-sm text-emerald-700 max-w-md mx-auto">
-                Thank you for your interest in joining DDJC. Our team will review your application and contact you soon.
+                {isHindi ? "DDJC से जुड़ने में रुचि दिखाने के लिए धन्यवाद। हमारी टीम आपके आवेदन की समीक्षा करेगी और जल्द ही आपसे संपर्क करेगी।" : "Thank you for your interest in joining DDJC. Our team will review your application and contact you soon."}
               </p>
             </div>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-[#0A2540] mb-2">Application Form</h2>
+              <h2 className="text-2xl font-bold text-[#0A2540] mb-2">{isHindi ? "आवेदन फॉर्म" : "Application Form"}</h2>
               <p className="text-slate-500 text-xs mb-8">
                 Please fill in the details carefully below. Our team will contact you soon based on your interest.
               </p>

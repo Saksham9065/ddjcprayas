@@ -11,15 +11,19 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useApp } from "@/context/AppContext";
+import { translations } from "@/lib/i18n";
 
 function Footer() {
+  const { language } = useApp();
+  const content = translations[language];
   const year = new Date().getFullYear();
 
   const QUICK_LINKS = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Donate", path: "/donate" },
+    { name: content.footerHome, path: "/" },
+    { name: content.footerAbout, path: "/about" },
+    { name: content.footerContact, path: "/contact" },
+    { name: content.footerDonate, path: "/donate" },
   ];
 
   const containerVariants = {
@@ -66,13 +70,13 @@ function Footer() {
               </div>
               <div>
                 <h2 className="text-white font-extrabold text-base leading-tight tracking-wide transition-colors duration-300 group-hover:text-[#1ab9cb]">
-                  Dalit Dignity & <br /> Justice Center
+                  {content.siteTitle}
                 </h2>
               </div>
             </div>
             
             <p className="text-slate-400 text-sm leading-relaxed mb-6 font-medium">
-              Access to Justice • Equality • Human Rights
+              {content.footerTagline}
             </p>
 
             <div className="flex items-center gap-3">
@@ -97,7 +101,7 @@ function Footer() {
 
           <motion.div variants={itemVariants} className="flex flex-col text-left lg:pl-8">
             <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-[0.15em]">
-              Quick Links
+              {content.footerQuickLinks}
             </h3>
             
             <ul className="flex flex-col gap-3">
@@ -123,7 +127,7 @@ function Footer() {
 
           <motion.div variants={itemVariants} className="flex flex-col text-left">
             <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-widest">
-              Our Video
+              {content.footerOurVideo}
             </h3>
 
             <div className="relative rounded-xl overflow-hidden border border-white/10 bg-black/30">
@@ -143,7 +147,7 @@ function Footer() {
 
           <motion.div variants={itemVariants} className="flex flex-col text-left">
             <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-[0.15em]">
-              Contact Us
+              {content.footerContactUs}
             </h3>
             
             <div className="space-y-4">
@@ -152,7 +156,7 @@ function Footer() {
                   <FaMapMarkerAlt size={11} />
                 </div>
                 <span className="text-slate-400 text-sm leading-relaxed font-medium group-hover:text-white transition-colors duration-300">
-                  Police Line – Baghaura, <br /> Orai – Jalaun, UP - 285001
+                  {content.footerAddress}
                 </span>
               </div>
 
@@ -198,7 +202,7 @@ function Footer() {
       <div className="border-t border-white/10 bg-black/40">
         <div className="container mx-auto px-6 py-4 flex items-center justify-center">
           <p className="text-slate-500 text-xs tracking-wider uppercase font-semibold text-center">
-            © {year} Dalit Dignity & Justice Center. All Rights Reserved.
+            {content.footerCopyright.replace("{year}", year.toString())}
           </p>
         </div>
       </div>

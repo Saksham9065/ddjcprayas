@@ -3,6 +3,8 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useApp } from "@/context/AppContext";
+import { translations, type Language } from "@/lib/i18n";
 import {
   FaBars,
   FaTimes,
@@ -15,6 +17,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 interface MenuItem {
+  key: keyof typeof translations.en;
   name: string;
   path: string;
   dropdown?: boolean;
@@ -29,46 +32,50 @@ interface SocialLink {
 
 const MENU_ITEMS: MenuItem[] = [
   {
+    key: "about",
     name: "About",
     path: "#",
     dropdown: true,
     children: [
-      { name: "About Us", path: "/about" },
-      { name: "Team", path: "/team" },
-      { name: "Resources", path: "/resources" },
+      { key: "aboutUs", name: "About Us", path: "/about" },
+      { key: "team", name: "Team", path: "/team" },
+      { key: "resources", name: "Resources", path: "/resources" },
     ],
   },
   {
+    key: "ourWork",
     name: "Our Work",
     path: "#",
     dropdown: true,
     children: [
-      { name: "In the Court", path: "/work/in-court" },
-      { name: "Out of the Court", path: "/work/out-court" },
+      { key: "inCourt", name: "In the Court", path: "/work/in-court" },
+      { key: "outCourt", name: "Out of the Court", path: "/work/out-court" },
     ],
   },
   {
+    key: "media",
     name: "Media",
     path: "#",
     dropdown: true,
     children: [
-      { name: "News", path: "/media/news" },
-      { name: "Photo Gallery", path: "/media/gallery" },
-      { name: "Stories", path: "/media/stories" },
+      { key: "news", name: "News", path: "/media/news" },
+      { key: "photoGallery", name: "Photo Gallery", path: "/media/gallery" },
+      { key: "stories", name: "Stories", path: "/media/stories" },
     ],
   },
   {
+    key: "joinUs",
     name: "Join Us",
     path: "#",
     dropdown: true,
     children: [
-      { name: "Jobs/Careers", path: "/join/careers" },
-      { name: "Internships", path: "/join/internships" },
-      { name: "Volunteers", path: "/join/volunteers" },
+      { key: "careers", name: "Jobs/Careers", path: "/join/careers" },
+      { key: "internships", name: "Internships", path: "/join/internships" },
+      { key: "volunteers", name: "Volunteers", path: "/join/volunteers" },
     ],
   },
-  { name: "Contact", path: "/contact" },
-  { name: "Donate", path: "/donate" },
+  { key: "contact", name: "Contact", path: "/contact" },
+  { key: "donate", name: "Donate", path: "/donate" },
 ];
 
 const SOCIAL_LINKS: SocialLink[] = [
@@ -82,6 +89,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
+  const { language } = useApp();
 
   const closeMenu = useCallback(() => {
     setMenuOpen(false);
@@ -102,10 +110,10 @@ function Navbar() {
             </div>
             <div className="hidden sm:flex flex-col justify-center">
               <h1 className="text-base md:text-[17px] font-black text-[#0A2540] leading-tight tracking-tight group-hover:text-[#2563EB] transition-colors duration-300">
-                Dalit Dignity & Justice Center
+                {translations[language].siteTitle}
               </h1>
               <p className="text-[10px] md:text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] mt-0.5">
-                Access to Justice • Equality • Human Rights
+                {translations[language].siteSubtitle}
               </p>
             </div>
           </Link>
@@ -115,6 +123,7 @@ function Navbar() {
             activeDropdown={activeDropdown}
             setActiveDropdown={setActiveDropdown}
             pathname={pathname}
+            language={language}
           />
 
           <div className="flex items-center gap-5 shrink-0">
@@ -138,6 +147,7 @@ function Navbar() {
         activeDropdown={activeDropdown}
         toggleDropdown={toggleDropdown}
         closeMenu={closeMenu}
+        language={language}
       />
     </header>
   );
@@ -148,16 +158,17 @@ interface DesktopMenuProps {
   activeDropdown: string | null;
   setActiveDropdown: React.Dispatch<React.SetStateAction<string | null>>;
   pathname: string;
+  language: Language;
 }
 
-function DesktopMenu({ menuItems, activeDropdown, setActiveDropdown, pathname }: DesktopMenuProps) {
+function DesktopMenu({ menuItems, activeDropdown, setActiveDropdown, pathname, language }: DesktopMenuProps) {
   return (
     <ul className="hidden md:flex items-center justify-center gap-6 2xl:gap-8 flex-1 px-4 h-full list-none m-0 p-0">
       {menuItems.map((item) => {
         return item.dropdown ? (
-          <DesktopDropdownItem key={item.name} item={item} activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
+          <DesktopDropdownItem key={item.name} item={item} activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} language={language} />
         ) : (
-          <DesktopNavLink key={item.path} item={item} pathname={pathname} />
+          <DesktopNavLink key={item.path} item={item} pathname={pathname} language={language} />
         );
       })}
     </ul>
@@ -168,16 +179,17 @@ interface DesktopDropdownItemProps {
   item: MenuItem;
   activeDropdown: string | null;
   setActiveDropdown: React.Dispatch<React.SetStateAction<string | null>>;
+  language: Language;
 }
 
-function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown }: DesktopDropdownItemProps) {
+function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown, language }: DesktopDropdownItemProps) {
   const pathname = usePathname();
-  const isActive = activeDropdown === item.name;
+  const isActive = activeDropdown === item.key;
   return (
-    <li className="relative group shrink-0 h-full flex items-center list-none" onMouseEnter={() => setActiveDropdown(item.name)} onMouseLeave={() => setActiveDropdown(null)}>
+    <li className="relative group shrink-0 h-full flex items-center list-none" onMouseEnter={() => setActiveDropdown(item.key)} onMouseLeave={() => setActiveDropdown(null)}>
       <button className={`flex items-center gap-1.5 h-full px-2 font-bold text-[16px] tracking-wide transition-colors duration-300 ${isActive ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
         <span className="relative flex items-center gap-1.5 py-1">
-          {item.name}
+          {translations[language][item.key]}
           <motion.div animate={{ rotate: isActive ? 180 : 0 }}><FaChevronDown className="text-[11px] opacity-60" /></motion.div>
           <span className={`absolute bottom-0 left-0 w-full h-[2.5px] rounded-full bg-[#2563EB] transition-transform ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
         </span>
@@ -188,7 +200,7 @@ function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown }: Deskto
             <div className="bg-white/95 backdrop-blur-3xl rounded-b-2xl shadow-xl border border-slate-200/60 p-2.5 flex flex-col gap-1">
               {item.children?.map((child) => (
                 <Link key={child.path} href={child.path} className={`px-4 py-2.5 text-[15px] font-semibold rounded-xl ${pathname === child.path ? "text-[#2563EB] bg-slate-50" : "text-slate-600 hover:text-[#2563EB] hover:bg-slate-50"}`}>
-                  {child.name}
+                  {translations[language][child.key]}
                 </Link>
               ))}
             </div>
@@ -202,14 +214,15 @@ function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown }: Deskto
 interface DesktopNavLinkProps {
   item: MenuItem;
   pathname: string;
+  language: Language;
 }
 
-function DesktopNavLink({ item, pathname }: DesktopNavLinkProps) {
+function DesktopNavLink({ item, pathname, language }: DesktopNavLinkProps) {
   return (
     <li className="shrink-0 h-full flex items-center list-none group">
       <Link href={item.path} className={`flex items-center h-full px-2 font-bold text-[16px] transition-colors ${item.path !== "#" && pathname === item.path ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
         <span className="relative py-1">
-          {item.name}
+          {translations[language][item.key]}
           <span className={`absolute bottom-0 left-0 w-full h-[2.5px] rounded-full bg-[#2563EB] transition-transform ${item.path !== "#" && pathname === item.path ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
         </span>
       </Link>
@@ -239,9 +252,10 @@ interface MobileMenuProps {
   activeDropdown: string | null;
   toggleDropdown: (name: string) => void;
   closeMenu: () => void;
+  language: Language;
 }
 
-function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, closeMenu }: MobileMenuProps) {
+function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, closeMenu, language }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {menuOpen && (
@@ -251,15 +265,15 @@ function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, close
               <div key={item.name} className="w-full text-center">
                 {item.dropdown ? (
                   <div className="flex flex-col">
-                    <button onClick={() => toggleDropdown(item.name)} className="font-bold text-[18px] text-[#0A2540]">{item.name}</button>
-                    {activeDropdown === item.name && (
+                    <button onClick={() => toggleDropdown(item.key)} className="font-bold text-[18px] text-[#0A2540]">{translations[language][item.key]}</button>
+                    {activeDropdown === item.key && (
                       <div className="flex flex-col gap-2 pt-2">
-                        {item.children?.map(child => <Link key={child.path} href={child.path} onClick={closeMenu} className="text-slate-500">{child.name}</Link>)}
+                        {item.children?.map(child => <Link key={child.path} href={child.path} onClick={closeMenu} className="text-slate-500">{translations[language][child.key]}</Link>)}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <Link href={item.path} onClick={closeMenu} className="font-bold text-[18px] text-[#0A2540]">{item.name}</Link>
+                  <Link href={item.path} onClick={closeMenu} className="font-bold text-[18px] text-[#0A2540]">{translations[language][item.key]}</Link>
                 )}
               </div>
             ))}
