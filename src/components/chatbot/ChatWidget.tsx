@@ -7,29 +7,10 @@ import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
 import { ChatMessage } from "@/types/chat";
 
-type Position = "left" | "right";
-
 let messageId = 0;
 
-function ChatWidget({ 
-  position = "right", 
-  isOpen: controlledIsOpen, 
-  onOpenChange 
-}: { 
-  position?: Position; 
-  isOpen?: boolean; 
-  onOpenChange?: (open: boolean) => void; 
-}) {
-  const [internalOpen, setInternalOpen] = useState(false);
-  const isControlled = controlledIsOpen !== undefined && onOpenChange !== undefined;
-  const isOpen = isControlled ? controlledIsOpen : internalOpen;
-  const setIsOpen = (value: boolean) => {
-    if (isControlled) {
-      onOpenChange(value);
-    } else {
-      setInternalOpen(value);
-    }
-  };
+function ChatWidget() {
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -94,14 +75,8 @@ function ChatWidget({
     setMessages([]);
   };
 
-  const isLeft = position === "left";
-
   return (
-    <div
-      className={`fixed bottom-4 z-50 flex h-[600px] w-[350px] flex-col overflow-hidden md:h-[640px] md:w-[380px] ${
-        isLeft ? "left-4" : "right-4"
-      }`}
-    >
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 md:bottom-6 md:right-6">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -109,8 +84,18 @@ function ChatWidget({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2 }}
-            className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/90 shadow-2xl backdrop-blur-xl"
+            className="relative flex h-[600px] w-[350px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/90 shadow-2xl backdrop-blur-xl md:h-[640px] md:w-[380px]"
           >
+            <motion.button
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsOpen(false)}
+              className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white shadow-md transition hover:bg-slate-600"
+              aria-label="Close chat"
+            >
+              <FaTimes />
+            </motion.button>
             <ChatWindow
               messages={messages}
               loading={loading}
@@ -138,21 +123,6 @@ function ChatWidget({
           aria-label="Open chat"
         >
           <FaRobot className="text-2xl md:text-3xl" />
-        </motion.button>
-      )}
-
-      {isOpen && (
-        <motion.button
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => setIsOpen(false)}
-          className={`absolute -top-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white shadow-md transition hover:bg-slate-600 ${
-            isLeft ? "-left-3" : "-right-3"
-          }`}
-          aria-label="Close chat"
-        >
-          <FaTimes />
         </motion.button>
       )}
     </div>

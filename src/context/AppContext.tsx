@@ -58,33 +58,33 @@ export function AppProvider({ children }: { children: ReactNode }) {
     let isMounted = true;
 
     const loadData = async () => {
-      try {
-        const [complaintsRes, joinRes, donationsRes, contactsRes] = await Promise.all([
-          fetch("/api/admin/complaints"),
-          fetch("/api/admin/join-applications"),
-          fetch("/api/admin/donations"),
-          fetch("/api/admin/contacts"),
-        ]);
-
-        if (!complaintsRes.ok || !joinRes.ok || !donationsRes.ok || !contactsRes.ok) {
-          throw new Error("Failed to load admin data");
+      const load = async <T,>(url: string): Promise<T[]> => {
+        try {
+          const res = await fetch(url);
+          if (!res.ok) {
+            console.error(`Failed to load ${url}: ${res.status}`);
+            return [] as T[];
+          }
+          const data = await res.json();
+          return (Array.isArray(data) ? data : data?.data ?? []) as T[];
+        } catch (error) {
+          console.error(`Error loading ${url}:`, error);
+          return [] as T[];
         }
+      };
 
-        const [complaintsData, joinData, donationsData, contactsData] = await Promise.all([
-          complaintsRes.json(),
-          joinRes.json(),
-          donationsRes.json(),
-          contactsRes.json(),
-        ]);
+      const [complaintsData, joinData, donationsData, contactsData] = await Promise.all([
+        load<Complaint>("/api/admin/complaints"),
+        load<JoinApplication>("/api/admin/join-applications"),
+        load<Donation>("/api/admin/donations"),
+        load<Contact>("/api/admin/contacts"),
+      ]);
 
-        if (isMounted) {
-          setComplaints(complaintsData as Complaint[]);
-          setJoinApplications(joinData as JoinApplication[]);
-          setDonations(donationsData as Donation[]);
-          setContacts(contactsData as Contact[]);
-        }
-      } catch (error) {
-        console.error("Failed to load admin data:", error);
+      if (isMounted) {
+        setComplaints(complaintsData);
+        setJoinApplications(joinData);
+        setDonations(donationsData);
+        setContacts(contactsData);
       }
     };
 

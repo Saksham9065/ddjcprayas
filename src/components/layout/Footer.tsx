@@ -7,20 +7,17 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
-  FaRobot,
+  FaWhatsapp,
 } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useApp } from "@/context/AppContext";
 import { translations } from "@/lib/i18n";
-import ChatWidget from "@/components/chatbot/ChatWidget";
-import { useState } from "react";
 
 function Footer() {
   const { language } = useApp();
   const content = translations[language];
   const year = new Date().getFullYear();
-  const [chatOpen, setChatOpen] = useState(false);
 
   const QUICK_LINKS = [
     { name: content.footerHome, path: "/" },
@@ -87,14 +84,13 @@ function Footer() {
                 { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "hover:bg-[#1877F2]" },
                 { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "hover:bg-[#E4405F]" },
                 { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "hover:bg-[#FF0000]" },
-                { icon: FaRobot, href: "#", color: "hover:bg-[#1ab9cb]", action: true },
+                { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "hover:bg-[#25D366]" },
               ].map((social, index) => (
                 <a 
                   key={index}
-                  href={social.href}
+                  href={social.href} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  onClick={social.action ? (e: { preventDefault: () => void }) => { e.preventDefault(); setChatOpen(true); } : undefined}
                   className={`h-9 w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 transition-all duration-300 hover:border-transparent hover:shadow-lg ${social.color}`}
                 >
                   <social.icon size={14} />
@@ -190,14 +186,6 @@ function Footer() {
 
         </div>
       </motion.div>
-
-      {chatOpen && (
-        <ChatWidget 
-          isOpen={chatOpen} 
-          onOpenChange={setChatOpen} 
-          position="left"
-        />
-      )}
 
       {/* Ambedkar Quote Banner */}
       <div className="bg-black/60 border-t border-white/10">
