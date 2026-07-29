@@ -1,0 +1,135 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaRobot, FaTimes } from "react-icons/fa";
+import ChatWindow from "./ChatWindow";
+import ChatInput from "./ChatInput";
+import { ChatMessage } from "@/types/chat";
+
+let messageId = 0;
+
+function ChatWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  useEffect(() => {
+    return () => {
+      abortControllerRef.current?.abort();
+    };
+  }, []);
+
+  const sendMessage = async (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed || loading) return;
+
+    const userMessage: ChatMessage = {
+      id: `user-${++messageId}`,
+      role: "user",
+      content: trimmed,
+      timestamp: Date.now(),
+    };
+
+    const history = [...messages, userMessage];
+    setMessages(history);
+    setInput("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: trimmed, history }),
+      });
+
+      if (!res.ok) throw new Error("Failed to send message");
+
+      const data: { reply: string } = await res.json();
+
+      const botMessage: ChatMessage = {
+        id: `bot-${++messageId}`,
+        role: "assistant",
+        content: data.reply,
+        timestamp: Date.now(),
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error("Chat send error:", error);
+      const errorMessage: ChatMessage = {
+        id: `bot-${++messageId}`,
+        role: "assistant",
+        content: "Sorry, I couldn't connect right now. Please try again later.",
+        timestamp: Date.now(),
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleClear = () => {
+    setMessages([]);
+  };
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 flex h-[600px] w-[350px] flex-col overflow-hidden md:h-[640px] md:w-[380px]">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.2 }}
+            className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-slate-900/90 shadow-2xl backdrop-blur-xl"
+          >
+            <ChatWindow
+              messages={messages}
+              loading={loading}
+              onSuggestedClick={sendMessage}
+              onClear={handleClear}
+            />
+            <ChatInput
+              value={input}
+              onChange={setInput}
+              onSend={() => sendMessage(input)}
+              loading={loading}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {!isOpen && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          onClick={() => setIsOpen(true)}
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0A2540] text-white shadow-lg transition md:h-16 md:w-16"
+          aria-label="Open chat"
+        >
+          <FaRobot className="text-2xl md:text-3xl" />
+        </motion.button>
+      )}
+
+      {isOpen && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsOpen(false)}
+          className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white shadow-md transition hover:bg-slate-600"
+          aria-label="Close chat"
+        >
+          <FaTimes />
+        </motion.button>
+      )}
+    </div>
+  );
+}
+
+export default ChatWidget;
