@@ -7,10 +7,29 @@ import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
 import { ChatMessage } from "@/types/chat";
 
+type Position = "left" | "right";
+
 let messageId = 0;
 
-function ChatWidget() {
-  const [isOpen, setIsOpen] = useState(false);
+function ChatWidget({ 
+  position = "right", 
+  isOpen: controlledIsOpen, 
+  onOpenChange 
+}: { 
+  position?: Position; 
+  isOpen?: boolean; 
+  onOpenChange?: (open: boolean) => void; 
+}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledIsOpen !== undefined && onOpenChange !== undefined;
+  const isOpen = isControlled ? controlledIsOpen : internalOpen;
+  const setIsOpen = (value: boolean) => {
+    if (isControlled) {
+      onOpenChange(value);
+    } else {
+      setInternalOpen(value);
+    }
+  };
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -75,8 +94,14 @@ function ChatWidget() {
     setMessages([]);
   };
 
+  const isLeft = position === "left";
+
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex h-[600px] w-[350px] flex-col overflow-hidden md:h-[640px] md:w-[380px]">
+    <div
+      className={`fixed bottom-4 z-50 flex h-[600px] w-[350px] flex-col overflow-hidden md:h-[640px] md:w-[380px] ${
+        isLeft ? "left-4" : "right-4"
+      }`}
+    >
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -122,7 +147,9 @@ function ChatWidget() {
           animate={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
           onClick={() => setIsOpen(false)}
-          className="absolute -top-3 -right-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white shadow-md transition hover:bg-slate-600"
+          className={`absolute -top-3 flex h-8 w-8 items-center justify-center rounded-full bg-slate-700 text-white shadow-md transition hover:bg-slate-600 ${
+            isLeft ? "-left-3" : "-right-3"
+          }`}
           aria-label="Close chat"
         >
           <FaTimes />
