@@ -5,6 +5,7 @@ export interface IDonation extends Document {
   phone: string;
   email: string;
   screenshotPath?: string | null;
+  status: "Pending Verification" | "Verified" | "Rejected";
 }
 
 const donationSchema = new Schema<IDonation>(
@@ -13,6 +14,11 @@ const donationSchema = new Schema<IDonation>(
     phone: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true, lowercase: true },
     screenshotPath: { type: String, default: null },
+    status: {
+      type: String,
+      enum: ["Pending Verification", "Verified", "Rejected"],
+      default: "Pending Verification",
+    },
   },
   {
     timestamps: true,

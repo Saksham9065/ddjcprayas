@@ -16,8 +16,50 @@ export interface Donation {
   donorName: string;
   email: string;
   phone: string;
-  amount: number;
-  transactionId: string;
+  screenshotPath?: string | null;
+  status: "Pending Verification" | "Verified" | "Rejected";
+  createdAt: string;
+}
+
+export interface Contact {
+  id: string;
+  fullName: string;
+  fatherHusbandName: string;
+  age?: string;
+  category?: string;
+  gender?: string;
+  education?: string;
+  mobile: string;
+  email?: string;
+  address?: string;
+  incidentDescription?: string;
+  helpType?: string;
+  status: "New" | "Contacted" | "Resolved";
+  isRead: boolean;
+  createdAt: string;
+}
+
+export interface JoinApplication {
+  id: string;
+  fullName: string;
+  fatherHusbandName?: string;
+  age?: number | string;
+  category?: string;
+  gender?: string;
+  education?: string;
+  mobile: string;
+  email?: string;
+  address?: string;
+  occupation?: string;
+  joinType: string;
+  workMode?: string;
+  statement?: string;
+  experience?: string;
+  position?: string;
+  resume?: string;
+  university?: string;
+  field?: string;
+  status: "Pending" | "Reviewed" | "Accepted" | "Rejected";
   createdAt: string;
 }
 

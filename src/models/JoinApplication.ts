@@ -14,6 +14,11 @@ export interface IJoinApplication extends Document {
   joinType: string;
   workMode?: string;
   statement?: string;
+  experience?: string;
+  position?: string;
+  resume?: string;
+  university?: string;
+  field?: string;
 }
 
 const joinApplicationSchema = new Schema<IJoinApplication>(
@@ -28,9 +33,14 @@ const joinApplicationSchema = new Schema<IJoinApplication>(
     email: { type: String, trim: true, lowercase: true },
     address: { type: String, trim: true },
     occupation: { type: String, trim: true },
-    joinType: { type: String, required: true, trim: true },
+    joinType: { type: String, required: true, trim: true, default: "Volunteer" },
     workMode: { type: String, trim: true },
     statement: { type: String, trim: true },
+    experience: { type: String, trim: true },
+    position: { type: String, trim: true },
+    resume: { type: String, trim: true },
+    university: { type: String, trim: true },
+    field: { type: String, trim: true },
   },
   {
     timestamps: true,
@@ -38,4 +48,5 @@ const joinApplicationSchema = new Schema<IJoinApplication>(
 );
 
 export const JoinApplication =
-  models.JoinApplication || model<IJoinApplication>("JoinApplication", joinApplicationSchema);
+  models.JoinApplication ||
+  model<IJoinApplication>("JoinApplication", joinApplicationSchema);

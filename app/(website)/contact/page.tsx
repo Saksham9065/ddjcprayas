@@ -22,12 +22,22 @@ export default function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const error = await res.json();
+        throw new Error(error.error || "Failed to submit form");
+      }
+
       setSuccess(true);
       setFormData({
         fullName: "",
@@ -42,7 +52,12 @@ export default function ContactPage() {
         incidentDescription: "",
         helpType: "",
       });
-    }, 1000);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      alert(error instanceof Error ? error.message : "Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

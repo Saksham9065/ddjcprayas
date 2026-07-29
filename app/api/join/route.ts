@@ -19,8 +19,22 @@ export async function POST(request: Request) {
       occupation,
       joinType,
       workMode,
+      experience,
+      position,
+      resume,
+      university,
+      field,
       statement,
     } = body;
+
+    let inferredJoinType = "Volunteer";
+    if (experience || position) {
+      inferredJoinType = "Career";
+    } else if (university || field) {
+      inferredJoinType = "Internship";
+    } else if (joinType) {
+      inferredJoinType = String(joinType).trim();
+    }
 
     const cleanedPayload = {
       fullName: String(fullName || "").trim(),
@@ -33,12 +47,17 @@ export async function POST(request: Request) {
       email: String(email || "").trim(),
       address: String(address || "").trim(),
       occupation: String(occupation || "").trim(),
-      joinType: String(joinType || "Volunteer").trim(),
-      workMode: String(workMode || "").trim(),
-      statement: String(statement || "").trim(),
+      joinType: inferredJoinType,
+      workMode: String(workMode || "").trim() || undefined,
+      statement: String(statement || "").trim() || undefined,
+      experience: String(experience || "").trim() || undefined,
+      position: String(position || "").trim() || undefined,
+      resume: String(resume || "").trim() || undefined,
+      university: String(university || "").trim() || undefined,
+      field: String(field || "").trim() || undefined,
     };
 
-    if (!cleanedPayload.fullName || !cleanedPayload.mobile || !cleanedPayload.joinType) {
+    if (!cleanedPayload.fullName || !cleanedPayload.mobile) {
       return NextResponse.json(
         { error: "Please fill in the required fields" },
         { status: 400 }

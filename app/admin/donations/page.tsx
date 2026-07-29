@@ -1,124 +1,104 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FaArrowLeft, FaCheckCircle, FaClock, FaExclamationCircle, FaRupeeSign, FaImage } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
 
 export default function AdminDonationsPage() {
-  const [donations] = useState([
-    {
-      id: "DON-2026-001",
-      donorName: "Amit Sharma",
-      email: "amit.sharma@email.com",
-      phone: "+91 98765 43210",
-      amount: 5000,
-      transactionId: "TXN-9876543210",
-      date: "2026-06-24",
-      status: "Completed",
-      screenshot: null,
-    },
-    {
-      id: "DON-2026-002",
-      donorName: "Priya Singh",
-      email: "priya.singh@email.com",
-      phone: "+91 91234 56789",
-      amount: 2500,
-      transactionId: "TXN-9123456789",
-      date: "2026-06-22",
-      status: "Completed",
-      screenshot: null,
-    },
-    {
-      id: "DON-2026-003",
-      donorName: "Mohammed Ali",
-      email: "m.ali@email.com",
-      phone: "+91 99887 76655",
-      amount: 10000,
-      transactionId: "TXN-9988776655",
-      date: "2026-06-20",
-      status: "Pending",
-      screenshot: null,
-    },
+  const [stats, setStats] = useState<StatDef[]>([
+    { label: "Total Donations", value: 0, color: "bg-slate-800" },
+    { label: "Pending Verification", value: 0, color: "bg-amber-500" },
+    { label: "Verified", value: 0, color: "bg-emerald-500" },
+    { label: "Rejected", value: 0, color: "bg-red-500" },
   ]);
 
-  return (
-    <div className="bg-slate-50 min-h-screen py-10 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-          <div>
-            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Donations</h1>
-            <p className="text-xs text-slate-500 mt-1">Manage and track all donations received</p>
-          </div>
-          <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
-            <FaArrowLeft size={12} /> Back to Dashboard
-          </Link>
-        </div>
+  const columns: ColumnDef[] = [
+    { key: "id", label: "ID", width: "100px", render: (item) => (
+      <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
+    )},
+    { key: "donorName", label: "Donor Name", render: (item) => (
+      <span className="font-bold text-slate-900">{String(item.donorName ?? "")}</span>
+    )},
+    { key: "phone", label: "Phone", render: (item) => String(item.phone ?? "") },
+    { key: "email", label: "Email", render: (item) => String(item.email ?? "") },
+    { key: "screenshotPath", label: "Screenshot", render: (item) => {
+      const path = item.screenshotPath as string | undefined;
+      if (!path) return <span className="text-slate-400">No screenshot</span>;
+      return (
+        <a href={path} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">
+          View
+        </a>
+      );
+    }},
+    { key: "status", label: "Status", render: (item) => {
+      const styles: Record<string, string> = {
+        "Pending Verification": "bg-amber-50 text-amber-700 border border-amber-200",
+        Verified: "bg-emerald-50 text-emerald-700 border border-emerald-200",
+        Rejected: "bg-red-50 text-red-700 border border-red-200",
+      };
+      return (
+        <span className={`inline-flex px-3 py-1 rounded-full text-[10px] font-bold ${styles[item.status as string] || styles["Pending Verification"]}`}>
+          {item.status as string}
+        </span>
+      );
+    }},
+    { key: "createdAt", label: "Date", render: (item) => {
+      const d = new Date(String(item.createdAt ?? ""));
+      return isNaN(d.getTime()) ? String(item.createdAt ?? "") : d.toLocaleDateString("en-IN");
+    }},
+  ];
 
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse text-xs">
-              <thead>
-                <tr className="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-200">
-                  <th className="py-4 px-6 font-bold">ID</th>
-                  <th className="py-4 px-6 font-bold">Donor</th>
-                  <th className="py-4 px-6 font-bold">Amount</th>
-                  <th className="py-4 px-6 font-bold">Transaction ID</th>
-                  <th className="py-4 px-6 font-bold">Proof</th>
-                  <th className="py-4 px-6 font-bold">Date</th>
-                  <th className="py-4 px-6 font-bold">Status</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 text-slate-700">
-                {donations.map((donation) => (
-                  <tr key={donation.id} className="hover:bg-slate-50/60 transition-colors">
-                    <td className="py-4 px-6 font-mono font-bold text-[#0A2540]">{donation.id}</td>
-                    <td className="py-4 px-6">
-                      <span className="font-bold block text-slate-900">{donation.donorName}</span>
-                      <span className="text-slate-500 font-mono text-[10px]">{donation.email}</span>
-                      <span className="text-slate-400 font-mono text-[10px] block">{donation.phone}</span>
-                    </td>
-                    <td className="py-4 px-6">
-                      <span className="flex items-center gap-1 text-emerald-600 font-bold">
-                        <FaRupeeSign size={12} />
-                        {donation.amount.toLocaleString("en-IN")}
-                      </span>
-                    </td>
-                    <td className="py-4 px-6 font-mono text-slate-500">{donation.transactionId}</td>
-                    <td className="py-4 px-6">
-                      {donation.screenshot ? (
-                        <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-slate-200">
-                          <Image
-                            src={donation.screenshot}
-                            alt="Payment proof"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <span className="text-slate-400 text-xs">—</span>
-                      )}
-                    </td>
-                    <td className="py-4 px-6 text-slate-600">{donation.date}</td>
-                    <td className="py-4 px-6">
-                      <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold ${
-                          donation.status === "Completed"
-                            ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                            : "bg-amber-50 text-amber-700 border border-amber-200"
-                        }`}
-                      >
-                        {donation.status === "Completed" ? <FaCheckCircle size={10} /> : <FaClock size={10} />}
-                        {donation.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+  const filters: FilterDef[] = [
+    { label: "Status", key: "status", options: [
+      { label: "All", value: "" },
+      { label: "Pending Verification", value: "Pending Verification" },
+      { label: "Verified", value: "Verified" },
+      { label: "Rejected", value: "Rejected" },
+    ]},
+  ];
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const res = await fetch("/api/admin/donations?limit=1000");
+        const json = await res.json();
+        const data = json.data || [];
+        const total = data.length;
+        const pending = data.filter((d: Record<string, unknown>) => d.status === "Pending Verification").length;
+        const verified = data.filter((d: Record<string, unknown>) => d.status === "Verified").length;
+        const rejected = data.filter((d: Record<string, unknown>) => d.status === "Rejected").length;
+        setStats([
+          { label: "Total Donations", value: total, color: "bg-slate-800" },
+          { label: "Pending Verification", value: pending, color: "bg-amber-500" },
+          { label: "Verified", value: verified, color: "bg-emerald-500" },
+          { label: "Rejected", value: rejected, color: "bg-red-500" },
+        ]);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    fetchStats();
+  }, []);
+
+  return (
+    <AdminPageShell
+      title="Donations"
+      description="Manage donation submissions and payment proof verification"
+      apiEndpoint="/api/admin/donations"
+      columns={columns}
+      stats={stats}
+      filters={filters}
+      statusOptions={[
+        { label: "Pending Verification", value: "Pending Verification" },
+        { label: "Verified", value: "Verified" },
+        { label: "Rejected", value: "Rejected" },
+      ]}
+      onStatusUpdate={async (id, status) => {
+        await fetch("/api/admin/donations", {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id, status }),
+        });
+      }}
+    />
   );
 }
