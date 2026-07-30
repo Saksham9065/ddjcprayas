@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaRobot, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
 import { ChatMessage } from "@/types/chat";
@@ -119,10 +119,10 @@ function ChatWidget() {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           onClick={() => setIsOpen(true)}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0A2540] text-white shadow-lg transition md:h-16 md:w-16"
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0A2540] shadow-lg transition md:h-16 md:w-16 overflow-hidden p-0"
           aria-label="Open chat"
         >
-          <FaRobot className="text-2xl md:text-3xl" />
+          <img src="/images/bot/chatbot.webp" alt="Chat bot" className="h-full w-full object-cover" />
         </motion.button>
       )}
     </div>
