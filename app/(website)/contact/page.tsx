@@ -123,21 +123,31 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Category (SC / ST / OBC / Minorities / General)</label>
-                  <input
-                    type="text"
+                  <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                     className="w-full px-3 md:px-4 py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                  />
+                  >
+                    <option value="">Select Category</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="OBC">OBC</option>
+                    <option value="Minorities">Minorities</option>
+                    <option value="General">General</option>
+                  </select>
                 </div>
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Gender (Male / Female / Others)</label>
-                  <input
-                    type="text"
+                  <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                     className="w-full px-3 md:px-4 py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                  />
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                  </select>
                 </div>
               </div>
 
