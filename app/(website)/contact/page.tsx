@@ -216,25 +216,17 @@ export default function ContactPage() {
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                 {language === "en" ? (
                   <>
-                    Dalit Dignity & Justice Centre (DDJC) Orai Office
-                    <br />
-                    Near Collectorate, Orai, District Jalaun
-                    <br />
-                    Uttar Pradesh, India - 285001
+                    Police Line – Baghaura, Orai – Jalaun, UP - 285001
                   </>
                 ) : (
                   <>
-                    दलित गरिमा और न्याय केंद्र (डीडीजेसी) ओराई कार्यालय
-                    <br />
-                    कलेक्टोरेट के पास, ओराई, जालौन जिला
-                    <br />
-                    उत्तर प्रदेश, भारत - 285001
+                    पुलिस लाइन – बघौरा, ओराई – जालौन, उतर प्रदेश - 285001
                   </>
                 )}
               </p>
               <div className="space-y-2 text-xs md:text-sm text-slate-600">
-                <p><span className="font-bold text-[#0A2540]">Email:</span> info@ddjc.org</p>
-                <p><span className="font-bold text-[#0A2540]">Phone:</span> +91 98765 43210</p>
+                <p><span className="font-bold text-[#0A2540]">Email:</span> ddjc.prayas@gmail.com</p>
+                <p><span className="font-bold text-[#0A2540]">Phone:</span> +91 9235737691, +91 9453645931</p>
                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Hours" : "समय"}:</span> {language === "en" ? "Mon - Sat: 9:00 AM - 6:00 PM" : "सोम - शनि: सुबह 9:00 बजे - शाम 6:00 बजे"}</p>
               </div>
             </div>
