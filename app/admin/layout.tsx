@@ -4,7 +4,7 @@ import React, { ReactNode, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkAdminAuth } from "@/lib/auth";
-import { FaShieldAlt, FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaBriefcase, FaGraduationCap, FaBars } from "react-icons/fa";
+import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaBriefcase, FaGraduationCap, FaBars } from "react-icons/fa";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -65,8 +65,8 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       `}>
         <div className="p-6 border-b border-slate-800">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#000000] text-white flex items-center justify-center text-lg shadow-md">
-              <FaShieldAlt />
+            <div className="w-10 h-10 rounded-xl bg-[#000000] flex items-center justify-center text-lg shadow-md overflow-hidden">
+              <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover" />
             </div>
             <div>
               <h1 className="font-black text-base tracking-tight">DDJC Admin</h1>

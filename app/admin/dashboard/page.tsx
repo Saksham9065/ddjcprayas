@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { FaShieldAlt, FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBriefcase, FaSpinner } from "react-icons/fa";
+import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBriefcase, FaSpinner } from "react-icons/fa";
 import { checkAdminAuth } from "@/lib/auth";
 
 export default function AdminDashboardPage() {
@@ -95,8 +95,8 @@ export default function AdminDashboardPage() {
       <header className="bg-white rounded-3xl border border-slate-200 shadow-sm p-6 md:p-8 mb-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#000000] text-white flex items-center justify-center text-lg shadow-md">
-              <FaShieldAlt />
+            <div className="w-10 h-10 rounded-xl bg-[#000000] flex items-center justify-center text-lg shadow-md overflow-hidden">
+              <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover" />
             </div>
             <div>
               <h1 className="font-black text-base tracking-tight text-[#0A2540]">DDJC Admin Portal</h1>
