@@ -122,7 +122,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Category (SC / ST / OBC / Minorities / General)</label>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Category</label>
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
@@ -137,7 +137,7 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Gender (Male / Female / Others)</label>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5">Gender</label>
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}

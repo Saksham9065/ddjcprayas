@@ -51,7 +51,7 @@ function ChatWindow({ messages, loading, onSuggestedClick, onClear }: ChatWindow
           >
             <p className="text-lg font-medium text-white">👋 Welcome to DDJC.</p>
             <p className="mt-1 text-sm text-slate-300">I am your AI Assistant.</p>
-            <p className="mt-1 max-w-[260px] text-xs leading-relaxed text-slate-400">
+            <p className="mt-1 max-w-65 text-xs leading-relaxed text-slate-400">
               I can help you understand your legal rights, government schemes, our NGO activities, and answer questions about DDJC.
             </p>
             
