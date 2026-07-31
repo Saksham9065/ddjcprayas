@@ -109,11 +109,11 @@ function ChatWidget() {
                 </button>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/10 hover:text-white"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
                   type="button"
                   aria-label="Close chat"
                 >
-                  <FaTimes size={14} />
+                  <FaTimes size={16} />
                 </button>
               </div>
             </div>
