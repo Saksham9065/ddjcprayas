@@ -75,7 +75,6 @@ function MessageBubble({ message }: { message: ChatMessage }) {
             <div className="prose prose-invert prose-sm max-w-none dark:prose-invert">
               <ReactMarkdown
                 components={{
-                  pre: CodeBlock as never,
                   code: CodeBlock as never,
                   p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
                   ul: ({ children }) => <ul className="mb-2 ml-4 list-disc space-y-1">{children}</ul>,

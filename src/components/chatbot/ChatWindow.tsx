@@ -19,26 +19,10 @@ function ChatWindow({ messages, loading, onSuggestedClick, onClear }: ChatWindow
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+  }, [messages]);
 
   return (
     <div className="flex h-full flex-col">
-      <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-        <div>
-          <h3 className="text-sm font-semibold text-white">DDJC AI Assistant</h3>
-          <p className="text-xs text-slate-400">
-            {loading ? "Typing..." : "Online"}
-          </p>
-        </div>
-        <button
-          onClick={onClear}
-          className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-300 transition hover:bg-white/10 hover:text-white"
-          type="button"
-        >
-          Clear chat
-        </button>
-      </div>
-
       <div
         ref={containerRef}
         className="flex-1 space-y-4 overflow-y-auto px-4 py-4"
@@ -62,7 +46,7 @@ function ChatWindow({ messages, loading, onSuggestedClick, onClear }: ChatWindow
                   <button
                     key={q}
                     onClick={() => onSuggestedClick(q)}
-                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-left text-xs text-slate-300 transition hover:border-[#0A2540] hover:bg-white/10"
+                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-left text-xs text-slate-300 transition hover:border-[#0A2540] hover:bg-white/10"
                     type="button"
                   >
                     {q}
