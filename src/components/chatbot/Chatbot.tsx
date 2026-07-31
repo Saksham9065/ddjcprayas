@@ -39,7 +39,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`flex h-[85vh] w-[420px] flex-col overflow-hidden rounded-3xl border shadow-2xl backdrop-blur-xl md:h-[85vh] md:w-[420px] ${
+            className={`flex h-[85vh] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border shadow-2xl backdrop-blur-xl md:h-[85vh] md:w-[420px] ${
               theme === "dark"
                 ? "border-white/10 bg-slate-900"
                 : "border-slate-200 bg-white"
@@ -77,7 +77,7 @@ export default function Chatbot() {
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.94 }}
           onClick={() => setIsOpen(true)}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0A2540] shadow-lg transition md:h-16 md:w-16 overflow-hidden p-0"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2540] shadow-lg transition md:h-14 md:w-14 overflow-hidden p-0"
           aria-label="Open chat"
         >
           <img src="/images/bot/chatbot.webp" alt="Chat bot" className="h-full w-full object-cover" />
