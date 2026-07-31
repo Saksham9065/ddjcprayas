@@ -3,7 +3,7 @@ import { Inter, Geist } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import TopBar from "@/components/layout/TopBar";
 import Footer from "@/components/layout/Footer";
-import ChatWidget from "@/components/chatbot/ChatWidget";
+import Chatbot from "@/components/chatbot/Chatbot";
 import { AppProvider } from "@/context/AppContext";
 import "./globals.css";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <ChatWidget />
+          <Chatbot />
         </AppProvider>
       </body>
     </html>

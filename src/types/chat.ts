@@ -14,11 +14,25 @@ export interface ChatResponse {
   reply: string;
 }
 
+export interface UseChatOptions {
+  onError?: (error: Error) => void;
+}
+
+export interface UseChatReturn {
+  messages: ChatMessage[];
+  input: string;
+  setInput: (value: string) => void;
+  loading: boolean;
+  sendMessage: (text: string) => Promise<void>;
+  clearChat: () => void;
+  newChat: () => void;
+  stopGeneration: () => void;
+}
+
 export const SUGGESTED_QUESTIONS = [
   "What is DDJC?",
-  "What legal help do you provide?",
-  "Explain the SC/ST Act.",
+  "Explain SC/ST Act",
+  "How can I get legal aid?",
   "How do I file an FIR?",
-  "What constitutional rights do I have?",
-  "How can I volunteer?",
+  "Volunteer with DDJC",
 ];
