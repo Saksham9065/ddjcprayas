@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaPaperPlane, FaStop } from "react-icons/fa";
+import { Send, Square } from "lucide-react";
 
 interface ChatInputProps {
   value: string;
@@ -49,7 +49,7 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
             type="button"
             aria-label="Stop generation"
           >
-            <FaStop size={14} />
+            <Square size={14} />
           </button>
         ) : (
           <motion.button
@@ -60,7 +60,7 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
             type="button"
             aria-label="Send message"
           >
-            <FaPaperPlane size={14} />
+            <Send size={16} />
           </motion.button>
         )}
       </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaUser } from "react-icons/fa";
 import MarkdownRenderer from "./MarkdownRenderer";
 import MessageActions from "./MessageActions";
 import type { ChatMessage } from "@/types/chat";

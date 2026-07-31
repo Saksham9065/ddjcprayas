@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaCopy, FaCheck, FaTrash, FaRedo } from "react-icons/fa";
+import { Copy, Check, Trash2, RefreshCw } from "lucide-react";
 
 interface MessageActionsProps {
   content: string;
@@ -34,7 +34,7 @@ export default function MessageActions({ content, onRegenerate }: MessageActions
         type="button"
         aria-label="Copy"
       >
-        {copied ? <FaCheck size={12} /> : <FaCopy size={12} />}
+          {copied ? <Check size={12} /> : <Copy size={12} />}
       </button>
       {onRegenerate && (
         <button
@@ -43,7 +43,7 @@ export default function MessageActions({ content, onRegenerate }: MessageActions
           type="button"
           aria-label="Regenerate"
         >
-          <FaRedo size={12} />
+          <RefreshCw size={12} />
         </button>
       )}
     </motion.div>

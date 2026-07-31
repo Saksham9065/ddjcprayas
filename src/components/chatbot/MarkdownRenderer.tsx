@@ -1,7 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
-import { FaCopy, FaCheck } from "react-icons/fa";
+import { Copy, Check } from "lucide-react";
 import { useState } from "react";
 
 function CodeBlock({ children, className, ...props }: React.ComponentPropsWithoutRef<"pre">) {
@@ -25,7 +25,7 @@ function CodeBlock({ children, className, ...props }: React.ComponentPropsWithou
             className="flex items-center gap-1 hover:text-white transition"
             type="button"
           >
-            {copied ? <FaCheck size={12} /> : <FaCopy size={12} />}
+            {copied ? <Check size={12} /> : <Copy size={12} />}
             <span>{copied ? "Copied" : "Copy"}</span>
           </button>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { FaTimes, FaTrash, FaRedo, FaMoon, FaSun } from "react-icons/fa";
+import { X, Trash2, RefreshCw, Moon, Sun } from "lucide-react";
 
 interface ChatHeaderProps {
   onClose: () => void;
@@ -46,39 +46,40 @@ export default function ChatHeader({
         >
           New Chat
         </button>
-        <button
-          onClick={onClear}
-          className="rounded-lg px-2.5 py-1.5 text-[11px] font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white"
-          type="button"
-        >
-          Clear
-        </button>
-        {onRegenerate && (
           <button
-            onClick={onRegenerate}
-            disabled={loading}
-            className="rounded-lg px-2.5 py-1.5 text-[11px] font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white disabled:opacity-50"
+            onClick={onClear}
+            className="rounded-lg px-2.5 py-1.5 text-[11px] font-semibold text-slate-200 transition hover:bg-white/10 hover:text-white"
             type="button"
           >
-            <FaRedo size={12} />
+            Clear
           </button>
-        )}
-        <button
-          onClick={onToggleTheme}
-          className="rounded-lg p-1.5 text-slate-300 transition hover:bg-white/10 hover:text-white"
-          type="button"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <FaSun size={14} /> : <FaMoon size={14} />}
-        </button>
-        <button
-          onClick={onClose}
-          className="flex h-7 w-7 items-center justify-center rounded-md bg-white/10 text-white transition hover:bg-red-500"
-          type="button"
-          aria-label="Close chat"
-        >
-          <FaTimes size={12} />
-        </button>
+          {onRegenerate && (
+            <button
+              onClick={onRegenerate}
+              disabled={loading}
+              className="rounded-lg p-1.5 text-slate-300 transition hover:bg-white/10 hover:text-white disabled:opacity-50"
+              type="button"
+              aria-label="Regenerate"
+            >
+              <RefreshCw size={14} />
+            </button>
+          )}
+          <button
+            onClick={onToggleTheme}
+            className="rounded-lg p-1.5 text-slate-300 transition hover:bg-white/10 hover:text-white"
+            type="button"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+          <button
+            onClick={onClose}
+            className="flex h-7 w-7 items-center justify-center rounded-md bg-white/10 text-white transition hover:bg-red-500"
+            type="button"
+            aria-label="Close chat"
+          >
+            <X size={14} />
+          </button>
       </div>
     </div>
   );
