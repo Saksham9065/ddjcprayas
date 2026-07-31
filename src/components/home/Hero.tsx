@@ -33,12 +33,12 @@ export default function Hero() {
            >
              <FaFileSignature /> {content.heroPrimaryCta} <FaArrowRight />
            </Link>
-           <Link
-             href="/legal-aid"
-             className="bg-slate-800 hover:bg-slate-700 text-slate-200 px-5 py-3 md:px-8 md:py-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors border border-slate-700 inline-flex items-center gap-2"
-           >
-             <FaBalanceScale /> {content.heroSecondaryCta}
-           </Link>
+<Link
+              href="/donate"
+              className="hidden md:inline-flex bg-slate-800 hover:bg-slate-700 text-slate-200 px-5 py-3 md:px-8 md:py-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors border border-slate-700 inline-flex items-center gap-2"
+            >
+              <FaBalanceScale /> {content.heroSecondaryCta}
+            </Link>
          </div>
 
        </div>

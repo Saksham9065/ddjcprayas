@@ -186,7 +186,7 @@ export default function HomePage() {
                  </Link>
                  <Link
                    href="/donate"
-                   className="bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all backdrop-blur-sm text-xs md:text-sm"
+                   className="hidden md:inline-flex bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all backdrop-blur-sm text-xs md:text-sm"
                  >
                    {isHindi ? "हमारे उद्देश्य का समर्थन करें" : "Support Our Cause"}
                  </Link>

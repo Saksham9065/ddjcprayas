@@ -13,7 +13,7 @@
     @apply border-border outline-ring/50;
   }
   input, textarea, select {
-    color: var(--foreground);
+    color: #000000;
   }
   html {
     @apply font-sans;

@@ -200,7 +200,13 @@ function Footer() {
       </div>
 
       <div className="border-t border-white/10 bg-black/40">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-center">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <Link
+            href="/admin/login"
+            className="text-xs font-bold uppercase tracking-wider text-slate-400 hover:text-white transition-colors duration-300 inline-flex items-center gap-2"
+          >
+            Admin Login
+          </Link>
           <p className="text-slate-500 text-xs tracking-wider uppercase font-semibold text-center">
             {content.footerCopyright.replace("{year}", year.toString())}
           </p>
