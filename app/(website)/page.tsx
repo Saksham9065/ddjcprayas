@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaBalanceScale, 
@@ -44,13 +45,15 @@ function AnimatedCounter({ target, suffix = "+", duration = 2000 }: { target: nu
       { threshold: 0.5 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const element = ref.current;
+
+    if (element) {
+      observer.observe(element);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (element) {
+        observer.unobserve(element);
       }
     };
   }, [target, duration]);
@@ -119,11 +122,13 @@ export default function HomePage() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-<img
-              src={HERO_IMAGES[currentSlide]}
-              alt={`Hero slide ${currentSlide + 1}`}
-              className="w-full h-full object-cover"
-            />
+              <Image
+                src={HERO_IMAGES[currentSlide]}
+                alt={`Hero slide ${currentSlide + 1}`}
+                className="w-full h-full object-cover"
+                width={1920}
+                height={1080}
+              />
             </motion.div>
           </AnimatePresence>
 
@@ -212,7 +217,13 @@ export default function HomePage() {
                   To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was launched in October 2023 by the Bundelkhand Dalit Adhikar Manch.
                 </p>
               </div>
-              <img src="/images/contact/office.jpg" alt="DDJC Office" />
+              <Image
+                src="/images/contact/office.jpg"
+                alt="DDJC Office"
+                className="w-full h-auto"
+                width={1189}
+                height={630}
+              />
               <div className="mt-8">
                 <Link
                   href="/about"
