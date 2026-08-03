@@ -25,5 +25,13 @@ const donationSchema = new Schema<IDonation>(
   }
 );
 
+donationSchema.index({ createdAt: -1 });
+donationSchema.index({ status: 1, createdAt: -1 });
+donationSchema.index({
+  donorName: "text",
+  phone: "text",
+  email: "text",
+});
+
 export const Donation =
   models.Donation || model<IDonation>("Donation", donationSchema);

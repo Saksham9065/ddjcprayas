@@ -33,6 +33,7 @@ export default function InCourtPage() {
               src="/images/court/allhabad court.png"
               alt="ALLAHABAD HIGH COURT"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">
@@ -45,6 +46,7 @@ export default function InCourtPage() {
               src="/images/court/image.png"
               alt="DISTRICT COURT JALAUN (ORAI)"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-6">

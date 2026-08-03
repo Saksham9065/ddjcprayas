@@ -33,6 +33,7 @@ export default function OutCourtPage() {
               src="/images/out of court/Community Meeting 8.jpeg"
               alt="Community awareness meeting and grassroots legal literacy camp"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -42,6 +43,7 @@ export default function OutCourtPage() {
               src="/images/out of court/IMG20241217142146.jpg"
               alt="Fact-finding delegation and community support"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

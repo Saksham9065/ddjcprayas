@@ -31,4 +31,15 @@ const complaintSchema = new Schema<IComplaint>(
   }
 );
 
+complaintSchema.index({ createdAt: -1 });
+complaintSchema.index({ status: 1, createdAt: -1 });
+complaintSchema.index({ category: 1, createdAt: -1 });
+complaintSchema.index({
+  fullName: "text",
+  phone: "text",
+  district: "text",
+  tehsil: "text",
+  description: "text",
+});
+
 export const Complaint = models.Complaint || model<IComplaint>("Complaint", complaintSchema);

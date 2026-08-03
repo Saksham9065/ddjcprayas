@@ -104,6 +104,7 @@ export default function DonatePage() {
                   src="/images/logo/ddjc-logo.jpg"
                   alt="DDJC Logo"
                   fill
+                  sizes="56px"
                   className="object-cover object-center"
                 />
               </div>
@@ -117,6 +118,7 @@ export default function DonatePage() {
                 src="/images/qr/qr.png"
                 alt="Prayas Jan Utthan Samiti Donation QR Code"
                 fill
+                sizes="192px"
                 className="object-contain p-2"
               />
             </div>

@@ -41,4 +41,16 @@ const contactSchema = new Schema<IContact>(
   }
 );
 
+contactSchema.index({ createdAt: -1 });
+contactSchema.index({ status: 1, createdAt: -1 });
+contactSchema.index({
+  fullName: "text",
+  mobile: "text",
+  email: "text",
+  address: "text",
+  fatherHusbandName: "text",
+  incidentDescription: "text",
+  helpType: "text",
+});
+
 export const Contact = models.Contact || model<IContact>("Contact", contactSchema);

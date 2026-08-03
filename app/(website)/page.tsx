@@ -112,7 +112,7 @@ export default function HomePage() {
       <section className="relative bg-slate-900 text-white overflow-hidden">
         
         {/* Image Slider */}
-        <div className="relative h-[300px] md:h-[500px] lg:h-[700px] overflow-hidden">
+        <div className="relative h-[400px] md:h-[500px] lg:h-[700px] overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -128,6 +128,8 @@ export default function HomePage() {
                 className="w-full h-full object-cover"
                 width={1920}
                 height={1080}
+                loading="eager"
+                fetchPriority="high"
               />
             </motion.div>
           </AnimatePresence>
@@ -164,7 +166,7 @@ export default function HomePage() {
 
           {/* Hero Text Content */}
 <div className="absolute inset-0 flex items-center z-10">
-             <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10 text-center pt-24 md:pt-16">
+              <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10 text-center pt-12 md:pt-16">
                <span className="bg-black/30 border border-white/20 text-white px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest inline-block mb-6">
                  {isHindi ? "न्याय तक पहुंच • समानता • मानवाधिकार" : "Access to Justice • Equality • Human Rights"}
                </span>
@@ -174,28 +176,28 @@ export default function HomePage() {
                <p className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">
                  {isHindi ? "हर नागरिक के लिए न्याय" : "Justice For Every Citizen"}
                </p>
-               <blockquote className="max-w-2xl mx-auto italic text-white/80 text-xs md:text-sm lg:text-base mb-6 md:mb-10 pl-4 py-1">
-                 {isHindi ? "“न्याय सामाजिक संस्थानों की पहली vertu है।” — डॉ. बी.आर. अम्बेडकर" : "“Justice is the first virtue of social institutions.” — Dr. B.R. Ambedkar"}
-               </blockquote>
-               <p className="max-w-3xl mx-auto text-white/80 text-xs md:text-sm lg:text-base leading-relaxed mb-6 md:mb-10">
+                <blockquote className="max-w-2xl mx-auto italic text-white/80 text-xs md:text-sm lg:text-base mb-4 md:mb-10 pl-4 py-1">
+                  {isHindi ? "“न्याय सामाजिक संस्थानों की पहली vertu है।” — डॉ. बी.आर. अम्बेडकर" : "“Justice is the first virtue of social institutions.” — Dr. B.R. Ambedkar"}
+                </blockquote>
+                <p className="max-w-3xl mx-auto text-white/80 text-xs md:text-sm lg:text-base leading-relaxed mb-4 md:mb-10">
                  {isHindi ? "हम वंचित समुदायों को मुफ्त कानूनी सहायता, संवैधानिक जागरूकता, मानवाधिकार वकालत और समर्थन प्रदान करते हैं ताकि गरिमा, समानता और न्याय सुनिश्चित हो।" : "We provide free legal aid, constitutional awareness, human rights advocacy, and support for marginalized communities to ensure dignity, equality, and justice."}
                </p>
                
-               <div className="flex flex-wrap justify-center gap-3 md:gap-4">
-                 <Link
-                   href="/complaint"
-                   className="bg-[#000000] hover:bg-slate-600 text-white font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2 text-xs md:text-sm"
-                 >
-                   {isHindi ? "शिकायत दर्ज करें" : "File a Complaint"}
-                   <FaArrowRight size={14} />
-                 </Link>
-                 <Link
-                   href="/donate"
-                   className="hidden md:inline-flex bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-5 py-3 md:px-8 md:py-4 rounded-xl transition-all backdrop-blur-sm text-xs md:text-sm"
-                 >
-                   {isHindi ? "हमारे उद्देश्य का समर्थन करें" : "Support Our Cause"}
-                 </Link>
-               </div>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            <Link
+              href="/complaint"
+              className="bg-[#000000] hover:bg-slate-600 text-white font-bold px-4 py-2.5 md:px-8 md:py-4 rounded-xl transition-all shadow-lg hover:scale-105 inline-flex items-center gap-2 text-[10px] md:text-sm"
+            >
+              {isHindi ? "शिकायत दर्ज करें" : "File a Complaint"}
+              <FaArrowRight size={12} />
+            </Link>
+            <Link
+              href="/donate"
+              className="inline-flex bg-slate-800 hover:bg-slate-700 text-white border border-slate-600 font-bold px-4 py-2.5 md:px-8 md:py-4 rounded-xl transition-all backdrop-blur-sm text-[10px] md:text-sm"
+            >
+              {isHindi ? "हमारे उद्देश्य का समर्थन करें" : "Support Our Cause"}
+            </Link>
+          </div>
              </div>
            </div>
         </div>

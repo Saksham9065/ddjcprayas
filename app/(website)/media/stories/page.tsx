@@ -36,6 +36,7 @@ export default function StoriesPage() {
                 src="/images/logo/ddjc-logo.jpg"
                 alt="DDJC Logo"
                 fill
+                sizes="80px"
                 className="object-cover object-center"
               />
             </div>

@@ -47,6 +47,27 @@ const joinApplicationSchema = new Schema<IJoinApplication>(
   }
 );
 
+joinApplicationSchema.index({ createdAt: -1 });
+joinApplicationSchema.index({ status: 1, createdAt: -1 });
+joinApplicationSchema.index({ joinType: 1, createdAt: -1 });
+joinApplicationSchema.index({
+  fullName: "text",
+  mobile: "text",
+  email: "text",
+  education: "text",
+  address: "text",
+  fatherHusbandName: "text",
+  occupation: "text",
+  joinType: "text",
+  workMode: "text",
+  statement: "text",
+  experience: "text",
+  position: "text",
+  resume: "text",
+  university: "text",
+  field: "text",
+});
+
 export const JoinApplication =
   models.JoinApplication ||
   model<IJoinApplication>("JoinApplication", joinApplicationSchema);
