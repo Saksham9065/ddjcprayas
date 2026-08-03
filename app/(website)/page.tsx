@@ -112,7 +112,7 @@ export default function HomePage() {
       <section className="relative bg-slate-900 text-white overflow-hidden">
         
         {/* Image Slider */}
-        <div className="relative h-[400px] md:h-[500px] lg:h-[700px] overflow-hidden">
+        <div className="relative h-100 md:h-125 lg:h-175 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -135,7 +135,7 @@ export default function HomePage() {
           </AnimatePresence>
 
           {/* Dark overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+          <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
 
           {/* Navigation Arrows */}
           <button
@@ -469,7 +469,7 @@ export default function HomePage() {
       {/* 8. QUOTE & CONTACT BANNER */}
       <section className="py-20 pt-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl text-center">
-          <div className="bg-gradient-to-br from-[#0A2540] to-slate-900 text-white p-10 md:p-16 rounded-3xl shadow-xl relative overflow-hidden">
+          <div className="bg-linear-to-br from-[#0A2540] to-slate-900 text-white p-10 md:p-16 rounded-3xl shadow-xl relative overflow-hidden">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Need more help? Contact Us</h3>
             <p className="text-slate-300 text-sm md:text-base max-w-xl mx-auto mb-8 leading-relaxed">
               &ldquo;Justice has always evoked ideas of equality, of proportion of compensation. In short, Justice is another name of Liberty, Equality and Fraternity.&rdquo; — Babasaheb Dr. B.R. Ambedkar
