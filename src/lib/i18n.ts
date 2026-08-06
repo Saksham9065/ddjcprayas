@@ -41,7 +41,7 @@ export const translations = {
     footerCopyright: "© {year} Dalit Dignity & Justice Center. All Rights Reserved.",
   },
   hi: {
-    siteTitle: "दलित गरिमा एवं न्याय केंद्र",
+    siteTitle: "दलित सम्मान व न्याय केन्द्र",
     siteSubtitle: "न्याय तक पहुंच • समानता • मानवीय अधिकार",
     about: "हमारे बारे में",
     ourWork: "हमारा काम",
@@ -64,7 +64,7 @@ export const translations = {
     topbarTagline: "न्याय • समानता • मानवाधिकार",
     topbarToggle: "हिंदी | EN",
     heroBadge: "न्याय तक पहुंच • समानता • मानवाधिकार",
-    heroTitle: "दलित गरिमा एवं न्याय केंद्र",
+    heroTitle: "दलित सम्मान व न्याय केन्द्र",
     heroSubtitle: "हम मुफ्त कानूनी सहायता, संवैधानिक जागरूकता, मानवाधिकार वकालत और वंचित समुदायों के समर्थन प्रदान करते हैं ताकि गरिमा, समानता और न्याय सुनिश्चित हो सके।",
     heroPrimaryCta: "शिकायत दर्ज करें",
     heroSecondaryCta: "हमारे उद्देश्य का समर्थन करें",
@@ -77,7 +77,7 @@ export const translations = {
     footerDonate: "दान करें",
     footerTagline: "न्याय तक पहुंच • समानता • मानवीय अधिकार",
     footerAddress: "पुलिस लाइन – बघौरा, ओराई – जालौन, उ.प्र. - 285001",
-    footerCopyright: "© {year} दलित गरिमा एवं न्याय केंद्र। सर्वाधिकार सुरक्षित।",
+    footerCopyright: "© {year} दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।",
   },
 };
 

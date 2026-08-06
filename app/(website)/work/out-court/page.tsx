@@ -11,7 +11,7 @@ export default function OutCourtPage() {
   const isHindi = language === "hi";
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-6 max-w-5xl space-y-16">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl space-y-16">
         
         {/* Header Banner */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

@@ -11,7 +11,7 @@ export default function AboutPage() {
   const content = translations[language];
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-6 max-w-5xl space-y-16">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl space-y-16">
         
          {/* Header Banner */}
          <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -19,7 +19,7 @@ export default function AboutPage() {
              {language === "en" ? "Who We Are" : "हम हम हैं"}
            </span>
            <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
-             {language === "en" ? "About Dalit Dignity & Justice Center (DDJC)" : "दलित गरिमा एवं न्याय केंद्र (DDJC) के बारे में"}
+              {language === "en" ? "About Dalit Dignity & Justice Center (DDJC)" : "दलित सम्मान व न्याय केन्द्र (DDJC) के बारे में"}
            </h1>
            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
              {language === "en" ? "Step Towards Justice and Dignity. Founded on October 9, 2023, by the Bundelkhand Dalit Adhikar Manch." : "न्याय और गरिमा की दिशा में कदम। 9 अक्टूबर 2023 को बुंदेलखंड दलित अधिकार मंच द्वारा स्थापित।"}

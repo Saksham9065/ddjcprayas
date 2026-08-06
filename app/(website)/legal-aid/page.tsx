@@ -9,7 +9,7 @@ export default function LegalAidPage() {
   const { language } = useApp();
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-6 max-w-5xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {language === "en" ? "Access to Justice" : "न्याय तक पहुंच"}

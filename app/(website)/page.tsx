@@ -171,7 +171,7 @@ export default function HomePage() {
                  {isHindi ? "न्याय तक पहुंच • समानता • मानवाधिकार" : "Access to Justice • Equality • Human Rights"}
                </span>
                <h1 className="text-2xl md:text-4xl lg:text-6xl font-black tracking-tight mb-4 md:mb-6 leading-tight text-white">
-                 {isHindi ? "दलित गरिमा एवं न्याय केंद्र" : "Dalit Dignity & Justice Centre"}
+                  {isHindi ? "दलित सम्मान व न्याय केन्द्र" : "Dalit Dignity & Justice Centre"}
                </h1>
                <p className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">
                  {isHindi ? "हर नागरिक के लिए न्याय" : "Justice For Every Citizen"}
@@ -205,11 +205,11 @@ export default function HomePage() {
 
       {/* 2. WHY DDJC IS NEEDED SECTION */}
       <section className="py-10 pt-16 md:py-20 md:pt-24 bg-slate-50 border-b border-slate-200">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <div className="bg-white p-8 md:p-14 rounded-3xl shadow-sm border border-slate-200">
             <span className="text-xs font-bold text-[#000000] uppercase tracking-wider block mb-2">{isHindi ? "पृष्ठभूमि और उद्देश्य" : "Background & Purpose"}</span>
             <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] mb-6 tracking-tight">
-              {isHindi ? "दलित गरिमा एवं न्याय केंद्र (DDJC) की आवश्यकता क्यों है?" : "Why is the Dalit Dignity & Justice Centre (DDJC) needed?"}
+               {isHindi ? "दलित सम्मान व न्याय केन्द्र (DDJC) की आवश्यकता क्यों है?" : "Why is the Dalit Dignity & Justice Centre (DDJC) needed?"}
             </h2>
               <div className="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
                 <p>
@@ -241,7 +241,7 @@ export default function HomePage() {
 
       {/* 3. KEY SERVICES SECTION */}
       <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
               {isHindi ? "हम क्या करते हैं" : "What We Do"}
@@ -324,7 +324,7 @@ export default function HomePage() {
 
       {/* 5. LEGAL ACTION & EMERGENCY GUIDE SECTION */}
       <section className="py-10 pt-16 md:py-20 md:pt-24 bg-slate-50">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
               Legal Action
@@ -365,7 +365,7 @@ export default function HomePage() {
 
       {/* 6. COMPLAINT PROCESS SECTION */}
       <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white">
-        <div className="container mx-auto px-6 max-w-6xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
               Step-by-Step Guide

@@ -21,14 +21,14 @@ export default function StoriesPage() {
   return (
     <div className="bg-white min-h-screen">
       <div className="bg-[#0A2540] text-white py-4">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
           <div className="flex items-center justify-center gap-3">
             <span className="text-lg md:text-xl font-bold tracking-wider uppercase">Support Justice &amp; Equality</span>
           </div>
         </div>
       </div>
       <div className="py-10 pt-16 md:py-16 md:pt-24">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex justify-center mb-6">
             <div className="relative h-20 w-20 rounded-full overflow-hidden shadow-md border border-slate-200 bg-slate-50">
