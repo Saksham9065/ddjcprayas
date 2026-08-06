@@ -72,7 +72,7 @@ export default function ContactPage() {
             {language === "en" ? "You are not alone in this fight for justice. If you or someone you know has faced injustice, caste-based atrocity, or violence, please fill out the form below. DDJC’s legal team will contact you shortly." : "न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।"}
           </p>
           <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-            {language === "en" ? "Reach out to our legal coordinators, support staff, or visit our office in Orai for urgent assistance and inquiries." : "आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या ओराई स्थित हमारे कार्यालय में आएँ।"}
+            {language === "en" ? "Reach out to our legal coordinators, support staff, or visit our office in Orai for urgent assistance and inquiries." : "आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या उरई स्थित हमारे कार्यालय में आएँ।"}
           </p>
         </div>
 
@@ -230,7 +230,7 @@ export default function ContactPage() {
                   </>
                 ) : (
                   <>
-                    पुलिस लाइन – बघौरा, ओराई – जालौन, उतर प्रदेश - 285001
+                    पुलिस लाइन – बघौरा, उरई – जालौन, उतर प्रदेश - 285001
                   </>
                 )}
               </p>

@@ -36,7 +36,7 @@ function TopBar() {
 
             <div className="flex items-center gap-1 sm:gap-2">
               <FaMapMarkerAlt />
-              <span>{language === "en" ? "Police Line, Baghaura, Orai, Jalaun, Uttar Pradesh" : "पुलिस लाइन, बघौरा, ओराई, जालौन, उत्तर प्रदेश"}</span>
+              <span>{language === "en" ? "Police Line, Baghaura, Orai, Jalaun, Uttar Pradesh" : "पुलिस लाइन, बघौरा, उरई, जालौन, उत्तर प्रदेश"}</span>
             </div>
           </div>
 

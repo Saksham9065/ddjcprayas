@@ -76,7 +76,7 @@ export const translations = {
     footerContact: "संपर्क",
     footerDonate: "दान करें",
     footerTagline: "न्याय तक पहुंच • समानता • मानवीय अधिकार",
-    footerAddress: "पुलिस लाइन – बघौरा, ओराई – जालौन, उ.प्र. - 285001",
+    footerAddress: "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001",
     footerCopyright: "© {year} दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।",
   },
 };
