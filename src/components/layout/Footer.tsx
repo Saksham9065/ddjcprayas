@@ -61,7 +61,7 @@ function Footer() {
           
           <motion.div variants={itemVariants} className="flex flex-col text-left lg:pr-4">
             <div className="flex items-center gap-4 mb-5 group cursor-pointer">
-              <div className="h-14 w-14 rounded-full bg-white overflow-hidden shadow-lg border-2 border-white/10 shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:border-[#1ab9cb]/50 group-hover:shadow-[0_0_20px_rgba(26,185,203,0.3)]">
+              <div className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-white overflow-hidden shadow-lg border-2 border-white/10 shrink-0 transition-transform duration-500 group-hover:scale-105 group-hover:border-[#1ab9cb]/50 group-hover:shadow-[0_0_20px_rgba(26,185,203,0.3)]">
                 <img
                   src="/images/logo/ddjc-logo.jpg"
                   alt="DDJC Logo"
@@ -91,7 +91,7 @@ function Footer() {
                   href={social.href} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className={`h-9 w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 transition-all duration-300 hover:border-transparent hover:shadow-lg ${social.color}`}
+                  className={`h-8 w-8 md:h-9 md:w-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:-translate-y-1 transition-all duration-300 hover:border-transparent hover:shadow-lg ${social.color}`}
                 >
                   <social.icon size={14} />
                 </a>
@@ -152,8 +152,8 @@ function Footer() {
             
             <div className="space-y-4">
               <div className="flex items-start gap-3 group">
-                <div className="mt-0.5 w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
-                  <FaMapMarkerAlt size={11} />
+                <div className="mt-0.5 w-6 h-6 md:w-7 md:h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
+                  <FaMapMarkerAlt size={10} />
                 </div>
                 <span className="text-slate-400 text-sm leading-relaxed font-medium group-hover:text-white transition-colors duration-300">
                   {content.footerAddress}
@@ -161,8 +161,8 @@ function Footer() {
               </div>
 
               <div className="flex items-start gap-3 group">
-                <div className="mt-0.5 w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
-                  <FaPhoneAlt size={11} />
+                <div className="mt-0.5 w-6 h-6 md:w-7 md:h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
+                  <FaPhoneAlt size={10} />
                 </div>
                 <div className="text-slate-400 text-sm leading-relaxed font-medium">
                   <a href="tel:+919235737691" className="block hover:text-[#1ab9cb] transition-colors duration-300">9235737691</a>
@@ -171,8 +171,8 @@ function Footer() {
               </div>
 
               <div className="flex items-center gap-3 group">
-                <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
-                  <FaEnvelope size={11} />
+                <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-white/5 flex items-center justify-center text-[#1ab9cb] group-hover:bg-[#1ab9cb] group-hover:text-white transition-colors duration-300 shrink-0">
+                  <FaEnvelope size={10} />
                 </div>
                 <a
                   href="mailto:ddjc.prayas@gmail.com"

@@ -6,7 +6,7 @@ import { FaFileSignature, FaArrowRight } from "react-icons/fa";
 
 export default function CTA() {
   return (
-<section className="py-16 md:py-20 pt-24 md:pt-28 bg-slate-50">
+<section className="py-10 md:py-16 md:pt-24 bg-slate-50">
        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
          <div className="bg-[#0A2540] text-white p-6 md:p-10 lg:p-14 rounded-3xl text-center space-y-4 md:space-y-6 shadow-xl">
            <h2 className="text-xl md:text-2xl lg:text-3xl font-black tracking-tight">Need Legal Representation or Advice?</h2>

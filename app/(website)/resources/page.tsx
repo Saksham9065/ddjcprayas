@@ -24,13 +24,13 @@ export default function ResourcesPage() {
   ];
 
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {isHindi ? "ज्ञान केंद्र" : "Knowledge Hub"}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
             {isHindi ? "कानूनी संसाधन और गाइड" : "Legal Resources & Guides"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">

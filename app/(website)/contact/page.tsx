@@ -61,14 +61,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-16 pt-24">
+    <div className="bg-slate-50 min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
             {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन प्राप्त करें"}
           </h1>
-          <p className="text-slate-600 text-xs md:text-sm lg:text-base leading-relaxed mb-4">
+          <p className="text-slate-600 text-xs md:text-sm lg:text-base leading-relaxed mb-3">
             {language === "en" ? "You are not alone in this fight for justice. If you or someone you know has faced injustice, caste-based atrocity, or violence, please fill out the form below. DDJC’s legal team will contact you shortly." : "न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।"}
           </p>
           <p className="text-slate-600 text-xs md:text-sm leading-relaxed">

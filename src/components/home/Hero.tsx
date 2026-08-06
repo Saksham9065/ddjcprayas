@@ -10,7 +10,7 @@ export default function Hero() {
   const { language } = useApp();
   const content = translations[language];
   return (
-<section className="relative bg-[#0A2540] text-white py-20 md:py-28 pt-24 md:pt-28 overflow-hidden">
+<section className="relative bg-[#0A2540] text-white py-10 md:py-20 md:pt-24 overflow-hidden">
        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000000_1px,transparent_1px)] bg-size-[16px_16px]"></div>
        <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10 text-center space-y-6 md:space-y-8">
          

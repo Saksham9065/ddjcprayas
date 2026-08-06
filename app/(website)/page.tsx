@@ -204,7 +204,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. WHY DDJC IS NEEDED SECTION */}
-      <section className="py-20 pt-24 bg-slate-50 border-b border-slate-200">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 max-w-5xl">
           <div className="bg-white p-8 md:p-14 rounded-3xl shadow-sm border border-slate-200">
             <span className="text-xs font-bold text-[#000000] uppercase tracking-wider block mb-2">{isHindi ? "पृष्ठभूमि और उद्देश्य" : "Background & Purpose"}</span>
@@ -225,6 +225,7 @@ export default function HomePage() {
                 className="w-full h-auto"
                 width={1189}
                 height={630}
+                priority
               />
               <div className="mt-8">
                 <Link
@@ -239,7 +240,7 @@ export default function HomePage() {
       </section>
 
       {/* 3. KEY SERVICES SECTION */}
-      <section className="py-20 pt-24 bg-white">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
@@ -288,7 +289,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. IMPACT COUNTERS SECTION */}
-      <section className="py-20 pt-24 bg-white text-slate-800">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white text-slate-800">
         <div className="container mx-auto px-6 max-w-6xl text-center">
           <span className="bg-slate-100 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest inline-block mb-3 border border-slate-200">
             Our Impact
@@ -322,7 +323,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. LEGAL ACTION & EMERGENCY GUIDE SECTION */}
-      <section className="py-20 pt-24 bg-slate-50">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-slate-50">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
@@ -363,7 +364,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. COMPLAINT PROCESS SECTION */}
-      <section className="py-20 pt-24 bg-white">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white">
         <div className="container mx-auto px-6 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
@@ -411,7 +412,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. FAQ ACCORDION SECTION */}
-      <section className="py-20 pt-24 bg-slate-50 border-t border-slate-200">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-slate-50 border-t border-slate-200">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center mb-16">
             <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3">
@@ -467,7 +468,7 @@ export default function HomePage() {
       </section>
 
       {/* 8. QUOTE & CONTACT BANNER */}
-      <section className="py-20 pt-24 bg-white">
+      <section className="py-10 pt-16 md:py-20 md:pt-24 bg-white">
         <div className="container mx-auto px-6 max-w-5xl text-center">
           <div className="bg-linear-to-br from-[#0A2540] to-slate-900 text-white p-10 md:p-16 rounded-3xl shadow-xl relative overflow-hidden">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">Need more help? Contact Us</h3>

@@ -10,7 +10,7 @@ export default function AboutPage() {
   const { language } = useApp();
   const content = translations[language];
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
         
          {/* Header Banner */}
@@ -39,10 +39,10 @@ export default function AboutPage() {
                To ensure that every individual has access to justice, an understanding of human rights, and that victims receive justice with dignity—and to improve access to government welfare schemes, especially for Dalit and marginalized communities—the Dalit Dignity & Justice Centre (DDJC) was established on October 9, 2023.
              </p>
            </div>
-           <div className="grid md:grid-cols-2 gap-6">
-             <img src="/images/contact/office.jpg" alt="DDJC Office" />
-             <img src="/images/hero/1.jpg" alt="DDJC Team" />
-           </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <img src="/images/contact/office.jpg" alt="DDJC Office" className="w-full h-auto" />
+              <img src="/images/hero/1.jpg" alt="DDJC Team" className="w-full h-auto" />
+            </div>
          </div>
 
         {/* Core Purpose & Vision / Mission */}
@@ -51,7 +51,7 @@ export default function AboutPage() {
             <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center text-xl">
               <FaBullseye />
             </div>
-            <h2 className="text-2xl font-bold text-[#0A2540]">{language === "en" ? "Our Mission" : "हमारा मिशन"}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0A2540]">{language === "en" ? "Our Mission" : "हमारा मिशन"}</h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               {language === "en" ? "To provide uncompromised legal aid, institutional representation, and constitutional awareness to marginalized communities, ensuring that systemic barriers never deny any individual their right to justice and dignity." : "वंचित समुदायों को बिना किसी समझौते के कानूनी सहायता, संस्थागत प्रतिनिधित्व और संवैधानिक जागरूकता प्रदान करना, ताकि सिस्टमिक बाधाएँ किसी भी व्यक्ति के न्याय और गरिमा के अधिकार से वंचित न हों।"}
             </p>
@@ -61,7 +61,7 @@ export default function AboutPage() {
             <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#000000] flex items-center justify-center text-xl">
               <FaEye />
             </div>
-            <h2 className="text-2xl font-bold text-[#0A2540]">{language === "en" ? "Our Vision" : "हमारी दृष्टि"}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0A2540]">{language === "en" ? "Our Vision" : "हमारी दृष्टि"}</h2>
             <p className="text-slate-600 text-sm md:text-base leading-relaxed">
               {language === "en" ? "“The creation of a fear-free, egalitarian, and caste-free India where every citizen enjoys the right to dignified justice, equality, and liberty.”" : "“एक भयमुक्त, समतामूलक और जातिहीन भारत की रचना जहाँ प्रत्येक नागरिक को गरिमापूर्ण न्याय, समानता और स्वतंत्रता का अधिकार प्राप्त हो।”"}
             </p>
@@ -70,7 +70,7 @@ export default function AboutPage() {
 
         {/* DDJC Main Focus Areas */}
         <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "Core Focus Areas of DDJC" : "DDJC के प्रमुख फोकस क्षेत्र"}</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A2540]">{language === "en" ? "Core Focus Areas of DDJC" : "DDJC के प्रमुख फोकस क्षेत्र"}</h2>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-slate-700">
             <div className="flex items-start gap-3">
               <span className="w-8 h-8 rounded-lg bg-blue-50 text-[#2563EB] flex items-center justify-center shrink-0 font-bold">1</span>

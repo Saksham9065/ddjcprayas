@@ -103,9 +103,9 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-100 bg-white/90 backdrop-blur-xl shadow-sm border-b border-gray-100 transition-all duration-300">
       <div className="container mx-auto px-4 md:px-8 max-w-[1600px]">
-        <nav className="flex items-center justify-between h-20">
+        <nav className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" onClick={closeMenu} className="flex items-center gap-4 group shrink-0">
-            <div className="h-14 w-14 md:h-16 md:w-16 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform duration-300 group-hover:scale-105 shrink-0 bg-slate-50 flex items-center justify-center">
+            <div className="h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform duration-300 group-hover:scale-105 shrink-0 bg-slate-50 flex items-center justify-center">
               <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover object-center" />
             </div>
             <div className="hidden sm:flex flex-col justify-center">
@@ -187,7 +187,7 @@ function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown, language
   const isActive = activeDropdown === item.key;
   return (
     <li className="relative group shrink-0 h-full flex items-center list-none" onMouseEnter={() => setActiveDropdown(item.key)} onMouseLeave={() => setActiveDropdown(null)}>
-      <button className={`flex items-center gap-1.5 h-full px-2 font-bold text-[16px] tracking-wide transition-colors duration-300 ${isActive ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
+      <button className={`flex items-center gap-1.5 h-full px-2 font-bold text-sm md:text-[16px] tracking-wide transition-colors duration-300 ${isActive ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
         <span className="relative flex items-center gap-1.5 py-1">
           {translations[language][item.key]}
           <motion.div animate={{ rotate: isActive ? 180 : 0 }}><FaChevronDown className="text-[11px] opacity-60" /></motion.div>
@@ -220,7 +220,7 @@ interface DesktopNavLinkProps {
 function DesktopNavLink({ item, pathname, language }: DesktopNavLinkProps) {
   return (
     <li className="shrink-0 h-full flex items-center list-none group">
-      <Link href={item.path} className={`flex items-center h-full px-2 font-bold text-[16px] transition-colors ${item.path !== "#" && pathname === item.path ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
+      <Link href={item.path} className={`flex items-center h-full px-2 font-bold text-sm md:text-[16px] transition-colors ${item.path !== "#" && pathname === item.path ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
         <span className="relative py-1">
           {translations[language][item.key]}
           <span className={`absolute bottom-0 left-0 w-full h-[2.5px] rounded-full bg-[#2563EB] transition-transform ${item.path !== "#" && pathname === item.path ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
@@ -265,7 +265,7 @@ function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, close
               <div key={item.name} className="w-full text-center">
                 {item.dropdown ? (
                   <div className="flex flex-col">
-                    <button onClick={() => toggleDropdown(item.key)} className="font-bold text-[18px] text-[#0A2540]">{translations[language][item.key]}</button>
+                     <button onClick={() => toggleDropdown(item.key)} className="font-bold text-base md:text-[18px] text-[#0A2540]">{translations[language][item.key]}</button>
                     {activeDropdown === item.key && (
                       <div className="flex flex-col gap-2 pt-2">
                         {item.children?.map(child => <Link key={child.path} href={child.path} onClick={closeMenu} className="text-slate-500">{translations[language][child.key]}</Link>)}
@@ -273,7 +273,7 @@ function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, close
                     )}
                   </div>
                 ) : (
-                  <Link href={item.path} onClick={closeMenu} className="font-bold text-[18px] text-[#0A2540]">{translations[language][item.key]}</Link>
+                   <Link href={item.path} onClick={closeMenu} className="font-bold text-base md:text-[18px] text-[#0A2540]">{translations[language][item.key]}</Link>
                 )}
               </div>
             ))}

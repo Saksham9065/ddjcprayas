@@ -78,7 +78,7 @@ export default function GalleryPage() {
   const isHindi = language === "hi";
 
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
@@ -90,7 +90,7 @@ export default function GalleryPage() {
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {isHindi ? "फोटो गैलरी" : "Photo Gallery"}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4">
             Gallery
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">

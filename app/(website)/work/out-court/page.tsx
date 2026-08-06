@@ -10,7 +10,7 @@ export default function OutCourtPage() {
   const { language } = useApp();
   const isHindi = language === "hi";
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
         
         {/* Header Banner */}
@@ -18,7 +18,7 @@ export default function OutCourtPage() {
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             {isHindi ? "समुदाय और प्रशासनिक कार्रवाई" : "Community & Administrative Action"}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-[#0A2540] tracking-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight">
             {isHindi ? "अदालत-बहिरा हस्तक्षेप और समुदाय सशक्तिकरण" : "Out-of-Court Interventions & Community Empowerment"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#2563EB] pl-4 py-1 mx-auto max-w-2xl text-left">
@@ -28,7 +28,7 @@ export default function OutCourtPage() {
 
         {/* Featured Community Outreach Images Section */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-md border border-slate-200">
+          <div className="relative h-56 sm:h-64 md:h-80 rounded-3xl overflow-hidden shadow-md border border-slate-200">
             <Image
               src="/images/out of court/Community Meeting 8.jpeg"
               alt="Community awareness meeting and grassroots legal literacy camp"
@@ -38,7 +38,7 @@ export default function OutCourtPage() {
             />
           </div>
 
-          <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-md border border-slate-200">
+          <div className="relative h-56 sm:h-64 md:h-80 rounded-3xl overflow-hidden shadow-md border border-slate-200">
             <Image
               src="/images/out of court/IMG20241217142146.jpg"
               alt="Fact-finding delegation and community support"

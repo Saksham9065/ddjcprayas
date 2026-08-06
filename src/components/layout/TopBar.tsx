@@ -16,7 +16,7 @@ function TopBar() {
   return (
     <div className="bg-[#0A2540] text-white text-xs sm:text-sm md:text-base">
       <div className="container mx-auto px-2 sm:px-6">
-        <div className="flex justify-between items-center py-2 sm:py-3">
+        <div className="flex flex-wrap justify-between items-center py-2 sm:py-3">
           <div className="flex items-center gap-2 sm:gap-8">
             <a
               href="tel:+919235737691"
@@ -43,7 +43,7 @@ function TopBar() {
           <div className="flex items-center gap-2 sm:gap-6">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-1 sm:gap-2 rounded-full border border-white/20 bg-white/10 px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-semibold transition hover:bg-white/20"
+               className="flex items-center gap-1 sm:gap-2 rounded-full border border-white/20 bg-white/10 px-2 sm:px-3 py-1 text-[10px] sm:text-xs md:text-sm font-semibold transition hover:bg-white/20"
             >
               <FaGlobe />
               <span>{language === "en" ? "EN | हिन्दी" : "हिंदी | EN"}</span>

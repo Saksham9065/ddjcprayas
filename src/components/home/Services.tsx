@@ -6,13 +6,13 @@ import { FaShieldAlt, FaArrowRight } from "react-icons/fa";
 
 export default function Services() {
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-10 md:py-20 bg-slate-50">
       <div className="container mx-auto px-6 max-w-6xl space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             What We Do
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A2540]">Defending Rights at the Grassroots</h2>
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A2540]">Defending Rights at the Grassroots</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -24,7 +24,7 @@ export default function Services() {
             <p className="text-slate-600 text-xs leading-relaxed">
               Immediate legal assistance, police accountability monitoring, and FIR registration support under the Act.
             </p>
-            <Link href="/legal-aid" className="text-[#000000] text-xs font-bold inline-flex items-center gap-1 pt-2">
+            <Link href="/legal-aid" className="text-[#000000] text-xs md:text-sm font-bold inline-flex items-center gap-1 pt-2">
               Learn more <FaArrowRight size={10} />
             </Link>
           </div>

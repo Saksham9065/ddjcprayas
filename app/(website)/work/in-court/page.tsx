@@ -10,7 +10,7 @@ export default function InCourtPage() {
   const { language } = useApp();
   const isHindi = language === "hi";
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-5xl space-y-16">
         
         {/* Header Banner */}
@@ -18,7 +18,7 @@ export default function InCourtPage() {
           <span className="bg-slate-100 text-[#1ab9cb] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             {isHindi ? "न्यायिक हस्तक्षेप" : "Judicial Intervention"}
           </span>
-          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
             {isHindi ? "अदालत में संचालन और कानूनी वकालत" : "In-Court Operations & Legal Advocacy"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#1ab9cb] pl-4 py-1 mx-auto max-w-2xl text-left">
@@ -28,7 +28,7 @@ export default function InCourtPage() {
 
         {/* Featured Court Images Section */}
         <div className="grid md:grid-cols-2 gap-6">
-          <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+          <div className="relative h-56 sm:h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
             <Image
               src="/images/court/allhabad court.png"
               alt="ALLAHABAD HIGH COURT"
@@ -41,7 +41,7 @@ export default function InCourtPage() {
             </div>
           </div>
 
-          <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+          <div className="relative h-56 sm:h-64 md:h-80 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
             <Image
               src="/images/court/image.png"
               alt="DISTRICT COURT JALAUN (ORAI)"

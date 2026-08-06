@@ -87,7 +87,7 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen py-16 pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-6 max-w-4xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
@@ -99,7 +99,7 @@ export default function CareersPage() {
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {isHindi ? "हमारी टीम में शामिल हों" : "Join Our Team"}
           </span>
-          <h1 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
             {isHindi ? "करियर के अवसर" : "Career Opportunities"}
           </h1>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">

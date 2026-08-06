@@ -6,13 +6,13 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function AboutSection() {
   return (
-    <section className="py-16 bg-white border-y border-slate-200">
+    <section className="py-10 md:py-16 bg-white border-y border-slate-200">
       <div className="container mx-auto px-6 max-w-6xl grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             Who We Are
           </span>
-          <h2 className="text-3xl font-black text-[#0A2540] tracking-tight">
+          <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] tracking-tight">
             Committed to Equal Justice Across Bundelkhand
           </h2>
           <p className="text-slate-600 text-sm leading-relaxed">
@@ -21,7 +21,7 @@ export default function AboutSection() {
           <div>
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-[#000000] hover:text-slate-700 font-bold text-xs uppercase tracking-wider"
+               className="inline-flex items-center gap-2 text-[#000000] hover:text-slate-700 font-bold text-xs md:text-sm uppercase tracking-wider"
             >
               Read More About Us <FaArrowRight size={10} />
             </Link>

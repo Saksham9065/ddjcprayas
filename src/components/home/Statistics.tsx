@@ -6,7 +6,7 @@ export default function Statistics() {
   return (
     <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-8">
       <div className="max-w-2xl">
-        <h2 className="text-2xl md:text-3xl font-black text-[#0A2540] mb-3">Our Impact Statistics</h2>
+          <h2 className="text-xl md:text-2xl font-black text-[#0A2540] mb-3">Our Impact Statistics</h2>
         <p className="text-slate-600 text-xs">Tracking our transparent interventions across Bundelkhand districts.</p>
       </div>
       <div className="grid md:grid-cols-3 gap-6 text-center">
