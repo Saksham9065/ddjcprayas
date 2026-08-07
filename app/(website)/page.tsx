@@ -177,7 +177,7 @@ export default function HomePage() {
                  {isHindi ? "हर नागरिक के लिए न्याय" : "Justice For Every Citizen"}
                </p>
                 <blockquote className="max-w-2xl mx-auto italic text-white/80 text-xs md:text-sm lg:text-base mb-4 md:mb-10 pl-4 py-1">
-                  {isHindi ? "“न्याय सामाजिक संस्थानों की पहली vertu है।” — डॉ. बी.आर. अम्बेडकर" : "“Justice is the first virtue of social institutions.” — Dr. B.R. Ambedkar"}
+                  {isHindi ? "“न्याय सामाजिक संस्थाओं का पहला गुण है।” — डॉ. बी.आर. अम्बेडकर" : "“Justice is the first virtue of social institutions.” — Dr. B.R. Ambedkar"}
                 </blockquote>
                 <p className="max-w-3xl mx-auto text-white/80 text-xs md:text-sm lg:text-base leading-relaxed mb-4 md:mb-10">
                  {isHindi ? "हम वंचित समुदायों को मुफ्त कानूनी सहायता, संवैधानिक जागरूकता, मानवाधिकार वकालत और समर्थन प्रदान करते हैं ताकि गरिमा, समानता और न्याय सुनिश्चित हो।" : "We provide free legal aid, constitutional awareness, human rights advocacy, and support for marginalized communities to ensure dignity, equality, and justice."}
