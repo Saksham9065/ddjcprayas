@@ -2,13 +2,12 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaBullseye, FaEye, FaArrowRight, FaShieldAlt, FaBalanceScale, FaBookOpen, FaUsers } from "react-icons/fa";
+import Image from "next/image";
+import { FaBullseye, FaEye, FaArrowRight } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
-import { translations } from "@/lib/i18n";
 
 export default function AboutPage() {
   const { language } = useApp();
-  const content = translations[language];
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-5xl space-y-16">
@@ -40,8 +39,8 @@ export default function AboutPage() {
              </p>
            </div>
             <div className="grid md:grid-cols-2 gap-6">
-              <img src="/images/contact/office.jpg" alt="DDJC Office" className="w-full h-auto" />
-              <img src="/images/hero/1.jpg" alt="DDJC Team" className="w-full h-auto" />
+              <Image src="/images/contact/office.jpg" alt="DDJC Office" width={1189} height={630} className="w-full h-auto" />
+              <Image src="/images/hero/1.jpg" alt="DDJC Team" width={3976} height={1923} className="w-full h-auto" />
             </div>
          </div>
 
