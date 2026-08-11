@@ -22,7 +22,7 @@ export default function InCourtPage() {
             {isHindi ? "अदालत में संचालन और कानूनी वकालत" : "In-Court Operations & Legal Advocacy"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#1ab9cb] pl-4 py-1 mx-auto max-w-2xl text-left">
-            {isHindi ? "“किसी भी जगह अन्याय justice everywhere के लिए खतरा है।” — डॉ. मार्टिन लूथर किंग जूनियर" : "“Injustice anywhere is a threat to justice everywhere.” — Dr. Martin Luther King Jr."}
+            {isHindi ? "“अन्याय कहीं भी हो, वह हर जगह के न्याय के लिए खतरा है।” — डॉ. मार्टिन लूथर किंग जूनियर" : "“Injustice anywhere is a threat to justice everywhere.” — Dr. Martin Luther King Jr."}
           </blockquote>
         </div>
 
