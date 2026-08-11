@@ -19,6 +19,7 @@ export interface IJoinApplication extends Document {
   resume?: string;
   university?: string;
   field?: string;
+  status?: string;
 }
 
 const joinApplicationSchema = new Schema<IJoinApplication>(
@@ -41,6 +42,7 @@ const joinApplicationSchema = new Schema<IJoinApplication>(
     resume: { type: String, trim: true },
     university: { type: String, trim: true },
     field: { type: String, trim: true },
+    status: { type: String, trim: true, default: "Pending" },
   },
   {
     timestamps: true,

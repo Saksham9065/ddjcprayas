@@ -37,25 +37,12 @@ export default function InternshipsPage() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        setSuccess(true);
-        setFormData({
-          fullName: "",
-          fatherHusbandName: "",
-          age: "",
-          category: "",
-          gender: "",
-          education: "",
-          mobile: "",
-          email: "",
-          address: "",
-          university: "",
-          field: "",
-          resume: "",
-          statement: "",
-        });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Unable to submit application");
       }
-    } catch {
+
       setSuccess(true);
       setFormData({
         fullName: "",
@@ -72,6 +59,9 @@ export default function InternshipsPage() {
         resume: "",
         statement: "",
       });
+    } catch (error) {
+      console.error("Internship submission error:", error);
+      alert(error instanceof Error ? error.message : "Unable to submit application");
     } finally {
       setLoading(false);
     }

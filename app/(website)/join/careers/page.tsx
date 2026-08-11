@@ -38,26 +38,12 @@ export default function CareersPage() {
         body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        setSuccess(true);
-        setFormData({
-          fullName: "",
-          fatherHusbandName: "",
-          age: "",
-          category: "",
-          gender: "",
-          education: "",
-          mobile: "",
-          email: "",
-          address: "",
-          occupation: "",
-          experience: "",
-          position: "",
-          resume: "",
-          statement: "",
-        });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.error || "Unable to submit application");
       }
-    } catch {
+
       setSuccess(true);
       setFormData({
         fullName: "",
@@ -75,6 +61,9 @@ export default function CareersPage() {
         resume: "",
         statement: "",
       });
+    } catch (error) {
+      console.error("Career submission error:", error);
+      alert(error instanceof Error ? error.message : "Unable to submit application");
     } finally {
       setLoading(false);
     }

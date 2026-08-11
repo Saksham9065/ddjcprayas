@@ -62,7 +62,7 @@ export async function GET(request: Request) {
         resume: item.resume,
         university: item.university,
         field: item.field,
-        status: "Pending",
+        status: item.status || "Pending",
         createdAt: item.createdAt?.toISOString?.() || "",
       })),
       total,
