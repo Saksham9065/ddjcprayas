@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowLeft } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 const NEWS_IMAGES = [
   { src: "/images/news/Advocate Meeting News- आज की पहचान.jpeg", alt: "Advocate Meeting News - Aaj Ki Pehchaan" },
@@ -46,24 +47,26 @@ const NEWS_IMAGES = [
 ];
 
 export default function NewsPage() {
+  const { language } = useApp();
+
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
-            <FaArrowLeft size={12} /> होम पर वापस जाएँ
+            <FaArrowLeft size={12} /> {language === "en" ? "Back to Home" : "होम पर वापस जाएँ"}
           </Link>
         </div>
 
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            प्रेस और मीडिया
+            {language === "en" ? "Press & Media" : "प्रेस और मीडिया"}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
-            समाचार और प्रेस विज्ञप्तियाँ
+            {language === "en" ? "News and Press Releases" : "समाचार और प्रेस विज्ञप्तियाँ"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            हमारे नवीनतम प्रेस कवरेज और फील्ड रिपोर्ट्स से अपडेट रहें।
+            {language === "en" ? "Stay updated with our latest press coverage and field reports." : "हमारे नवीनतम प्रेस कवरेज और फील्ड रिपोर्ट्स से अपडेट रहें।"}
           </p>
         </div>
 

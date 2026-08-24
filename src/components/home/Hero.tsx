@@ -14,6 +14,7 @@ import {
   Scale,
   Quote,
 } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 const HERO_IMAGES = [
   "/images/hero/1.jpg",
@@ -30,29 +31,32 @@ const HERO_IMAGES = [
 
 export default function Hero() {
   const [idx, setIdx] = useState(0);
+  const { language } = useApp();
 
   const safeIdx = Number.isFinite(idx)
     ? ((idx % HERO_IMAGES.length) + HERO_IMAGES.length) % HERO_IMAGES.length
     : 0;
 
-  const words = ["सम्मान।", "न्याय।", "शक्ति।"];
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
+
+  const words = [t("Dignity.", "सम्मान।"), t("Justice.", "न्याय।"), t("Power.", "शक्ति।")];
 
   const bottomPoints = [
-    { icon: DoorOpen, text: "आने के लिए एक जगह।" },
-    { icon: MessageCircle, text: "बात करने के लिए एक व्यक्ति।" },
-    { icon: Wrench, text: "हल करने के लिए एक समस्या।" },
-    { icon: Scale, text: "दावा करने के लिए एक अधिकार।" },
+    { icon: DoorOpen, text: t("A place to come.", "आने के लिए एक जगह।") },
+    { icon: MessageCircle, text: t("A person to talk to.", "बात करने के लिए एक व्यक्ति।") },
+    { icon: Wrench, text: t("A problem to solve.", "हल करने के लिए एक समस्या।") },
+    { icon: Scale, text: t("A right to claim.", "दावा करने के लिए एक अधिकार।") },
   ];
 
   const ctas = [
     {
-      label: "मुझे सहायता चाहिए",
+      label: t("I Need Help", "मुझे सहायता चाहिए"),
       href: "/complaint",
       icon: Handshake,
       style: "bg-gold hover:bg-gold-soft text-navy shadow-lg",
     },
     {
-      label: "DDJC खोजें",
+      label: t("Find DDJC", "DDJC खोजें"),
       href: "/contact",
       icon: MapPin,
       style: "border border-white/40 hover:bg-white/10 text-white backdrop-blur-sm",
@@ -91,7 +95,7 @@ export default function Hero() {
               >
                 <Image
                   src={src}
-                  alt="DDJC सामुदायिक सभा"
+                  alt={t("DDJC Community Sabha", "DDJC सामुदायिक सभा")}
                   fill
                   priority={i === safeIdx}
                   loading={i === safeIdx ? "eager" : "lazy"}
@@ -112,7 +116,7 @@ export default function Hero() {
             <button
               key={i}
               onClick={() => setIdx(i)}
-              aria-label={`तस्विर ${i + 1} दिखाएँ`}
+              aria-label={t(`Show image ${i + 1}`, `तस्विर ${i + 1} दिखाएँ`)}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === idx ? "w-7 bg-gold" : "w-1.5 bg-white/50 hover:bg-white/80"
               }`}
@@ -127,7 +131,7 @@ export default function Hero() {
           <div className="text-left mt-px">
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/25 text-white px-4 py-2 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              {"एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।"}
+              {t("One Centre. Many Doors to Dignity, Justice & Empowerment.", "एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।")}
             </span>
 
             <h1 className="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 drop-shadow-lg">
@@ -140,17 +144,17 @@ export default function Hero() {
             </h1>
 
             <p className="text-base md:text-xl font-semibold text-white/90 mb-4 drop-shadow-md">
-              {"एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।"}
+              {t("A community centre where rights become reality.", "एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।")}
             </p>
 
             <p className="text-[13px] md:text-sm text-white leading-relaxed mb-5 max-w-xl bg-black/30 backdrop-blur-sm rounded-xl px-4 py-3">
-              {"दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।"}
+              {t("Dalit Dignity & Justice Center (DDJC) are village-level one-stop centres that help communities access justice, rights, information, government services and opportunities — while building a new generation of informed and empowered citizens.", "दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
             </p>
 
             <blockquote className="flex items-start gap-3 text-xs md:text-sm text-white font-bold italic mb-8 max-w-xl drop-shadow-md">
               <Quote className="mt-1 text-gold/70 shrink-0" size={14} />
               <span>
-                {"“जब तक समाज का अंतिम व्यक्ति सशक्त नहीं हो जाता, तब तक स्वतंत्रता अधूरी है।” — डॉ. बी.आर. अम्बेडकर"}
+                {t("“Until the last person in society is empowered, freedom is incomplete.” — Dr. B.R. Ambedkar", "“जब तक समाज का अंतिम व्यक्ति सशक्त नहीं हो जाता, तब तक स्वतंत्रता अधूरी है।” — डॉ. बी.आर. अम्बेडकर")}
               </span>
             </blockquote>
 
@@ -175,8 +179,8 @@ export default function Hero() {
                      key={i}
                      className="flex-1 min-w-[45%] sm:min-w-0 flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/90 px-2 py-2.5 text-center"
                    >
-                     <point.icon className="text-[#0A2540] shrink-0" size={14} />
-                     <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-[#0A2540] leading-tight">{point.text}</span>
+                     <point.icon className="text-navy shrink-0" size={14} />
+                     <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-navy leading-tight">{point.text}</span>
                    </div>
                  ))}
              </div>

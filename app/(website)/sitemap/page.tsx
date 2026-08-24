@@ -2,63 +2,66 @@
 
 import React from "react";
 import Link from "next/link";
-
-const SECTIONS = [
-  {
-    title: "हमारे बारे में",
-    links: [
-      { name: "हमारे बारे में", href: "/about" },
-      { name: "टीम", href: "/team" },
-      { name: "संसाधन", href: "/resources" },
-    ],
-  },
-  {
-    title: "हमारा काम",
-    links: [
-      { name: "अदालत में", href: "/work/in-court" },
-      { name: "अदालत के बाहर", href: "/work/out-court" },
-      { name: "कानूनी सहायता", href: "/legal-aid" },
-    ],
-  },
-  {
-    title: "मीडिया",
-    links: [
-      { name: "समाचार", href: "/media/news" },
-      { name: "फोटो गैलरी", href: "/media/gallery" },
-      { name: "बदलाव की कहानियाँ", href: "/media/stories" },
-    ],
-  },
-  {
-    title: "हमसे जुड़ें",
-    links: [
-      { name: "नौकरी / करियर", href: "/join/careers" },
-      { name: "इन्टर्नशिप", href: "/join/internships" },
-      { name: "स्वयंसेवक", href: "/join/volunteers" },
-    ],
-  },
-  {
-    title: "समर्थन",
-    links: [
-      { name: "शिकायत दर्ज करें", href: "/complaint" },
-      { name: "संपर्क करें", href: "/contact" },
-      { name: "दान करें", href: "/donate" },
-    ],
-  },
-];
+import { useApp } from "@/context/AppContext";
 
 export default function SitemapPage() {
+  const { language } = useApp();
+
+  const SECTIONS = [
+    {
+      title: language === "en" ? "About Us" : "हमारे बारे में",
+      links: [
+        { name: language === "en" ? "About Us" : "हमारे बारे में", href: "/about" },
+        { name: language === "en" ? "Team" : "टीम", href: "/team" },
+        { name: language === "en" ? "Resources" : "संसाधन", href: "/resources" },
+      ],
+    },
+    {
+      title: language === "en" ? "Our Work" : "हमारा काम",
+      links: [
+        { name: language === "en" ? "In Court" : "अदालत में", href: "/work/in-court" },
+        { name: language === "en" ? "Out of Court" : "अदालत के बाहर", href: "/work/out-court" },
+        { name: language === "en" ? "Legal Aid" : "कानूनी सहायता", href: "/legal-aid" },
+      ],
+    },
+    {
+      title: language === "en" ? "Media" : "मीडिया",
+      links: [
+        { name: language === "en" ? "News" : "समाचार", href: "/media/news" },
+        { name: language === "en" ? "Photo Gallery" : "फोटो गैलरी", href: "/media/gallery" },
+        { name: language === "en" ? "Stories of Change" : "बदलाव की कहानियाँ", href: "/media/stories" },
+      ],
+    },
+    {
+      title: language === "en" ? "Join Us" : "हमसे जुड़ें",
+      links: [
+        { name: language === "en" ? "Careers" : "नौकरी / करियर", href: "/join/careers" },
+        { name: language === "en" ? "Internships" : "इन्टर्नशिप", href: "/join/internships" },
+        { name: language === "en" ? "Volunteers" : "स्वयंसेवक", href: "/join/volunteers" },
+      ],
+    },
+    {
+      title: language === "en" ? "Support" : "समर्थन",
+      links: [
+        { name: language === "en" ? "File Complaint" : "शिकायत दर्ज करें", href: "/complaint" },
+        { name: language === "en" ? "Contact Us" : "संपर्क करें", href: "/contact" },
+        { name: language === "en" ? "Donate" : "दान करें", href: "/donate" },
+      ],
+    },
+  ];
+
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            साइटमैप
+            {language === "en" ? "Sitemap" : "साइटमैप"}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
-            वेबसाइट मानचित्र
+            {language === "en" ? "Website Map" : "वेबसाइट मानचित्र"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            DDJC वेबसाइट के सभी पृष्ठों और संसाधनों की सूची।
+            {language === "en" ? "List of all pages and resources on the DDJC website." : "DDJC वेबसाइट के सभी पृष्ठों और संसाधनों की सूची।"}
           </p>
         </div>
 
@@ -90,7 +93,7 @@ export default function SitemapPage() {
             href="/"
             className="inline-flex items-center gap-2 bg-[#0A2540] hover:bg-slate-600 text-white font-bold px-6 py-3.5 rounded-xl transition-colors text-sm"
           >
-            होम पर जाएँ
+            {language === "en" ? "Go to Home" : "होम पर जाएँ"}
           </Link>
         </div>
       </div>

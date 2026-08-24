@@ -12,6 +12,7 @@ import {
   Megaphone,
   Users,
 } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 interface Item {
   en: string;
@@ -32,14 +33,18 @@ const ITEMS: Item[] = [
 ];
 
 export default function HowItWorks() {
+  const { language } = useApp();
+
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
+
   return (
     <section id="how" className="py-10 md:py-16 bg-slate-50">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="एक केन्द्र"
-            title="कई मार्ग"
-            subtitle="DDJC एक छत के नीचे सामुदायिक समर्थन के कई रूपों को एक साथ लाता है — न्याय, अधिकार, सेवाएँ और हर व्यक्ति के लिए अवसर जो द्वार पर आते हैं।"
+            eyebrow={t("One Centre", "एक केन्द्र")}
+            title={t("Many Paths", "कई मार्ग")}
+            subtitle={t("DDJC brings together multiple forms of community support under one roof — justice, rights, services and opportunities that walk through the door for every person.", "DDJC एक छत के नीचे सामुदायिक समर्थन के कई रूपों को एक साथ लाता है — न्याय, अधिकार, सेवाएँ और हर व्यक्ति के लिए अवसर जो द्वार पर आते हैं।")}
           />
         </Reveal>
 
@@ -59,7 +64,7 @@ export default function HowItWorks() {
                   >
                     <item.icon size={22} />
                   </span>
-                  <h3 className="text-xl font-bold text-navy">{item.hi}</h3>
+                  <h3 className="text-xl font-bold text-navy">{language === "en" ? item.en : item.hi}</h3>
                 </div>
               </Link>
             </Reveal>

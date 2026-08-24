@@ -2,47 +2,49 @@
 
 import React, { useState, useEffect } from "react";
 import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
-
-const STATUS_LABELS: Record<string, string> = {
-  Pending: "लंबित",
-  Reviewed: "समीक्षित",
-  Accepted: "स्वीकृत",
-  Rejected: "अस्वीकृत",
-};
+import { useApp } from "@/context/AppContext";
 
 export default function AdminVolunteersPage() {
+  const { language } = useApp();
   const [stats, setStats] = useState<StatDef[]>([
-    { label: "कुल", value: 0, color: "bg-slate-800" },
-    { label: "लंबित", value: 0, color: "bg-amber-500" },
-    { label: "समीक्षित", value: 0, color: "bg-blue-500" },
-    { label: "स्वीकृत", value: 0, color: "bg-emerald-500" },
+    { label: language === "en" ? "Total" : "कुल", value: 0, color: "bg-slate-800" },
+    { label: language === "en" ? "Pending" : "लंबित", value: 0, color: "bg-amber-500" },
+    { label: language === "en" ? "Reviewed" : "समीक्षित", value: 0, color: "bg-blue-500" },
+    { label: language === "en" ? "Accepted" : "स्वीकृत", value: 0, color: "bg-emerald-500" },
   ]);
 
+  const STATUS_LABELS: Record<string, string> = {
+    Pending: language === "en" ? "Pending" : "लंबित",
+    Reviewed: language === "en" ? "Reviewed" : "समीक्षित",
+    Accepted: language === "en" ? "Accepted" : "स्वीकृत",
+    Rejected: language === "en" ? "Rejected" : "अस्वीकृत",
+  };
+
   const columns: ColumnDef[] = [
-    { key: "id", label: "आईडी", width: "100px", render: (item) => (
+    { key: "id", label: language === "en" ? "ID" : "आईडी", width: "100px", render: (item) => (
       <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
     )},
-    { key: "fullName", label: "आवेदक", render: (item) => (
+    { key: "fullName", label: language === "en" ? "Applicant" : "आवेदक", render: (item) => (
       <div>
         <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
         <span className="text-slate-500 font-mono text-[10px]">{String(item.education ?? "")}</span>
       </div>
     )},
-    { key: "fatherHusbandName", label: "पिता/पति का नाम", render: (item) => String(item.fatherHusbandName ?? "") },
-    { key: "age", label: "आयु", render: (item) => String(item.age ?? "") },
-    { key: "category", label: "श्रेणी", render: (item) => String(item.category ?? "") },
-    { key: "gender", label: "लिंग", render: (item) => String(item.gender ?? "") },
-    { key: "education", label: "शिक्षा", render: (item) => String(item.education ?? "") },
-    { key: "mobile", label: "मोबाइल", render: (item) => String(item.mobile ?? "") },
-    { key: "email", label: "ईमेल", render: (item) => String(item.email ?? "") },
-    { key: "address", label: "पता", render: (item) => String(item.address ?? "") },
-    { key: "occupation", label: "व्यवसाय", render: (item) => String(item.occupation ?? "उपलब्ध नहीं") },
-    { key: "joinType", label: "शामिल होने का प्रकार", render: (item) => String(item.joinType ?? "") },
-    { key: "workMode", label: "कार्य मोड", render: (item) => String(item.workMode ?? "उपलब्ध नहीं") },
-    { key: "statement", label: "वक्तव्य", render: (item) => (
+    { key: "fatherHusbandName", label: language === "en" ? "Father/Husband Name" : "पिता/पति का नाम", render: (item) => String(item.fatherHusbandName ?? "") },
+    { key: "age", label: language === "en" ? "Age" : "आयु", render: (item) => String(item.age ?? "") },
+    { key: "category", label: language === "en" ? "Category" : "श्रेणी", render: (item) => String(item.category ?? "") },
+    { key: "gender", label: language === "en" ? "Gender" : "लिंग", render: (item) => String(item.gender ?? "") },
+    { key: "education", label: language === "en" ? "Education" : "शिक्षा", render: (item) => String(item.education ?? "") },
+    { key: "mobile", label: language === "en" ? "Mobile" : "मोबाइल", render: (item) => String(item.mobile ?? "") },
+    { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
+    { key: "address", label: language === "en" ? "Address" : "पता", render: (item) => String(item.address ?? "") },
+    { key: "occupation", label: language === "en" ? "Occupation" : "व्यवसाय", render: (item) => String(item.occupation ?? (language === "en" ? "Not Available" : "उपलब्ध नहीं")) },
+    { key: "joinType", label: language === "en" ? "Join Type" : "शामिल होने का प्रकार", render: (item) => String(item.joinType ?? "") },
+    { key: "workMode", label: language === "en" ? "Work Mode" : "कार्य मोड", render: (item) => String(item.workMode ?? (language === "en" ? "Not Available" : "उपलब्ध नहीं")) },
+    { key: "statement", label: language === "en" ? "Statement" : "वक्तव्य", render: (item) => (
       <span className="truncate block max-w-xs" title={String(item.statement ?? "")}>{String(item.statement ?? "")}</span>
     )},
-    { key: "status", label: "स्थिति", render: (item) => {
+    { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
         Pending: "bg-amber-50 text-amber-700 border border-amber-200",
         Reviewed: "bg-blue-50 text-blue-700 border border-blue-200",
@@ -51,19 +53,19 @@ export default function AdminVolunteersPage() {
       };
       return <span className={`inline-flex px-3 py-1 rounded-full text-[10px] font-bold ${styles[item.status as string] || styles.Pending}`}>{STATUS_LABELS[item.status as string] ?? String(item.status ?? "")}</span>;
     }},
-    { key: "createdAt", label: "दिनांक", render: (item) => {
+    { key: "createdAt", label: language === "en" ? "Date" : "दिनांक", render: (item) => {
       const d = new Date(String(item.createdAt ?? ""));
       return isNaN(d.getTime()) ? String(item.createdAt ?? "") : d.toLocaleDateString("en-IN");
     }},
   ];
 
   const filters: FilterDef[] = [
-    { label: "स्थिति", key: "status", options: [
-      { label: "सभी", value: "" },
-      { label: "लंबित", value: "Pending" },
-      { label: "समीक्षित", value: "Reviewed" },
-      { label: "स्वीकृत", value: "Accepted" },
-      { label: "अस्वीकृत", value: "Rejected" },
+    { label: language === "en" ? "Status" : "स्थिति", key: "status", options: [
+      { label: language === "en" ? "All" : "सभी", value: "" },
+      { label: language === "en" ? "Pending" : "लंबित", value: "Pending" },
+      { label: language === "en" ? "Reviewed" : "समीक्षित", value: "Reviewed" },
+      { label: language === "en" ? "Accepted" : "स्वीकृत", value: "Accepted" },
+      { label: language === "en" ? "Rejected" : "अस्वीकृत", value: "Rejected" },
     ]},
   ];
 
@@ -78,32 +80,32 @@ export default function AdminVolunteersPage() {
         const reviewed = data.filter((a: Record<string, unknown>) => a.status === "Reviewed").length;
         const accepted = data.filter((a: Record<string, unknown>) => a.status === "Accepted").length;
         setStats([
-          { label: "कुल", value: total, color: "bg-slate-800" },
-          { label: "लंबित", value: pending, color: "bg-amber-500" },
-          { label: "समीक्षित", value: reviewed, color: "bg-blue-500" },
-          { label: "स्वीकृत", value: accepted, color: "bg-emerald-500" },
+          { label: language === "en" ? "Total" : "कुल", value: total, color: "bg-slate-800" },
+          { label: language === "en" ? "Pending" : "लंबित", value: pending, color: "bg-amber-500" },
+          { label: language === "en" ? "Reviewed" : "समीक्षित", value: reviewed, color: "bg-blue-500" },
+          { label: language === "en" ? "Accepted" : "स्वीकृत", value: accepted, color: "bg-emerald-500" },
         ]);
       } catch (e) {
         console.error(e);
       }
     };
     fetchStats();
-  }, []);
+  }, [language]);
 
   return (
     <AdminPageShell
-      title="स्वयंसेवक"
-      description="DDJC वेबसाइट से स्वयंसेवक आवेदनों का प्रबंधन करें"
+      title={language === "en" ? "Volunteers" : "स्वयंसेवक"}
+      description={language === "en" ? "Manage volunteer applications from the DDJC website" : "DDJC वेबसाइट से स्वयंसेवक आवेदनों का प्रबंधन करें"}
       apiEndpoint="/api/admin/join-applications"
       columns={columns}
       stats={stats}
       filters={filters}
       baseUrlParams={{ joinType: "Volunteer" }}
       statusOptions={[
-        { label: "लंबित", value: "Pending" },
-        { label: "समीक्षित", value: "Reviewed" },
-        { label: "स्वीकृत", value: "Accepted" },
-        { label: "अस्वीकृत", value: "Rejected" },
+        { label: language === "en" ? "Pending" : "लंबित", value: "Pending" },
+        { label: language === "en" ? "Reviewed" : "समीक्षित", value: "Reviewed" },
+        { label: language === "en" ? "Accepted" : "स्वीकृत", value: "Accepted" },
+        { label: language === "en" ? "Rejected" : "अस्वीकृत", value: "Rejected" },
       ]}
       onStatusUpdate={async (id, status) => {
         await fetch("/api/admin/join-applications", {

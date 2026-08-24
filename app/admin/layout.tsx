@@ -5,28 +5,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkAdminAuth } from "@/lib/auth";
 import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaBriefcase, FaGraduationCap, FaBars } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [authChecking, setAuthChecking] = useState(true);
+  const { language } = useApp();
 
-  React.useEffect(() => {
-    if (pathname !== "/admin/login" && !checkAdminAuth()) {
+  const isAuth = checkAdminAuth();
+
+  useEffect(() => {
+    if (!isAuth && pathname !== "/admin/login") {
       window.location.href = "/admin/login";
-    } else {
-      setAuthChecking(false);
     }
-  }, [pathname]);
+  }, [pathname, isAuth]);
 
   const navItems = [
-    { href: "/admin", label: "डैशबोर्ड", icon: FaHome },
-    { href: "/admin/contacts", label: "संपर्क करें", icon: FaUsers },
-    { href: "/admin/complaints", label: "शिकायतें", icon: FaFileAlt },
-    { href: "/admin/donations", label: "दान", icon: FaHandHoldingHeart },
-    { href: "/admin/volunteers", label: "स्वयंसेवक", icon: FaUserPlus },
-    { href: "/admin/internships", label: "इंटर्नशिप", icon: FaGraduationCap },
-    { href: "/admin/jobs", label: "नौकरी और करियर", icon: FaBriefcase },
+    { href: "/admin", label: language === "en" ? "Dashboard" : "डैशबोर्ड", icon: FaHome },
+    { href: "/admin/contacts", label: language === "en" ? "Contacts" : "संपर्क करें", icon: FaUsers },
+    { href: "/admin/complaints", label: language === "en" ? "Complaints" : "शिकायतें", icon: FaFileAlt },
+    { href: "/admin/donations", label: language === "en" ? "Donations" : "दान", icon: FaHandHoldingHeart },
+    { href: "/admin/volunteers", label: language === "en" ? "Volunteers" : "स्वयंसेवक", icon: FaUserPlus },
+    { href: "/admin/internships", label: language === "en" ? "Internships" : "इंटर्नशिप", icon: FaGraduationCap },
+    { href: "/admin/jobs", label: language === "en" ? "Jobs and Careers" : "नौकरी और करियर", icon: FaBriefcase },
   ];
 
   const handleLogout = () => {
@@ -38,17 +39,6 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     return <>{children}</>;
   }
 
-  if (authChecking) {
-    return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="flex items-center gap-3 text-slate-600 font-medium">
-          <span className="animate-spin text-[#000000] text-xl">⟳</span>
-          <span>एडमिन सत्र सत्यापित किया जा रहा है...</span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="bg-slate-50 min-h-screen flex">
       {/* Mobile header */}
@@ -58,7 +48,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             type="button"
             onClick={() => setSidebarOpen(true)}
             className="p-2 -ml-2 rounded-lg hover:bg-slate-800 transition-colors"
-            aria-label="मेनू खोलें"
+            aria-label={language === "en" ? "Open menu" : "मेनू खोलें"}
           >
             <FaBars size={18} />
           </button>
@@ -88,7 +78,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </div>
             <div>
               <h1 className="font-black text-base tracking-tight">DDJC Admin</h1>
-              <p className="text-[10px] text-slate-300">पोर्टल</p>
+              <p className="text-[10px] text-slate-300">{language === "en" ? "Portal" : "पोर्टल"}</p>
             </div>
           </div>
         </div>
@@ -119,7 +109,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
           >
             <FaSignOutAlt size={14} />
-            साइन आउट
+            {language === "en" ? "Sign Out" : "साइन आउट"}
           </button>
         </div>
       </aside>

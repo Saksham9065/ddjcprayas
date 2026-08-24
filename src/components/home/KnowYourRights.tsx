@@ -16,6 +16,7 @@ import {
   Lock,
   ArrowRight,
 } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 interface Resource {
   en: string;
@@ -38,14 +39,18 @@ const RESOURCES: Resource[] = [
 ];
 
 export default function KnowYourRights() {
+  const { language } = useApp();
+
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
+
   return (
     <section id="know-your-rights" className="py-10 md:py-16 bg-white border-b border-slate-200">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="ज्ञान ही शक्ति है"
-            title="अपने अधिकार जानें"
-            subtitle="सरल भाषा में मार्गदर्शिकाएँ और उपकरण जो आपको आपके अधिकार समझने और माँगने में मदद करते हैं।"
+            eyebrow={t("Knowledge is Power", "ज्ञान ही शक्ति है")}
+            title={t("Know Your Rights", "अपने अधिकार जानें")}
+            subtitle={t("Guides and tools in simple language to help you understand and claim your rights.", "सरल भाषा में मार्गदर्शिकाएँ और उपकरण जो आपको आपके अधिकार समझने और माँगने में मदद करते हैं।")}
           />
         </Reveal>
 
@@ -61,9 +66,9 @@ export default function KnowYourRights() {
                 <span className="w-14 h-14 rounded-2xl bg-white border border-slate-200 text-navy group-hover:bg-gold group-hover:text-navy group-hover:border-gold flex items-center justify-center transition-colors mb-3">
                   <r.icon size={22} />
                 </span>
-                <span className="text-sm font-bold text-navy leading-snug">{r.hi}</span>
+                <span className="text-sm font-bold text-navy leading-snug">{language === "en" ? r.en : r.hi}</span>
                 <span className="mt-2 text-[11px] font-semibold text-slate-400 group-hover:text-gold transition-colors inline-flex items-center gap-1">
-                  {"और जानें"} <ArrowRight size={10} />
+                  {t("Learn More", "और जानें")} <ArrowRight size={10} />
                 </span>
               </Link>
             </Reveal>
@@ -73,13 +78,13 @@ export default function KnowYourRights() {
         <Reveal>
           <div className="mt-12 text-center">
             <p className="text-slate-600 text-sm md:text-base mb-5">
-              {"पाठ, वीडियो, ऑडियो और बहुत कुछ में सभी संसाधन देखें।"}
+              {t("Explore all resources in lessons, videos, audio and more.", "पाठ, वीडियो, ऑडियो और बहुत कुछ में सभी संसाधन देखें।")}
             </p>
             <Link
               href="/resources"
               className="inline-flex items-center gap-2 bg-navy hover:bg-navy-deep text-white font-bold px-6 py-3.5 rounded-xl transition-colors text-sm"
             >
-              {"ज्ञान केन्द्र पर जाएँ"} <ArrowRight size={13} />
+              {t("Go to Knowledge Centre", "ज्ञान केन्द्र पर जाएँ")} <ArrowRight size={13} />
             </Link>
           </div>
         </Reveal>

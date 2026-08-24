@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { FaArrowLeft, FaImage, FaTrash, FaUpload } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 export default function AdminGalleryPage() {
+  const { language } = useApp();
   const [galleryItems] = useState([
     { id: "img-1", title: "कानूनी सहायता शिविर - औरैया", date: "2026-06-20", category: "कार्यक्रम" },
     { id: "img-2", title: "सामुदायिक कार्यशाला", date: "2026-06-18", category: "कार्यशाला" },
@@ -19,18 +21,18 @@ export default function AdminGalleryPage() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
           <div>
-            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">गैलरी</h1>
-            <p className="text-xs text-slate-500 mt-1">गैलरी छवियों और मीडिया का प्रबंधन करें</p>
+            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">{language === "en" ? "Gallery" : "गैलरी"}</h1>
+            <p className="text-xs text-slate-500 mt-1">{language === "en" ? "Manage gallery images and media" : "गैलरी छवियों और मीडिया का प्रबंधन करें"}</p>
           </div>
           <div className="flex items-center gap-3">
             <button
               type="button"
               className="flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition-all shadow-md"
             >
-              <FaUpload size={12} /> मीडिया अपलोड करें
+              <FaUpload size={12} /> {language === "en" ? "Upload Media" : "मीडिया अपलोड करें"}
             </button>
             <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
-              <FaArrowLeft size={12} /> डैशबोर्ड पर वापस जाएं
+              <FaArrowLeft size={12} /> {language === "en" ? "Go back to Dashboard" : "डैशबोर्ड पर वापस जाएं"}
             </Link>
           </div>
         </div>
@@ -52,7 +54,7 @@ export default function AdminGalleryPage() {
                     type="button"
                     className="text-red-400 hover:text-red-600 transition-colors text-xs font-bold flex items-center gap-1"
                   >
-                    <FaTrash size={10} /> हटाएं
+                    <FaTrash size={10} /> {language === "en" ? "Delete" : "हटाएं"}
                   </button>
                 </div>
               </div>

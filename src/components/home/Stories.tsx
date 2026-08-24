@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { Reveal, SectionHeading } from "./primitives";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 interface Story {
   name: string;
@@ -59,6 +60,9 @@ const STORIES: Story[] = [
 
 export default function Stories() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const { language } = useApp();
+
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
 
   const scrollByCard = (dir: number) => {
     const track = trackRef.current;
@@ -75,23 +79,23 @@ export default function Stories() {
           <Reveal>
             <SectionHeading
               align="left"
-              eyebrow="आवाज़ें"
-              title="बदलाव की कहानियाँ"
-              subtitle="असली लोग। असली कहानियाँ। असली प्रभाव।"
+              eyebrow={t("Voices", "आवाज़ें")}
+              title={t("Stories of Change", "बदलाव की कहानियाँ")}
+              subtitle={t("Real people. Real stories. Real impact.", "असली लोग। असली कहानियाँ। असली प्रभाव।")}
             />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex gap-2">
               <button
                 onClick={() => scrollByCard(-1)}
-                aria-label="पिछली कहानियाँ"
+                aria-label={t("Previous stories", "पिछली कहानियाँ")}
                 className="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition-colors flex items-center justify-center"
               >
                 <ChevronLeft size={16} />
               </button>
               <button
                 onClick={() => scrollByCard(1)}
-                aria-label="अगली कहानियाँ"
+                aria-label={t("Next stories", "अगली कहानियाँ")}
                 className="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition-colors flex items-center justify-center"
               >
                 <ChevronRight size={16} />
@@ -102,7 +106,7 @@ export default function Stories() {
 
         <div
           ref={trackRef}
-          className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {STORIES.map((story) => (
             <div
@@ -111,7 +115,7 @@ export default function Stories() {
             >
               <div className="p-6">
                 <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-4">
-                  “{story.quoteHi}”
+                  “{language === "en" ? story.quoteEn : story.quoteHi}”
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-navy text-gold flex items-center justify-center font-bold text-sm">
@@ -119,7 +123,7 @@ export default function Stories() {
                   </div>
                   <div>
                     <p className="font-bold text-navy text-sm leading-tight">{story.name}</p>
-                    <p className="text-xs text-slate-500">{story.roleHi}</p>
+                    <p className="text-xs text-slate-500">{language === "en" ? story.roleEn : story.roleHi}</p>
                   </div>
                 </div>
               </div>
@@ -132,7 +136,7 @@ export default function Stories() {
             href="/media/stories"
             className="inline-flex items-center gap-2 border border-navy text-navy hover:bg-navy hover:text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-colors"
           >
-            {"और कहानियाँ पढ़ें"} <ArrowRight size={13} />
+            {t("Read More Stories", "और कहानियाँ पढ़ें")} <ArrowRight size={13} />
           </Link>
         </div>
       </div>

@@ -12,6 +12,7 @@ import {
   Baby,
   ArrowRight,
 } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 interface Action {
   titleEn: string;
@@ -33,14 +34,18 @@ const ACTIONS: Action[] = [
 ];
 
 export default function WhatWillYouDo() {
+  const { language } = useApp();
+
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
+
   return (
     <section id="get-involved" className="py-10 md:py-16 bg-white border-b border-slate-200">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow="पहला कदम उठाएँ"
-            title="आप क्या करेंगे?"
-            subtitle="चाहे आप बदलाव का हिस्सा कैसे बनना चाहते हैं—DDJC में आपके लिए एक जगह है।"
+            eyebrow={t("Take the First Step", "पहला कदम उठाएँ")}
+            title={t("What Will You Do?", "आप क्या करेंगे?")}
+            subtitle={t("No matter how you want to be part of the change — there is a place for you at DDJC.", "चाहे आप बदलाव का हिस्सा कैसे बनना चाहते हैं—DDJC में आपके लिए एक जगह है।")}
           />
         </Reveal>
 
@@ -57,10 +62,10 @@ export default function WhatWillYouDo() {
                 >
                   <a.icon size={22} />
                 </span>
-                <h3 className="text-lg font-bold text-navy mb-2">{a.titleHi}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed mb-4">{a.descHi}</p>
+                <h3 className="text-lg font-bold text-navy mb-2">{language === "en" ? a.titleEn : a.titleHi}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">{language === "en" ? a.descEn : a.descHi}</p>
                 <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-bold text-navy group-hover:text-gold transition-colors">
-                  {"आगे बढ़ें"} <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                  {t("Go Ahead", "आगे बढ़ें")} <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             </Reveal>

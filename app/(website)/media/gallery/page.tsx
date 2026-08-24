@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaArrowLeft } from "react-icons/fa";
+import { useApp } from "@/context/AppContext";
 
 const GALLERY_IMAGES = [
   { src: "/images/gallery/Camp -8.jpeg", alt: "Camp 8" },
@@ -73,24 +74,26 @@ const GALLERY_IMAGES = [
 ];
 
 export default function GalleryPage() {
+  const { language } = useApp();
+
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="mb-8">
           <Link href="/" className="flex items-center gap-2 text-[#0A2540] font-bold text-sm hover:underline">
-            <FaArrowLeft size={12} /> होम पर वापस जाएँ
+            <FaArrowLeft size={12} /> {language === "en" ? "Back to Home" : "होम पर वापस जाएँ"}
           </Link>
         </div>
 
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            फोटो गैलरी
+            {language === "en" ? "Photo Gallery" : "फोटो गैलरी"}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4">
-            फोटो गैलरी
+            {language === "en" ? "Photo Gallery" : "फोटो गैलरी"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            बुंदेलखंड भर में हमारे कानूनी शिविरों, गाँव स्तर की जागरूकता अभियानों और सामुदायिक बैठकें की झलकियाँ।
+            {language === "en" ? "Glimpses of our legal camps, village-level awareness campaigns, and community meetings across Bundelkhand." : "बुंदेलखंड भर में हमारे कानूनी शिविरों, गाँव स्तर की जागरूकता अभियानों और सामुदायिक बैठकें की झलकियाँ।"}
           </p>
         </div>
 

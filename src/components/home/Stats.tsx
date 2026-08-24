@@ -9,6 +9,7 @@ import {
   MapPin,
   Baby,
 } from "lucide-react";
+import { useApp } from "@/context/AppContext";
 
 interface Stat {
   to: number;
@@ -28,6 +29,10 @@ const STATS: Stat[] = [
 ];
 
 export default function Stats() {
+  const { language } = useApp();
+
+  const t = (en: string, hi: string) => (language === "en" ? en : hi);
+
   return (
     <section id="impact" className="py-10 md:py-16 bg-navy relative overflow-hidden">
       <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
@@ -37,9 +42,9 @@ export default function Stats() {
         <Reveal>
           <SectionHeading
             light
-            eyebrow="हमारी पहुँच"
-            title="आँकड़ों में DDJC"
-            subtitle="हर आँकड़ा एक व्यक्ति, एक परिवार और एक समुदाय है जो गरिमा और न्याय के करीब बढ़ रहा है।"
+            eyebrow={t("Our Reach", "हमारी पहुँच")}
+            title={t("DDJC in Numbers", "आँकड़ों में DDJC")}
+            subtitle={t("Every number is a person, a family and a community moving closer to dignity and justice.", "हर आँकड़ा एक व्यक्ति, एक परिवार और एक समुदाय है जो गरिमा और न्याय के करीब बढ़ रहा है।")}
           />
         </Reveal>
 
@@ -52,7 +57,7 @@ export default function Stats() {
                   <CountUp to={stat.to} suffix={stat.suffix} />
                 </span>
                 <span className="text-xs md:text-sm font-semibold uppercase tracking-wide text-white/70">
-                  {stat.labelHi}
+                  {language === "en" ? stat.labelEn : stat.labelHi}
                 </span>
               </div>
             </Reveal>
