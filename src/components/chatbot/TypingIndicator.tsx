@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 
-export default function TypingIndicator() {
+export default function TypingIndicator({ theme = "dark" }: { theme?: "light" | "dark" }) {
+  const isDark = theme === "dark";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -10,7 +12,9 @@ export default function TypingIndicator() {
       exit={{ opacity: 0, y: 8 }}
       className="flex w-full justify-start"
     >
-      <div className="flex items-center gap-2 rounded-2xl rounded-bl-md bg-white/10 px-4 py-3 text-slate-200">
+      <div className={`flex items-center gap-2 rounded-2xl rounded-bl-md px-4 py-3 ${
+        isDark ? "bg-white/10 text-slate-200" : "bg-slate-100 text-slate-600"
+      }`}>
         <span className="flex gap-1">
           {[0, 1, 2].map((i) => (
             <motion.span

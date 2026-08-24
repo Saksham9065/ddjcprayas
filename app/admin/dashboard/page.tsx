@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBriefcase, FaSpinner } from "react-icons/fa";
 import { checkAdminAuth } from "@/lib/auth";
@@ -19,7 +20,6 @@ export default function AdminDashboardPage() {
 
   useEffect(() => {
     const isAuth = checkAdminAuth();
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setAuthStatus(isAuth);
     if (!isAuth) {
       router.push("/admin/login");
@@ -115,10 +115,10 @@ export default function AdminDashboardPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modules.map((mod) => (
-          <a
+          <Link
             key={mod.label}
             href={mod.href}
-            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group"
+            className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow group block"
           >
             <div className="flex items-center justify-between mb-4">
               <div className={`w-12 h-12 rounded-2xl ${mod.color} text-white flex items-center justify-center text-xl shadow-md`}>
@@ -133,7 +133,7 @@ export default function AdminDashboardPage() {
             </div>
             <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{mod.label}</p>
             <p className="text-[10px] text-slate-400 mt-1 group-hover:text-[#000000] transition-colors">Click to manage records</p>
-          </a>
+          </Link>
         ))}
       </div>
     </div>

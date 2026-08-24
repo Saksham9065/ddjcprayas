@@ -11,7 +11,7 @@ export default function OutCourtPage() {
   const isHindi = language === "hi";
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-5xl space-y-16">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl space-y-16">
         
         {/* Header Banner */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -21,7 +21,7 @@ export default function OutCourtPage() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight">
             {isHindi ? "अदालत-बहिरा हस्तक्षेप और समुदाय सशक्तिकरण" : "Out-of-Court Interventions & Community Empowerment"}
           </h1>
-          <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#2563EB] pl-4 py-1 mx-auto max-w-2xl text-left">
+          <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#000000] pl-4 py-1 mx-auto max-w-2xl text-left">
             &ldquo;जब तक आप सामाजिक स्वतंत्रता हासिल नहीं कर लेते, कानून आपको जो भी स्वतंत्रता देता है, वह आपके किसी काम की नहीं है।&rdquo; — बाबासाहब डॉ. बी. आर. आंबेडकर
           </blockquote>
         </div>
@@ -50,7 +50,7 @@ export default function OutCourtPage() {
         </div>
 
         {/* Introduction Philosophy */}
-        <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200 space-y-6">
+        <div className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 space-y-6">
           <h2 className="text-2xl font-black text-[#0A2540]">{isHindi ? "समुदाय सशक्तिकरण और जमीन-स्तर का आधार" : "Community Empowerment & Ground Foundation"}</h2>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed">
             The Dalit Dignity & Justice Center (DDJC) believes that the foundation of justice is laid long before stepping into a courtroom—at the societal and administrative levels. Unless a victim family receives social, administrative, and psychological support on the ground, the legal battle remains incomplete. Therefore, DDJC works robustly on the ground outside courts to protect victims&apos; rights, secure prompt justice, and foster community self-reliance.
@@ -63,15 +63,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Card 1 */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaCheckCircle />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">1. Fact-Finding Missions: Fact-Finding &amp; Documentation</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;सत्य कभी भी दावों से सिद्ध नहीं होता, बल्कि उसके लिए ठोस और अकाट्य तथ्यों की आवश्यकता होती है।&rdquo; — महात्मा ज्योतिराव फुले
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -81,15 +81,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaShieldAlt />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">2. Effective Advocacy at Police Stations &amp; Administration</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;कमजोरों की सुरक्षा और उनके अधिकारों की रक्षा करना ही किसी भी सभ्य प्रशासन की पहली कसौटी है।&rdquo; — नेल्सन मंडेला
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -100,15 +100,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaBookOpen />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">3. Village &amp; Panchayat Legal Awareness Camps</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;शिक्षा ही वह हथियार है जिससे आप दुनिया को बदल सकते हैं, और कानूनी शिक्षा वह ढाल है जिससे आप खुद को बचा सकते हैं।&rdquo; — DDJC
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -118,15 +118,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Card 4 */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaUsers />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">4. Building Volunteers &amp; Community Champions</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;परिवर्तन तब नहीं आता जब हम किसी और व्यक्ति या किसी और समय का इंतजार करते हैं; हम खुद ही वो बदलाव हैं जिसकी हमें तलाश है।&rdquo; — बराक ओबामा
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -137,15 +137,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Welfare Scheme Linkage */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaHandHoldingUsd />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">5. Welfare Scheme Linkage</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;स्वतंत्रता का तब तक कोई अर्थ नहीं है, जब तक कि वह आर्थिक रूप से सबसे कमजोर व्यक्ति को भी गरिमापूर्ण जीवन न दे सके।&rdquo; — कांशीराम जी
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -155,15 +155,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Human Rights Commissions */}
-        <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 text-[#2563EB] rounded-2xl flex items-center justify-center text-xl border border-blue-100">
+            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
               <FaUniversity />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">6. Advocacy with National &amp; State Commissions</h2>
           </div>
           <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4">
-            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#2563EB] pl-3 py-1">
+            <blockquote className="italic text-slate-500 text-xs border-l-2 border-[#000000] pl-3 py-1">
               &ldquo;मानवाधिकार कोई विशेषाधिकार नहीं हैं जो सरकारें आपको देती हैं। वे अधिकार हैं जिन्हें कोई आपसे छीन नहीं सकता।&rdquo;
             </blockquote>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -173,15 +173,15 @@ export default function OutCourtPage() {
         </div>
 
         {/* Grassroots Pledge Banner */}
-        <div className="bg-slate-900 text-white p-8 md:p-12 rounded-3xl space-y-6 shadow-xl relative overflow-hidden text-center">
-          <span className="text-xs font-bold uppercase tracking-widest bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full border border-blue-400/30 inline-block">
+        <div className="bg-slate-900 text-white p-8 md:p-10 rounded-3xl space-y-6 shadow-xl relative overflow-hidden text-center">
+          <span className="text-xs font-bold uppercase tracking-widest bg-slate-1000/20 text-blue-300 px-3 py-1 rounded-full border border-slate-200 inline-block">
             Our Grassroots Pledge
           </span>
           <blockquote className="italic text-slate-200 text-sm md:text-base leading-relaxed max-w-3xl mx-auto">
             &ldquo;DDJC केवल अदालतों के कमरों में न्याय की गुहार नहीं लगाता, बल्कि समाज की रगों में न्याय का हौसला भरता है। भयमुक्त, समतामूलक और जाति-मुक्त भारत का निर्माण तब तक असंभव है, जब तक हमारे गांवों का हर नागरिक निडर होकर अपने अधिकारों के लिए खड़ा न हो जाए। हम इसी बदलाव का जरिया हैं।&rdquo;
           </blockquote>
           <div className="pt-4">
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-[#000000] hover:bg-slate-600 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg text-sm">
               {isHindi ? "फील्ड समन्वयकों से संपर्क करें" : "Contact Field Coordinators"} <FaArrowRight size={14} />
             </Link>
           </div>

@@ -10,9 +10,10 @@ interface ChatInputProps {
   onSend: () => void;
   onStop?: () => void;
   loading: boolean;
+  theme: "light" | "dark";
 }
 
-export default function ChatInput({ value, onChange, onSend, onStop, loading }: ChatInputProps) {
+export default function ChatInput({ value, onChange, onSend, onStop, loading, theme }: ChatInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -29,8 +30,10 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
     }
   };
 
+  const isDark = theme === "dark";
+
   return (
-    <div className="border-t border-white/10 bg-white/5 p-3 backdrop-blur-md">
+    <div className={`border-t p-3 backdrop-blur-md ${isDark ? "border-white/10 bg-white/5" : "border-slate-200 bg-white"}`}>
       <div className="flex items-end gap-2">
         <textarea
           ref={textareaRef}
@@ -40,7 +43,11 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
           onKeyDown={handleKeyDown}
           placeholder="Ask about DDJC, legal rights, government schemes..."
           disabled={loading}
-          className="max-h-40 flex-1 resize-none rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-[15px] text-white placeholder:text-slate-500 outline-none focus:border-[#0A4DA2] focus:ring-1 focus:ring-[#0A4DA2] disabled:opacity-50"
+          className={`max-h-40 flex-1 resize-none rounded-xl border px-4 py-3 text-[15px] outline-none focus:ring-1 disabled:opacity-50 ${
+            isDark
+              ? "border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-[#0A4DA2] focus:ring-[#0A4DA2]"
+              : "border-slate-200 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:border-[#0A2540] focus:ring-[#0A2540]"
+          }`}
         />
         {loading ? (
           <button
@@ -56,7 +63,9 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
             whileTap={{ scale: 0.92 }}
             onClick={onSend}
             disabled={!value.trim()}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0A4DA2] text-white transition hover:bg-[#0A4DA2]/90 disabled:opacity-40"
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-white transition disabled:opacity-40 ${
+              isDark ? "bg-[#0A4DA2] hover:bg-[#0A4DA2]/90" : "bg-[#0A2540] hover:bg-slate-600"
+            }`}
             type="button"
             aria-label="Send message"
           >
@@ -64,7 +73,7 @@ export default function ChatInput({ value, onChange, onSend, onStop, loading }: 
           </motion.button>
         )}
       </div>
-      <p className="mt-1.5 px-1 text-[10px] text-slate-500">
+      <p className={`mt-1.5 px-1 text-[10px] ${isDark ? "text-slate-500" : "text-slate-400"}`}>
         Press Enter to send, Shift + Enter for new line
       </p>
     </div>

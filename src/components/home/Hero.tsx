@@ -1,47 +1,211 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaFileSignature, FaBalanceScale, FaArrowRight } from "react-icons/fa";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaHandsHelping,
+  FaMapMarkerAlt,
+  FaArrowRight,
+  FaDoorOpen,
+  FaComments,
+  FaTools,
+  FaBalanceScale,
+  FaQuoteLeft,
+} from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
-import { translations } from "@/lib/i18n";
+
+const HERO_IMAGES = [
+  "/images/hero/1.jpg",
+  "/images/hero/2.jpg",
+  "/images/hero/3.jpg",
+  "/images/hero/4.jpg",
+  "/images/hero/5.jpeg",
+  "/images/hero/6.jpeg",
+  "/images/hero/7.jpg",
+  "/images/hero/8.jpeg",
+  "/images/hero/9.jpg",
+  "/images/hero/10.jpg",
+];
 
 export default function Hero() {
   const { language } = useApp();
-  const content = translations[language];
-  return (
-<section className="relative bg-[#0A2540] text-white py-10 md:py-20 md:pt-24 overflow-hidden">
-       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000000_1px,transparent_1px)] bg-size-[16px_16px]"></div>
-       <div className="container mx-auto px-4 md:px-6 max-w-6xl relative z-10 text-center space-y-6 md:space-y-8">
-         
-         <span className="bg-black/60 text-slate-300 border border-black/50 px-3 py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest inline-block">
-           {content.heroBadge}
-         </span>
-         
-         <h1 className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight max-w-4xl mx-auto leading-tight">
-           {content.heroTitle} <span className="text-[#000000]">(Dalit Dignity & Justice Centre)</span>
-         </h1>
-         
-         <p className="text-slate-300 text-sm md:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
-           {content.heroSubtitle}
-         </p>
-         
-         <div className="pt-2 md:pt-4 flex flex-wrap justify-center gap-3 md:gap-4">
-           <Link
-             href="/complaint"
-             className="bg-[#000000] hover:bg-slate-600 text-white px-5 py-3 md:px-8 md:py-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 shadow-lg shadow-black/20"
-           >
-             <FaFileSignature /> {content.heroPrimaryCta} <FaArrowRight />
-           </Link>
-<Link
-              href="/donate"
-              className="hidden md:inline-flex bg-slate-800 hover:bg-slate-700 text-slate-200 px-5 py-3 md:px-8 md:py-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors border border-slate-700 inline-flex items-center gap-2"
-            >
-              <FaBalanceScale /> {content.heroSecondaryCta}
-            </Link>
-         </div>
+  const isHindi = language === "hi";
+  const [idx, setIdx] = useState(0);
 
-       </div>
-     </section>
+  const t = (en: string, hi: string) => (isHindi ? hi : en);
+  const safeIdx = Number.isFinite(idx)
+    ? ((idx % HERO_IMAGES.length) + HERO_IMAGES.length) % HERO_IMAGES.length
+    : 0;
+
+  const words = isHindi ? ["सम्मान।", "न्याय।", "शक्ति।"] : ["Dignity.", "Justice.", "Power."];
+
+  const bottomPoints = isHindi
+    ? [
+        { icon: FaDoorOpen, text: "आने के लिए एक जगह।" },
+        { icon: FaComments, text: "बात करने के लिए एक व्यक्ति।" },
+        { icon: FaTools, text: "हल करने के लिए एक समस्या।" },
+        { icon: FaBalanceScale, text: "दावा करने के लिए एक अधिकार।" },
+      ]
+    : [
+        { icon: FaDoorOpen, text: "A place to come." },
+        { icon: FaComments, text: "A person to talk to." },
+        { icon: FaTools, text: "A problem to solve." },
+        { icon: FaBalanceScale, text: "A right to claim." },
+      ];
+
+  const ctas = [
+    {
+      label: t("I NEED SUPPORT", "मुझे सहायता चाहिए"),
+      href: "/complaint",
+      icon: FaHandsHelping,
+      style: "bg-gold hover:bg-gold-soft text-navy shadow-lg",
+    },
+    {
+      label: t("FIND A DDJC", "DDJC खोजें"),
+      href: "/contact",
+      icon: FaMapMarkerAlt,
+      style: "border border-white/40 hover:bg-white/10 text-white backdrop-blur-sm",
+    },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIdx((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen overflow-hidden">
+      {/* Full-bleed sliding background */}
+      <div className="absolute inset-0">
+        <div className="flex w-full h-full">
+          {HERO_IMAGES.map((src, i) => {
+            const offset = i - safeIdx;
+            const isVisible = Math.abs(offset) <= 1;
+            if (!isVisible) return null;
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute inset-0"
+                initial={false}
+                animate={{
+                  x: offset === 0 ? 0 : offset > 0 ? "100%" : "-100%",
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease: "easeInOut",
+                }}
+              >
+                <Image
+                  src={src}
+                  alt={t("DDJC community gathering", "DDJC सामुदायिक सभा")}
+                  fill
+                  priority={i === safeIdx}
+                  loading={i === safeIdx ? "eager" : "lazy"}
+                  className="object-cover"
+                  sizes="100vw"
+                />
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Subtle light blue tint on left edge only — ~10% width */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#0A2540_0%,#0A2540_10%,transparent_30%)]" />
+
+        {/* Indicators */}
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
+          {HERO_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              aria-label={`Show image ${i + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === idx ? "w-7 bg-gold" : "w-1.5 bg-white/50 hover:bg-white/80"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto max-w-7xl px-5 md:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 items-center min-h-screen py-12 md:py-16">
+          {/* LEFT — content — static */}
+          <div className="text-left mt-px">
+            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/25 text-white px-4 py-2 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              {t(
+                "One Centre. Many Doors to Dignity, Justice & Empowerment.",
+                "एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।"
+              )}
+            </span>
+
+            <h1 className="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 drop-shadow-lg">
+              {words.map((word, i) => (
+                <span key={word}>
+                  <span className={i === 2 ? "text-gold" : "text-white"}>{word}</span>
+                  {i < words.length - 1 && " "}
+                </span>
+              ))}
+            </h1>
+
+            <p className="text-base md:text-xl font-semibold text-white/90 mb-4 drop-shadow-md">
+              {t(
+                "A community centre where rights become reality.",
+                "एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।"
+              )}
+            </p>
+
+            <p className="text-[13px] md:text-sm text-white leading-relaxed mb-5 max-w-xl bg-black/30 backdrop-blur-sm rounded-xl px-4 py-3">
+              {t(
+                "Dalit Dignity & Justice Centres are village-level one-point centres helping communities access justice, rights, information, government services and opportunities — while building a new generation of informed and empowered citizens.",
+                "दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।"
+              )}
+            </p>
+
+            <blockquote className="flex items-start gap-3 text-xs md:text-sm text-white font-bold italic mb-8 max-w-xl drop-shadow-md">
+              <FaQuoteLeft className="mt-1 text-gold/70 shrink-0" size={14} />
+              <span>
+                {t(
+                  "“Until the last man in society is empowered, freedom remains incomplete.” — Dr. B.R. Ambedkar",
+                  "“जब तक समाज का अंतिम व्यक्ति सशक्त नहीं हो जाता, तब तक स्वतंत्रता अधूरी है।” — डॉ. बी.आर. अम्बेडकर"
+                )}
+              </span>
+            </blockquote>
+
+            <div className="flex flex-row flex-nowrap gap-2 sm:gap-3 md:gap-4 mb-6 w-full">
+              {ctas.map((cta) => (
+                <Link
+                  key={cta.label}
+                  href={cta.href}
+                  className={`group inline-flex items-center justify-center gap-1.5 w-full flex-1 min-w-0 px-2 sm:px-4 md:px-6 py-3 md:py-3.5 rounded-2xl text-[11px] sm:text-[13px] md:text-sm font-bold transition-all hover:-translate-y-0.5 hover:scale-[1.03] ${cta.style}`}
+                >
+                  <cta.icon size={16} />
+                  {cta.label}
+                  <FaArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              ))}
+            </div>
+
+            {/* Four bottom points */}
+            <div className="flex flex-row flex-nowrap gap-2 md:gap-3 w-full">
+              {bottomPoints.map((point, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 min-w-0 flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/90 px-2 py-2.5 text-center"
+                  >
+                    <point.icon className="text-[#0A2540] shrink-0" size={14} />
+                    <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-[#0A2540] leading-tight">{point.text}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

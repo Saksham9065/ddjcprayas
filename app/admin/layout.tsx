@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkAdminAuth } from "@/lib/auth";
@@ -9,10 +9,13 @@ import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlu
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [authChecking, setAuthChecking] = useState(true);
 
   React.useEffect(() => {
     if (pathname !== "/admin/login" && !checkAdminAuth()) {
       window.location.href = "/admin/login";
+    } else {
+      setAuthChecking(false);
     }
   }, [pathname]);
 
@@ -30,6 +33,21 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     localStorage.removeItem("ddjc_admin_session");
     window.location.href = "/admin/login";
   };
+
+  if (pathname === "/admin/login") {
+    return <>{children}</>;
+  }
+
+  if (authChecking) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="flex items-center gap-3 text-slate-600 font-medium">
+          <span className="animate-spin text-[#000000] text-xl">⟳</span>
+          <span>Verifying Admin Session...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-slate-50 min-h-screen flex">

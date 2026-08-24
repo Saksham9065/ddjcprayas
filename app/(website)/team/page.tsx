@@ -38,36 +38,36 @@ function Team() {
   };
 
   return (
-<section className="py-10 pt-16 md:py-16 md:pt-24 bg-white">
+<div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <motion.div 
         variants={containerVariants} 
         initial="hidden" 
         whileInView="visible" 
         viewport={{ once: true, amount: 0.05 }} 
-        className="container mx-auto px-4 md:px-6 max-w-7xl"
+        className="container mx-auto px-4 md:px-6 max-w-6xl"
       >
         
-        <div className="text-center mb-12 flex flex-col items-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#000000] bg-slate-50 px-2.5 py-1 rounded-md mb-2 border border-slate-200">
+        <div className="text-center mb-10 flex flex-col items-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#000000] bg-slate-50 px-2.5 py-1 rounded-full mb-2 border border-slate-200">
             {language === "en" ? "Leadership & Advocates" : "नेतृत्व एवं वकील"}
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight">
+          <h1 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight">
             {language === "en" ? "Meet the DDJC Team" : "DDJC टीम से मिलें"}
-          </h2>
+          </h1>
           <p className="max-w-xl mx-auto mt-2 text-sm md:text-base text-slate-600 leading-relaxed">
             {language === "en" ? "Our dedicated team of lawyers, social activists, and field coordinators working tirelessly for justice and dignity." : "न्याय और गरिमा के लिए tirelessly काम कर रही हमारे वकीलों, सामाजिक कार्यकर्ताओं और क्षेत्रीय समन्वयकों की टीम।"}
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 sm:gap-8">
+        <div className="flex flex-col gap-6 sm:gap-6">
           
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-4xl items-stretch">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 w-full max-w-6xl items-stretch">
               {leadership.map((person, index) => (
                 <motion.div 
                   key={index} 
                   variants={itemVariants} 
-                  className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
+                  className="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
                 >
                   <div className="w-full aspect-4/3 bg-slate-100 overflow-hidden">
                     <img src={person.image} alt={person.name} className={`w-full h-full object-cover ${person.name === "Adv. Nikhat Parveen" || person.name === "Pradeep Kumar Singh" ? "object-top" : "object-center"}`} />
@@ -103,7 +103,7 @@ function Team() {
               <motion.div 
                 key={index} 
                 variants={itemVariants} 
-                className="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
+                className="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
               >
               <div className="w-full aspect-[4/3] bg-slate-100 overflow-hidden">
                 <img src={member.image} alt={member.name} className={`w-full h-full object-cover ${member.name === "Sachin Kumar" ? "object-top" : "object-center"}`} />
@@ -136,7 +136,7 @@ function Team() {
         </div>
 
       </motion.div>
-    </section>
+    </div>
   );
 }
 

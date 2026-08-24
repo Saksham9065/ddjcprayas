@@ -7,10 +7,12 @@ import { Copy, Check, Trash2, RefreshCw } from "lucide-react";
 interface MessageActionsProps {
   content: string;
   onRegenerate?: () => void;
+  theme?: "light" | "dark";
 }
 
-export default function MessageActions({ content, onRegenerate }: MessageActionsProps) {
+export default function MessageActions({ content, onRegenerate, theme = "dark" }: MessageActionsProps) {
   const [copied, setCopied] = useState(false);
+  const isDark = theme === "dark";
 
   const handleCopy = async () => {
     try {
@@ -30,7 +32,11 @@ export default function MessageActions({ content, onRegenerate }: MessageActions
     >
       <button
         onClick={handleCopy}
-        className="flex items-center justify-center rounded-lg p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
+        className={`flex items-center justify-center rounded-lg p-1.5 transition ${
+          isDark
+            ? "text-slate-400 hover:bg-white/10 hover:text-white"
+            : "text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+        }`}
         type="button"
         aria-label="Copy"
       >
@@ -39,7 +45,11 @@ export default function MessageActions({ content, onRegenerate }: MessageActions
       {onRegenerate && (
         <button
           onClick={onRegenerate}
-          className="flex items-center justify-center rounded-lg p-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white"
+          className={`flex items-center justify-center rounded-lg p-1.5 transition ${
+            isDark
+              ? "text-slate-400 hover:bg-white/10 hover:text-white"
+              : "text-slate-500 hover:bg-slate-100 hover:text-slate-800"
+          }`}
           type="button"
           aria-label="Regenerate"
         >

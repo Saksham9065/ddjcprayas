@@ -5,9 +5,12 @@ import SuggestedQuestions from "./SuggestedQuestions";
 
 interface WelcomeScreenProps {
   onSuggestedClick: (question: string) => void;
+  theme?: "light" | "dark";
 }
 
-export default function WelcomeScreen({ onSuggestedClick }: WelcomeScreenProps) {
+export default function WelcomeScreen({ onSuggestedClick, theme = "dark" }: WelcomeScreenProps) {
+  const isDark = theme === "dark";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -28,7 +31,7 @@ export default function WelcomeScreen({ onSuggestedClick }: WelcomeScreenProps) 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="text-xl font-bold text-white"
+        className={`text-xl font-bold ${isDark ? "text-white" : "text-slate-900"}`}
       >
         Welcome to DDJC AI
       </motion.h2>
@@ -37,10 +40,10 @@ export default function WelcomeScreen({ onSuggestedClick }: WelcomeScreenProps) 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="mt-2 max-w-[260px] text-xs leading-relaxed text-slate-400"
+        className={`mt-2 max-w-[260px] text-xs leading-relaxed ${isDark ? "text-slate-400" : "text-slate-500"}`}
       >
         Ask me anything about:
-        <span className="mt-1 block text-slate-300">
+        <span className={`mt-1 block ${isDark ? "text-slate-300" : "text-slate-600"}`}>
           Legal Rights, Constitution, SC/ST Act, Government Schemes, DDJC Services
         </span>
       </motion.p>
@@ -51,7 +54,7 @@ export default function WelcomeScreen({ onSuggestedClick }: WelcomeScreenProps) 
         transition={{ delay: 0.4 }}
         className="mt-6 w-full"
       >
-        <SuggestedQuestions onSelect={onSuggestedClick} />
+        <SuggestedQuestions onSelect={onSuggestedClick} theme={theme} />
       </motion.div>
     </motion.div>
   );

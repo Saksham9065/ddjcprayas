@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
-import TopBar from "@/components/layout/TopBar";
 import Footer from "@/components/layout/Footer";
 import Chatbot from "@/components/chatbot/Chatbot";
 import { AppProvider } from "@/context/AppContext";
@@ -23,10 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={`${inter.className} bg-slate-900 text-slate-200 antialiased`}>
+    <html lang="en" className={cn("font-sans scroll-smooth", geist.variable)} data-scroll-behavior="smooth">
+      <body className={`${inter.className} bg-white text-slate-900 antialiased`}>
         <AppProvider>
-          <TopBar />
           <Navbar />
           <main>{children}</main>
           <Footer />

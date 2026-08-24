@@ -16,20 +16,32 @@ export default function StoriesPage() {
       location: "Nibhana Village, Tehsil Mehwa, Jalaun",
       story: "As a young woman from the Chambal ravines dreaming of becoming a doctor to serve our region where female doctors are non-existent, I faced a horrific assault and attempted abuse on my way to my medical practice in Mehwa. After filing an FIR, we faced immense pressure to compromise. DDJC intervened with rigorous counseling and legal backing. Not only did our team ensure the chargesheet was filed, but they successfully opposed and secured the rejection of the accused's bail all the way up to the Allahabad High Court. Furthermore, through a High Court writ petition filed by DDJC, the DM and SWO were directed to immediately credit ₹1,50,000 in statutory compensation to my account. Today, my dream of becoming a doctor is alive once more.",
     },
+    {
+      name: "Savitri Bai",
+      location: "Baghaura, Konch, Jalaun",
+      story: "The centre helped me understand my rights and stand up against discrimination in my own village. Today I help other women do the same.",
+    },
+    {
+      name: "Raju",
+      location: "Konch, Jalaun",
+      story: "I joined the youth hub to learn about the Constitution. Now I organise awareness camps in my block and lead other young people.",
+    },
+    {
+      name: "Pooja",
+      location: "Jalaun, Uttar Pradesh",
+      story: "DDJC guided me to apply for the scholarship I didn't know existed. Education became a real possibility for my family.",
+    },
+    {
+      name: "Ramdas",
+      location: "Baghaura, Konch, Jalaun",
+      story: "When my land papers were challenged, the centre connected me to legal aid. I kept my land and my dignity.",
+    },
   ];
 
   return (
-    <div className="bg-white min-h-screen">
-      <div className="bg-[#0A2540] text-white py-4">
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-lg md:text-xl font-bold tracking-wider uppercase">Support Justice &amp; Equality</span>
-          </div>
-        </div>
-      </div>
-      <div className="py-10 pt-16 md:py-16 md:pt-24">
-        <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="flex justify-center mb-6">
             <div className="relative h-20 w-20 rounded-full overflow-hidden shadow-md border border-slate-200 bg-slate-50">
               <Image
@@ -52,7 +64,7 @@ export default function StoriesPage() {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {stories.map((item, index) => (
             <div key={index} className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-200 space-y-4 shadow-sm">
               <FaQuoteLeft className="text-[#000000] text-3xl opacity-40" />
@@ -66,7 +78,6 @@ export default function StoriesPage() {
             </div>
           ))}
         </div>
-      </div>
       </div>
     </div>
   );

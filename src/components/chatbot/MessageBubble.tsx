@@ -9,14 +9,16 @@ interface MessageBubbleProps {
   message: ChatMessage;
   isLast?: boolean;
   onRegenerate?: () => void;
+  theme: "light" | "dark";
 }
 
-export default function MessageBubble({ message, isLast, onRegenerate }: MessageBubbleProps) {
+export default function MessageBubble({ message, isLast, onRegenerate, theme }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const time = new Date(message.timestamp).toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
+  const isDark = theme === "dark";
 
   return (
     <motion.div
@@ -37,7 +39,9 @@ export default function MessageBubble({ message, isLast, onRegenerate }: Message
             className={`rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
               isUser
                 ? "rounded-br-md bg-gradient-to-br from-[#0A4DA2] to-[#2563EB] text-white"
-                : "rounded-bl-md bg-white/10 text-slate-200"
+                : isDark
+                  ? "rounded-bl-md bg-white/10 text-slate-200"
+                  : "rounded-bl-md bg-slate-100 text-slate-800"
             }`}
           >
             {isUser ? (
@@ -48,8 +52,8 @@ export default function MessageBubble({ message, isLast, onRegenerate }: Message
           </div>
 
           <div className={`mt-1 flex items-center gap-2 ${isUser ? "flex-row-reverse" : "flex-row"}`}>
-            <span className="text-[10px] text-slate-500">{time}</span>
-            {!isUser && isLast && <MessageActions content={message.content} onRegenerate={onRegenerate} />}
+            <span className={`text-[10px] ${isDark ? "text-slate-500" : "text-slate-400"}`}>{time}</span>
+            {!isUser && isLast && <MessageActions content={message.content} onRegenerate={onRegenerate} theme={theme} />}
           </div>
         </div>
       </div>

@@ -4,133 +4,184 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useApp } from "@/context/AppContext";
-import { translations, type Language } from "@/lib/i18n";
+import { translations } from "@/lib/i18n";
 import {
   FaBars,
   FaTimes,
+  FaGlobe,
+  FaHandHoldingHeart,
   FaChevronDown,
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaWhatsapp,
+  FaDonate,
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
-interface MenuItem {
-  key: keyof typeof translations.en;
-  name: string;
+interface NavChild {
+  key: string;
+  nameKey: string;
   path: string;
-  dropdown?: boolean;
-  children?: MenuItem[];
 }
 
-interface SocialLink {
-  Icon: React.ComponentType<{ size?: number }>;
-  href: string;
-  hoverColor: string;
+interface NavItem {
+  key: string;
+  nameKey: string;
+  path: string;
+  children?: NavChild[];
 }
 
-const MENU_ITEMS: MenuItem[] = [
+const NAV_ITEMS: NavItem[] = [
   {
     key: "about",
-    name: "About",
-    path: "#",
-    dropdown: true,
+    nameKey: "about",
+    path: "/about",
     children: [
-      { key: "aboutUs", name: "About Us", path: "/about" },
-      { key: "team", name: "Team", path: "/team" },
-      { key: "resources", name: "Resources", path: "/resources" },
+      { key: "about-us", nameKey: "aboutUs", path: "/about" },
+      { key: "team", nameKey: "team", path: "/team" },
+      { key: "resources", nameKey: "resources", path: "/resources" },
     ],
   },
   {
-    key: "ourWork",
-    name: "Our Work",
-    path: "#",
-    dropdown: true,
+    key: "what",
+    nameKey: "ourWork",
+    path: "/work",
     children: [
-      { key: "inCourt", name: "In the Court", path: "/work/in-court" },
-      { key: "outCourt", name: "Out of the Court", path: "/work/out-court" },
+      { key: "in-court", nameKey: "inCourt", path: "/work/in-court" },
+      { key: "out-court", nameKey: "outCourt", path: "/work/out-court" },
     ],
   },
   {
-    key: "media",
-    name: "Media",
-    path: "#",
-    dropdown: true,
+    key: "impact",
+    nameKey: "media",
+    path: "/#impact",
     children: [
-      { key: "news", name: "News", path: "/media/news" },
-      { key: "photoGallery", name: "Photo Gallery", path: "/media/gallery" },
-      { key: "stories", name: "Stories", path: "/media/stories" },
+      { key: "news", nameKey: "news", path: "/media/news" },
+      { key: "gallery", nameKey: "photoGallery", path: "/media/gallery" },
+      { key: "stories", nameKey: "storiesOfChange", path: "/media/stories" },
     ],
   },
   {
-    key: "joinUs",
-    name: "Join Us",
-    path: "#",
-    dropdown: true,
+    key: "involved",
+    nameKey: "joinUs",
+    path: "/join",
     children: [
-      { key: "careers", name: "Jobs/Careers", path: "/join/careers" },
-      { key: "internships", name: "Internships", path: "/join/internships" },
-      { key: "volunteers", name: "Volunteers", path: "/join/volunteers" },
+      { key: "careers", nameKey: "careers", path: "/join/careers" },
+      { key: "internships", nameKey: "internships", path: "/join/internships" },
+      { key: "volunteers", nameKey: "volunteers", path: "/join/volunteers" },
     ],
   },
-  { key: "contact", name: "Contact", path: "/contact" },
-  { key: "donate", name: "Donate", path: "/donate" },
-];
-
-const SOCIAL_LINKS: SocialLink[] = [
-  { Icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", hoverColor: "hover:bg-[#1877F2]" },
-  { Icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", hoverColor: "hover:bg-[#E4405F]" },
-  { Icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", hoverColor: "hover:bg-[#FF0000]" },
-  { Icon: FaWhatsapp, href: "https://wa.me/919453645931", hoverColor: "hover:bg-[#25D366]" },
+  { key: "contact", nameKey: "contact", path: "/contact" },
 ];
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const pathname = usePathname();
-  const { language } = useApp();
+  const { language, toggleLanguage } = useApp();
+  const content = translations[language] as Record<string, string>;
 
-  const closeMenu = useCallback(() => {
-    setMenuOpen(false);
-    setActiveDropdown(null);
-  }, []);
-
-  const toggleDropdown = useCallback((name: string) => {
-    setActiveDropdown((prev) => (prev === name ? null : name));
-  }, []);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
-    <header className="sticky top-0 z-100 bg-white/90 backdrop-blur-xl shadow-sm border-b border-gray-100 transition-all duration-300">
+    <header className="sticky top-0 z-100 bg-white/95 backdrop-blur-xl shadow-sm border-b border-slate-100">
       <div className="container mx-auto px-4 md:px-8 max-w-[1600px]">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          <Link href="/" onClick={closeMenu} className="flex items-center gap-4 group shrink-0">
-            <div className="h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform duration-300 group-hover:scale-105 shrink-0 bg-slate-50 flex items-center justify-center">
+          <Link href="/" onClick={closeMenu} className="flex items-center gap-3 group shrink-0">
+            <div className="h-11 w-11 md:h-14 md:w-14 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform group-hover:scale-105 bg-white flex items-center justify-center">
               <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover object-center" />
             </div>
             <div className="hidden sm:flex flex-col justify-center">
-              <h1 className="text-base md:text-[17px] font-black text-[#0A2540] leading-tight tracking-tight group-hover:text-[#2563EB] transition-colors duration-300">
-                {translations[language].siteTitle}
+              <h1 className="text-[15px] md:text-[17px] font-black text-navy leading-tight tracking-tight group-hover:text-gold transition-colors">
+                {content.siteTitle}
               </h1>
-              <p className="text-[10px] md:text-[9px] font-bold text-gray-500 uppercase tracking-[0.2em] mt-0.5">
-                {translations[language].siteSubtitle}
+              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.18em] mt-0.5">
+                {content.siteSubtitle}
               </p>
             </div>
           </Link>
 
-          <DesktopMenu
-            menuItems={MENU_ITEMS}
-            activeDropdown={activeDropdown}
-            setActiveDropdown={setActiveDropdown}
-            pathname={pathname}
-            language={language}
-          />
+          <ul className="hidden lg:flex items-center justify-center gap-1 flex-1 px-4 h-full list-none m-0 p-0">
+            {NAV_ITEMS.map((item) => {
+              const base = item.path.split("#")[0];
+              const isHash = item.path.includes("#");
+              const childActive = item.children?.some((c) =>
+                c.path === "/" ? pathname === "/" : pathname.startsWith(c.path.split("#")[0])
+              );
+              const active = item.children
+                ? !!childActive
+                : item.path === "/"
+                ? pathname === "/"
+                : !isHash && pathname.startsWith(base);
 
-          <div className="flex items-center gap-5 shrink-0">
-            <SocialIcons links={SOCIAL_LINKS} />
+              if (item.children) {
+                return (
+                  <li key={item.key} className="relative group h-full flex items-center list-none">
+                    <button
+                      className={`flex items-center gap-1 h-full px-3 text-[15px] font-bold transition-colors ${
+                        active ? "text-gold" : "text-navy hover:text-gold"
+                      }`}
+                    >
+                       {content[item.nameKey]}
+                       <FaChevronDown size={11} className="opacity-70" />
+                     </button>
+                     <div className="absolute top-full left-0 w-52 rounded-2xl bg-white shadow-xl border border-slate-100 py-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                       {item.children.map((child) => (
+                         <Link
+                           key={child.key}
+                           href={child.path}
+                           className="block px-4 py-2.5 text-sm font-semibold text-navy hover:text-gold hover:bg-slate-50"
+                         >
+                           {content[child.nameKey]}
+                         </Link>
+                       ))}
+                    </div>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={item.key} className="h-full flex items-center list-none">
+                  <Link
+                    href={item.path}
+                    className={`relative flex items-center h-full px-3 text-[15px] font-bold transition-colors ${
+                      active ? "text-gold" : "text-navy hover:text-gold"
+                    }`}
+                  >
+                     {content[item.nameKey]}
+                     <span className={`absolute bottom-3 left-3 right-3 h-[2.5px] rounded-full bg-gold transition-transform ${active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
+            <button
+              onClick={toggleLanguage}
+              className="hidden sm:flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-navy hover:border-gold hover:text-gold transition"
+              aria-label="Toggle language"
+            >
+              <FaGlobe size={13} />
+               <span>{content.languageLabel}</span>
+             </button>
+
+             <Link
+               href="/donate"
+               className="hidden sm:inline-flex items-center gap-2 border border-navy text-navy hover:bg-navy hover:text-white font-bold px-4 md:px-5 py-2.5 rounded-xl text-xs md:text-sm transition-all hover:scale-[1.03]"
+             >
+               <FaDonate size={14} />
+               {content.donate}
+             </Link>
+
+             <Link
+               href="/complaint"
+               className="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-gold-soft text-navy font-bold px-4 md:px-5 py-2.5 rounded-xl text-xs md:text-sm transition-all hover:scale-[1.03] shadow-sm"
+             >
+               <FaHandHoldingHeart size={14} />
+               {content.needSupport}
+             </Link>
+
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden relative w-11 h-11 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-[#0A2540] hover:bg-slate-50 hover:text-[#2563EB] transition-all duration-300 overflow-hidden"
+              className="lg:hidden relative w-11 h-11 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-navy hover:bg-slate-100 transition-all"
+              aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait">
                 <motion.div key={menuOpen ? "close" : "open"} initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
@@ -141,146 +192,72 @@ function Navbar() {
           </div>
         </nav>
       </div>
-      <MobileMenu
-        menuItems={MENU_ITEMS}
-        menuOpen={menuOpen}
-        activeDropdown={activeDropdown}
-        toggleDropdown={toggleDropdown}
-        closeMenu={closeMenu}
-        language={language}
-      />
-    </header>
-  );
-}
 
-interface DesktopMenuProps {
-  menuItems: MenuItem[];
-  activeDropdown: string | null;
-  setActiveDropdown: React.Dispatch<React.SetStateAction<string | null>>;
-  pathname: string;
-  language: Language;
-}
-
-function DesktopMenu({ menuItems, activeDropdown, setActiveDropdown, pathname, language }: DesktopMenuProps) {
-  return (
-    <ul className="hidden md:flex items-center justify-center gap-6 2xl:gap-8 flex-1 px-4 h-full list-none m-0 p-0">
-      {menuItems.map((item) => {
-        return item.dropdown ? (
-          <DesktopDropdownItem key={item.name} item={item} activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} language={language} />
-        ) : (
-          <DesktopNavLink key={item.path} item={item} pathname={pathname} language={language} />
-        );
-      })}
-    </ul>
-  );
-}
-
-interface DesktopDropdownItemProps {
-  item: MenuItem;
-  activeDropdown: string | null;
-  setActiveDropdown: React.Dispatch<React.SetStateAction<string | null>>;
-  language: Language;
-}
-
-function DesktopDropdownItem({ item, activeDropdown, setActiveDropdown, language }: DesktopDropdownItemProps) {
-  const pathname = usePathname();
-  const isActive = activeDropdown === item.key;
-  return (
-    <li className="relative group shrink-0 h-full flex items-center list-none" onMouseEnter={() => setActiveDropdown(item.key)} onMouseLeave={() => setActiveDropdown(null)}>
-      <button className={`flex items-center gap-1.5 h-full px-2 font-bold text-sm md:text-[16px] tracking-wide transition-colors duration-300 ${isActive ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
-        <span className="relative flex items-center gap-1.5 py-1">
-          {translations[language][item.key]}
-          <motion.div animate={{ rotate: isActive ? 180 : 0 }}><FaChevronDown className="text-[11px] opacity-60" /></motion.div>
-          <span className={`absolute bottom-0 left-0 w-full h-[2.5px] rounded-full bg-[#2563EB] transition-transform ${isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
-        </span>
-      </button>
       <AnimatePresence>
-        {isActive && (
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-full left-0 z-50 w-56">
-            <div className="bg-white/95 backdrop-blur-3xl rounded-b-2xl shadow-xl border border-slate-200/60 p-2.5 flex flex-col gap-1">
-              {item.children?.map((child) => (
-                <Link key={child.path} href={child.path} className={`px-4 py-2.5 text-[15px] font-semibold rounded-xl ${pathname === child.path ? "text-[#2563EB] bg-slate-50" : "text-slate-600 hover:text-[#2563EB] hover:bg-slate-50"}`}>
-                  {translations[language][child.key]}
-                </Link>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0 }}
+            animate={{ height: "auto" }}
+            exit={{ height: 0 }}
+            className="lg:hidden overflow-hidden bg-white border-t border-slate-100"
+          >
+            <div className="flex flex-col px-5 py-5 gap-1 max-h-[80vh] overflow-y-auto">
+              {NAV_ITEMS.map((item) => (
+                <div key={item.key}>
+                  <Link
+                    href={item.path}
+                    onClick={closeMenu}
+                    className="flex items-center justify-between font-bold text-[16px] text-navy hover:text-gold py-3 border-b border-slate-50 transition-colors"
+                  >
+                     {content[item.nameKey]}
+                     {item.children && <FaChevronDown size={12} className="opacity-60" />}
+                   </Link>
+                   {item.children && (
+                     <div className="pl-4 pb-2">
+                       {item.children.map((child) => (
+                         <Link
+                           key={child.key}
+                           href={child.path}
+                           onClick={closeMenu}
+                           className="block py-2 text-sm font-semibold text-slate-600 hover:text-gold transition-colors"
+                         >
+                           {content[child.nameKey]}
+                         </Link>
+                       ))}
+                     </div>
+                   )}
+                </div>
               ))}
+              <div className="flex items-center gap-3 pt-4">
+                <button
+                  onClick={() => { toggleLanguage(); }}
+                  className="flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-navy"
+                >
+                  <FaGlobe size={14} />
+                   {content.languageLabelFull}
+                 </button>
+                 <Link
+                   href="/donate"
+                   onClick={closeMenu}
+                   className="flex-1 inline-flex items-center justify-center gap-2 border border-navy text-navy font-bold px-4 py-2.5 rounded-xl text-sm"
+                 >
+                   <FaDonate size={14} />
+                   {content.donate}
+                 </Link>
+                 <Link
+                   href="/complaint"
+                   onClick={closeMenu}
+                   className="flex-1 inline-flex items-center justify-center gap-2 bg-gold hover:bg-gold-soft text-navy font-bold px-4 py-2.5 rounded-xl text-sm"
+                 >
+                   <FaHandHoldingHeart size={14} />
+                   {content.needSupport}
+                 </Link>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </li>
-  );
-}
-
-interface DesktopNavLinkProps {
-  item: MenuItem;
-  pathname: string;
-  language: Language;
-}
-
-function DesktopNavLink({ item, pathname, language }: DesktopNavLinkProps) {
-  return (
-    <li className="shrink-0 h-full flex items-center list-none group">
-      <Link href={item.path} className={`flex items-center h-full px-2 font-bold text-sm md:text-[16px] transition-colors ${item.path !== "#" && pathname === item.path ? "text-[#2563EB]" : "text-[#0A2540] hover:text-[#2563EB]"}`}>
-        <span className="relative py-1">
-          {translations[language][item.key]}
-          <span className={`absolute bottom-0 left-0 w-full h-[2.5px] rounded-full bg-[#2563EB] transition-transform ${item.path !== "#" && pathname === item.path ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
-        </span>
-      </Link>
-    </li>
-  );
-}
-
-interface SocialIconsProps {
-  links: SocialLink[];
-}
-
-function SocialIcons({ links }: SocialIconsProps) {
-  return (
-    <div className="hidden md:flex items-center gap-2.5 border-l border-slate-200 pl-6 ml-2 shrink-0">
-      {links.map(({ Icon, href, hoverColor }, index) => (
-        <a key={index} href={href} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-[#0A2540] ${hoverColor} transition-all`}>
-          <Icon size={16} />
-        </a>
-      ))}
-    </div>
-  );
-}
-
-interface MobileMenuProps {
-  menuItems: MenuItem[];
-  menuOpen: boolean;
-  activeDropdown: string | null;
-  toggleDropdown: (name: string) => void;
-  closeMenu: () => void;
-  language: Language;
-}
-
-function MobileMenu({ menuItems, menuOpen, activeDropdown, toggleDropdown, closeMenu, language }: MobileMenuProps) {
-  return (
-    <AnimatePresence>
-      {menuOpen && (
-        <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="md:hidden overflow-hidden bg-slate-50 absolute w-full z-40">
-          <div className="flex flex-col items-center py-6 gap-4">
-            {menuItems.map((item) => (
-              <div key={item.name} className="w-full text-center">
-                {item.dropdown ? (
-                  <div className="flex flex-col">
-                     <button onClick={() => toggleDropdown(item.key)} className="font-bold text-base md:text-[18px] text-[#0A2540]">{translations[language][item.key]}</button>
-                    {activeDropdown === item.key && (
-                      <div className="flex flex-col gap-2 pt-2">
-                        {item.children?.map(child => <Link key={child.path} href={child.path} onClick={closeMenu} className="text-slate-500">{translations[language][child.key]}</Link>)}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                   <Link href={item.path} onClick={closeMenu} className="font-bold text-base md:text-[18px] text-[#0A2540]">{translations[language][item.key]}</Link>
-                )}
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    </header>
   );
 }
 

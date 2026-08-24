@@ -12,7 +12,7 @@ type Theme = "light" | "dark";
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
   const { messages, input, setInput, loading, sendMessage, clearChat, newChat, stopGeneration } = useChat();
 
   useEffect(() => {
@@ -39,11 +39,7 @@ export default function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`flex h-[85vh] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border shadow-2xl backdrop-blur-xl md:h-[85vh] md:w-[420px] ${
-              theme === "dark"
-                ? "border-white/10 bg-slate-900"
-                : "border-slate-200 bg-white"
-            }`}
+            className="flex h-[85vh] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border shadow-2xl backdrop-blur-xl md:h-[85vh] md:w-[420px]"
           >
             <ChatHeader
               onClose={() => setIsOpen(false)}
@@ -58,6 +54,7 @@ export default function Chatbot() {
               loading={loading}
               onSuggestedClick={handleSuggestedClick}
               onClear={clearChat}
+              theme={theme}
             />
             <ChatInput
               value={input}
@@ -65,6 +62,7 @@ export default function Chatbot() {
               onSend={() => sendMessage(input)}
               loading={loading}
               onStop={stopGeneration}
+              theme={theme}
             />
           </motion.div>
         )}

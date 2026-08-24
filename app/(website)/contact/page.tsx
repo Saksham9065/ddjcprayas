@@ -61,11 +61,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 pt-16 md:py-16 md:pt-24">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
+         {/* Header */}
+         <div className="text-center max-w-3xl mx-auto mb-10 md:mb-10">
+           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
+             {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन"}
+           </span>
+           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
             {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन प्राप्त करें"}
           </h1>
           <p className="text-slate-600 text-xs md:text-sm lg:text-base leading-relaxed mb-3">

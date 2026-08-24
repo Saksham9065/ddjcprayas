@@ -44,11 +44,11 @@ export default function ComplaintPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             Grievance Redressal
           </span>
@@ -62,7 +62,7 @@ export default function ComplaintPage() {
 
         {/* Form Container */}
             <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          {successId ? (
+            {successId ? (
             <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
                 <FaCheckCircle />
@@ -92,7 +92,7 @@ export default function ComplaintPage() {
                       description: "",
                     });
                   }}
-                  className="bg-slate-800 text-white px-6 py-3 rounded-xl text-xs font-bold"
+                  className="bg-[#000000] text-white px-6 py-3 rounded-xl text-xs font-bold"
                 >
                   File Another Complaint
                 </button>
@@ -199,7 +199,7 @@ export default function ComplaintPage() {
                 />
               </div>
 
-              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-start gap-3 text-xs text-slate-900">
+              <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex items-start gap-3 text-xs text-[#0A2540]">
                 <FaExclamationTriangle className="text-[#000000] shrink-0 mt-0.5" size={14} />
                 <span>All submitted details are kept confidential under advocate-client privilege guidelines and handled strictly by authorized DDJC legal personnel.</span>
               </div>

@@ -9,8 +9,8 @@ export default function LegalAidPage() {
   const { language } = useApp();
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {language === "en" ? "Access to Justice" : "न्याय तक पहुंच"}
           </span>
@@ -22,7 +22,7 @@ export default function LegalAidPage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200">
             <h3 className="text-2xl font-bold text-[#0A2540] mb-4">{language === "en" ? "What We Cover" : "हम किसे कवर करते हैं"}</h3>
             <ul className="space-y-3 text-sm text-slate-600">

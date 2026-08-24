@@ -12,9 +12,10 @@ interface ChatWindowProps {
   loading: boolean;
   onSuggestedClick: (question: string) => void;
   onClear: () => void;
+  theme: "light" | "dark";
 }
 
-export default function ChatWindow({ messages, loading, onSuggestedClick, onClear }: ChatWindowProps) {
+export default function ChatWindow({ messages, loading, onSuggestedClick, onClear, theme }: ChatWindowProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -25,7 +26,7 @@ export default function ChatWindow({ messages, loading, onSuggestedClick, onClea
   return (
     <div ref={containerRef} className="flex-1 overflow-y-auto px-4 py-4">
       {messages.length === 0 ? (
-        <WelcomeScreen onSuggestedClick={onSuggestedClick} />
+        <WelcomeScreen onSuggestedClick={onSuggestedClick} theme={theme} />
       ) : (
         <div className="space-y-4">
           <AnimatePresence>
@@ -34,10 +35,11 @@ export default function ChatWindow({ messages, loading, onSuggestedClick, onClea
                 key={msg.id}
                 message={msg}
                 isLast={index === messages.length - 1}
+                theme={theme}
               />
             ))}
           </AnimatePresence>
-          {loading && <TypingIndicator />}
+          {loading && <TypingIndicator theme={theme} />}
         </div>
       )}
       <div ref={bottomRef} />

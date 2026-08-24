@@ -68,8 +68,8 @@ export default function DonatePage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl space-y-12">
+    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl space-y-8">
         <div className="text-center max-w-2xl mx-auto space-y-4">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
             {language === "en" ? "Support Justice & Equality" : "न्याय और समानता का समर्थन करें"}
@@ -82,9 +82,9 @@ export default function DonatePage() {
           </p>
         </div>
 
-        <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl grid md:grid-cols-2 gap-8 items-center">
+        <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl grid md:grid-cols-2 gap-6 items-center">
           <div className="space-y-4">
-            <span className="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-blue-400/30 inline-block">
+            <span className="bg-slate-1000/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
               Direct Bank Transfer / UPI
             </span>
             <h3 className="text-2xl font-bold">Official Bank Details</h3>
@@ -139,13 +139,13 @@ export default function DonatePage() {
               <button
                 type="button"
                 onClick={() => setSuccess(false)}
-                className="mt-4 bg-slate-800 text-white px-6 py-2.5 rounded-xl text-xs font-bold"
+                className="mt-4 bg-[#000000] text-white px-6 py-2.5 rounded-xl text-xs font-bold"
               >
                 {language === "en" ? "Make Another Contribution" : "एक और योगदान करें"}
               </button>
             </div>
           ) : (
-            <form onSubmit={handleDonate} className="space-y-8">
+            <form onSubmit={handleDonate} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Full Name</label>
