@@ -2,17 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { useApp } from "@/context/AppContext";
 import { Reveal, SectionHeading } from "./primitives";
 import {
-  FaBalanceScale,
-  FaBookOpen,
-  FaFileSignature,
-  FaVenus,
-  FaUserGraduate,
-  FaBullhorn,
-  FaUsers,
-} from "react-icons/fa";
+  Scale,
+  BookOpen,
+  FileSignature,
+  Venus,
+  GraduationCap,
+  Megaphone,
+  Users,
+} from "lucide-react";
 
 interface Item {
   en: string;
@@ -23,31 +22,24 @@ interface Item {
 }
 
 const ITEMS: Item[] = [
-  { en: "Justice & Legal Support", hi: "न्याय और कानूनी सहायता", icon: FaBalanceScale, color: "#0A2540", href: "/work/in-court" },
-  { en: "Rights & Constitution", hi: "अधिकार और संविधान", icon: FaBookOpen, color: "#0EA5A4", href: "/resources" },
-  { en: "Government Schemes & Entitlements", hi: "सरकारी योजनाएँ और अधिकार", icon: FaFileSignature, color: "#DB2777", href: "/pdf/_Government Schemes.pdf" },
-  { en: "Women's Dignity & Safety", hi: "महिलाओं की गरिमा और सुरक्षा", icon: FaVenus, color: "#059669", href: "/work/out-court" },
-  { en: "Youth Leadership", hi: "युवा नेतृत्व", icon: FaUserGraduate, color: "#0EA5E9", href: "/join/volunteers" },
-  { en: "Voice & Advocacy", hi: "आवाज़ और वकालत", icon: FaBullhorn, color: "#F5B400", href: "/media/stories" },
-  { en: "Community Empowerment", hi: "सामुदायिक सशक्तिकरण", icon: FaUsers, color: "#6366F1", href: "/about" },
+  { en: "Justice & Legal Support", hi: "न्याय और कानूनी सहायता", icon: Scale, color: "#0A2540", href: "/work/in-court" },
+  { en: "Rights & Constitution", hi: "अधिकार और संविधान", icon: BookOpen, color: "#0EA5A4", href: "/resources" },
+  { en: "Government Schemes & Entitlements", hi: "सरकारी योजनाएँ और अधिकार", icon: FileSignature, color: "#DB2777", href: "/pdf/_Government Schemes.pdf" },
+  { en: "Women's Dignity & Safety", hi: "महिलाओं की गरिमा और सुरक्षा", icon: Venus, color: "#059669", href: "/work/out-court" },
+  { en: "Youth Leadership", hi: "युवा नेतृत्व", icon: GraduationCap, color: "#0EA5E9", href: "/join/volunteers" },
+  { en: "Voice & Advocacy", hi: "आवाज़ और वकालत", icon: Megaphone, color: "#F5B400", href: "/media/stories" },
+  { en: "Community Empowerment", hi: "सामुदायिक सशक्तिकरण", icon: Users, color: "#6366F1", href: "/about" },
 ];
 
 export default function HowItWorks() {
-  const { language } = useApp();
-  const isHindi = language === "hi";
-  const t = (en: string, hi: string) => (isHindi ? hi : en);
-
   return (
     <section id="how" className="py-10 md:py-16 bg-slate-50">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Reveal>
           <SectionHeading
-            eyebrow={t("One Centre", "एक केन्द्र")}
-            title={t("Many Pathways", "कई मार्ग")}
-            subtitle={t(
-              "DDJC brings many forms of community support together under one roof — justice, rights, services and opportunities for every person who walks through the door.",
-              "DDJC एक छत के नीचे सामुदायिक समर्थन के कई रूपों को एक साथ लाता है — न्याय, अधिकार, सेवाएँ और हर व्यक्ति के लिए अवसर जो द्वार पर आते हैं।"
-            )}
+            eyebrow="एक केन्द्र"
+            title="कई मार्ग"
+            subtitle="DDJC एक छत के नीचे सामुदायिक समर्थन के कई रूपों को एक साथ लाता है — न्याय, अधिकार, सेवाएँ और हर व्यक्ति के लिए अवसर जो द्वार पर आते हैं।"
           />
         </Reveal>
 
@@ -67,7 +59,7 @@ export default function HowItWorks() {
                   >
                     <item.icon size={22} />
                   </span>
-                  <h3 className="text-xl font-bold text-navy">{t(item.en, item.hi)}</h3>
+                  <h3 className="text-xl font-bold text-navy">{item.hi}</h3>
                 </div>
               </Link>
             </Reveal>

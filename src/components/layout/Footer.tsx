@@ -3,18 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useApp } from "@/context/AppContext";
-import { translations } from "@/lib/i18n";
 import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaWhatsapp,
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaArrowRight,
-} from "react-icons/fa";
+  Phone,
+  Mail,
+  MapPin,
+  ArrowRight,
+} from "lucide-react";
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
 
 const LINK_GROUPS = [
   {
@@ -44,8 +39,6 @@ const LINK_GROUPS = [
 ];
 
 export default function Footer() {
-  const { language } = useApp();
-  const content = translations[language] as Record<string, string>;
   return (
     <footer className="relative bg-navy text-white overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gold/5 blur-[100px] pointer-events-none" />
@@ -83,27 +76,27 @@ export default function Footer() {
                   </div>
                   <div>
                     <h2 className="font-extrabold text-base leading-tight tracking-wide">
-                      {content.footerBrandName}
+                      {"दलित सम्मान व न्याय केन्द्र"}
                     </h2>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">
-                      {content.footerBrandShort}
+                      {"DDJC"}
                     </span>
                   </div>
                 </div>
                 <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
-                  {content.footerTaglineLong}
+                  {"गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।"}
                 </p>
                 <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
                   <blockquote className="text-xs text-white/80 italic leading-relaxed mb-3">
-                    &ldquo;{content.footerQuote}&rdquo;
+                    &ldquo;न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।&rdquo;
                   </blockquote>
                   <p className="text-[10px] text-gold font-semibold uppercase tracking-wider">
-                    {content.footerQuoteAuthor}
+                    {"बाबासाहेब डॉ. बी.आर. अम्बेडकर"}
                   </p>
                 </div>
                 <div className="mt-5">
                   <Link href="/admin/login" className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-gold transition-colors">
-                    {content.footerAdminLogin}
+                    {"एडमिन लॉगिन"}
                   </Link>
                 </div>
               </div>
@@ -116,7 +109,7 @@ export default function Footer() {
               {LINK_GROUPS.map((group) => (
                 <div key={group.titleKey}>
                   <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
-                    {content[group.titleKey]}
+                    {group.titleKey === "footerAboutDDJC" ? "DDJC के बारे में" : group.titleKey === "footerWhatWeDo" ? "हम क्या करते हैं" : "हिस्सा बनें"}
                   </h3>
                   <ul className="space-y-3">
                     {group.links.map((l) => (
@@ -128,16 +121,16 @@ export default function Footer() {
                             rel="noopener noreferrer"
                             className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
                           >
-                            <FaArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                            {content[l.nameKey]}
+                            <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
+                            {l.nameKey === "footerAboutUs" ? "हमारे बारे में" : l.nameKey === "footerOurTeam" ? "हमारी टीम" : l.nameKey === "footerMedia" ? "मीडिया" : l.nameKey === "footerJusticeLegalSupport" ? "न्याय और कानूनी सहायता" : l.nameKey === "footerWomensSafety" ? "महिलाओं की सुरक्षा" : l.nameKey === "footerGovernmentSchemes" ? "सरकारी योजनाएँ" : l.nameKey === "footerVolunteer" ? "स्वयंसेवक" : l.nameKey === "footerDonate" ? "दान करें" : "संपर्क"}
                           </a>
                         ) : (
                           <Link
                             href={l.href}
                             className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
                           >
-                            <FaArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                            {content[l.nameKey]}
+                            <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
+                            {l.nameKey === "footerAboutUs" ? "हमारे बारे में" : l.nameKey === "footerOurTeam" ? "हमारी टीम" : l.nameKey === "footerMedia" ? "मीडिया" : l.nameKey === "footerJusticeLegalSupport" ? "न्याय और कानूनी सहायता" : l.nameKey === "footerWomensSafety" ? "महिलाओं की सुरक्षा" : l.nameKey === "footerGovernmentSchemes" ? "सरकारी योजनाएँ" : l.nameKey === "footerVolunteer" ? "स्वयंसेवक" : l.nameKey === "footerDonate" ? "दान करें" : "संपर्क"}
                           </Link>
                         )}
                       </li>
@@ -152,21 +145,21 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <div className="bg-white/5 rounded-2xl p-6 border border-white/10 h-full">
               <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
-                {content.footerContact}
+                {"संपर्क"}
               </h3>
               <div className="space-y-4 text-sm mb-8">
                 <p className="flex items-start gap-3 text-white/60">
-                  <FaMapMarkerAlt size={13} className="text-gold mt-1 shrink-0" />
+                  <MapPin size={13} className="text-gold mt-1 shrink-0" />
                   <span className="leading-relaxed text-xs">
-                    {content.footerAddress}
+                    {"पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001"}
                   </span>
                 </p>
                 <p className="flex items-center gap-3 text-white/60">
-                  <FaPhoneAlt size={12} className="text-gold shrink-0" />
+                  <Phone size={12} className="text-gold shrink-0" />
                   <a href="tel:+919235737691" className="hover:text-gold transition-colors text-xs">+91 92357 37691</a>
                 </p>
                 <p className="flex items-center gap-3 text-white/60">
-                  <FaEnvelope size={12} className="text-gold shrink-0" />
+                  <Mail size={12} className="text-gold shrink-0" />
                   <a href="mailto:ddjc.prayas@gmail.com" className="hover:text-gold transition-colors text-xs">ddjc.prayas@gmail.com</a>
                 </p>
               </div>
@@ -185,12 +178,12 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-navy-deep">
         <div className="container mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/50 tracking-wide text-center sm:text-left">
-            {content.footerCopyright.replace("{year}", "2024")}
+            {"© 2024 दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।"}
           </p>
           <div className="flex items-center gap-5 text-xs text-white/50">
-            <Link href="/privacy" className="hover:text-gold transition-colors">{content.footerPrivacy}</Link>
-            <Link href="/terms" className="hover:text-gold transition-colors">{content.footerTerms}</Link>
-            <Link href="/sitemap" className="hover:text-gold transition-colors">{content.footerSitemap}</Link>
+            <Link href="/privacy" className="hover:text-gold transition-colors">{"गोपनीयता नीति"}</Link>
+            <Link href="/terms" className="hover:text-gold transition-colors">{"नियम और शर्तें"}</Link>
+            <Link href="/sitemap" className="hover:text-gold transition-colors">{"साइटमैप"}</Link>
           </div>
         </div>
       </div>

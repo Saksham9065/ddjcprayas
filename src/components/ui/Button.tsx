@@ -1,7 +1,7 @@
 "use client";
 
 import React, { ButtonHTMLAttributes, ReactNode } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { Loader2 } from "lucide-react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -37,8 +37,8 @@ export default function Button({
     >
       {isLoading ? (
         <>
-          <FaSpinner className="animate-spin text-current" size={14} />
-          <span>Processing...</span>
+          <Loader2 className="animate-spin text-current" size={14} />
+          <span>प्रोसेसिंग...</span>
         </>
       ) : (
         children

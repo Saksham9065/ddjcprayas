@@ -29,7 +29,7 @@ export default function AdminLoginPage() {
         setIsAdminLoggedIn(true);
         router.push("/admin/dashboard");
       } else {
-        setError("Invalid email address or password. Please use admin@ddjc.org / admin123.");
+        setError("अमान्य ईमेल पता या पासवर्ड। कृपया admin@ddjc.org / admin123 का उपयोग करें।");
       }
     }, 1000);
   };
@@ -43,9 +43,9 @@ export default function AdminLoginPage() {
           <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto border border-slate-100 shadow-sm overflow-hidden">
             <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover" />
           </div>
-          <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Admin Portal Sign In</h1>
+          <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">एडमिन पोर्टल साइन इन</h1>
           <p className="text-xs text-slate-500">
-            Enter authorized administrator credentials to manage DDJC grievances and cases.
+            DDJC शिकायतों और मामलों को प्रबंधित करने के लिए अधिकृत व्यवस्थापक क्रेडेंशियल दर्ज करें।
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function AdminLoginPage() {
         <form onSubmit={handleLogin} className="space-y-6">
           
           <div>
-            <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Admin Email</label>
+            <label className="block text-xs font-bold uppercase text-slate-700 mb-2">एडमिन ईमेल</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
                 <FaEnvelope size={14} />
@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Password</label>
+            <label className="block text-xs font-bold uppercase text-slate-700 mb-2">पासवर्ड</label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
                 <FaLock size={14} />
@@ -93,13 +93,13 @@ export default function AdminLoginPage() {
           </div>
 
           <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-[11px] text-slate-500 space-y-1">
-            <p className="font-bold text-slate-700">Demo Credentials:</p>
-            <p>Email: <span className="font-mono text-slate-800">admin@ddjc.org</span></p>
-            <p>Password: <span className="font-mono text-slate-800">admin123</span></p>
+            <p className="font-bold text-slate-700">डेमो क्रेडेंशियल:</p>
+            <p>ईमेल: <span className="font-mono text-slate-800">admin@ddjc.org</span></p>
+            <p>पासवर्ड: <span className="font-mono text-slate-800">admin123</span></p>
           </div>
 
           <Button type="submit" isLoading={loading} className="w-full py-4 text-sm">
-            Sign In to Dashboard
+            डैशबोर्ड में साइन इन करें
           </Button>
 
         </form>

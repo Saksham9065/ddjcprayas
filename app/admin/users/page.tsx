@@ -4,6 +4,16 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FaArrowLeft, FaCheckCircle, FaExclamationCircle, FaUser } from "react-icons/fa";
 
+const ROLE_LABELS: Record<string, string> = {
+  Complainant: "शिकायतकर्ता",
+  Volunteer: "स्वयंसेवक",
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  Active: "सक्रिय",
+  Inactive: "निष्क्रिय",
+};
+
 export default function AdminUsersPage() {
   const [users] = useState([
     {
@@ -49,11 +59,11 @@ export default function AdminUsersPage() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex justify-between items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
           <div>
-            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">Users</h1>
-            <p className="text-xs text-slate-500 mt-1">Manage registered users and their roles</p>
+            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">उपयोगकर्ता</h1>
+            <p className="text-xs text-slate-500 mt-1">पंजीकृत उपयोगकर्ताओं और उनकी भूमिकाओं का प्रबंधन करें</p>
           </div>
           <Link href="/admin/dashboard" className="flex items-center gap-2 text-[#000000] font-bold text-sm hover:underline">
-            <FaArrowLeft size={12} /> Back to Dashboard
+            <FaArrowLeft size={12} /> डैशबोर्ड पर वापस जाएं
           </Link>
         </div>
 
@@ -62,12 +72,12 @@ export default function AdminUsersPage() {
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="bg-slate-50 text-slate-500 uppercase tracking-wider border-b border-slate-200">
-                  <th className="py-4 px-6 font-bold">ID</th>
-                  <th className="py-4 px-6 font-bold">User</th>
-                  <th className="py-4 px-6 font-bold">Role</th>
-                  <th className="py-4 px-6 font-bold">Phone</th>
-                  <th className="py-4 px-6 font-bold">Status</th>
-                  <th className="py-4 px-6 font-bold">Joined</th>
+                  <th className="py-4 px-6 font-bold">आईडी</th>
+                  <th className="py-4 px-6 font-bold">उपयोगकर्ता</th>
+                  <th className="py-4 px-6 font-bold">भूमिका</th>
+                  <th className="py-4 px-6 font-bold">फ़ोन</th>
+                  <th className="py-4 px-6 font-bold">स्थिति</th>
+                  <th className="py-4 px-6 font-bold">शामिल हुए</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -82,7 +92,7 @@ export default function AdminUsersPage() {
                         <span className="font-bold block text-slate-900">{user.name}</span>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-slate-600">{user.role}</td>
+                    <td className="py-4 px-6 text-slate-600">{ROLE_LABELS[user.role] ?? user.role}</td>
                     <td className="py-4 px-6 font-mono text-slate-500">{user.phone}</td>
                     <td className="py-4 px-6">
                       <span
@@ -93,7 +103,7 @@ export default function AdminUsersPage() {
                         }`}
                       >
                         {user.status === "Active" ? <FaCheckCircle size={10} /> : <FaExclamationCircle size={10} />}
-                        {user.status}
+                        {STATUS_LABELS[user.status] ?? user.status}
                       </span>
                     </td>
                     <td className="py-4 px-6 text-slate-600">{user.joinedAt}</td>

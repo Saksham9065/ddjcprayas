@@ -2,22 +2,20 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { useApp } from "@/context/AppContext";
 
 function Team() {
-  const { language } = useApp();
   const leadership = [
-    { name: "Adv. Kuldeep Kumar Baudh", role: "Founder - DDJC", education: "MSW, LLB", experience: "15 Yrs Exp", image: "/images/team/kuldeep.jpg" },
-    { name: "Adv. Nikhat Parveen", role: "Prog. & Legal Coordinator", education: "LLB, M.Sc. CS", experience: "5 Yrs Exp", image: "/images/team/nikaht.jpg" },
-    { name: "Pradeep Kumar Singh", role: "Finance Manager & Accountant", education: "BA, MA, PGDCA", experience: "10 Yrs Exp", image: "/images/team/pradeep.jpg" },
+    { name: "Adv. Kuldeep Kumar Baudh", role: "संस्थापक - DDJC", education: "MSW, LLB", experience: "15 वर्ष अनुभव", image: "/images/team/kuldeep.jpg" },
+    { name: "Adv. Nikhat Parveen", role: "कार्यक्रम तथा कानूनी समन्वयक", education: "LLB, M.Sc. CS", experience: "5 वर्ष अनुभव", image: "/images/team/nikaht.jpg" },
+    { name: "Pradeep Kumar Singh", role: "वित्त प्रबंधक तथा लेखाकार", education: "BA, MA, PGDCA", experience: "10 वर्ष अनुभव", image: "/images/team/pradeep.jpg" },
   ];
 
   const members = [
-    { name: "Usha Devi", role: "Tehseel Coordinator (Jalaun)", education: "BSC, BED", experience: "3 Yrs Exp", image: "/images/team/usha.jpg" },
-    { name: "Pradeep Kumar", role: "Tehseel Coordinator (Orai)", education: "BSC, LLB", experience: "5 Yrs Exp", image: "/images/team/pradeep_k.png" },
-    { name: "Anita Devi", role: "Tehseel Coordinator (Kalpi)", education: "12th", experience: "7 Yrs Exp", image: "/images/team/anita.jpg" },
-    { name: "Sachin Kumar", role: "Tehseel Coordinator (Madhaugadh)", education: "BSC, LLB", experience: "3 Yrs Exp", image: "/images/team/sachin.jpg" },
-    { name: "Sneshraja", role: "Tehseel Coordinator (Konch)", education: "BA", experience: "20 Yrs Exp", image: "/images/team/snesh.jpg" },
+    { name: "Usha Devi", role: "तहसील समन्वयक (जालौन)", education: "BSC, BED", experience: "3 वर्ष अनुभव", image: "/images/team/usha.jpg" },
+    { name: "Pradeep Kumar", role: "तहसील समन्वयक (उरई)", education: "BSC, LLB", experience: "5 वर्ष अनुभव", image: "/images/team/pradeep_k.png" },
+    { name: "Anita Devi", role: "तहसील समन्वयक (कालपी)", education: "12th", experience: "7 वर्ष अनुभव", image: "/images/team/anita.jpg" },
+    { name: "Sachin Kumar", role: "तहसील समन्वयक (मधौगढ़)", education: "BSC, LLB", experience: "3 वर्ष अनुभव", image: "/images/team/sachin.jpg" },
+    { name: "Sneshraja", role: "तहसील समन्वयक (कोंच)", education: "BA", experience: "20 वर्ष अनुभव", image: "/images/team/snesh.jpg" },
   ];
 
   const containerVariants = { 
@@ -49,13 +47,13 @@ function Team() {
         
         <div className="text-center mb-10 flex flex-col items-center">
           <span className="text-xs font-bold uppercase tracking-widest text-[#000000] bg-slate-50 px-2.5 py-1 rounded-full mb-2 border border-slate-200">
-            {language === "en" ? "Leadership & Advocates" : "नेतृत्व एवं वकील"}
+            नेतृत्व एवं वकील
           </span>
           <h1 className="text-3xl md:text-4xl font-black text-[#0A2540] tracking-tight">
-            {language === "en" ? "Meet the DDJC Team" : "DDJC टीम से मिलें"}
+            DDJC टीम से मिलें
           </h1>
           <p className="max-w-xl mx-auto mt-2 text-sm md:text-base text-slate-600 leading-relaxed">
-            {language === "en" ? "Our dedicated team of lawyers, social activists, and field coordinators working tirelessly for justice and dignity." : "न्याय और गरिमा के लिए tirelessly काम कर रही हमारे वकीलों, सामाजिक कार्यकर्ताओं और क्षेत्रीय समन्वयकों की टीम।"}
+            न्याय और गरिमा के लिए समर्पित हमारे वकीलों, सामाजिक कार्यकर्ताओं और क्षेत्रीय समन्वयकों की टीम।
           </p>
         </div>
 
@@ -89,7 +87,7 @@ function Team() {
                     </div>
                     
                     <div className="pt-2 border-t border-slate-200 flex items-center text-xs">
-                      <span className="font-semibold text-slate-400 mr-1.5">Education:</span>
+                      <span className="font-semibold text-slate-400 mr-1.5">शिक्षा:</span>
                       <span className="text-slate-600 font-medium truncate">{person.education}</span>
                     </div>
                   </div>
@@ -125,7 +123,7 @@ function Team() {
               </div>
               
               <div className="pt-2 border-t border-slate-200 flex items-center text-[10px]">
-                <span className="font-semibold text-slate-400 mr-1">Edu:</span>
+                <span className="font-semibold text-slate-400 mr-1">शिक्षा:</span>
                 <span className="text-slate-600 font-medium truncate">{member.education}</span>
               </div>
             </div>

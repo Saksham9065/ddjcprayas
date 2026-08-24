@@ -3,18 +3,17 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  FaHandsHelping,
-  FaMapMarkerAlt,
-  FaArrowRight,
-  FaDoorOpen,
-  FaComments,
-  FaTools,
-  FaBalanceScale,
-  FaQuoteLeft,
-} from "react-icons/fa";
-import { useApp } from "@/context/AppContext";
+  Handshake,
+  MapPin,
+  ArrowRight,
+  DoorOpen,
+  MessageCircle,
+  Wrench,
+  Scale,
+  Quote,
+} from "lucide-react";
 
 const HERO_IMAGES = [
   "/images/hero/1.jpg",
@@ -30,42 +29,32 @@ const HERO_IMAGES = [
 ];
 
 export default function Hero() {
-  const { language } = useApp();
-  const isHindi = language === "hi";
   const [idx, setIdx] = useState(0);
 
-  const t = (en: string, hi: string) => (isHindi ? hi : en);
   const safeIdx = Number.isFinite(idx)
     ? ((idx % HERO_IMAGES.length) + HERO_IMAGES.length) % HERO_IMAGES.length
     : 0;
 
-  const words = isHindi ? ["सम्मान।", "न्याय।", "शक्ति।"] : ["Dignity.", "Justice.", "Power."];
+  const words = ["सम्मान।", "न्याय।", "शक्ति।"];
 
-  const bottomPoints = isHindi
-    ? [
-        { icon: FaDoorOpen, text: "आने के लिए एक जगह।" },
-        { icon: FaComments, text: "बात करने के लिए एक व्यक्ति।" },
-        { icon: FaTools, text: "हल करने के लिए एक समस्या।" },
-        { icon: FaBalanceScale, text: "दावा करने के लिए एक अधिकार।" },
-      ]
-    : [
-        { icon: FaDoorOpen, text: "A place to come." },
-        { icon: FaComments, text: "A person to talk to." },
-        { icon: FaTools, text: "A problem to solve." },
-        { icon: FaBalanceScale, text: "A right to claim." },
-      ];
+  const bottomPoints = [
+    { icon: DoorOpen, text: "आने के लिए एक जगह।" },
+    { icon: MessageCircle, text: "बात करने के लिए एक व्यक्ति।" },
+    { icon: Wrench, text: "हल करने के लिए एक समस्या।" },
+    { icon: Scale, text: "दावा करने के लिए एक अधिकार।" },
+  ];
 
   const ctas = [
     {
-      label: t("I NEED SUPPORT", "मुझे सहायता चाहिए"),
+      label: "मुझे सहायता चाहिए",
       href: "/complaint",
-      icon: FaHandsHelping,
+      icon: Handshake,
       style: "bg-gold hover:bg-gold-soft text-navy shadow-lg",
     },
     {
-      label: t("FIND A DDJC", "DDJC खोजें"),
+      label: "DDJC खोजें",
       href: "/contact",
-      icon: FaMapMarkerAlt,
+      icon: MapPin,
       style: "border border-white/40 hover:bg-white/10 text-white backdrop-blur-sm",
     },
   ];
@@ -102,7 +91,7 @@ export default function Hero() {
               >
                 <Image
                   src={src}
-                  alt={t("DDJC community gathering", "DDJC सामुदायिक सभा")}
+                  alt="DDJC सामुदायिक सभा"
                   fill
                   priority={i === safeIdx}
                   loading={i === safeIdx ? "eager" : "lazy"}
@@ -123,7 +112,7 @@ export default function Hero() {
             <button
               key={i}
               onClick={() => setIdx(i)}
-              aria-label={`Show image ${i + 1}`}
+              aria-label={`तस्विर ${i + 1} दिखाएँ`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === idx ? "w-7 bg-gold" : "w-1.5 bg-white/50 hover:bg-white/80"
               }`}
@@ -138,10 +127,7 @@ export default function Hero() {
           <div className="text-left mt-px">
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/25 text-white px-4 py-2 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              {t(
-                "One Centre. Many Doors to Dignity, Justice & Empowerment.",
-                "एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।"
-              )}
+              {"एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।"}
             </span>
 
             <h1 className="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 drop-shadow-lg">
@@ -154,55 +140,46 @@ export default function Hero() {
             </h1>
 
             <p className="text-base md:text-xl font-semibold text-white/90 mb-4 drop-shadow-md">
-              {t(
-                "A community centre where rights become reality.",
-                "एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।"
-              )}
+              {"एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।"}
             </p>
 
             <p className="text-[13px] md:text-sm text-white leading-relaxed mb-5 max-w-xl bg-black/30 backdrop-blur-sm rounded-xl px-4 py-3">
-              {t(
-                "Dalit Dignity & Justice Centres are village-level one-point centres helping communities access justice, rights, information, government services and opportunities — while building a new generation of informed and empowered citizens.",
-                "दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।"
-              )}
+              {"दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।"}
             </p>
 
             <blockquote className="flex items-start gap-3 text-xs md:text-sm text-white font-bold italic mb-8 max-w-xl drop-shadow-md">
-              <FaQuoteLeft className="mt-1 text-gold/70 shrink-0" size={14} />
+              <Quote className="mt-1 text-gold/70 shrink-0" size={14} />
               <span>
-                {t(
-                  "“Until the last man in society is empowered, freedom remains incomplete.” — Dr. B.R. Ambedkar",
-                  "“जब तक समाज का अंतिम व्यक्ति सशक्त नहीं हो जाता, तब तक स्वतंत्रता अधूरी है।” — डॉ. बी.आर. अम्बेडकर"
-                )}
+                {"“जब तक समाज का अंतिम व्यक्ति सशक्त नहीं हो जाता, तब तक स्वतंत्रता अधूरी है।” — डॉ. बी.आर. अम्बेडकर"}
               </span>
             </blockquote>
 
-            <div className="flex flex-row flex-nowrap gap-2 sm:gap-3 md:gap-4 mb-6 w-full">
-              {ctas.map((cta) => (
-                <Link
-                  key={cta.label}
-                  href={cta.href}
-                  className={`group inline-flex items-center justify-center gap-1.5 w-full flex-1 min-w-0 px-2 sm:px-4 md:px-6 py-3 md:py-3.5 rounded-2xl text-[11px] sm:text-[13px] md:text-sm font-bold transition-all hover:-translate-y-0.5 hover:scale-[1.03] ${cta.style}`}
-                >
-                  <cta.icon size={16} />
-                  {cta.label}
-                  <FaArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </Link>
-              ))}
-            </div>
+            <div className="flex flex-row flex-wrap gap-2 sm:gap-3 md:gap-4 mb-6 w-full">
+               {ctas.map((cta) => (
+                 <Link
+                   key={cta.label}
+                   href={cta.href}
+                   className={`group inline-flex items-center justify-center gap-1.5 w-full sm:w-auto flex-1 min-w-0 px-3 sm:px-4 md:px-6 py-3 md:py-3.5 rounded-2xl text-[11px] sm:text-[13px] md:text-sm font-bold transition-all hover:-translate-y-0.5 hover:scale-[1.03] ${cta.style}`}
+                 >
+                   <cta.icon size={16} />
+                   {cta.label}
+                   <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                 </Link>
+               ))}
+             </div>
 
-            {/* Four bottom points */}
-            <div className="flex flex-row flex-nowrap gap-2 md:gap-3 w-full">
-              {bottomPoints.map((point, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 min-w-0 flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/90 px-2 py-2.5 text-center"
-                  >
-                    <point.icon className="text-[#0A2540] shrink-0" size={14} />
-                    <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-[#0A2540] leading-tight">{point.text}</span>
-                  </div>
-                ))}
-            </div>
+             {/* Four bottom points */}
+             <div className="flex flex-row flex-wrap gap-2 md:gap-3 w-full">
+               {bottomPoints.map((point, i) => (
+                   <div
+                     key={i}
+                     className="flex-1 min-w-[45%] sm:min-w-0 flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/90 px-2 py-2.5 text-center"
+                   >
+                     <point.icon className="text-[#0A2540] shrink-0" size={14} />
+                     <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-[#0A2540] leading-tight">{point.text}</span>
+                   </div>
+                 ))}
+             </div>
           </div>
         </div>
       </div>

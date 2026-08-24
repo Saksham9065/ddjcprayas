@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
+import { ArrowRight } from "lucide-react";
 
 export default function AboutSection() {
   return (
@@ -23,7 +23,7 @@ export default function AboutSection() {
               href="/about"
                className="inline-flex items-center gap-2 text-[#000000] hover:text-slate-700 font-bold text-xs md:text-sm uppercase tracking-wider"
             >
-              Read More About Us <FaArrowRight size={10} />
+              Read More About Us <ArrowRight size={10} />
             </Link>
           </div>
         </div>

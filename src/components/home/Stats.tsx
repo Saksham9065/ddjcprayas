@@ -1,16 +1,14 @@
 "use client";
 
 import React from "react";
-import { useApp } from "@/context/AppContext";
 import { Reveal, SectionHeading, CountUp } from "./primitives";
 import {
-  FaUsers,
-  FaHandsHelping,
-  FaBalanceScale,
-  FaMapMarkedAlt,
-  FaUserFriends,
-  FaChild,
-} from "react-icons/fa";
+  Users,
+  Handshake,
+  Scale,
+  MapPin,
+  Baby,
+} from "lucide-react";
 
 interface Stat {
   to: number;
@@ -21,19 +19,15 @@ interface Stat {
 }
 
 const STATS: Stat[] = [
-  { to: 12450, suffix: "+", labelEn: "People Reached", labelHi: "लोगों तक पहुँच", icon: FaUsers },
-  { to: 1280, suffix: "+", labelEn: "People Supported", labelHi: "सहायता प्राप्त लोग", icon: FaHandsHelping },
-  { to: 340, suffix: "+", labelEn: "Cases Assisted", labelHi: "सहायता प्राप्त मामले", icon: FaBalanceScale },
-  { to: 95, suffix: "+", labelEn: "Villages Connected", labelHi: "जुड़े गाँव", icon: FaMapMarkedAlt },
-  { to: 68, suffix: "+", labelEn: "Community Volunteers", labelHi: "सामुदायिक स्वयंसेवक", icon: FaUserFriends },
-  { to: 42, suffix: "+", labelEn: "Youth Leaders", labelHi: "युवा नेता", icon: FaChild },
+  { to: 12450, suffix: "+", labelEn: "People Reached", labelHi: "लोगों तक पहुँच", icon: Users },
+  { to: 1280, suffix: "+", labelEn: "People Supported", labelHi: "सहायता प्राप्त लोग", icon: Handshake },
+  { to: 340, suffix: "+", labelEn: "Cases Assisted", labelHi: "सहायता प्राप्त मामले", icon: Scale },
+  { to: 95, suffix: "+", labelEn: "Villages Connected", labelHi: "जुड़े गाँव", icon: MapPin },
+  { to: 68, suffix: "+", labelEn: "Community Volunteers", labelHi: "सामुदायिक स्वयंसेवक", icon: Users },
+  { to: 42, suffix: "+", labelEn: "Youth Leaders", labelHi: "युवा नेता", icon: Baby },
 ];
 
 export default function Stats() {
-  const { language } = useApp();
-  const isHindi = language === "hi";
-  const t = (en: string, hi: string) => (isHindi ? hi : en);
-
   return (
     <section id="impact" className="py-10 md:py-16 bg-navy relative overflow-hidden">
       <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
@@ -43,12 +37,9 @@ export default function Stats() {
         <Reveal>
           <SectionHeading
             light
-            eyebrow={t("Our Reach", "हमारी पहुँच")}
-            title={t("DDJC By The Numbers", "आँकड़ों में DDJC")}
-            subtitle={t(
-              "Every number is a person, a family, and a community moving closer to dignity and justice.",
-              "हर आँकड़ा एक व्यक्ति, एक परिवार और एक समुदाय है जो गरिमा और न्याय के करीब बढ़ रहा है।"
-            )}
+            eyebrow="हमारी पहुँच"
+            title="आँकड़ों में DDJC"
+            subtitle="हर आँकड़ा एक व्यक्ति, एक परिवार और एक समुदाय है जो गरिमा और न्याय के करीब बढ़ रहा है।"
           />
         </Reveal>
 
@@ -61,7 +52,7 @@ export default function Stats() {
                   <CountUp to={stat.to} suffix={stat.suffix} />
                 </span>
                 <span className="text-xs md:text-sm font-semibold uppercase tracking-wide text-white/70">
-                  {t(stat.labelEn, stat.labelHi)}
+                  {stat.labelHi}
                 </span>
               </div>
             </Reveal>

@@ -2,12 +2,10 @@
 
 import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { FaUniversity, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaUpload, FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
-import { useApp } from "@/context/AppContext";
 
 export default function DonatePage() {
-  const { language } = useApp();
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -68,126 +66,126 @@ export default function DonatePage() {
   };
 
   return (
-    <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl space-y-8">
-        <div className="text-center max-w-2xl mx-auto space-y-4">
-          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-            {language === "en" ? "Support Justice & Equality" : "न्याय और समानता का समर्थन करें"}
+    <div className="bg-white min-h-screen py-8 pt-14 md:py-12 md:pt-16 lg:py-16 lg:pt-24">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 max-w-6xl space-y-6 md:space-y-8">
+        <div className="text-center max-w-2xl mx-auto space-y-3 md:space-y-4">
+          <span className="bg-slate-50 text-[#000000] px-3 py-1.5 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
+            न्याय और समानता का समर्थन करें
           </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight">
-            {language === "en" ? "Contribute to DDJC" : "DDJC में योगदान दें"}
+          <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#0A2540] tracking-tight">
+            DDJC में योगदान दें
           </h1>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            {language === "en" ? "Your generous contribution directly funds free legal aid, courtroom advocacy, and grassroots legal awareness camps for marginalized victims." : "आपका उदार योगदान सीधे वंचित पीड़ितों के लिए मुफ्त कानूनी सहायता, कोर्टरूम वकालत और जमीनी स्तर पर कानूनी जागरूकता शिविरों में खर्च होता है।"}
+          <p className="text-slate-600 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+            आपका उदार योगदान सीधे वंचित पीड़ितों के लिए मुफ्त कानूनी सहायता, कोर्टरूम वकालत और जमीनी स्तर पर कानूनी जागरूकता शिविरों में खर्च होता है।
           </p>
         </div>
 
-        <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl grid md:grid-cols-2 gap-6 items-center">
-          <div className="space-y-4">
-            <span className="bg-slate-1000/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
-              Direct Bank Transfer / UPI
+        <div className="bg-[#0A2540] text-white p-6 md:p-8 lg:p-10 rounded-2xl md:rounded-3xl shadow-xl grid md:grid-cols-2 gap-4 md:gap-6 items-center">
+          <div className="space-y-3 md:space-y-4">
+            <span className="bg-slate-1000/20 text-blue-300 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block">
+              सीधे बैंक ट्रांसफर / UPI
             </span>
-            <h3 className="text-2xl font-bold">Official Bank Details</h3>
-            <div className="space-y-2 text-sm text-slate-300">
-              <p><strong className="text-white">Account Name:</strong> Prayas Jan Utthan Samiti</p>
-              <p><strong className="text-white">A/C Number:</strong> <span className="font-mono">7108466367</span></p>
-              <p><strong className="text-white">Bank Name:</strong> Indian Bank</p>
-              <p><strong className="text-white">IFSC Code:</strong> <span className="font-mono">IDIB000O029</span></p>
-              <p><strong className="text-white">Branch Address:</strong> Orai Branch, Prakash Complex, Opp District Court, Orai – Jalaun, UP.</p>
+            <h3 className="text-xl md:text-2xl font-bold">आधिकारिक बैंक विवरण</h3>
+            <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-300">
+              <p><strong className="text-white">खाता का नाम:</strong> प्रयास जन उत्थान समिति</p>
+              <p><strong className="text-white">खाता संख्या:</strong> <span className="font-mono">7108466367</span></p>
+              <p><strong className="text-white">बैंक का नाम:</strong> इंडियन बैंक</p>
+              <p><strong className="text-white">IFSC कोड:</strong> <span className="font-mono">IDIB000O029</span></p>
+              <p><strong className="text-white">शाखा पता:</strong> उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र.</p>
             </div>
           </div>
 
-          <div className="bg-white/10 p-6 rounded-2xl border border-white/20 text-center space-y-4 backdrop-blur-sm">
+          <div className="bg-white/10 p-4 md:p-6 rounded-xl md:rounded-2xl border border-white/20 text-center space-y-3 md:space-y-4 backdrop-blur-sm">
             <div className="flex justify-center mb-2">
-              <div className="relative h-14 w-14 rounded-full overflow-hidden shadow-md border border-white/20 bg-slate-50">
+              <div className="relative h-12 w-12 md:h-14 md:w-14 rounded-full overflow-hidden shadow-md border border-white/20 bg-slate-50">
                 <Image
                   src="/images/logo/ddjc-logo.jpg"
                   alt="DDJC Logo"
                   fill
-                  sizes="56px"
+                  sizes="48px md:56px"
                   className="object-cover object-center"
                 />
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-base mb-1">{language === "en" ? "Scan & Donate via QR" : "QR से स्कैन करके दान करें"}</h4>
-              <p className="text-xs text-slate-300">{language === "en" ? "Scan using any UPI app (Google Pay, PhonePe, Paytm)" : "किसी भी UPI ऐप (Google Pay, PhonePe, Paytm) से स्कैन करें"}</p>
+              <h4 className="font-bold text-sm md:text-base mb-1">QR से स्कैन करके दान करें</h4>
+              <p className="text-[10px] md:text-xs text-slate-300">किसी भी UPI ऐप (गूगल पे, फोनपे, पेटीएम) से स्कैन करें</p>
             </div>
-            <div className="relative w-48 h-48 mx-auto bg-white rounded-xl overflow-hidden p-2 shadow-inner">
+            <div className="relative w-40 h-40 md:w-48 md:h-48 mx-auto bg-white rounded-lg md:rounded-xl overflow-hidden p-1.5 md:p-2 shadow-inner">
               <Image
                 src="/images/qr/qr.png"
                 alt="Prayas Jan Utthan Samiti Donation QR Code"
                 fill
-                sizes="192px"
-                className="object-contain p-2"
+                sizes="160px md:192px"
+                className="object-contain p-1 md:p-2"
               />
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
-          <h3 className="text-xl font-bold text-[#0A2540] mb-6">{language === "en" ? "Upload Payment Proof" : "भुगतान प्रमाण अपलोड करें"}</h3>
+        <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
+          <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-4 md:mb-6">भुगतान प्रमाण अपलोड करें</h3>
           {success ? (
-            <div className="p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
-              <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl">
+            <div className="p-6 md:p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
+              <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl">
                 <FaCheckCircle />
               </div>
-              <h4 className="text-xl font-bold text-emerald-800">{language === "en" ? "Thank You for Your Contribution!" : "आपके योगदान के लिए धन्यवाद!"}</h4>
-              <p className="text-xs text-emerald-700 max-w-md mx-auto">
-                {language === "en" ? "Your payment proof has been received. Our team will verify the transaction and update the status shortly." : "आपका भुगतान प्रमाण प्राप्त हो चुका है। हमारी टीम लेन-देन की पुष्टि करेगी और स्थिति जल्द अपडेट करेगी।"}
+              <h4 className="text-lg md:text-xl font-bold text-emerald-800">आपके योगदान के लिए धन्यवाद!</h4>
+              <p className="text-xs md:text-sm text-emerald-700 max-w-md mx-auto">
+                आपका भुगतान प्रमाण प्राप्त हो चुका है। हमारी टीम लेन-देन की पुष्टि करेगी और स्थिति जल्द अपडेट करेगी।
               </p>
               <button
                 type="button"
                 onClick={() => setSuccess(false)}
-                className="mt-4 bg-[#000000] text-white px-6 py-2.5 rounded-xl text-xs font-bold"
+                className="mt-3 md:mt-4 bg-[#000000] text-white px-5 py-2 md:px-6 md:py-2.5 rounded-xl text-[11px] md:text-xs font-bold"
               >
-                {language === "en" ? "Make Another Contribution" : "एक और योगदान करें"}
+                एक और योगदान करें
               </button>
             </div>
           ) : (
-            <form onSubmit={handleDonate} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <form onSubmit={handleDonate} className="space-y-4 md:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Full Name</label>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">पूरा नाम</label>
                   <input
                     type="text"
                     required
                     value={donorName}
                     onChange={(e) => setDonorName(e.target.value)}
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
+                    placeholder="आपका नाम"
+                    className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Phone Number</label>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">फोन नंबर</label>
                   <input
                     type="tel"
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
+                    className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-slate-700 mb-2">Email Address</label>
+                <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">ईमेल पता</label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="supporter@example.com"
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
+                  className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase text-slate-700 mb-3">Upload Payment Screenshot</label>
+                <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-2 md:mb-3">भुगतान स्क्रीनशॉट अपलोड करें</label>
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-colors ${
+                  className={`border-2 border-dashed rounded-xl md:rounded-2xl p-6 md:p-8 text-center cursor-pointer transition-colors ${
                     screenshot
                       ? "border-emerald-400 bg-emerald-50"
                       : "border-slate-300 bg-slate-50 hover:border-slate-400 hover:bg-slate-100"
@@ -202,8 +200,8 @@ export default function DonatePage() {
                     className="hidden"
                   />
                   {screenshot ? (
-                    <div className="space-y-3">
-                      <div className="w-24 h-24 mx-auto rounded-xl overflow-hidden border border-slate-200">
+                    <div className="space-y-2 md:space-y-3">
+                      <div className="w-20 h-20 md:w-24 md:h-24 mx-auto rounded-lg md:rounded-xl overflow-hidden border border-slate-200">
                         {previewUrl && (
                           <Image
                             src={previewUrl}
@@ -214,27 +212,27 @@ export default function DonatePage() {
                           />
                         )}
                       </div>
-                      <p className="text-sm font-bold text-emerald-700">{screenshot.name}</p>
-                      <p className="text-xs text-slate-500">Click to replace</p>
+                      <p className="text-xs md:text-sm font-bold text-emerald-700">{screenshot.name}</p>
+                      <p className="text-[10px] md:text-xs text-slate-500">बदलने के लिए क्लिक करें</p>
                     </div>
                   ) : (
-                    <div className="space-y-3">
-                      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto text-slate-400 border border-slate-200">
-                        <FaUpload size={28} />
+                    <div className="space-y-2 md:space-y-3">
+                      <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mx-auto text-slate-400 border border-slate-200">
+                        <FaUpload className="w-6 h-6 md:w-7 md:h-7" />
                       </div>
                       <div>
-                        <p className="text-sm font-bold text-slate-700">Click to upload payment proof</p>
-                        <p className="text-xs text-slate-500 mt-1">Supports JPG, PNG, WebP (max 10MB)</p>
+                        <p className="text-xs md:text-sm font-bold text-slate-700">भुगतान प्रमाण अपलोड करने के लिए क्लिक करें</p>
+                        <p className="text-[10px] md:text-xs text-slate-500 mt-1">JPG, PNG, WebP (अधिकतम 10MB) समर्थित</p>
                       </div>
                     </div>
                   )}
                 </div>
-                {error && <p className="text-red-600 text-xs font-bold mt-2">{error}</p>}
+                {error && <p className="text-red-600 text-[10px] md:text-xs font-bold mt-2">{error}</p>}
               </div>
 
               <div className="flex justify-center">
-                <Button type="submit" isLoading={loading} className="w-auto px-8 py-2 text-xs">
-                  <FaUpload /> {language === "en" ? "Submit Payment Proof" : "भुगतान प्रमाण जमा करें"}
+                <Button type="submit" isLoading={loading} className="w-auto px-6 md:px-8 py-2 md:py-2.5 text-[11px] md:text-xs">
+                  <FaUpload /> भुगतान प्रमाण जमा करें
                 </Button>
               </div>
             </form>

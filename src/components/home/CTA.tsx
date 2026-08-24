@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaFileSignature, FaArrowRight } from "react-icons/fa";
+import { FileSignature, ArrowRight } from "lucide-react";
 
 export default function CTA() {
   return (
@@ -18,7 +18,7 @@ export default function CTA() {
                href="/complaint"
                className="bg-[#000000] hover:bg-slate-600 text-white px-5 py-3 md:px-8 md:py-4 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 shadow-lg shadow-black/20"
              >
-               <FaFileSignature /> File a Complaint <FaArrowRight />
+               <FileSignature /> File a Complaint <ArrowRight />
              </Link>
            </div>
          </div>

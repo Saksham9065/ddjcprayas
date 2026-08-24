@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { FaShieldAlt, FaArrowRight } from "react-icons/fa";
+import { Shield, ArrowRight } from "lucide-react";
 
 export default function Services() {
   return (
@@ -18,14 +18,14 @@ export default function Services() {
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
             <div className="w-14 h-14 bg-slate-50 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-100">
-              <FaShieldAlt />
+              <Shield />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">SC/ST Atrocity Support</h3>
             <p className="text-slate-600 text-xs leading-relaxed">
               Immediate legal assistance, police accountability monitoring, and FIR registration support under the Act.
             </p>
             <Link href="/legal-aid" className="text-[#000000] text-xs md:text-sm font-bold inline-flex items-center gap-1 pt-2">
-              Learn more <FaArrowRight size={10} />
+              Learn more <ArrowRight size={10} />
             </Link>
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Trash2, RefreshCw, Moon, Sun } from "lucide-react";
+import { Cross, Trash2, RefreshCw, Moon, Sun } from "lucide-react";
 
 interface ChatHeaderProps {
   onClose: () => void;
@@ -67,7 +67,7 @@ export default function ChatHeader({
           type="button"
           aria-label="Close chat"
         >
-          <X size={12} />
+          <Cross size={12} />
         </button>
       </div>
     </div>

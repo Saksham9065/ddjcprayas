@@ -164,7 +164,7 @@ export default function AdminPageShell({
               onClick={exportExcel}
               className="px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-slate-700 transition-colors"
             >
-              Export Excel
+              एक्सेल निर्यात करें
             </button>
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function AdminPageShell({
                 type="text"
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                placeholder={`Search ${title.toLowerCase()}...`}
+                placeholder={`खोजें ${title}...`}
                 className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] w-full sm:w-64"
               />
             </div>
@@ -228,20 +228,20 @@ export default function AdminPageShell({
                       {col.label}
                     </th>
                   ))}
-                  <th className="py-4 px-6 font-bold text-right">Actions</th>
+                  <th className="py-4 px-6 font-bold text-right">कार्रवाई</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
                 {loading ? (
                   <tr>
                     <td colSpan={columns.length + 1} className="py-12 text-center text-slate-400">
-                      Loading...
+                      लोड हो रहा है...
                     </td>
                   </tr>
                 ) : data.length === 0 ? (
                   <tr>
                     <td colSpan={columns.length + 1} className="py-12 text-center text-slate-400">
-                      No records found.
+                      कोई रिकॉर्ड नहीं मिला।
                     </td>
                   </tr>
                 ) : (
@@ -259,7 +259,7 @@ export default function AdminPageShell({
                             onClick={() => setDetailItem(item)}
                             className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50"
                           >
-                            View
+                            देखें
                           </button>
                           {statusOptions && onStatusUpdate && (
                             <select
@@ -279,7 +279,7 @@ export default function AdminPageShell({
                             onClick={() => setDeletingId(item.id)}
                             className="px-3 py-1.5 rounded-lg border border-red-200 text-xs font-semibold text-red-700 hover:bg-red-50"
                           >
-                            Delete
+                            हटाएं
                           </button>
                         </div>
                       </td>
@@ -292,7 +292,7 @@ export default function AdminPageShell({
 
           <div className="p-6 border-t border-slate-100 flex items-center justify-between">
             <p className="text-xs text-slate-500">
-              Showing {(page - 1) * limit + 1} to {Math.min(page * limit, total)} of {total} entries
+              कुल {total} प्रविष्टियों में से {(page - 1) * limit + 1} से {Math.min(page * limit, total)} दिखाया जा रहा है
             </p>
             <div className="flex items-center gap-2">
               <button
@@ -301,10 +301,10 @@ export default function AdminPageShell({
                 disabled={page === 1}
                 className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
               >
-                Previous
+                पिछला
               </button>
               <span className="text-xs text-slate-600 font-semibold">
-                Page {page} of {totalPages}
+                पृष्ठ {page} / {totalPages}
               </span>
               <button
                 type="button"
@@ -312,7 +312,7 @@ export default function AdminPageShell({
                 disabled={page === totalPages}
                 className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
               >
-                Next
+                अगला
               </button>
             </div>
           </div>
@@ -323,13 +323,13 @@ export default function AdminPageShell({
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h3 className="text-lg font-black text-[#0A2540]">Record Details</h3>
+              <h3 className="text-lg font-black text-[#0A2540]">रिकॉर्ड विवरण</h3>
               <button
                 type="button"
                 onClick={() => setDetailItem(null)}
                 className="text-slate-400 hover:text-slate-600 text-sm font-bold"
               >
-                Close
+                बंद करें
               </button>
             </div>
             <div className="p-6 space-y-4">
@@ -350,7 +350,7 @@ export default function AdminPageShell({
                 onClick={() => setDetailItem(null)}
                 className="px-6 py-2.5 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-slate-700"
               >
-                Close
+                बंद करें
               </button>
             </div>
           </div>
@@ -360,9 +360,9 @@ export default function AdminPageShell({
       {deletingId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl max-w-sm w-full p-6 space-y-4">
-            <h3 className="text-lg font-black text-[#0A2540]">Confirm Delete</h3>
+            <h3 className="text-lg font-black text-[#0A2540]">हटाने की पुष्टि करें</h3>
             <p className="text-sm text-slate-600">
-              Are you sure you want to delete this record? This action cannot be undone.
+              क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।
             </p>
             <div className="flex items-center gap-3">
               <button
@@ -370,14 +370,14 @@ export default function AdminPageShell({
                 onClick={() => setDeletingId(null)}
                 className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-bold hover:bg-slate-50"
               >
-                Cancel
+                रद्द करें
               </button>
               <button
                 type="button"
                 onClick={handleDelete}
                 className="flex-1 px-4 py-2.5 rounded-xl bg-red-600 text-white text-xs font-bold hover:bg-red-700"
               >
-                Delete
+                हटाएं
               </button>
             </div>
           </div>

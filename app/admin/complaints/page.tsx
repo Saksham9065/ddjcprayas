@@ -3,37 +3,52 @@
 import React, { useState, useEffect } from "react";
 import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
 
+const STATUS_LABELS: Record<string, string> = {
+  "Pending Review": "समीक्षा लंबित",
+  "In Progress": "प्रगति में",
+  Resolved: "हल किया गया",
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  "Atrocity / Violence": "अत्याचार / हिंसा",
+  "Police Inaction": "पुलिस निष्क्रियता",
+  "Land Dispute": "भूमि विवाद",
+  "Social Boycott": "सामाजिक बहिष्कार",
+  "Compensation Delay": "मुआवजा विलंब",
+  "Other": "अन्य",
+};
+
 export default function AdminComplaintsPage() {
   const [stats, setStats] = useState<StatDef[]>([
-    { label: "Total Cases", value: 0, color: "bg-slate-800" },
-    { label: "Pending Review", value: 0, color: "bg-amber-500" },
-    { label: "In Progress", value: 0, color: "bg-[#000000]" },
-    { label: "Resolved", value: 0, color: "bg-emerald-500" },
+    { label: "कुल मामले", value: 0, color: "bg-slate-800" },
+    { label: "समीक्षा लंबित", value: 0, color: "bg-amber-500" },
+    { label: "प्रगति में", value: 0, color: "bg-[#000000]" },
+    { label: "हल किया गया", value: 0, color: "bg-emerald-500" },
   ]);
 
   const columns: ColumnDef[] = [
-    { key: "id", label: "ID", width: "100px", render: (item) => (
+    { key: "id", label: "आईडी", width: "100px", render: (item) => (
       <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
     )},
-    { key: "fullName", label: "Complainant", render: (item) => (
+    { key: "fullName", label: "शिकायतकर्ता", render: (item) => (
       <div>
         <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
         <span className="text-slate-500 font-mono text-[10px]">{String(item.phone ?? "")}</span>
       </div>
     )},
-    { key: "phone", label: "Phone", render: (item) => String(item.phone ?? "") },
-    { key: "district", label: "District", render: (item) => String(item.district ?? "") },
-    { key: "tehsil", label: "Tehsil", render: (item) => String(item.tehsil ?? "") },
-    { key: "category", label: "Category", render: (item) => (
+    { key: "phone", label: "फ़ोन", render: (item) => String(item.phone ?? "") },
+    { key: "district", label: "जिला", render: (item) => String(item.district ?? "") },
+    { key: "tehsil", label: "तहसील", render: (item) => String(item.tehsil ?? "") },
+    { key: "category", label: "श्रेणी", render: (item) => (
       <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
-        {String(item.category ?? "N/A")}
+        {String(CATEGORY_LABELS[item.category as string] ?? item.category ?? "उपलब्ध नहीं")}
       </span>
     )},
-    { key: "incidentDate", label: "Incident Date", render: (item) => String(item.incidentDate ?? "") },
-    { key: "description", label: "Description", render: (item) => (
+    { key: "incidentDate", label: "घटना तिथि", render: (item) => String(item.incidentDate ?? "") },
+    { key: "description", label: "विवरण", render: (item) => (
       <span className="truncate block max-w-xs" title={String(item.description ?? "")}>{String(item.description ?? "")}</span>
     )},
-    { key: "status", label: "Status", render: (item) => {
+    { key: "status", label: "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
         "Pending Review": "bg-amber-50 text-amber-700 border border-amber-200",
         "In Progress": "bg-slate-50 text-[#000000] border border-slate-200",
@@ -41,31 +56,31 @@ export default function AdminComplaintsPage() {
       };
       return (
         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold ${styles[item.status as string] || styles["Pending Review"]}`}>
-          {item.status as string}
+          {STATUS_LABELS[item.status as string] ?? String(item.status ?? "")}
         </span>
       );
     }},
-    { key: "createdAt", label: "Date", render: (item) => {
+    { key: "createdAt", label: "दिनांक", render: (item) => {
       const d = new Date(String(item.createdAt ?? ""));
       return isNaN(d.getTime()) ? String(item.createdAt ?? "") : d.toLocaleDateString("en-IN");
     }},
   ];
 
   const filters: FilterDef[] = [
-    { label: "Status", key: "status", options: [
-      { label: "All", value: "" },
-      { label: "Pending Review", value: "Pending Review" },
-      { label: "In Progress", value: "In Progress" },
-      { label: "Resolved", value: "Resolved" },
+    { label: "स्थिति", key: "status", options: [
+      { label: "सभी", value: "" },
+      { label: "समीक्षा लंबित", value: "Pending Review" },
+      { label: "प्रगति में", value: "In Progress" },
+      { label: "हल किया गया", value: "Resolved" },
     ]},
-    { label: "Category", key: "category", options: [
-      { label: "All Categories", value: "" },
-      { label: "Atrocity / Violence", value: "Atrocity / Violence" },
-      { label: "Police Inaction", value: "Police Inaction" },
-      { label: "Land Dispute", value: "Land Dispute" },
-      { label: "Social Boycott", value: "Social Boycott" },
-      { label: "Compensation Delay", value: "Compensation Delay" },
-      { label: "Other", value: "Other" },
+    { label: "श्रेणी", key: "category", options: [
+      { label: "सभी श्रेणियां", value: "" },
+      { label: "अत्याचार / हिंसा", value: "Atrocity / Violence" },
+      { label: "पुलिस निष्क्रियता", value: "Police Inaction" },
+      { label: "भूमि विवाद", value: "Land Dispute" },
+      { label: "सामाजिक बहिष्कार", value: "Social Boycott" },
+      { label: "मुआवजा विलंब", value: "Compensation Delay" },
+      { label: "अन्य", value: "Other" },
     ]},
   ];
 
@@ -80,10 +95,10 @@ export default function AdminComplaintsPage() {
         const inProgress = data.filter((c: Record<string, unknown>) => c.status === "In Progress").length;
         const resolved = data.filter((c: Record<string, unknown>) => c.status === "Resolved").length;
         setStats([
-          { label: "Total Cases", value: total, color: "bg-slate-800" },
-          { label: "Pending Review", value: pending, color: "bg-amber-500" },
-          { label: "In Progress", value: inProgress, color: "bg-[#000000]" },
-          { label: "Resolved", value: resolved, color: "bg-emerald-500" },
+          { label: "कुल मामले", value: total, color: "bg-slate-800" },
+          { label: "समीक्षा लंबित", value: pending, color: "bg-amber-500" },
+          { label: "प्रगति में", value: inProgress, color: "bg-[#000000]" },
+          { label: "हल किया गया", value: resolved, color: "bg-emerald-500" },
         ]);
       } catch (e) {
         console.error(e);
@@ -94,16 +109,16 @@ export default function AdminComplaintsPage() {
 
   return (
     <AdminPageShell
-      title="Complaints"
-      description="Manage and update status of citizen complaints in real time"
+      title="शिकायतें"
+      description="नागरिक शिकायतों की स्थिति का वास्तविक समय में प्रबंधन और अद्यतन करें"
       apiEndpoint="/api/admin/complaints"
       columns={columns}
       stats={stats}
       filters={filters}
       statusOptions={[
-        { label: "Pending Review", value: "Pending Review" },
-        { label: "In Progress", value: "In Progress" },
-        { label: "Resolved", value: "Resolved" },
+        { label: "समीक्षा लंबित", value: "Pending Review" },
+        { label: "प्रगति में", value: "In Progress" },
+        { label: "हल किया गया", value: "Resolved" },
       ]}
       onStatusUpdate={async (id, status) => {
         await fetch("/api/admin/complaints", {

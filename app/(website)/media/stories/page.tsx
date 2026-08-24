@@ -9,32 +9,32 @@ export default function StoriesPage() {
     {
       name: "Vijay Valmiki",
       location: "Valmiki Nagar, Jalaun (20 km from Orai)",
-      story: "Coming from a family where my father worked as a contractual sanitation worker and my mother engaged in manual scavenging, I faced untouchability and discrimination every day of my life—from school to trying to run an auto-rickshaw, and even when my wedding alliance broke down abruptly. When false threats and casteist abuse escalated into a violent attack, DDJC stepped in with a fact-finding mission. Through their legal leadership training, I enrolled in law school and donned the black coat. Today, I stand proudly as my Bundelkhand Valmiki community's first Dalit youth lawyer, fighting my own cases and representing others with complete dignity.",
+      story: "अस्पताल के कार्यक्रम के लिए ऑटो-रिक्शा चलाने की कोशिश कर रहा था, और जब मेरी शादी की मंजूरी अचानक रद्द हो गई थी, तब मैंने अंधेरे में भी काम किया। जब झूठे धमकी और जातिवादी अपमान हिंसा में बदल गए, तो DDJC ने तथ्य- खोज मिशन के साथ कदम रखा। उनके कानूनी नेतृत्व प्रशिक्षण के माध्यम से, मैंने कानून स्कूल में पंजीकरण किया और काला कोट पहना। आज, मैं अपने बुंदेलखंड वाल्मिकि समुदाय के पहले दलित युवा वकील के रूप में गर्व से खड़ा हूँ, अपने मामलों की लड़ाई लड़ रहा हूँ और पूरी गरिमा के साथ दूसरों का प्रतिनिधित्व कर रहा हूँ।",
     },
     {
       name: "Goldy Devi",
       location: "Nibhana Village, Tehsil Mehwa, Jalaun",
-      story: "As a young woman from the Chambal ravines dreaming of becoming a doctor to serve our region where female doctors are non-existent, I faced a horrific assault and attempted abuse on my way to my medical practice in Mehwa. After filing an FIR, we faced immense pressure to compromise. DDJC intervened with rigorous counseling and legal backing. Not only did our team ensure the chargesheet was filed, but they successfully opposed and secured the rejection of the accused's bail all the way up to the Allahabad High Court. Furthermore, through a High Court writ petition filed by DDJC, the DM and SWO were directed to immediately credit ₹1,50,000 in statutory compensation to my account. Today, my dream of becoming a doctor is alive once more.",
+      story: "चंबल की खाइयों की एक युवा महिला के रूप में डॉक्टर बनने के सपने को देख रही थी, जब महुआ में अपने चिकित्सा प्रयोग के रास्ते में भयंकर हमला और अपहरण की कोशिश हुई। एफआईआर दर्ज करने के बाद, हमें समझौते के लिए जबरन दबाव बैठना पड़ा। DDJC ने कठोर परामर्श और कानूनी पीछे से हस्तक्षेप किया। न केवल हमारी टीम ने आरोपी का बैल हटाने का विरोध किया, बल्कि सफलतापूर्वक उसकी जमानत की मंजूरी को रद्द करवा दिया।",
     },
     {
       name: "Savitri Bai",
       location: "Baghaura, Konch, Jalaun",
-      story: "The centre helped me understand my rights and stand up against discrimination in my own village. Today I help other women do the same.",
+      story: "केन्द्र ने मुझे मेरे अधिकार समझने और अपने गाँव में भेदभाव के खिलाफ खड़े होने में मदद की। आज मैं अन्य महिलाओं को भी ऐसा करने में मदद करती हूँ।",
     },
     {
       name: "Raju",
       location: "Konch, Jalaun",
-      story: "I joined the youth hub to learn about the Constitution. Now I organise awareness camps in my block and lead other young people.",
+      story: "मैं संविधान के बारे में जानने के लिए युवा हब से जुड़ा। अब मैं अपने ब्लॉक में जागरूकता शिविर लगाता हूँ और अन्य युवाओं का नेतृत्व करता हूँ।",
     },
     {
       name: "Pooja",
       location: "Jalaun, Uttar Pradesh",
-      story: "DDJC guided me to apply for the scholarship I didn't know existed. Education became a real possibility for my family.",
+      story: "DDJC ने मुझे वह छात्रवृत्ति के लिए आवेदन करने में मार्गदर्शन दिया जिसके बारे में मुझे पता ही नहीं था। शिक्षा मेरे परिवार के लिए सच्चाई बन गई।",
     },
     {
       name: "Ramdas",
       location: "Baghaura, Konch, Jalaun",
-      story: "When my land papers were challenged, the centre connected me to legal aid. I kept my land and my dignity.",
+      story: "जब मेरी जमीन के कागजों को चुनौती दी गई, तो केंद्र ने मुझे कानूनी सहायता से जोड़ा। मैंने अपनी जमीन और अपनी गरिमा बचाई।",
     },
   ];
 
@@ -54,13 +54,13 @@ export default function StoriesPage() {
             </div>
           </div>
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            Impact & Lives
+            प्रभाव और जीवन
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
-            Success Stories
+            सफलता की कहानियाँ
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            Real accounts of resilience, legal victories, and dignity restored through community solidarity and legal aid.
+            सामुदायिक एकजुटता और कानूनी सहायता के माध्यम से लचीलेपन, कानूनी जीत और गरिमा की वास्तविक कहानियाँ।
           </p>
         </div>
 

@@ -20,13 +20,13 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   }, [pathname]);
 
   const navItems = [
-    { href: "/admin", label: "Dashboard", icon: FaHome },
-    { href: "/admin/contacts", label: "Contact Us", icon: FaUsers },
-    { href: "/admin/complaints", label: "Complaints", icon: FaFileAlt },
-    { href: "/admin/donations", label: "Donations", icon: FaHandHoldingHeart },
-    { href: "/admin/volunteers", label: "Volunteers", icon: FaUserPlus },
-    { href: "/admin/internships", label: "Internships", icon: FaGraduationCap },
-    { href: "/admin/jobs", label: "Jobs & Career", icon: FaBriefcase },
+    { href: "/admin", label: "डैशबोर्ड", icon: FaHome },
+    { href: "/admin/contacts", label: "संपर्क करें", icon: FaUsers },
+    { href: "/admin/complaints", label: "शिकायतें", icon: FaFileAlt },
+    { href: "/admin/donations", label: "दान", icon: FaHandHoldingHeart },
+    { href: "/admin/volunteers", label: "स्वयंसेवक", icon: FaUserPlus },
+    { href: "/admin/internships", label: "इंटर्नशिप", icon: FaGraduationCap },
+    { href: "/admin/jobs", label: "नौकरी और करियर", icon: FaBriefcase },
   ];
 
   const handleLogout = () => {
@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex items-center gap-3 text-slate-600 font-medium">
           <span className="animate-spin text-[#000000] text-xl">⟳</span>
-          <span>Verifying Admin Session...</span>
+          <span>एडमिन सत्र सत्यापित किया जा रहा है...</span>
         </div>
       </div>
     );
@@ -58,7 +58,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             type="button"
             onClick={() => setSidebarOpen(true)}
             className="p-2 -ml-2 rounded-lg hover:bg-slate-800 transition-colors"
-            aria-label="Open menu"
+            aria-label="मेनू खोलें"
           >
             <FaBars size={18} />
           </button>
@@ -88,7 +88,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             </div>
             <div>
               <h1 className="font-black text-base tracking-tight">DDJC Admin</h1>
-              <p className="text-[10px] text-slate-300">Portal</p>
+              <p className="text-[10px] text-slate-300">पोर्टल</p>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
           >
             <FaSignOutAlt size={14} />
-            Sign Out
+            साइन आउट
           </button>
         </div>
       </aside>

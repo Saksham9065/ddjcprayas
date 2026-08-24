@@ -2,9 +2,8 @@
 
 import React, { useRef } from "react";
 import Link from "next/link";
-import { useApp } from "@/context/AppContext";
 import { Reveal, SectionHeading } from "./primitives";
-import { FaChevronLeft, FaChevronRight, FaArrowRight, FaQuoteLeft } from "react-icons/fa";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 interface Story {
   name: string;
@@ -59,9 +58,6 @@ const STORIES: Story[] = [
 ];
 
 export default function Stories() {
-  const { language } = useApp();
-  const isHindi = language === "hi";
-  const t = (en: string, hi: string) => (isHindi ? hi : en);
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollByCard = (dir: number) => {
@@ -79,29 +75,26 @@ export default function Stories() {
           <Reveal>
             <SectionHeading
               align="left"
-              eyebrow={t("Voices", "आवाज़ें")}
-              title={t("STORIES OF CHANGE", "बदलाव की कहानियाँ")}
-              subtitle={t(
-                "Real people. Real stories. Real impact.",
-                "असली लोग। असली कहानियाँ। असली प्रभाव।"
-              )}
+              eyebrow="आवाज़ें"
+              title="बदलाव की कहानियाँ"
+              subtitle="असली लोग। असली कहानियाँ। असली प्रभाव।"
             />
           </Reveal>
           <Reveal delay={0.1}>
             <div className="flex gap-2">
               <button
                 onClick={() => scrollByCard(-1)}
-                aria-label="Previous stories"
+                aria-label="पिछली कहानियाँ"
                 className="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition-colors flex items-center justify-center"
               >
-                <FaChevronLeft size={16} />
+                <ChevronLeft size={16} />
               </button>
               <button
                 onClick={() => scrollByCard(1)}
-                aria-label="Next stories"
+                aria-label="अगली कहानियाँ"
                 className="w-11 h-11 rounded-full border border-slate-200 text-navy hover:bg-navy hover:text-white transition-colors flex items-center justify-center"
               >
-                <FaChevronRight size={16} />
+                <ChevronRight size={16} />
               </button>
             </div>
           </Reveal>
@@ -118,7 +111,7 @@ export default function Stories() {
             >
               <div className="p-6">
                 <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-4">
-                  “{t(story.quoteEn, story.quoteHi)}”
+                  “{story.quoteHi}”
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-navy text-gold flex items-center justify-center font-bold text-sm">
@@ -126,7 +119,7 @@ export default function Stories() {
                   </div>
                   <div>
                     <p className="font-bold text-navy text-sm leading-tight">{story.name}</p>
-                    <p className="text-xs text-slate-500">{t(story.roleEn, story.roleHi)}</p>
+                    <p className="text-xs text-slate-500">{story.roleHi}</p>
                   </div>
                 </div>
               </div>
@@ -139,7 +132,7 @@ export default function Stories() {
             href="/media/stories"
             className="inline-flex items-center gap-2 border border-navy text-navy hover:bg-navy hover:text-white font-bold text-sm px-6 py-3.5 rounded-xl transition-colors"
           >
-            {t("READ MORE STORIES", "और कहानियाँ पढ़ें")} <FaArrowRight size={13} />
+            {"और कहानियाँ पढ़ें"} <ArrowRight size={13} />
           </Link>
         </div>
       </div>

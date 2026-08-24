@@ -67,12 +67,12 @@ export default function AdminDashboardPage() {
   }, []);
 
   const modules = [
-    { label: "Contact Us", value: stats.contacts, href: "/admin/contacts", color: "bg-blue-500" },
-    { label: "Complaints", value: stats.complaints, href: "/admin/complaints", color: "bg-amber-500" },
-    { label: "Donations", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
-    { label: "Volunteers", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
-    { label: "Internships", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
-    { label: "Jobs & Career", value: stats.jobs, href: "/admin/jobs", color: "bg-slate-800" },
+    { label: "संपर्क करें", value: stats.contacts, href: "/admin/contacts", color: "bg-blue-500" },
+    { label: "शिकायतें", value: stats.complaints, href: "/admin/complaints", color: "bg-amber-500" },
+    { label: "दान", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
+    { label: "स्वयंसेवक", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
+    { label: "इंटर्नशिप", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
+    { label: "नौकरी और करियर", value: stats.jobs, href: "/admin/jobs", color: "bg-slate-800" },
   ];
 
   if (authStatus === null) {
@@ -80,7 +80,7 @@ export default function AdminDashboardPage() {
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex items-center gap-3 text-slate-600 font-medium">
           <FaSpinner className="animate-spin text-[#000000]" size={24} />
-          <span>Verifying Admin Session...</span>
+          <span>एडमिन सत्र सत्यापित किया जा रहा है...</span>
         </div>
       </div>
     );
@@ -99,8 +99,8 @@ export default function AdminDashboardPage() {
               <img src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" className="h-full w-full object-cover" />
             </div>
             <div>
-              <h1 className="font-black text-base tracking-tight text-[#0A2540]">DDJC Admin Portal</h1>
-              <p className="text-xs text-slate-500">Grievance & Case Management System</p>
+              <h1 className="font-black text-base tracking-tight text-[#0A2540]">DDJC एडमिन पोर्टल</h1>
+              <p className="text-xs text-slate-500">शिकायत और मामला प्रबंधन प्रणाली</p>
             </div>
           </div>
           <button
@@ -108,7 +108,7 @@ export default function AdminDashboardPage() {
             onClick={handleLogout}
             className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-xl text-xs font-bold transition-colors border border-slate-700"
           >
-            <FaSignOutAlt /> Sign Out
+            <FaSignOutAlt /> साइन आउट
           </button>
         </div>
       </header>
@@ -122,17 +122,17 @@ export default function AdminDashboardPage() {
           >
             <div className="flex items-center justify-between mb-4">
               <div className={`w-12 h-12 rounded-2xl ${mod.color} text-white flex items-center justify-center text-xl shadow-md`}>
-                {mod.label === "Contact Us" && <FaUsers size={20} />}
-                {mod.label === "Complaints" && <FaFileAlt size={20} />}
-                {mod.label === "Donations" && <FaHandHoldingHeart size={20} />}
-                {mod.label === "Volunteers" && <FaUserPlus size={20} />}
-                {mod.label === "Internships" && <FaGraduationCap size={20} />}
-                {mod.label === "Jobs & Career" && <FaBriefcase size={20} />}
+                {mod.label === "संपर्क करें" && <FaUsers size={20} />}
+                {mod.label === "शिकायतें" && <FaFileAlt size={20} />}
+                {mod.label === "दान" && <FaHandHoldingHeart size={20} />}
+                {mod.label === "स्वयंसेवक" && <FaUserPlus size={20} />}
+                {mod.label === "इंटर्नशिप" && <FaGraduationCap size={20} />}
+                {mod.label === "नौकरी और करियर" && <FaBriefcase size={20} />}
               </div>
               <span className="text-3xl font-black text-[#0A2540]">{mod.value}</span>
             </div>
             <p className="text-xs font-bold uppercase tracking-widest text-slate-500">{mod.label}</p>
-            <p className="text-[10px] text-slate-400 mt-1 group-hover:text-[#000000] transition-colors">Click to manage records</p>
+            <p className="text-[10px] text-slate-400 mt-1 group-hover:text-[#000000] transition-colors">रिकॉर्ड प्रबंधित करने के लिए क्लिक करें</p>
           </Link>
         ))}
       </div>

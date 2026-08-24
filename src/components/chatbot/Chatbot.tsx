@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
 import { useChat } from "./hooks/useChat";
 import ChatHeader from "./ChatHeader";
 import ChatWindow from "./ChatWindow";
