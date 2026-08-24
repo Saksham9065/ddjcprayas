@@ -21,16 +21,20 @@ export default function AdminInternshipsPage() {
         <span className="text-slate-500 font-mono text-[10px]">{String(item.university ?? item.education ?? "")}</span>
       </div>
     )},
+    { key: "fatherHusbandName", label: "Father/Husband Name", render: (item) => String(item.fatherHusbandName ?? "") },
+    { key: "age", label: "Age", render: (item) => String(item.age ?? "") },
+    { key: "category", label: "Category", render: (item) => String(item.category ?? "") },
+    { key: "gender", label: "Gender", render: (item) => String(item.gender ?? "") },
+    { key: "education", label: "Education", render: (item) => String(item.education ?? "") },
+    { key: "mobile", label: "Mobile", render: (item) => String(item.mobile ?? "") },
+    { key: "email", label: "Email", render: (item) => String(item.email ?? "") },
+    { key: "address", label: "Address", render: (item) => String(item.address ?? "") },
+    { key: "university", label: "University", render: (item) => String(item.university ?? "") },
     { key: "field", label: "Field of Study", render: (item) => String(item.field ?? "N/A") },
-    { key: "mobile", label: "Contact", render: (item) => {
-      const emailVal = item.email;
-      return (
-        <div className="flex flex-col gap-0.5">
-          <span className="flex items-center gap-1 text-slate-600">{String(item.mobile ?? "")}</span>
-          {typeof emailVal === 'string' && emailVal ? <span className="flex items-center gap-1 text-slate-500">{emailVal}</span> : null}
-        </div>
-      );
-    }},
+    { key: "resume", label: "Resume", render: (item) => String(item.resume ?? "") },
+    { key: "statement", label: "Statement", render: (item) => (
+      <span className="truncate block max-w-xs" title={String(item.statement ?? "")}>{String(item.statement ?? "")}</span>
+    )},
     { key: "status", label: "Status", render: (item) => {
       const styles: Record<string, string> = {
         Pending: "bg-amber-50 text-amber-700 border border-amber-200",

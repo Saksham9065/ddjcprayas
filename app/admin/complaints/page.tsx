@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import AdminPageShell, { ColumnDef, StatDef, FilterDef } from "@/components/admin/AdminPageShell";
-import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function AdminComplaintsPage() {
   const [stats, setStats] = useState<StatDef[]>([
@@ -22,17 +21,15 @@ export default function AdminComplaintsPage() {
         <span className="text-slate-500 font-mono text-[10px]">{String(item.phone ?? "")}</span>
       </div>
     )},
-    { key: "district", label: "Location", render: (item) => (
-      <div className="flex items-center gap-1 text-slate-600">
-        <FaMapMarkerAlt className="text-[#000000] shrink-0" size={10} />
-        <span>{String(item.district ?? "")} ({String(item.tehsil ?? "")})</span>
-      </div>
-    )},
+    { key: "phone", label: "Phone", render: (item) => String(item.phone ?? "") },
+    { key: "district", label: "District", render: (item) => String(item.district ?? "") },
+    { key: "tehsil", label: "Tehsil", render: (item) => String(item.tehsil ?? "") },
     { key: "category", label: "Category", render: (item) => (
       <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
         {String(item.category ?? "N/A")}
       </span>
     )},
+    { key: "incidentDate", label: "Incident Date", render: (item) => String(item.incidentDate ?? "") },
     { key: "description", label: "Description", render: (item) => (
       <span className="truncate block max-w-xs" title={String(item.description ?? "")}>{String(item.description ?? "")}</span>
     )},

@@ -19,12 +19,18 @@ export default function AdminContactsPage() {
         <span className="text-slate-500 font-mono text-[10px]">{String(item.mobile ?? "")}</span>
       </div>
     )},
+    { key: "fatherHusbandName", label: "Father/Husband Name", render: (item) => String(item.fatherHusbandName ?? "") },
+    { key: "age", label: "Age", render: (item) => String(item.age ?? "") },
+    { key: "category", label: "Category", render: (item) => String(item.category ?? "") },
+    { key: "gender", label: "Gender", render: (item) => String(item.gender ?? "") },
+    { key: "education", label: "Education", render: (item) => String(item.education ?? "") },
+    { key: "mobile", label: "Mobile", render: (item) => String(item.mobile ?? "") },
     { key: "email", label: "Email", render: (item) => String(item.email ?? "") },
-    { key: "category", label: "Category", render: (item) => (
-      <span className="bg-slate-50 text-[#000000] px-2.5 py-1 rounded-md font-semibold text-[10px] border border-slate-100">
-        {String(item.category ?? "N/A")}
-      </span>
+    { key: "address", label: "Address", render: (item) => String(item.address ?? "") },
+    { key: "incidentDescription", label: "Incident Description", render: (item) => (
+      <span className="truncate block max-w-xs" title={String(item.incidentDescription ?? "")}>{String(item.incidentDescription ?? "")}</span>
     )},
+    { key: "helpType", label: "Help Type", render: (item) => String(item.helpType ?? "") },
     { key: "status", label: "Status", render: (item) => {
       const styles: Record<string, string> = {
         New: "bg-amber-50 text-amber-700 border border-amber-200",

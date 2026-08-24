@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
+import * as XLSX from "xlsx";
 
 export interface ColumnDef {
   key: string;
@@ -136,28 +137,16 @@ export default function AdminPageShell({
     }
   };
 
-  const exportCSV = () => {
+  const exportExcel = () => {
     if (!data.length) return;
-    const headers = columns.map((col) => col.label).join(",");
+    const headers = columns.map((col) => col.label);
     const rows = data.map((item) =>
-      columns
-        .map((col) => {
-          const val = item[col.key];
-          if (typeof val === "string" && val.includes(",")) {
-            return "\"" + val + "\"";
-          }
-          return String(val ?? "");
-        })
-        .join(",")
+      columns.map((col) => String(item[col.key] ?? ""))
     );
-    const csv = [headers, ...rows].join("\n");
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${title.toLowerCase().replace(/\s+/g, "-")}-${new Date().toISOString().split("T")[0]}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, title);
+    XLSX.writeFile(workbook, `${title.toLowerCase().replace(/\s+/g, "-")}-${new Date().toISOString().split("T")[0]}.xlsx`);
   };
 
   return (
@@ -172,10 +161,10 @@ export default function AdminPageShell({
             {extraActions}
             <button
               type="button"
-              onClick={exportCSV}
+              onClick={exportExcel}
               className="px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-slate-700 transition-colors"
             >
-              Export CSV
+              Export Excel
             </button>
           </div>
         </div>
