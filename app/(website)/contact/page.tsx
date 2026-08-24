@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Button from "@/components/ui/Button";
+import { useApp } from "@/context/AppContext";
 
 export default function ContactPage() {
+  const { language } = useApp();
   const [formData, setFormData] = useState({
     fullName: "",
     fatherHusbandName: "",
@@ -64,22 +66,28 @@ export default function ContactPage() {
          {/* Header */}
          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
             <span className="bg-slate-50 text-[#000000] px-3 py-1.5 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3 md:mb-4">
-              सहायता और कानूनी समर्थन
+              {language === "en" ? "Help & Legal Support" : "सहायता और कानूनी समर्थन"}
             </span>
             <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
-             सहायता और कानूनी समर्थन प्राप्त करें
+             {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन प्राप्त करें"}
            </h1>
            <p className="text-slate-600 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3">
-             न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।
+             {language === "en"
+               ? "You are not alone in this fight for justice. If you or someone you know has been a victim of any injustice, caste-based atrocities, or violence, please fill out the form below. DDJC's legal team will contact you soon."
+               : "न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।"}
            </p>
            <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-             आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या उरई स्थित हमारे कार्यालय में आएँ।
+             {language === "en"
+               ? "For emergency assistance and information, please contact our legal coordinators, support staff or visit our office in Urai."
+               : "आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या उरई स्थित हमारे कार्यालय में आएँ।"}
            </p>
          </div>
 
          {success && (
            <div className="mb-4 md:mb-6 p-3 md:p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-2xl text-xs md:text-sm font-semibold">
-             धन्यवाद! आपका इंटेक फॉर्म सफलतापूर्वक सबमिट हो गया है। हमारी टीम जल्द ही आपसे संपर्क करेगी।
+             {language === "en"
+               ? "Thank you! Your intake form has been submitted successfully. Our team will contact you soon."
+               : "धन्यवाद! आपका इंटेक फॉर्म सफलतापूर्वक सबमिट हो गया है। हमारी टीम जल्द ही आपसे संपर्क करेगी।"}
            </div>
          )}
 
@@ -87,11 +95,11 @@ export default function ContactPage() {
            {/* Intake Form */}
            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">संपर्क करें</h3>
+               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Contact" : "संपर्क करें"}</h3>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">पूरा नाम</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Name" : "पूरा नाम"}</label>
                    <input
                      type="text"
                      required
@@ -101,7 +109,7 @@ export default function ContactPage() {
                    />
                  </div>
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">पिता / पति का नाम</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Father's / Husband's Name" : "पिता / पति का नाम"}</label>
                    <input
                      type="text"
                      required
@@ -114,7 +122,7 @@ export default function ContactPage() {
 
                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">आयु</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Age" : "आयु"}</label>
                    <input
                      type="text"
                      value={formData.age}
@@ -123,51 +131,51 @@ export default function ContactPage() {
                    />
                  </div>
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">वर्ग</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Category" : "वर्ग"}</label>
                    <select
                      value={formData.category}
                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                    >
-                     <option value="">वर्ग चुनें</option>
+                     <option value="">{language === "en" ? "Select Category" : "वर्ग चुनें"}</option>
                      <option value="SC">SC</option>
                      <option value="ST">ST</option>
                      <option value="OBC">OBC</option>
-                     <option value="Minorities">अल्पसंख्यक</option>
-                     <option value="General">सामान्य</option>
+                     <option value="Minorities">{language === "en" ? "Minorities" : "अल्पसंख्यक"}</option>
+                     <option value="General">{language === "en" ? "General" : "सामान्य"}</option>
                    </select>
                  </div>
                  <div className="hidden sm:block">
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">लिंग</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Gender" : "लिंग"}</label>
                    <select
                      value={formData.gender}
                      onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                    >
-                     <option value="">लिंग चुनें</option>
-                     <option value="Male">पुरुष</option>
-                     <option value="Female">महिला</option>
-                     <option value="Others">अन्य</option>
+                     <option value="">{language === "en" ? "Select Gender" : "लिंग चुनें"}</option>
+                     <option value="Male">Male</option>
+                     <option value="Female">Female</option>
+                     <option value="Others">{language === "en" ? "Others" : "अन्य"}</option>
                    </select>
                  </div>
                  <div className="block sm:hidden">
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">लिंग</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Gender" : "लिंग"}</label>
                    <select
                      value={formData.gender}
                      onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                    >
-                     <option value="">लिंग चुनें</option>
-                     <option value="Male">पुरुष</option>
-                     <option value="Female">महिला</option>
-                     <option value="Others">अन्य</option>
+                     <option value="">{language === "en" ? "Select Gender" : "लिंग चुनें"}</option>
+                     <option value="Male">Male</option>
+                     <option value="Female">Female</option>
+                     <option value="Others">{language === "en" ? "Others" : "अन्य"}</option>
                    </select>
                  </div>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">शिक्षा</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Education" : "शिक्षा"}</label>
                    <input
                      type="text"
                      value={formData.education}
@@ -176,7 +184,7 @@ export default function ContactPage() {
                    />
                  </div>
                  <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">मोबाइल नंबर</label>
+                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Mobile Number" : "मोबाइल नंबर"}</label>
                    <input
                      type="tel"
                      required
@@ -188,7 +196,7 @@ export default function ContactPage() {
                </div>
 
                <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">ईमेल (यदि हो तो)</label>
+                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Email (if available)" : "ईमेल (यदि हो तो)"}</label>
                  <input
                    type="email"
                    value={formData.email}
@@ -198,7 +206,7 @@ export default function ContactPage() {
                </div>
 
                <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">पूरा पता</label>
+                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Address" : "पूरा पता"}</label>
                  <input
                    type="text"
                    value={formData.address}
@@ -208,7 +216,7 @@ export default function ContactPage() {
                </div>
 
                <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">घटना/मामले का संक्षिप्त विवरण और वर्तमान स्थिति</label>
+                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Brief description of incident/case and current status" : "घटना/मामले का संक्षिप्त विवरण और वर्तमान स्थिति"}</label>
                  <textarea
                    rows={3}
                    value={formData.incidentDescription}
@@ -218,7 +226,7 @@ export default function ContactPage() {
                </div>
 
                <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">दलित सम्मान व न्याय केन्द्र से आप किस प्रकार की सहायता/समर्थन चाहते हैं?</label>
+                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "What kind of help/support do you need from Dalit Dignity and Justice Center?" : "दलित सम्मान व न्याय केन्द्र से आप किस प्रकार की सहायता/समर्थन चाहते हैं?"}</label>
                  <textarea
                    rows={3}
                    value={formData.helpType}
@@ -228,7 +236,7 @@ export default function ContactPage() {
                </div>
 
                <Button type="submit" isLoading={loading} className="w-full py-3 md:py-4 text-xs md:text-sm">
-                 सबमिट करें
+                 {language === "en" ? "Submit" : "सबमिट करें"}
                </Button>
              </div>
            </form>
@@ -236,19 +244,19 @@ export default function ContactPage() {
            {/* Address & Map */}
            <div className="space-y-4 md:space-y-6">
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-3 md:space-y-4">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">हमारा कार्यालय</h3>
+               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Our Office" : "हमारा कार्यालय"}</h3>
                <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                 पुलिस लाइन – बघौरा, उरई – जालौन, उतर प्रदेश - 285001
+                 {language === "en" ? "Police Line - Baghauna, Urai - Jalaun, Uttar Pradesh - 285001" : "पुलिस लाइन – बघौरा, उरई – जालौन, उतर प्रदेश - 285001"}
                </p>
                <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-600">
-                 <p><span className="font-bold text-[#0A2540]">ईमेल:</span> ddjc.prayas@gmail.com</p>
-                 <p><span className="font-bold text-[#0A2540]">फोन:</span> +91 92357 37691, +91 94536 45931</p>
-                 <p><span className="font-bold text-[#0A2540]">समय:</span> सोम - शनि: सुबह 9:00 बजे - शाम 6:00 बजे</p>
+                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Email:" : "ईमेल:"}</span> ddjc.prayas@gmail.com</p>
+                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Phone:" : "फोन:"}</span> +91 92357 37691, +91 94536 45931</p>
+                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Hours:" : "समय:"}</span> {language === "en" ? "Mon - Sat: 9:00 AM - 6:00 PM" : "सोम - शनि: सुबह 9:00 बजे - शाम 6:00 बजे"}</p>
                </div>
              </div>
 
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">स्थान मानचित्र</h3>
+               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Location Map" : "स्थान मानचित्र"}</h3>
                <div className="overflow-hidden rounded-xl md:rounded-2xl border border-slate-200">
                   <iframe
                     title="DDJC Office Location"
@@ -266,4 +274,4 @@ export default function ContactPage() {
        </div>
      </div>
    );
-}
+ }
