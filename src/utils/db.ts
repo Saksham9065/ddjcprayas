@@ -11,34 +11,38 @@ const globalWithMongoose = globalThis as typeof globalThis & {
   mongoose?: MongooseCache;
 };
 
-let cached = globalWithMongoose.mongoose;
-
-if (!cached) {
-  cached = { conn: null, promise: null };
-  globalWithMongoose.mongoose = cached;
-}
-
 export async function connectToDatabase() {
   if (MONGODB_URI.length === 0) {
     throw new Error("Please define the MONGODB_URI environment variable in .env.local");
   }
 
-  if (cached?.conn) {
-    return cached.conn;
-  }
+  let cached = globalWithMongoose.mongoose;
 
   if (!cached) {
     cached = { conn: null, promise: null };
     globalWithMongoose.mongoose = cached;
   }
 
+  if (cached.conn) {
+    return cached.conn;
+  }
+
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGODB_URI, {
-      serverSelectionTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 30000,
+      socketTimeoutMS: 45000,
       dbName: "ddjcprayas",
     });
   }
 
-  cached.conn = await cached.promise;
-  return cached.conn;
+  try {
+    cached.conn = await cached.promise;
+    return cached.conn;
+  } catch (error) {
+    cached.promise = null;
+    cached.conn = null;
+    throw new Error(
+      `Failed to connect to MongoDB: ${error instanceof Error ? error.message : String(error)}`
+    );
+  }
 }

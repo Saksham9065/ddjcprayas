@@ -14,6 +14,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dalit Dignity & Justice Center (DDJC)",
   description: "Access to Justice • Equality • Human Rights",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/images/logo/ddjc-logo-circular.png",
+  },
 };
 
 export default function RootLayout({
