@@ -10,7 +10,7 @@ import {
   Globe,
   HeartHandshake,
   ChevronDown,
-  DollarSign,
+  IndianRupeeIcon,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useApp } from "@/context/AppContext";
@@ -174,7 +174,7 @@ function Navbar() {
                href="/donate"
                className="hidden sm:inline-flex items-center gap-1.5 md:gap-2 border border-navy text-navy hover:bg-navy hover:text-white font-bold px-3 md:px-4 lg:px-5 py-2 md:py-2.5 rounded-xl text-[10px] md:text-xs lg:text-sm transition-all hover:scale-[1.03]"
              >
-                <DollarSign size={14} />
+                <IndianRupeeIcon size={14} />
                {t("Donate", "दान करें")}
              </Link>
 
@@ -250,7 +250,7 @@ function Navbar() {
                      onClick={closeMenu}
                      className="inline-flex items-center justify-center gap-2 border border-navy text-navy font-bold px-4 py-2.5 rounded-xl text-sm"
                    >
-                     <DollarSign size={14} />
+                     <IndianRupeeIcon size={14} />
                      {t("Donate", "दान करें")}
                    </Link>
                    <Link
