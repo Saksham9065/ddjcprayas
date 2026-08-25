@@ -157,7 +157,7 @@ export default function AdminPageShell({
       <div className="container mx-auto max-w-7xl">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
           <div>
-            <h1 className="text-2xl font-black text-[#0A2540] tracking-tight">{title}</h1>
+            <h1 className="text-2xl font-black text-navy tracking-tight">{title}</h1>
             <p className="text-xs text-slate-500 mt-1">{description}</p>
           </div>
           <div className="flex items-center gap-3 mt-4 sm:mt-0">
@@ -326,7 +326,7 @@ export default function AdminPageShell({
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-              <h3 className="text-lg font-black text-[#0A2540]">{language === "en" ? "Record Details" : "रिकॉर्ड विवरण"}</h3>
+              <h3 className="text-lg font-black text-navy">{language === "en" ? "Record Details" : "रिकॉर्ड विवरण"}</h3>
               <button
                 type="button"
                 onClick={() => setDetailItem(null)}
@@ -341,7 +341,7 @@ export default function AdminPageShell({
                   <p className="text-[10px] uppercase font-bold tracking-wider text-slate-500 mb-1">
                     {col.label}
                   </p>
-                  <div className="text-sm text-slate-900 whitespace-pre-wrap break-words">
+                  <div className="text-sm text-slate-900 whitespace-pre-wrap wrap-break-word">
                     {col.render ? col.render(detailItem) : String(detailItem[col.key] ?? "")}
                   </div>
                 </div>
@@ -363,7 +363,7 @@ export default function AdminPageShell({
       {deletingId && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl max-w-sm w-full p-6 space-y-4">
-            <h3 className="text-lg font-black text-[#0A2540]">{language === "en" ? "Confirm Deletion" : "हटाने की पुष्टि करें"}</h3>
+            <h3 className="text-lg font-black text-navy">{language === "en" ? "Confirm Deletion" : "हटाने की पुष्टि करें"}</h3>
             <p className="text-sm text-slate-600">
               {language === "en" ? "Are you sure you want to delete this record? This action cannot be undone." : "क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।"}
             </p>
