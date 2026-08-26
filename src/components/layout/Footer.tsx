@@ -91,13 +91,13 @@ export default function Footer() {
                 <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
                   {t("A village-level one-stop centre that helps communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.", "गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
                 </p>
-                <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
-                  <blockquote className="text-xs text-white/80 italic leading-relaxed mb-3">
-                    {t("\"Justice has always given birth to the ideas of equality and complete evidence. In short, justice is another name for liberty, equality and fraternity.\"", "\"न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।\"")}
-                  </blockquote>
-                  <p className="text-[10px] text-gold font-semibold uppercase tracking-wider">
+                <div className="bg-white/10 rounded-2xl p-5 border border-white/20 shadow-lg">
+                  <p className="text-[10px] text-gold font-semibold uppercase tracking-wider mb-2">
                     {t("Dr. B.R. Ambedkar", "बाबासाहेब डॉ. बी.आर. अम्बेडकर")}
                   </p>
+                  <blockquote className="text-xs text-white/90 italic leading-relaxed">
+                    {t("\"Justice has always given birth to the ideas of equality and complete evidence. In short, justice is another name for liberty, equality and fraternity.\"", "\"न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।\"")}
+                  </blockquote>
                 </div>
                 <div className="mt-5">
                   <Link href="/admin/login" className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-gold transition-colors">
@@ -179,37 +179,18 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* RIGHT: Contact + Video */}
-          <div className="lg:col-span-3">
-            <div className="bg-white/5 rounded-2xl p-6 border border-white/10 h-full">
+          {/* RIGHT: QR only */}
+          <div className="lg:col-span-3 lg:translate-x-2">
+            <div className="rounded-2xl p-6 h-full">
               <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
-                {t("Contact", "संपर्क")}
+                {t("Donate", "दान करें")}
               </h3>
-              <div className="space-y-4 text-sm mb-8">
-                <p className="flex items-start gap-3 text-white/60">
-                  <MapPin size={13} className="text-gold mt-1 shrink-0" />
-                  <span className="leading-relaxed text-xs">
-                    {t("Police Line – Baghaora, Urai – Jalaun, U.P. - 285001", "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001")}
-                  </span>
-                </p>
-                <p className="flex items-center gap-3 text-white/60">
-                  <Phone size={12} className="text-gold shrink-0" />
-                  <a href="tel:+919235737691" className="hover:text-gold transition-colors text-xs">+91 92357 37691</a>
-                </p>
-                <p className="flex items-center gap-3 text-white/60">
-                  <Mail size={12} className="text-gold shrink-0" />
-                  <a href="mailto:ddjc.prayas@gmail.com" className="hover:text-gold transition-colors text-xs">ddjc.prayas@gmail.com</a>
-                </p>
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-lg bg-white">
+                <Image src="/images/qr/qr.png" alt="Donation QR" width={400} height={400} className="w-full h-auto object-contain p-2" />
               </div>
-
-              <div className="border-t border-white/10 pt-5">
-                <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-white">
-                  <Image src="/images/qr/qr.png" alt="Donation QR" width={400} height={400} className="w-full h-auto object-contain p-2" />
-                </div>
-                <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-2">
-                  {t("Scan to Donate", "दान करने के लिए स्कैन करें")}
-                </p>
-              </div>
+              <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-2">
+                {t("Scan to Donate", "दान करने के लिए स्कैन करें")}
+              </p>
             </div>
           </div>
         </div>
