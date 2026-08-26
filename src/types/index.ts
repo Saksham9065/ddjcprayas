@@ -16,7 +16,6 @@ export interface Donation {
   donorName: string;
   email: string;
   phone: string;
-  screenshotPath?: string | null;
   status: "Pending Verification" | "Verified" | "Rejected";
   createdAt: string;
 }

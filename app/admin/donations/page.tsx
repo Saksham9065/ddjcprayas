@@ -28,15 +28,6 @@ export default function AdminDonationsPage() {
     )},
     { key: "phone", label: language === "en" ? "Phone" : "फ़ोन", render: (item) => String(item.phone ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
-    { key: "screenshotPath", label: language === "en" ? "Screenshot" : "स्क्रीनशॉट", render: (item) => {
-      const path = item.screenshotPath as string | undefined;
-      if (!path) return <span className="text-slate-400">{language === "en" ? "No Screenshot" : "कोई स्क्रीनशॉट नहीं"}</span>;
-      return (
-        <a href={path} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline font-semibold">
-          {language === "en" ? "View" : "देखें"}
-        </a>
-      );
-    }},
     { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
         "Pending Verification": "bg-amber-50 text-amber-700 border border-amber-200",

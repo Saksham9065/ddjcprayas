@@ -40,7 +40,6 @@ export async function GET(request: Request) {
         donorName: item.donorName,
         phone: item.phone,
         email: item.email,
-        screenshotPath: item.screenshotPath,
         status: item.status,
         createdAt: item.createdAt?.toISOString?.() || "",
       })),
@@ -80,7 +79,6 @@ export async function PATCH(request: Request) {
       donorName: updatedDonation.donorName,
       phone: updatedDonation.phone,
       email: updatedDonation.email,
-      screenshotPath: updatedDonation.screenshotPath,
       status: updatedDonation.status,
       createdAt: updatedDonation.createdAt?.toISOString?.() || "",
     });

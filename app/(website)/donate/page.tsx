@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import { useApp } from "@/context/AppContext";
 
@@ -10,12 +10,9 @@ export default function DonatePage() {
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [screenshot, setScreenshot] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const { language } = useApp();
 
   const handleDonate = async (e: React.FormEvent) => {
@@ -28,9 +25,6 @@ export default function DonatePage() {
       formData.append("donorName", donorName.trim());
       formData.append("phone", phone.trim());
       formData.append("email", email.trim());
-      if (screenshot) {
-        formData.append("screenshot", screenshot);
-      }
 
       const res = await fetch("/api/donations", {
         method: "POST",
@@ -47,23 +41,10 @@ export default function DonatePage() {
       setDonorName("");
       setPhone("");
       setEmail("");
-      setScreenshot(null);
-      setPreviewUrl(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setScreenshot(file);
-      setPreviewUrl(URL.createObjectURL(file));
     }
   };
 
@@ -126,7 +107,7 @@ export default function DonatePage() {
         </div>
 
         <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
-          <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-4 md:mb-6">{language === "en" ? "Upload Payment Proof" : "भुगतान प्रमाण अपलोड करें"}</h3>
+          <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-4 md:mb-6">{language === "en" ? "Donation Details" : "योगदान विवरण"}</h3>
           {success ? (
             <div className="p-6 md:p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
               <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl">
@@ -134,7 +115,7 @@ export default function DonatePage() {
               </div>
               <h4 className="text-lg md:text-xl font-bold text-emerald-800">{language === "en" ? "Thank you for your donation!" : "आपके योगदान के लिए धन्यवाद!"}</h4>
               <p className="text-xs md:text-sm text-emerald-700 max-w-md mx-auto">
-                {language === "en" ? "Your payment proof has been received. Our team will verify the transaction and update the status soon." : "आपका भुगतान प्रमाण प्राप्त हो चुका है। हमारी टीम लेन-देन की पुष्टि करेगी और स्थिति जल्द अपडेट करेगी।"}
+                {language === "en" ? "Your donation details have been received. Our team will contact you shortly." : "आपके योगदान की जानकारी प्राप्त हो चुकी है। हमारी टीम जल्द ही आपसे संपर्क करेगी।"}
               </p>
               <button
                 type="button"
@@ -183,58 +164,11 @@ export default function DonatePage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-2 md:mb-3">{language === "en" ? "Upload Payment Screenshot" : "भुगतान स्क्रीनशॉट अपलोड करें"}</label>
-                <div
-                  onClick={() => fileInputRef.current?.click()}
-                  className={`border-2 border-dashed rounded-xl md:rounded-2xl p-6 md:p-8 text-center cursor-pointer transition-colors ${
-                    screenshot
-                      ? "border-emerald-400 bg-emerald-50"
-                      : "border-slate-300 bg-slate-50 hover:border-slate-400 hover:bg-slate-100"
-                  }`}
-                >
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    capture="environment"
-                    onChange={handleFileChange}
-                    className="hidden"
-                  />
-                  {screenshot ? (
-                    <div className="space-y-2 md:space-y-3">
-                      <div className="w-20 h-20 md:w-24 md:h-24 mx-auto rounded-lg md:rounded-xl overflow-hidden border border-slate-200">
-                        {previewUrl && (
-                          <Image
-                            src={previewUrl}
-                            alt="Payment screenshot preview"
-                            width={96}
-                            height={96}
-                            className="object-cover w-full h-full"
-                          />
-                        )}
-                      </div>
-                      <p className="text-xs md:text-sm font-bold text-emerald-700">{screenshot.name}</p>
-                      <p className="text-[10px] md:text-xs text-slate-500">{language === "en" ? "Click to change" : "बदलने के लिए क्लिक करें"}</p>
-                    </div>
-                  ) : (
-                    <div className="space-y-2 md:space-y-3">
-                      <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mx-auto text-slate-400 border border-slate-200">
-                        <FaUpload className="w-6 h-6 md:w-7 md:h-7" />
-                      </div>
-                      <div>
-                        <p className="text-xs md:text-sm font-bold text-slate-700">{language === "en" ? "Click to upload payment proof" : "भुगतान प्रमाण अपलोड करने के लिए क्लिक करें"}</p>
-                        <p className="text-[10px] md:text-xs text-slate-500 mt-1">{language === "en" ? "JPG, PNG, WebP (max 10MB) supported" : "JPG, PNG, WebP (अधिकतम 10MB) समर्थित"}</p>
-                      </div>
-                    </div>
-                  )}
-                </div>
-                {error && <p className="text-red-600 text-[10px] md:text-xs font-bold mt-2">{error}</p>}
-              </div>
+              {error && <p className="text-red-600 text-[10px] md:text-xs font-bold mt-2">{error}</p>}
 
               <div className="flex justify-center">
                 <Button type="submit" isLoading={loading} className="w-auto px-6 md:px-8 py-2 md:py-2.5 text-[11px] md:text-xs">
-                  <FaUpload /> {language === "en" ? "Submit Payment Proof" : "भुगतान प्रमाण जमा करें"}
+                  {language === "en" ? "Submit Donation" : "योगदान जमा करें"}
                 </Button>
               </div>
             </form>

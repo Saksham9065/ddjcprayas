@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 import { connectToDatabase } from "@/utils/db";
 import { Donation } from "@/models/Donation";
-
-const UPLOADS_DIR = path.join(process.cwd(), "public", "uploads", "donations");
 
 export async function POST(request: Request) {
   try {
@@ -12,7 +8,6 @@ export async function POST(request: Request) {
     const donorName = String(formData.get("donorName") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const email = String(formData.get("email") || "").trim();
-    const screenshot = formData.get("screenshot") as File | null;
 
     if (!donorName || !phone || !email) {
       return NextResponse.json(
@@ -21,31 +16,12 @@ export async function POST(request: Request) {
       );
     }
 
-    let screenshotPath: string | null = null;
-
-    if (screenshot && screenshot instanceof File) {
-      if (!fs.existsSync(UPLOADS_DIR)) {
-        fs.mkdirSync(UPLOADS_DIR, { recursive: true });
-      }
-
-      const bytes = await screenshot.arrayBuffer();
-      const buffer = Buffer.from(bytes);
-      const timestamp = Date.now();
-      const ext = path.extname(screenshot.name) || ".png";
-      const filename = `${timestamp}-${donorName.replace(/\s+/g, "-")}${ext}`;
-      const filepath = path.join(UPLOADS_DIR, filename);
-
-      fs.writeFileSync(filepath, buffer);
-      screenshotPath = `/uploads/donations/${filename}`;
-    }
-
     await connectToDatabase();
 
     const donation = await Donation.create({
       donorName,
       phone,
       email,
-      screenshotPath,
     });
 
     return NextResponse.json({
@@ -55,7 +31,6 @@ export async function POST(request: Request) {
         donorName,
         phone,
         email,
-        screenshotPath,
         donationId: donation._id.toString(),
       },
     });
