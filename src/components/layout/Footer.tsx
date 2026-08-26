@@ -29,6 +29,14 @@ const LINK_GROUPS = [
       { nameKey: "footerGovernmentSchemes", href: "/pdf/_Government Schemes.pdf" },
     ],
   },
+  {
+    titleKey: "footerContact",
+    links: [
+      { nameKey: "footerAddress", href: null },
+      { nameKey: "footerPhone", href: "tel:+919235737691" },
+      { nameKey: "footerEmail", href: "mailto:ddjc.prayas@gmail.com" },
+    ],
+  },
 ];
 
 export default function Footer() {
@@ -105,34 +113,67 @@ export default function Footer() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               {LINK_GROUPS.map((group) => (
                 <div key={group.titleKey}>
-                  <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
-                    {group.titleKey === "footerAboutDDJC" ? t("About DDJC", "DDJC के बारे में") : t("What We Do", "हम क्या करते हैं")}
-                  </h3>
-                  <ul className="space-y-3">
-                    {group.links.map((l) => (
-                      <li key={l.nameKey}>
-                        {l.href.startsWith("/pdf/") ? (
-                          <a
-                            href={l.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
-                          >
-                            <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                             {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क")}
-                           </a>
-                         ) : (
-                           <Link
-                             href={l.href}
-                             className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
-                           >
-                             <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                             {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क")}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                   <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
+                     {group.titleKey === "footerAboutDDJC" ? t("About DDJC", "DDJC के बारे में") : group.titleKey === "footerWhatWeDo" ? t("What We Do", "हम क्या करते हैं") : t("Contact", "संपर्क")}
+                   </h3>
+                   <ul className="space-y-3">
+                     {group.links.map((l) => {
+                       if (l.nameKey === "footerAddress") {
+                         return (
+                           <li key={l.nameKey}>
+                             <span className="text-sm text-white/60 inline-flex items-start gap-1.5">
+                               <MapPin size={12} className="text-gold mt-0.5 shrink-0" />
+                               {t("Police Line – Baghaora, Urai – Jalaun, U.P. - 285001", "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001")}
+                             </span>
+                           </li>
+                         );
+                       }
+                       if (l.nameKey === "footerPhone") {
+                         return (
+                           <li key={l.nameKey}>
+                             <a href="tel:+919235737691" className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group">
+                               <Phone size={12} className="text-gold shrink-0" />
+                               +91 92357 37691
+                             </a>
+                           </li>
+                         );
+                       }
+                       if (l.nameKey === "footerEmail") {
+                         return (
+                           <li key={l.nameKey}>
+                             <a href="mailto:ddjc.prayas@gmail.com" className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group">
+                               <Mail size={12} className="text-gold shrink-0" />
+                               ddjc.prayas@gmail.com
+                             </a>
+                           </li>
+                         );
+                       }
+                       const linkText = l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क");
+                       return (
+                         <li key={l.nameKey}>
+                           {l.href?.startsWith("/pdf/") ? (
+                             <a
+                               href={l.href}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                             >
+                               <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
+                               {linkText}
+                             </a>
+                           ) : (
+                             <Link
+                               href={l.href || "#"}
+                               className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                             >
+                               <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
+                               {linkText}
+                             </Link>
+                           )}
+                         </li>
+                       );
+                     })}
+                   </ul>
                 </div>
               ))}
             </div>
