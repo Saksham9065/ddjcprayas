@@ -203,9 +203,12 @@ export default function Footer() {
               </div>
 
               <div className="border-t border-white/10 pt-5">
-                <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-lg">
-                  <video src="/images/video/community.mp4" className="w-full h-auto object-cover" controls preload="metadata" />
+                <div className="relative w-full rounded-2xl overflow-hidden border border-white/10 shadow-lg bg-white">
+                  <Image src="/images/qr/qr.png" alt="Donation QR" width={400} height={400} className="w-full h-auto object-contain p-2" />
                 </div>
+                <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-2">
+                  {t("Scan to Donate", "दान करने के लिए स्कैन करें")}
+                </p>
               </div>
             </div>
           </div>
