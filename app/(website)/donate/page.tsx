@@ -89,11 +89,11 @@ export default function DonatePage() {
             </span>
             <h3 className="text-xl md:text-2xl font-bold">{language === "en" ? "Official Bank Details" : "आधिकारिक बैंक विवरण"}</h3>
             <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-300">
-              <p><strong className="text-white">{language === "en" ? "Account Name:" : "खाता का नाम:"}</strong> प्रयास जन उत्थान समिति</p>
+              <p><strong className="text-white">{language === "en" ? "Account Name:" : "खाता का नाम:"}</strong> {language === "en" ? "Prayas Jan Utthan Samiti" : "प्रयास जन उत्थान समिति"}</p>
               <p><strong className="text-white">{language === "en" ? "Account Number:" : "खाता संख्या:"}</strong> <span className="font-mono">7108466367</span></p>
-              <p><strong className="text-white">{language === "en" ? "Bank Name:" : "बैंक का नाम:"}</strong> इंडियन बैंक</p>
+              <p><strong className="text-white">{language === "en" ? "Bank Name:" : "बैंक का नाम:"}</strong> {language === "en" ? "Indian Bank" : "इंडियन बैंक"}</p>
               <p><strong className="text-white">{language === "en" ? "IFSC Code:" : "IFSC कोड:"}</strong> <span className="font-mono">IDIB000O029</span></p>
-              <p><strong className="text-white">{language === "en" ? "Branch Address:" : "शाखा पता:"}</strong> उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र.</p>
+              <p><strong className="text-white">{language === "en" ? "Branch Address:" : "शाखा पता:"}</strong> {language === "en" ? "Orai Branch, Prakash Complex, Opposite District Court, Orai – Jalaun, U.P." : "उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र."}</p>
             </div>
           </div>
 
