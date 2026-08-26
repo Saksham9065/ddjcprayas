@@ -29,14 +29,6 @@ const LINK_GROUPS = [
       { nameKey: "footerGovernmentSchemes", href: "/pdf/_Government Schemes.pdf" },
     ],
   },
-  {
-    titleKey: "footerGetInvolved",
-    links: [
-      { nameKey: "footerVolunteer", href: "/join/volunteers" },
-      { nameKey: "footerDonate", href: "/donate" },
-      { nameKey: "footerContact", href: "/contact" },
-    ],
-  },
 ];
 
 export default function Footer() {
@@ -114,7 +106,7 @@ export default function Footer() {
               {LINK_GROUPS.map((group) => (
                 <div key={group.titleKey}>
                   <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
-                    {group.titleKey === "footerAboutDDJC" ? t("About DDJC", "DDJC के बारे में") : group.titleKey === "footerWhatWeDo" ? t("What We Do", "हम क्या करते हैं") : t("Get Involved", "हिस्सा बनें")}
+                    {group.titleKey === "footerAboutDDJC" ? t("About DDJC", "DDJC के बारे में") : t("What We Do", "हम क्या करते हैं")}
                   </h3>
                   <ul className="space-y-3">
                     {group.links.map((l) => (
@@ -127,15 +119,15 @@ export default function Footer() {
                             className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
                           >
                             <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                            {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : l.nameKey === "footerVolunteer" ? t("Volunteer", "स्वयंसेवक") : l.nameKey === "footerDonate" ? t("Donate", "दान करें") : t("Contact", "संपर्क")}
-                          </a>
-                        ) : (
-                          <Link
-                            href={l.href}
-                            className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
-                          >
-                            <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
-                            {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : l.nameKey === "footerVolunteer" ? t("Volunteer", "स्वयंसेवक") : l.nameKey === "footerDonate" ? t("Donate", "दान करें") : t("Contact", "संपर्क")}
+                             {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क")}
+                           </a>
+                         ) : (
+                           <Link
+                             href={l.href}
+                             className="text-sm text-white/60 hover:text-gold transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                           >
+                             <ArrowRight size={9} className="opacity-0 -ml-3 group-hover:opacity-100 transition-all" />
+                             {l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क")}
                           </Link>
                         )}
                       </li>
