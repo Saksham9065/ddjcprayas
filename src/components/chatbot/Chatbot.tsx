@@ -77,7 +77,7 @@ export default function Chatbot() {
           className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0A2540] shadow-lg transition md:h-14 md:w-14 overflow-hidden p-0"
           aria-label="Open chat"
         >
-          <img src="/images/bot/chatbot.webp" alt="Chat bot" className="h-full w-full object-cover" />
+          <img src="/images/bot/image.png" alt="Chat bot" className="h-full w-full object-cover" />
         </motion.button>
       )}
     </div>

@@ -30,7 +30,7 @@ export default function MessageBubble({ message, isLast, onRegenerate, theme }: 
       <div className={`flex max-w-[75%] gap-2 ${isUser ? "flex-row-reverse" : "flex-row"}`}>
         {!isUser && (
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl overflow-hidden">
-            <img src="/images/bot/chatbot.webp" alt="DDJC Bot" className="h-full w-full object-cover" />
+            <img src="/images/bot/image.png" alt="DDJC Bot" className="h-full w-full object-cover" />
           </div>
         )}
 

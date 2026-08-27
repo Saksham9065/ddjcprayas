@@ -24,7 +24,7 @@ export default function WelcomeScreen({ onSuggestedClick, theme = "dark" }: Welc
         transition={{ delay: 0.1, duration: 0.3 }}
         className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl overflow-hidden"
       >
-        <img src="/images/bot/chatbot.webp" alt="DDJC Bot" className="h-full w-full object-cover" />
+        <img src="/images/bot/image.png" alt="DDJC Bot" className="h-full w-full object-cover" />
       </motion.div>
 
       <motion.h2

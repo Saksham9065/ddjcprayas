@@ -25,7 +25,7 @@ export default function ChatHeader({
     <div className="flex items-center justify-between border-b border-white/10 bg-[#0A2540] px-3 py-2.5">
       <div className="flex items-center gap-2">
         <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg overflow-hidden">
-          <img src="/images/bot/chatbot.webp" alt="DDJC Bot" className="h-full w-full object-cover" />
+          <img src="/images/bot/image.png" alt="DDJC Bot" className="h-full w-full object-cover" />
         </div>
         <div className="min-w-0">
           <h3 className="text-xs font-bold text-white leading-tight truncate">DDJC AI Assistant</h3>
