@@ -77,7 +77,7 @@ export default function HowItWorksWithStats() {
               <SectionHeading
                 eyebrow={t("How It Works", "यह कैसे काम करता है")}
                 title={t("One Centre. Many Pathways.", "एक केन्द्र. कई रास्ते.")}
-                subtitle={t("DDJC connects multiple forms of community support under one roof — justice, rights, services and opportunities for everyone who walks through the door.", "DDJC एक ही छत के नीचे सामुदायिक सहायता के कई रूपों को जोड़ता है—हर व्यक्ति के लिए न्याय, अधिकार, सेवाएँ और अवसर।")}
+                subtitle={t("DDJC brings justice, rights, services, and opportunities together under one roof.", "DDJC एक ही छत के नीचे न्याय, अधिकार, सेवाएँ और अवसरों को एक साथ लाता है।")}
               />
             </Reveal>
 
