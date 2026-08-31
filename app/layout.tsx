@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     icon: "/favicon.png",
     apple: "/images/logo/ddjc-logo-circular.png",
   },
+  other: {
+    "google-site-verification": "4UQRuy0aah5ICJjG4PJI0QejanHdkD8id7259CJQ3p8",
+  },
 };
 
 export default function RootLayout({

@@ -12,7 +12,7 @@ export default function ComplaintPage() {
     phone: "",
     district: "Jalaun",
     tehsil: "",
-    category: "Atrocity / Violence",
+                      category: "",
     incidentDate: "",
     description: "",
   });
@@ -89,7 +89,7 @@ export default function ComplaintPage() {
                       phone: "",
                       district: "Jalaun",
                       tehsil: "",
-                      category: "Atrocity / Violence",
+    category: "",
                       incidentDate: "",
                       description: "",
                     });
@@ -163,18 +163,14 @@ export default function ComplaintPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">{language === "en" ? "Grievance Category" : "शिकायत की श्रेणी"}</label>
-                  <select
+                  <input
+                    type="text"
+                    required
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    placeholder={language === "en" ? "e.g. Atrocity, Police Inaction, Land Dispute, Discrimination, etc." : "उदाहरण: अत्याचार, पुलिस की निष्क्रियता, भूमि विवाद, भेदभाव, आदि।"}
                     className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                  >
-                    <option value="Atrocity / Violence">{language === "en" ? "Atrocity / Physical Violence" : "अत्याचार / शारीरिक हिंसा"}</option>
-                    <option value="Police Inaction">{language === "en" ? "Police Inaction" : "पुलिस की निष्क्रियता"}</option>
-                    <option value="Land Dispute">{language === "en" ? "Land & Property Dispute / Illegal Eviction" : "भूमि और संपत्ति विवाद / अवैध बहाली"}</option>
-                    <option value="Social Boycott">{language === "en" ? "Social Boycott / Discrimination" : "सामाजिक बहिष्कार / भेदभाव"}</option>
-                    <option value="Compensation Delay">{language === "en" ? "Delayed Statutory Compensation" : "विलंबित कानूनी पुरस्कार"}</option>
-                    <option value="Other">{language === "en" ? "Other Legal Issue" : "अन्य कानूनी मामला"}</option>
-                  </select>
+                  />
                 </div>
 
                 <div>

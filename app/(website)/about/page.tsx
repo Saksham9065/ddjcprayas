@@ -152,12 +152,12 @@ export default function AboutPage() {
 
         {/* Rooted in Bundelkhand */}
         <div className="bg-[#0A2540] text-white p-8 md:p-10 rounded-3xl shadow-xl space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold">{language === "en" ? "Rooted in Bundelkhand" : "बुंदेलखंड की जड़ता से जुड़ा"}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold">{language === "en" ? "Rooted in Bundelkhand" : "बुंदेलखंड की जमीन से जुड़ा"}</h2>
           <div className="space-y-4 text-slate-300 text-sm md:text-base leading-relaxed">
             <p>
               {language === "en"
                 ? "Based in Orai, Jalaun, DDJC works across tehsil and district levels, staying closely connected to communities and their lived realities. Our approach combines community engagement, field-based fact-finding, police and administrative follow-up, legal research and courtroom representation. This allows us to respond not only to individual cases, but also to the systemic conditions that produce exclusion and injustice."
-                : "औरई, जालौन में स्थित DDJC तहसील और जिला स्तरों पर काम करता है, समुदायों और उनकी वास्तविकताओं से घनिष्ट रूप से जुड़ा रहता है। हमारा दृष्टिकोण सामुदायिक सहभागिता, क्षेत्र-आधारित तथ्यान्वेषण, पुलिस और प्रशासनिक फॉलो-अप, कानूनी अनुसंधान और न्यायालयी प्रतिनिधित्व को मिलाता है। यह हमें केवल व्यक्तिगत मामलों के जवाब देना ही नहीं बल्कि उन तंत्रिक परिस्थितियों का जवाब देने की अनुमति देता है जो बहिष्कार और अन्याय उत्पन्न करती हैं।"}
+                : "उरई, जालौन में स्थित DDJC तहसील और जिला स्तरों पर काम करता है, समुदायों और उनकी वास्तविकताओं से घनिष्ट रूप से जुड़ा रहता है। हमारा दृष्टिकोण सामुदायिक सहभागिता, क्षेत्र-आधारित तथ्यान्वेषण, पुलिस और प्रशासनिक फॉलो-अप, कानूनी अनुसंधान और न्यायालयी प्रतिनिधित्व को मिलाता है। यह हमें केवल व्यक्तिगत मामलों के जवाब देना ही नहीं बल्कि उन तंत्रिक परिस्थितियों का जवाब देने की अनुमति देता है जो बहिष्कार और अन्याय उत्पन्न करती हैं।"}
             </p>
             <p>
               {language === "en"

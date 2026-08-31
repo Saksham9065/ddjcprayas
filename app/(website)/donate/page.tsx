@@ -79,17 +79,11 @@ export default function DonatePage() {
                <p><strong className="text-white">{language === "en" ? "IFSC Code:" : "IFSC कोड:"}</strong> <span className="font-mono">IDIB000O029</span></p>
                <p><strong className="text-white">{language === "en" ? "Branch Address:" : "शाखा पता:"}</strong> {language === "en" ? "Orai Branch, Prakash Complex, Opposite District Court, Orai – Jalaun, U.P." : "उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र."}</p>
              </div>
-             <div className="flex flex-wrap gap-2 mt-4">
-               <a href="upi://pay?pa=9453645931@indianbk&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                 <Image src="/images/upi/gpay.png" alt="GPay" width={24} height={24} className="h-5 w-5 object-contain" />
-               </a>
-               <a href="upi://pay?pa=9453645931@indianbk&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                 <Image src="/images/upi/phonepe.png" alt="PhonePe" width={24} height={24} className="h-5 w-5 object-contain" />
-               </a>
-               <a href="upi://pay?pa=9453645931@indianbk&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                 <Image src="/images/upi/paytm.png" alt="Paytm" width={24} height={24} className="h-5 w-5 object-contain" />
-               </a>
-             </div>
+            <div className="flex justify-center mt-4">
+                <a href="upi://pay?pa=9453645931@indianbk&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                  <Image src="/images/upi/image.png" alt="UPI" width={32} height={32} className="h-8 w-8 object-contain" />
+                </a>
+              </div>
            </div>
 
           <div className="bg-white/10 p-4 md:p-6 rounded-xl md:rounded-2xl border border-white/20 text-center space-y-3 md:space-y-4 backdrop-blur-sm">

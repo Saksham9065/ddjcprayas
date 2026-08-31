@@ -78,7 +78,7 @@ export default function Footer() {
                   { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "#1877F2" },
                   { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "#E4405F" },
                   { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "#FF0000" },
-                  { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "#25D366" },
+                  { icon: FaWhatsapp, href: "https://wa.me/919235737691", color: "#25D366" },
                 ].map((s, i) => (
                   <a
                     key={i}

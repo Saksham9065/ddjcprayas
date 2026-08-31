@@ -40,8 +40,8 @@ export default function ResourcesPage() {
 
             <p>
               {language === "en"
-                ? "This booklet is based on experiences from our previous trainings. It is available in Hindi because we work mostly in Hindi-speaking states like Bihar, Delhi and Uttar Pradesh."
-                : "यह किताब हमारे पिछले प्रशिक्षणों से मिले अनुभवों पर आधारित है। यह हिंदी में उपलब्ध है क्योंकि हम ज़्यादातर बिहार, दिल्ली और उत्तर प्रदेश जैसे हिंदी बोलने वाले राज्यों में काम करते हैं।"}
+                ? "This booklet is based on experiences from our previous trainings. It is available in Hindi because we work mostly in Hindi-speaking states."
+                : "यह किताब हमारे पिछले प्रशिक्षणों से मिले अनुभवों पर आधारित है। यह हिंदी में उपलब्ध है क्योंकि हम ज़्यादातर हिंदी बोलने वाले राज्यों में काम करते हैं।"}
             </p>
 
             <h3 className="text-base font-bold text-[#0A2540] mt-6 mb-3">
@@ -115,6 +115,12 @@ export default function ResourcesPage() {
                 {language === "en" ? "Download PoA Booklet" : "PoA बुकलेट डाउनलोड करें"}
               </a>
           </div>
+
+          <p className="text-xs text-slate-500 italic mt-6">
+            {language === "en"
+              ? "This booklet was prepared by Part-III (Action Research & Resource Center), a sister organization of DDJC."
+              : "यह बुकलेट DDJC की साथी Friends संस्था part-III(Action Research & Resource Center) ने इसे तैयार किया है।"}
+          </p>
         </article>
       </div>
     </div>
