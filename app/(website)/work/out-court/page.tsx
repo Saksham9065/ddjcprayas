@@ -19,7 +19,7 @@ export default function OutCourtPage() {
             {language === "en" ? "Community & Administrative Action" : "समुदाय और प्रशासनिक कार्रवाई"}
           </span>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight">
-            {language === "en" ? "Out-of-Court Intervention & Community Empowerment" : "अदालत-बहिरा हस्तक्षेप और समुदाय सशक्तिकरण"}
+            {language === "en" ? "Community Engagement & Field Work" : "कम्युनिटी एंगेजमेंट और फील्ड वर्क"}
           </h1>
           <blockquote className="italic text-slate-600 text-sm md:text-base border-l-4 border-[#000000] pl-4 py-1 mx-auto max-w-2xl text-left">
             {language === "en" ? `"Until you achieve social freedom, whatever freedom the law gives you is of no use to you." — Babasaheb Dr. B. R. Ambedkar` : "“जब तक आप सामाजिक स्वतंत्रता हासिल नहीं कर लेते, कानून आपको जो भी स्वतंत्रता देता है, वह आपके किसी काम की नहीं है।” — बाबासाहब डॉ. बी. आर. आंबेडकर"}
@@ -65,8 +65,8 @@ export default function OutCourtPage() {
         {/* Card 1 */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaCheckCircle />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaCheckCircle size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "1. Fact-Finding Mission: Fact-Finding & Documentation" : "1. तथ्य-खोज मिशन: तथ्य-खोज और दस्तावेजीकरण"}</h2>
           </div>
@@ -83,8 +83,8 @@ export default function OutCourtPage() {
         {/* Card 2 */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaShieldAlt />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaShieldAlt size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "2. Effective Advocacy in Police Stations & Administration" : "2. पुलिस स्टेशनों और प्रशासन में प्रभावी वकालत"}</h2>
           </div>
@@ -101,8 +101,8 @@ export default function OutCourtPage() {
         {/* Card 3 */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaBookOpen />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaBookOpen size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "3. Village & Panchayat Legal Awareness Camps" : "3. ग्राम और पंचायत कानूनी जागरूकता शिविर"}</h2>
           </div>
@@ -119,8 +119,8 @@ export default function OutCourtPage() {
         {/* Card 4 */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaUsers />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaUsers size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "4. Building Volunteers & Community Champions" : "4. स्वयंसेवकों और समुदाय चैंपियनों का निर्माण"}</h2>
           </div>
@@ -137,8 +137,8 @@ export default function OutCourtPage() {
         {/* Welfare Scheme Linkage */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaHandHoldingUsd />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaHandHoldingUsd size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "5. Welfare Scheme Linkage" : "5. कल्याण योजना संपर्क"}</h2>
           </div>
@@ -155,8 +155,8 @@ export default function OutCourtPage() {
         {/* Human Rights Commissions */}
         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-sm space-y-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaUniversity />
+            <div className="w-16 h-16 bg-slate-100 text-[#000000] rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaUniversity size={28} />
             </div>
             <h2 className="text-2xl font-black text-[#0A2540]">{language === "en" ? "6. Advocacy with National & State Commissions" : "6. राष्ट्रीय और राज्य आयोगों के साथ वकालत"}</h2>
           </div>

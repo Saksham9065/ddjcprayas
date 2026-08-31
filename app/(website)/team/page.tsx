@@ -70,8 +70,8 @@ function Team() {
                   variants={itemVariants}
                   className="bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-md"
                 >
-                  <div className="w-full aspect-4/3 bg-slate-100 overflow-hidden">
-                    <img src={person.image} alt={person.name} className={`w-full h-full object-cover ${person.name === "Adv. Nikhat Parveen" || person.name === "Pradeep Kumar Singh" ? "object-top" : "object-center"}`} />
+                  <div className="w-full aspect-[4/3] bg-slate-100 overflow-hidden">
+                    <img src={person.image} alt={person.name} className={`w-full h-full object-cover ${person.name === "Adv. Nikhat Parveen" || person.name === "Pradeep Kumar Singh" ? "object-center" : "object-center"}`} />
                   </div>
 
                   <div className="p-4 flex flex-col grow justify-between">
@@ -87,11 +87,6 @@ function Team() {
                       <p className="text-slate-500 font-medium text-xs mt-1 mb-3">
                         {person.role}
                       </p>
-                    </div>
-
-                    <div className="pt-2 border-t border-slate-200 flex items-center text-xs">
-                      <span className="font-semibold text-slate-400 mr-1.5">{language === "en" ? "Education:" : "शिक्षा:"}</span>
-                      <span className="text-slate-600 font-medium truncate">{person.education}</span>
                     </div>
                   </div>
                 </motion.div>
@@ -123,11 +118,6 @@ function Team() {
                 <p className="text-slate-500 font-medium text-[10px] mt-1 mb-2 leading-snug">
                   {member.role}
                 </p>
-              </div>
-
-              <div className="pt-2 border-t border-slate-200 flex items-center text-[10px]">
-                <span className="font-semibold text-slate-400 mr-1">{language === "en" ? "Education:" : "शिक्षा:"}</span>
-                <span className="text-slate-600 font-medium truncate">{member.education}</span>
               </div>
             </div>
           </motion.div>

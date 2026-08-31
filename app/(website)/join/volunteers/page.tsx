@@ -65,7 +65,6 @@ export default function VolunteersPage() {
         statement: "",
       });
     } catch (error) {
-      console.error("Volunteer submission error:", error);
       alert(error instanceof Error ? error.message : (language === "en" ? "Unable to submit volunteer application" : "स्वयंसेवक आवेदन जमा करने में असमर्थ"));
     } finally {
       setLoading(false);

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import type { ChatMessage, UseChatOptions, UseChatReturn } from "@/types/chat";
+import type { ChatMessage, UseChatReturn } from "@/types/chat";
 
 const STORAGE_KEY = "ddjc_chat_history";
 
@@ -76,7 +76,6 @@ export function useChat(): UseChatReturn {
       });
     } catch (error) {
       if ((error as Error).name === "AbortError") return;
-      console.error("Chat send error:", error);
       const errorMessage: ChatMessage = {
         id: `bot-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         role: "assistant",

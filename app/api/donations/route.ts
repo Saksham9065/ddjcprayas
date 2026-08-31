@@ -8,10 +8,18 @@ export async function POST(request: Request) {
     const donorName = String(formData.get("donorName") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const email = String(formData.get("email") || "").trim();
+    const amount = Number(formData.get("amount"));
 
-    if (!donorName || !phone || !email) {
+    if (!donorName || !phone || !email || !amount) {
       return NextResponse.json(
-        { error: "Please fill in the donor details" },
+        { error: "Please fill in all donation details" },
+        { status: 400 }
+      );
+    }
+
+    if (amount < 1) {
+      return NextResponse.json(
+        { error: "Please enter a valid donation amount" },
         { status: 400 }
       );
     }
@@ -22,6 +30,7 @@ export async function POST(request: Request) {
       donorName,
       phone,
       email,
+      amount,
     });
 
     return NextResponse.json({
@@ -31,6 +40,7 @@ export async function POST(request: Request) {
         donorName,
         phone,
         email,
+        amount,
         donationId: donation._id.toString(),
       },
     });

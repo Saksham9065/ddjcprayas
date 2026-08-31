@@ -24,26 +24,15 @@ export default function AdminInternshipsPage() {
     { key: "id", label: language === "en" ? "ID" : "आईडी", width: "100px", render: (item) => (
       <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
     )},
-    { key: "fullName", label: language === "en" ? "Applicant" : "आवेदक", render: (item) => (
+    { key: "fullName", label: language === "en" ? "Name" : "नाम", render: (item) => (
       <div>
         <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
         <span className="text-slate-500 font-mono text-[10px]">{String(item.university ?? item.education ?? "")}</span>
       </div>
     )},
-    { key: "fatherHusbandName", label: language === "en" ? "Father/Husband Name" : "पिता/पति का नाम", render: (item) => String(item.fatherHusbandName ?? "") },
-    { key: "age", label: language === "en" ? "Age" : "आयु", render: (item) => String(item.age ?? "") },
-    { key: "category", label: language === "en" ? "Category" : "श्रेणी", render: (item) => String(item.category ?? "") },
-    { key: "gender", label: language === "en" ? "Gender" : "लिंग", render: (item) => String(item.gender ?? "") },
-    { key: "education", label: language === "en" ? "Education" : "शिक्षा", render: (item) => String(item.education ?? "") },
-    { key: "mobile", label: language === "en" ? "Mobile" : "मोबाइल", render: (item) => String(item.mobile ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
-    { key: "address", label: language === "en" ? "Address" : "पता", render: (item) => String(item.address ?? "") },
-    { key: "university", label: language === "en" ? "University" : "विश्वविद्यालय", render: (item) => String(item.university ?? "") },
     { key: "field", label: language === "en" ? "Field of Study" : "अध्ययन क्षेत्र", render: (item) => String(item.field ?? (language === "en" ? "Not Available" : "उपलब्ध नहीं")) },
     { key: "resume", label: language === "en" ? "Resume" : "रिज्यूमे", render: (item) => String(item.resume ?? "") },
-    { key: "statement", label: language === "en" ? "Statement" : "वक्तव्य", render: (item) => (
-      <span className="truncate block max-w-xs" title={String(item.statement ?? "")}>{String(item.statement ?? "")}</span>
-    )},
     { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
         Pending: "bg-amber-50 text-amber-700 border border-amber-200",

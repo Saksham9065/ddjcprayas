@@ -2,25 +2,17 @@
 
 import React from "react";
 import Hero from "@/components/home/Hero";
-import ManyPathways from "@/components/home/ManyPathways";
-import HowItWorks from "@/components/home/HowItWorks";
+import HowItWorksWithStats from "@/components/home/HowItWorksWithStats";
 import Stories from "@/components/home/Stories";
-import Stats from "@/components/home/Stats";
-import YouthHub from "@/components/home/YouthHub";
-import KnowYourRights from "@/components/home/KnowYourRights";
-import WhatWillYouDo from "@/components/home/WhatWillYouDo";
+import FriendsOfDDJC from "@/components/home/FriendsOfDDJC";
 
 export default function HomePage() {
   return (
     <div className="bg-white ddjc-home">
       <Hero />
-      <ManyPathways />
-      <HowItWorks />
+      <HowItWorksWithStats />
       <Stories />
-      <Stats />
-      <YouthHub />
-      <KnowYourRights />
-      <WhatWillYouDo />
+      <FriendsOfDDJC />
     </div>
   );
 }

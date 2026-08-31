@@ -1,97 +1,15 @@
 "use client";
 
 import React from "react";
-import { FaDownload, FaFilePdf, FaBookOpen, FaBalanceScale, FaVenus, FaTools, FaFileSignature, FaGavel, FaShieldAlt, FaGraduationCap, FaHome, FaLock } from "react-icons/fa";
+import { FaDownload, FaFilePdf } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
-
-interface Resource {
-  title: string;
-  desc: string;
-  pdf: string;
-  icon: React.ComponentType<{ size?: number; className?: string }>;
-}
 
 export default function ResourcesPage() {
   const { language } = useApp();
 
-  const RESOURCES: Resource[] = [
-    {
-      title: language === "en" ? "Constitution 101" : "संविधान 101",
-      desc: language === "en" ? "Learn about fundamental rights, directive principles, and the structure of the Indian Constitution." : "भारतीय संविधान के मौलिक अधिकार, निर्देशक तत्वों और संरचना के बारे में जानें।",
-      pdf: "/pdf/Constitution 101 (1).pdf",
-      icon: FaBookOpen,
-    },
-    {
-      title: language === "en" ? "Dalit Rights" : "दलित अधिकार",
-      desc: language === "en" ? "Know your rights under the SC/ST Prevention of Atrocities Act and other legal protections." : "SC/ST अत्याचार निवारण अधिनियम और अन्य कानूनी सुरक्षाओं के तहत अपने अधिकार जानें।",
-      pdf: "/pdf/Dalit Rights.pdf",
-      icon: FaBalanceScale,
-    },
-    {
-      title: language === "en" ? "Women & Girls" : "महिलाएँ और बालिकाएँ",
-      desc: language === "en" ? "Legal protection, support mechanisms, and rights for women and girls." : "महिलाओं और बालिकाओं के लिए कानूनी सुरक्षा, सहायता तंत्र और अधिकार।",
-      pdf: "/pdf/Women & Girls.pdf",
-      icon: FaVenus,
-    },
-    {
-      title: language === "en" ? "Workers' Rights" : "श्रमिक अधिकार",
-      desc: language === "en" ? "Information on labor laws, minimum wage, workplace safety, and grievance redressal." : "श्रम कानून, न्यूनतम मजदूरी, कार्यस्थल सुरक्षा और शिकायत निवारण पर जानकारी।",
-      pdf: "/pdf/Workers' Rights  (1).pdf",
-      icon: FaTools,
-    },
-    {
-      title: language === "en" ? "Government Schemes" : "सरकारी योजनाएँ",
-      desc: language === "en" ? "Comprehensive guide on welfare schemes, reservations, and rights for marginalized communities." : "वंचित समुदायों के लिए कल्याण योजनाएँ, आरक्षण और अधिकारों पर व्यापक गाइड।",
-      pdf: "/pdf/_Government Schemes.pdf",
-      icon: FaFileSignature,
-    },
-    {
-      title: language === "en" ? "Legal Help" : "कानूनी सहायता",
-      desc: language === "en" ? "How to get free legal aid, find a lawyer, and navigate the justice system." : "मुफ्त कानूनी सहायता कैसे लें, वकील कैसे ढूँढें और न्याय व्यवस्था में कैसे नेविगेट करें।",
-      pdf: "/pdf/Legal Help.pdf",
-      icon: FaGavel,
-    },
-    {
-      title: language === "en" ? "Police & FIR" : "पुलिस और एफ.आई.आर.",
-      desc: language === "en" ? "Step-by-step guide to filing an FIR, understanding police procedures, and asserting your rights during investigation." : "एफ.आई.आर. दर्ज करने, पुलिस प्रक्रियाओं को समझने और जांच के दौरान अपने अधिकारों के लिए चरणबद्ध गाइड।",
-      pdf: "/pdf/Police & FIR.pdf",
-      icon: FaShieldAlt,
-    },
-    {
-      title: language === "en" ? "Scholarships & Education" : "छात्रवृत्ति और शिक्षा",
-      desc: language === "en" ? "List of scholarships, educational schemes, and reservations for SC/ST/OBC students." : "SC/ST/OBC छात्रों के लिए छात्रवृत्तियों, शैक्षिक योजनाओं और आरक्षणों की सूची।",
-      pdf: "/pdf/Scholarships & Education.pdf",
-      icon: FaGraduationCap,
-    },
-    {
-      title: language === "en" ? "Land & Housing" : "ज़मीन और आवास",
-      desc: language === "en" ? "Guidance on land rights, documentation, housing schemes, and protection against illegal eviction." : "ज़मीन के अधिकार, दस्तावेजीकरण, आवास योजनाएँ और अवैध बहाली से सुरक्षा पर मार्गदर्शन।",
-      pdf: "/pdf/_Land & Housing.pdf",
-      icon: FaHome,
-    },
-    {
-      title: language === "en" ? "Digital Safety" : "डिजिटल सुरक्षा",
-      desc: language === "en" ? "Stay safe online: reporting cybercrime, digital privacy, and protection against online harassment." : "ऑनलाइन सुरक्षित रहें: साइबरक्राइम की रिपोर्टिंग, डिजिटल गोपनीयता और ऑनलाइन उत्पीड़न से बचाव।",
-      pdf: "/pdf/Digital Safety.pdf",
-      icon: FaLock,
-    },
-    {
-      title: language === "en" ? "SC/ST Prevention of Atrocities Act - Handbook" : "SC/ST अत्याचार निवारण अधिनियम - हैंडबुक",
-      desc: language === "en" ? "Complete statutory guide on provisions, penalties, and emergency relief rules." : "प्रावधान, दंड और तात्कालिक राहत पुरस्कार नियमों पर पूर्ण वैधानिक गाइड।",
-      pdf: "/pdf/SC_ST.pdf",
-      icon: FaFilePdf,
-    },
-    {
-      title: language === "en" ? "Constitutional Rights and Legal Protection Guide" : "संवैधानिक अधिकार और कानूनी सुरक्षा गाइड",
-      desc: language === "en" ? "Detailed educational booklet on fundamental rights and remedies against discrimination." : "मौलिक अधिकारों और भेदभाव के खिलाफ उपचारों पर विस्तृत शैक्षिक पुस्तिका।",
-      pdf: "/pdf/Constitutional%20Rights%20and%20legal.pdf",
-      icon: FaBookOpen,
-    },
-  ];
-
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
             {language === "en" ? "Knowledge Hub" : "ज्ञान केंद्र"}
@@ -100,35 +18,104 @@ export default function ResourcesPage() {
             {language === "en" ? "Legal Resources and Guides" : "कानूनी संसाधन और गाइड"}
           </h1>
           <p className="text-slate-600 text-base md:text-lg leading-relaxed">
-            {language === "en" ? "Download educational pamphlets, constitutional guides, and statutory handbooks to empower yourself with legal knowledge." : "कानूनी ज्ञान से अपने आप को सशक्त बनाने के लिए शैक्षिक पैम्फलेट्स, संवैधानिक गाइड और वैधानिक हैंडबुक डाउनलोड करें।"}
+            {language === "en"
+              ? "Download educational pamphlets, constitutional guides, and statutory handbooks to empower yourself with legal knowledge."
+              : "कानूनी ज्ञान से अपने आप को सशक्त बनाने के लिए शैक्षिक पैम्फलेट्स, संवैधानिक गाइड और वैधानिक हैंडबुक डाउनलोड करें।"}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {RESOURCES.map((res, index) => (
-            <div key={index} className="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-200 flex flex-col hover:shadow-md transition-shadow">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-white border border-slate-200 text-[#000000] flex items-center justify-center text-xl shrink-0">
-                  <res.icon size={22} />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-[#0A2540] leading-snug">{res.title}</h3>
-                </div>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6 flex-1">{res.desc}</p>
-              <div className="pt-4 border-t border-slate-200">
-                <a
-                  href={res.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#000000] hover:underline"
-                >
-                  <FaDownload size={11} /> {language === "en" ? "Download PDF" : "PDF डाउनलोड करें"}
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
+        <article className="bg-slate-50 rounded-3xl border border-slate-200 p-6 md:p-10">
+          <h2 className="text-xl md:text-2xl font-black text-[#0A2540] leading-snug mb-6">
+            {language === "en"
+              ? "SC/ST (Prevention of Atrocities) Act, 1989 — Hindi Training Material"
+              : "अनुसूचित जाति और अनुसूचित जनजाति (अत्याचार निवारण) अधिनियम, 1989 पर हिंदी प्रशिक्षण सामग्री"}
+          </h2>
+
+          <div className="prose prose-slate max-w-none text-slate-700 text-sm md:text-base leading-relaxed space-y-4">
+            <p>
+              {language === "en"
+                ? "To make legal information and rights easier to understand, our team has prepared a new training material — \"Mera Adhikar\". This easy-language booklet helps understand the SC/ST (Prevention of Atrocities) Act, 1989."
+                : "कानूनी जानकारी और अधिकारों से जुड़ी बातों को आसान और समझने लायक बनाने के लिए, हमारी टीम ने एक नया ट्रेनिंग मैटेरियल तैयार किया है – \"मेरा अधिकार\"। यह एक आसान भाषा में लिखी गई किताब है, जो अनुसूचित जाति और अनुसूचित जनजाति (अत्याचार निवारण) अधिनियम, 1989 को समझने में मदद करती है।"}
+            </p>
+
+            <p>
+              {language === "en"
+                ? "This booklet is based on experiences from our previous trainings. It is available in Hindi because we work mostly in Hindi-speaking states like Bihar, Delhi and Uttar Pradesh."
+                : "यह किताब हमारे पिछले प्रशिक्षणों से मिले अनुभवों पर आधारित है। यह हिंदी में उपलब्ध है क्योंकि हम ज़्यादातर बिहार, दिल्ली और उत्तर प्रदेश जैसे हिंदी बोलने वाले राज्यों में काम करते हैं।"}
+            </p>
+
+            <h3 className="text-base font-bold text-[#0A2540] mt-6 mb-3">
+              {language === "en" ? "What's inside this booklet?" : "इस किताब में क्या है?"}
+            </h3>
+
+            <ul className="list-disc pl-5 space-y-2">
+              <li>
+                {language === "en"
+                  ? "What to do if police does not file FIR or delays investigation"
+                  : "अगर पुलिस FIR दर्ज न करे या जाँच में देरी हो, तो क्या करें"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Simple introduction to SC/ST (Prevention of Atrocities) Act, 1989"
+                  : "SC/ST (अत्याचार निवारण) अधिनियम, 1989 का आसान परिचय"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "What does 'atrocity' mean under this law"
+                  : "इस कानून के अनुसार 'अत्याचार' का मतलब क्या है"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Essential legal steps and timelines"
+                  : "कानूनी प्रक्रिया के ज़रूरी स्टेप्स और समय-सीमाएं"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Rights of victims, survivors and witnesses"
+                  : "पीड़ितों, सर्वाइवर और गवाहों के अधिकार"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Relief and rehabilitation: who gets it, how, how much, and by when"
+                  : "राहत और मुआवज़े की जानकारी: किसे मिल सकता है, कैसे मिल सकता है, कितनी राशि मिलती है और कब तक मिलनी चाहिए"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Step-by-step guidance from filing FIR to taking the case to court"
+                  : "FIR दर्ज कराने से लेकर कोर्ट में मामले को आगे बढ़ाने तक की स्टेप-बाय-स्टेप जानकारी"}
+              </li>
+              <li>
+                {language === "en"
+                  ? "Monitoring and accountability mechanisms: district-level monitoring committees and the role of government officers"
+                  : "निगरानी और जवाबदेही के तरीके: जैसे ज़िला स्तर की निगरानी समितियाँ और सरकारी अफसरों की भूमिका"}
+              </li>
+            </ul>
+
+            <p>
+              {language === "en"
+                ? "This booklet is a resource for community members, grassroots workers, youth leaders, and legal awareness volunteers — so they can understand the law and raise their voices for their rights."
+                : "यह किताब समुदाय के लोगों, जमीनी स्तर पर काम करने वालों, युवा नेताओं और कानूनी जागरूकता फैलाने वालों के लिए एक मदद का साधन है, जिससे वे कानून को समझ सकें और अपने अधिकारों के लिए आवाज़ उठा सकें।"}
+            </p>
+
+            <p className="text-slate-600 italic">
+              {language === "en"
+                ? "If you have any suggestions about this booklet or would like it in another language, please contact us at ddjc.prayas@gmail.com and we will try to help."
+                : "अगर आप इस किताब के बारे में कोई सुझाव देना चाहते हैं या इसे किसी और भाषा में पाना चाहते हैं, तो हमसे ज़रूर संपर्क करें – ddjc.prayas@gmail.com हम आपकी मदद करने की कोशिश करेंगे।"}
+            </p>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-slate-200">
+              <a
+                href="/pdf/PoA-Booklet-6.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#0A2540] text-white font-bold px-6 py-3 rounded-xl hover:bg-[#0A2540]/90 transition-colors"
+              >
+                <FaFilePdf size={18} />
+                {language === "en" ? "Download PoA Booklet" : "PoA बुकलेट डाउनलोड करें"}
+              </a>
+          </div>
+        </article>
       </div>
     </div>
   );

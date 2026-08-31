@@ -3,7 +3,7 @@ export type Language = "en" | "hi";
 export const translations = {
   en: {
     siteTitle: "Dalit Dignity & Justice Center",
-    siteSubtitle: "Access to Justice • Equality • Human Rights",
+    siteSubtitle: "Justice, Dignity and Constitutional Rights",
     about: "About",
     ourWork: "Our Work",
     media: "Media",
@@ -52,7 +52,7 @@ export const translations = {
     footerJoinMovement: "Join the Movement",
     footerYouthHub: "Youth Hub",
     footerTaglineLong: "Village-level one-point centres helping communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.",
-    footerTagline: "Access to Justice • Equality • Human Rights",
+    footerTagline: "Justice, Dignity and Constitutional Rights",
     footerAddress: "Police Line – Baghaura, Orai – Jalaun, UP - 285001",
     footerCopyright: "© {year} Dalit Dignity & Justice Center. All Rights Reserved.",
     footerQuote: "Justice has always evoked ideas of equality, of proportion of compensation. In short, Justice is another name of Liberty, Equality and Fraternity.",
@@ -64,7 +64,7 @@ export const translations = {
   },
   hi: {
     siteTitle: "दलित सम्मान व न्याय केन्द्र",
-    siteSubtitle: "न्याय तक पहुंच • समानता • मानवीय अधिकार",
+    siteSubtitle: "न्याय, गरिमा और संवैधानिक अधिकार",
     about: "हमारे बारे में",
     ourWork: "हमारा काम",
     media: "मीडिया",
@@ -113,7 +113,7 @@ export const translations = {
     footerJoinMovement: "आंदोलन से जुड़ें",
     footerYouthHub: "युवा हब",
     footerTaglineLong: "गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।",
-    footerTagline: "न्याय तक पहुंच • समानता • मानवाधिकार",
+    footerTagline: "न्याय, गरिमा और संवैधानिक अधिकार",
     footerAddress: "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001",
     footerCopyright: "© {year} दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।",
     footerQuote: "न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।",

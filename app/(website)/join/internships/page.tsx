@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { FaArrowLeft, FaUserPlus, FaUpload, FaCheckCircle } from "react-icons/fa";
+import { FaArrowLeft, FaUserPlus, FaCheckCircle } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 export default function InternshipsPage() {
@@ -19,7 +19,6 @@ export default function InternshipsPage() {
     address: "",
     university: "",
     field: "",
-    resume: "",
     statement: "",
   });
   const [loading, setLoading] = useState(false);
@@ -55,11 +54,9 @@ export default function InternshipsPage() {
         address: "",
         university: "",
         field: "",
-        resume: "",
         statement: "",
       });
     } catch (error) {
-      console.error("Internship submission error:", error);
       alert(error instanceof Error ? error.message : "Unable to submit application");
     } finally {
       setLoading(false);
@@ -277,50 +274,6 @@ export default function InternshipsPage() {
                       className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                       placeholder={language === "en" ? "E.g., Law, Social Work" : "उदाहरण: कानून, सामाजिक कार्य"}
                     />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">{language === "en" ? "Resume Upload *" : "रिज्यूमे अपलोड *"}</label>
-                  <div
-                    onClick={() => document.getElementById("resume-file")?.click()}
-                    className={`border-2 border-dashed rounded-xl md:rounded-2xl p-4 md:p-6 text-center cursor-pointer transition-colors ${
-                      formData.resume
-                        ? "border-emerald-400 bg-emerald-50"
-                        : "border-slate-300 bg-slate-50 hover:border-slate-400 hover:bg-slate-100"
-                    }`}
-                  >
-                    <input
-                      id="resume-file"
-                      type="file"
-                      accept=".pdf,.doc,.docx"
-                      className="hidden"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          setFormData({ ...formData, resume: file.name });
-                        }
-                      }}
-                    />
-                    {formData.resume ? (
-                      <div className="space-y-2 md:space-y-3">
-                        <div className="w-14 h-14 md:w-16 md:h-16 bg-emerald-100 text-emerald-600 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto">
-                          <FaUpload className="w-5 h-5 md:w-6 md:h-6" />
-                        </div>
-                        <p className="text-xs md:text-sm font-bold text-emerald-700">{formData.resume}</p>
-                        <p className="text-[10px] md:text-xs text-slate-500">Click to replace</p>
-                      </div>
-                    ) : (
-                      <div className="space-y-2 md:space-y-3">
-                        <div className="w-14 h-14 md:w-16 md:h-16 bg-white rounded-xl md:rounded-2xl flex items-center justify-center mx-auto text-slate-400 border border-slate-200">
-                          <FaUpload className="w-[22px] h-[22px] md:w-7 md:h-7" />
-                        </div>
-                        <div>
-                          <p className="text-xs md:text-sm font-bold text-slate-700">Click to upload resume</p>
-                          <p className="text-[10px] md:text-xs text-slate-500 mt-1">Supports PDF, DOC, DOCX (max 5MB)</p>
-                        </div>
-                      </div>
-                    )}
                   </div>
                 </div>
 

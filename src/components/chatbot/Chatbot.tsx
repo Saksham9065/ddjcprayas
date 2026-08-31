@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useChat } from "./hooks/useChat";
+import { useApp } from "@/context/AppContext";
 import ChatHeader from "./ChatHeader";
 import ChatWindow from "./ChatWindow";
 import ChatInput from "./ChatInput";
@@ -12,6 +13,7 @@ type Theme = "light" | "dark";
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>("light");
+  const { language, toggleLanguage } = useApp();
   const { messages, input, setInput, loading, sendMessage, clearChat, newChat, stopGeneration } = useChat();
 
   useEffect(() => {
@@ -30,7 +32,16 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 md:bottom-6 md:right-6">
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2 md:bottom-6 md:right-6">
+      <button
+        onClick={toggleLanguage}
+        className="flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-3 py-1.5 text-xs font-bold shadow-sm backdrop-blur-sm hover:scale-105 transition-transform"
+        aria-label="Toggle language"
+      >
+        <span className="text-base leading-none" aria-hidden="true">{language === "en" ? "🇺🇸" : "🇮🇳"}</span>
+        <span className="text-xs font-extrabold tracking-tight text-navy">{language === "en" ? "EN" : "हि"}</span>
+      </button>
+
       <AnimatePresence>
         {isOpen && (
           <motion.div

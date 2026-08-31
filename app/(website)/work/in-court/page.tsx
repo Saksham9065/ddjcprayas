@@ -58,8 +58,8 @@ export default function InCourtPage() {
         {/* Key Impact Statistics Banner */}
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-slate-50 text-[#0A2540] p-8 rounded-3xl shadow-sm border border-slate-200 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-white text-gold flex items-center justify-center text-lg border border-slate-200">
-              <FaBalanceScale />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaBalanceScale size={28} />
             </div>
             <h3 className="text-xl font-bold">{language === "en" ? "Active Case Portfolio" : "सक्रिय मामले पोर्टफोलियो"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -68,8 +68,8 @@ export default function InCourtPage() {
           </div>
 
           <div className="bg-slate-50 border border-slate-200 p-8 rounded-3xl shadow-sm space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-white text-gold flex items-center justify-center text-lg border border-slate-200">
-              <FaHandHoldingUsd />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaHandHoldingUsd size={28} />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "Compensation Secured" : "मुआवजा सुरक्षित"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -90,8 +90,8 @@ export default function InCourtPage() {
         <div className="grid md:grid-cols-2 gap-6">
           
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-white text-gold rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaGavel />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaGavel size={28} />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "1. Free Representation by Dedicated Lawyers" : "1. समर्पित वकीलों द्वारा मुफ्त प्रतिनिधित्व"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -100,8 +100,8 @@ export default function InCourtPage() {
           </div>
 
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-white text-gold rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaShieldAlt />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaShieldAlt size={28} />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "2. Effective Advocacy under Special Acts" : "2. विशेष अधिनियमों के तहत प्रभावी वकालत"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -110,8 +110,8 @@ export default function InCourtPage() {
           </div>
 
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-white text-gold rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaFileAlt />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaFileAlt size={28} />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "3. Evidence-Based Litigation and Trial Monitoring" : "3. साक्ष्य-आधारित मुकदमा और परीक्षण निगरानी"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
@@ -120,8 +120,8 @@ export default function InCourtPage() {
           </div>
 
           <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
-            <div className="w-12 h-12 bg-white text-gold rounded-2xl flex items-center justify-center text-xl border border-slate-200">
-              <FaCheckCircle />
+            <div className="w-16 h-16 bg-white text-gold rounded-2xl flex items-center justify-center text-2xl border border-slate-200">
+              <FaCheckCircle size={28} />
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "4. Opposing Bail and Ensuring Punishment" : "4. जमानत का विरोध और दंड सुनिश्चित करना"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">

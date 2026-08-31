@@ -8,11 +8,6 @@ export default function ContactPage() {
   const { language } = useApp();
   const [formData, setFormData] = useState({
     fullName: "",
-    fatherHusbandName: "",
-    age: "",
-    category: "",
-    gender: "",
-    education: "",
     mobile: "",
     email: "",
     address: "",
@@ -41,11 +36,6 @@ export default function ContactPage() {
       setSuccess(true);
       setFormData({
         fullName: "",
-        fatherHusbandName: "",
-        age: "",
-        category: "",
-        gender: "",
-        education: "",
         mobile: "",
         email: "",
         address: "",
@@ -75,13 +65,8 @@ export default function ContactPage() {
              {language === "en"
                ? "You are not alone in this fight for justice. If you or someone you know has been a victim of any injustice, caste-based atrocities, or violence, please fill out the form below. DDJC's legal team will contact you soon."
                : "न्याय की इस लड़ाई में आप अकेले नहीं हैं। यदि आप या आपका कोई परिचित किसी अन्याय, जातिगत अत्याचार या हिंसा का शिकार हुआ है, तो कृपया नीचे दिया गया फॉर्म भरें। DDJC की कानूनी टीम जल्द ही आपसे संपर्क करेगी।"}
-           </p>
-           <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-             {language === "en"
-               ? "For emergency assistance and information, please contact our legal coordinators, support staff or visit our office in Urai."
-               : "आपातकालीन सहायता और जानकारी के लिए हमारे कानूनी समन्वयकों, समर्थन स्टाफ से संपर्क करें या उरई स्थित हमारे कार्यालय में आएँ।"}
-           </p>
-         </div>
+            </p>
+          </div>
 
          {success && (
            <div className="mb-4 md:mb-6 p-3 md:p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-2xl text-xs md:text-sm font-semibold">
@@ -97,145 +82,61 @@ export default function ContactPage() {
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
                <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Contact" : "संपर्क करें"}</h3>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Name" : "पूरा नाम"}</label>
-                   <input
-                     type="text"
-                     required
-                     value={formData.fullName}
-                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   />
-                 </div>
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Father's / Husband's Name" : "पिता / पति का नाम"}</label>
-                   <input
-                     type="text"
-                     required
-                     value={formData.fatherHusbandName}
-                     onChange={(e) => setFormData({ ...formData, fatherHusbandName: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   />
-                 </div>
-               </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
+                  <div>
+                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Name" : "पूरा नाम"}</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Mobile Number" : "मोबाइल नंबर"}</label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.mobile}
+                      onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                    />
+                  </div>
+                </div>
 
-               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Age" : "आयु"}</label>
-                   <input
-                     type="text"
-                     value={formData.age}
-                     onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   />
-                 </div>
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Category" : "वर्ग"}</label>
-                   <select
-                     value={formData.category}
-                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   >
-                     <option value="">{language === "en" ? "Select Category" : "वर्ग चुनें"}</option>
-                     <option value="SC">SC</option>
-                     <option value="ST">ST</option>
-                     <option value="OBC">OBC</option>
-                     <option value="Minorities">{language === "en" ? "Minorities" : "अल्पसंख्यक"}</option>
-                     <option value="General">{language === "en" ? "General" : "सामान्य"}</option>
-                   </select>
-                 </div>
-                 <div className="hidden sm:block">
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Gender" : "लिंग"}</label>
-                   <select
-                     value={formData.gender}
-                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   >
-                     <option value="">{language === "en" ? "Select Gender" : "लिंग चुनें"}</option>
-                     <option value="Male">Male</option>
-                     <option value="Female">Female</option>
-                     <option value="Others">{language === "en" ? "Others" : "अन्य"}</option>
-                   </select>
-                 </div>
-                 <div className="block sm:hidden">
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Gender" : "लिंग"}</label>
-                   <select
-                     value={formData.gender}
-                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   >
-                     <option value="">{language === "en" ? "Select Gender" : "लिंग चुनें"}</option>
-                     <option value="Male">Male</option>
-                     <option value="Female">Female</option>
-                     <option value="Others">{language === "en" ? "Others" : "अन्य"}</option>
-                   </select>
-                 </div>
-               </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
+                  <div>
+                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Email (if available)" : "ईमेल (यदि हो तो)"}</label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Address" : "पूरा पता"}</label>
+                    <input
+                      type="text"
+                      value={formData.address}
+                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                    />
+                  </div>
+                </div>
 
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Education" : "शिक्षा"}</label>
-                   <input
-                     type="text"
-                     value={formData.education}
-                     onChange={(e) => setFormData({ ...formData, education: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   />
-                 </div>
-                 <div>
-                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Mobile Number" : "मोबाइल नंबर"}</label>
-                   <input
-                     type="tel"
-                     required
-                     value={formData.mobile}
-                     onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                     className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                   />
-                 </div>
-               </div>
+                <div>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Message" : "संदेश"}</label>
+                  <textarea
+                    rows={3}
+                    value={formData.incidentDescription}
+                    onChange={(e) => setFormData({ ...formData, incidentDescription: e.target.value })}
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                  />
+                </div>
 
-               <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Email (if available)" : "ईमेल (यदि हो तो)"}</label>
-                 <input
-                   type="email"
-                   value={formData.email}
-                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                   className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                 />
-               </div>
-
-               <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Address" : "पूरा पता"}</label>
-                 <input
-                   type="text"
-                   value={formData.address}
-                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                   className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                 />
-               </div>
-
-               <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Brief description of incident/case and current status" : "घटना/मामले का संक्षिप्त विवरण और वर्तमान स्थिति"}</label>
-                 <textarea
-                   rows={3}
-                   value={formData.incidentDescription}
-                   onChange={(e) => setFormData({ ...formData, incidentDescription: e.target.value })}
-                   className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                 />
-               </div>
-
-               <div>
-                 <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "What kind of help/support do you need from Dalit Dignity and Justice Center?" : "दलित सम्मान व न्याय केन्द्र से आप किस प्रकार की सहायता/समर्थन चाहते हैं?"}</label>
-                 <textarea
-                   rows={3}
-                   value={formData.helpType}
-                   onChange={(e) => setFormData({ ...formData, helpType: e.target.value })}
-                   className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                 />
-               </div>
-
-               <Button type="submit" isLoading={loading} className="w-full py-3 md:py-4 text-xs md:text-sm">
+                <Button type="submit" isLoading={loading} className="w-full py-3 md:py-4 text-xs md:text-sm">
                  {language === "en" ? "Submit" : "सबमिट करें"}
                </Button>
              </div>

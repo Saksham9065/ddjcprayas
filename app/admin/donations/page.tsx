@@ -8,9 +8,9 @@ export default function AdminDonationsPage() {
   const { language } = useApp();
   const [stats, setStats] = useState<StatDef[]>([
     { label: language === "en" ? "Total Donations" : "कुल दान", value: 0, color: "bg-slate-800" },
-    { label: language === "en" ? "Pending Verification" : "सत्यापन लंबित", value: 0, color: "bg-amber-500" },
+    { label: language === "en" ? "Total Amount" : "कुल राशि", value: 0, color: "bg-indigo-500" },
+    { label: language === "en" ? "Pending" : "लंबित", value: 0, color: "bg-amber-500" },
     { label: language === "en" ? "Verified" : "सत्यापित", value: 0, color: "bg-emerald-500" },
-    { label: language === "en" ? "Rejected" : "अस्वीकृत", value: 0, color: "bg-red-500" },
   ]);
 
   const STATUS_LABELS: Record<string, string> = {
@@ -28,6 +28,9 @@ export default function AdminDonationsPage() {
     )},
     { key: "phone", label: language === "en" ? "Phone" : "फ़ोन", render: (item) => String(item.phone ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
+    { key: "amount", label: language === "en" ? "Amount" : "राशि", render: (item) => (
+      <span className="font-bold text-slate-900">₹{Number(item.amount || 0).toLocaleString("en-IN")}</span>
+    )},
     { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
         "Pending Verification": "bg-amber-50 text-amber-700 border border-amber-200",
@@ -62,14 +65,14 @@ export default function AdminDonationsPage() {
         const json = await res.json();
         const data = json.data || [];
         const total = data.length;
+        const totalAmount = data.reduce((sum: number, d: Record<string, unknown>) => sum + (Number(d.amount) || 0), 0);
         const pending = data.filter((d: Record<string, unknown>) => d.status === "Pending Verification").length;
         const verified = data.filter((d: Record<string, unknown>) => d.status === "Verified").length;
-        const rejected = data.filter((d: Record<string, unknown>) => d.status === "Rejected").length;
         setStats([
           { label: language === "en" ? "Total Donations" : "कुल दान", value: total, color: "bg-slate-800" },
-          { label: language === "en" ? "Pending Verification" : "सत्यापन लंबित", value: pending, color: "bg-amber-500" },
+          { label: language === "en" ? "Total Amount" : "कुल राशि", value: totalAmount, color: "bg-indigo-500" },
+          { label: language === "en" ? "Pending" : "लंबित", value: pending, color: "bg-amber-500" },
           { label: language === "en" ? "Verified" : "सत्यापित", value: verified, color: "bg-emerald-500" },
-          { label: language === "en" ? "Rejected" : "अस्वीकृत", value: rejected, color: "bg-red-500" },
         ]);
       } catch (e) {
         console.error(e);

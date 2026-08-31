@@ -107,7 +107,6 @@ async function generateWithRetry(
 ): Promise<string> {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      console.log(`[Chat API] Trying model ${modelName} attempt ${attempt}/${maxRetries}`);
       const result = await ai.models.generateContentStream({
         model: modelName,
         contents,
@@ -121,14 +120,11 @@ async function generateWithRetry(
       }
 
       if (streamed.trim()) {
-        console.log(`[Chat API] Model ${modelName} succeeded on attempt ${attempt}`);
         return streamed;
       }
-    } catch (error) {
-      console.error(`[Chat API] Model ${modelName} attempt ${attempt} failed:`, error);
+    } catch {
       if (attempt < maxRetries) {
         const waitMs = 500 * attempt;
-        console.log(`[Chat API] Waiting ${waitMs}ms before retry...`);
         await sleep(waitMs);
       }
     }
@@ -137,16 +133,11 @@ async function generateWithRetry(
 }
 
 export async function POST(request: Request) {
-  const startTime = Date.now();
-  console.log("[Chat API] Incoming request:", request.method, request.url);
-
   try {
     const body: ChatRequest = await request.json();
     const { message, history } = body;
 
     const trimmed = String(message || "").trim();
-    console.log("[Chat API] User message:", trimmed);
-    console.log("[Chat API] History length:", history?.length ?? 0);
 
     if (!trimmed) {
       return NextResponse.json({ error: "Message is required" }, { status: 400 });
@@ -159,9 +150,7 @@ export async function POST(request: Request) {
     const isUnrelated = looksUnrelated(trimmed);
 
     const apiKey = process.env.GEMINI_API_KEY;
-    console.log("[Chat API] GEMINI_API_KEY present:", !!apiKey);
     if (!apiKey) {
-      console.error("[Chat API] Missing GEMINI_API_KEY");
       return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
     }
 
@@ -189,7 +178,6 @@ export async function POST(request: Request) {
           break;
         } catch (modelError) {
           lastError = modelError;
-          console.error(`[Chat API] Model ${modelName} unavailable:`, modelError);
         }
       }
 
@@ -198,20 +186,13 @@ export async function POST(request: Request) {
           language === "hi"
             ? "क्षमा करें, मैं अभी उपलब्ध नहीं हूं। कृपया बाद में पुनः प्रयास करें या हमें संपर्क करें।"
             : "Thank you for your question. I am DDJC's AI Assistant and my role is to provide information related to DDJC, legal awareness, constitutional rights, government welfare schemes, and social justice. I'm unable to assist with this topic right now. If you have a question related to DDJC or legal awareness, I'll be happy to help.";
-        console.error("[Chat API] All models failed. Last error:", lastError);
         return NextResponse.json({ reply: errorMessage, debug: { usedModel, lastError: String(lastError) } }, { status: 200 });
       }
     }
 
-    const duration = Date.now() - startTime;
-    console.log("[Chat API] Success - model:", usedModel, "duration:", duration, "ms");
-
     const response: ChatResponse = { reply };
     return NextResponse.json(response);
-  } catch (error) {
-    const duration = Date.now() - startTime;
-    console.error("[Chat API] Request failed after", duration, "ms:", error);
-    console.error("[Chat API] Stack:", error instanceof Error ? error.stack : "N/A");
+  } catch {
     return NextResponse.json({ error: "Failed to process message" }, { status: 500 });
   }
 }

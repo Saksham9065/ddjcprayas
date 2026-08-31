@@ -8,12 +8,9 @@ import {
   Handshake,
   MapPin,
   ArrowRight,
-  DoorOpen,
-  MessageCircle,
-  Wrench,
-  Scale,
   Quote,
 } from "lucide-react";
+import { FaFacebookF, FaWhatsapp, FaYoutube, FaInstagram } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 const HERO_IMAGES = [
@@ -39,13 +36,11 @@ export default function Hero() {
 
   const t = (en: string, hi: string) => (language === "en" ? en : hi);
 
-  const words = [t("Dignity.", "सम्मान।"), t("Justice.", "न्याय।"), t("Power.", "शक्ति।")];
-
   const bottomPoints = [
-    { icon: DoorOpen, text: t("A place to come.", "आने के लिए एक जगह।") },
-    { icon: MessageCircle, text: t("A person to talk to.", "बात करने के लिए एक व्यक्ति।") },
-    { icon: Wrench, text: t("A problem to solve.", "हल करने के लिए एक समस्या।") },
-    { icon: Scale, text: t("A right to claim.", "दावा करने के लिए एक अधिकार।") },
+    { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "#1877F2" },
+    { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "#25D366" },
+    { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "#FF0000" },
+    { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "#E4405F" },
   ];
 
   const ctas = [
@@ -59,7 +54,7 @@ export default function Hero() {
       label: t("Find DDJC", "DDJC खोजें"),
       href: "/contact",
       icon: MapPin,
-      style: "border border-white/40 hover:bg-white/10 text-white backdrop-blur-sm",
+      style: "bg-navy hover:bg-navy-deep text-white shadow-lg",
     },
   ];
 
@@ -129,26 +124,19 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 items-center min-h-screen py-12 md:py-16">
           {/* LEFT — content — static */}
           <div className="text-left mt-px">
-            <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/25 text-white px-4 py-2 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] mb-6">
+            <span className="inline-flex items-center gap-2 bg-navy backdrop-blur-md border border-white/25 text-white px-4 py-2 rounded-full text-[11px] md:text-xs font-bold uppercase tracking-[0.18em] mb-6 shadow-lg">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
               {t("One Centre. Many Doors to Dignity, Justice & Empowerment.", "एक केन्द्र. गरिमा, न्याय और सशक्तिकरण के कई द्वार।")}
             </span>
 
-            <h1 className="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 drop-shadow-lg">
-              {words.map((word, i) => (
-                <span key={word}>
-                  <span className={i === 2 ? "text-gold" : "text-white"}>{word}</span>
-                  {i < words.length - 1 && " "}
-                </span>
-              ))}
+            <h1 className="text-2xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] mb-5 drop-shadow-lg whitespace-nowrap">
+              <span className="text-white">{t("Dignity.", "सम्मान।")}</span>{" "}
+              <span className="text-white">{t("Justice.", "न्याय।")}</span>{" "}
+              <span className="text-gold">{t("Power.", "शक्ति।")}</span>
             </h1>
 
             <p className="text-base md:text-xl font-semibold text-white/90 mb-4 drop-shadow-md">
-              {t("A community centre where rights become reality.", "एक सामुदायिक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।")}
-            </p>
-
-            <p className="text-[13px] md:text-sm text-white leading-relaxed mb-5 max-w-xl bg-black/30 backdrop-blur-sm rounded-xl px-4 py-3">
-              {t("Dalit Dignity & Justice Center (DDJC) are village-level one-stop centres that help communities access justice, rights, information, government services and opportunities — while building a new generation of informed and empowered citizens.", "दलित सम्मान व न्याय केन्द्र (DDJC) गाँव-स्तरीय एकल केन्द्र हैं जो समुदायों को न्याय, अधिकार, जानकारी, सरकारी सेवाएँ और अवसर तक पहुँचने में मदद करते हैं—साथ ही सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
+              {t("A Centre where rights become reality.", "एक केन्द्र जहाँ अधिकार हक़ीक़त बनते हैं।")}
             </p>
 
             <blockquote className="flex items-start gap-3 text-xs md:text-sm text-white font-bold italic mb-8 max-w-xl drop-shadow-md">
@@ -172,18 +160,20 @@ export default function Hero() {
                ))}
              </div>
 
-             {/* Four bottom points */}
-             <div className="flex flex-row flex-wrap gap-2 md:gap-3 w-full">
-               {bottomPoints.map((point, i) => (
-                   <div
-                     key={i}
-                     className="flex-1 min-w-[45%] sm:min-w-0 flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/90 px-2 py-2.5 text-center"
-                   >
-                     <point.icon className="text-navy shrink-0" size={14} />
-                     <span className="text-[10px] sm:text-[11px] md:text-xs font-semibold text-navy leading-tight">{point.text}</span>
-                   </div>
-                 ))}
-             </div>
+              {/* Four bottom points */}
+              <div className="flex flex-row flex-wrap gap-2 md:gap-3 w-full">
+                {bottomPoints.map((point, i) => (
+                  <a
+                    key={i}
+                    href={point.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-[45%] sm:min-w-0 flex items-center justify-center rounded-xl border border-white/20 bg-white/90 p-2.5 hover:scale-105 transition-transform"
+                  >
+                    <point.icon size={18} style={{ color: point.color }} />
+                  </a>
+                ))}
+              </div>
           </div>
         </div>
       </div>

@@ -40,6 +40,7 @@ export async function GET(request: Request) {
         donorName: item.donorName,
         phone: item.phone,
         email: item.email,
+        amount: item.amount,
         status: item.status,
         createdAt: item.createdAt?.toISOString?.() || "",
       })),
@@ -79,6 +80,7 @@ export async function PATCH(request: Request) {
       donorName: updatedDonation.donorName,
       phone: updatedDonation.phone,
       email: updatedDonation.email,
+      amount: updatedDonation.amount,
       status: updatedDonation.status,
       createdAt: updatedDonation.createdAt?.toISOString?.() || "",
     });

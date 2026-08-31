@@ -10,6 +10,7 @@ export default function DonatePage() {
   const [donorName, setDonorName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -25,6 +26,7 @@ export default function DonatePage() {
       formData.append("donorName", donorName.trim());
       formData.append("phone", phone.trim());
       formData.append("email", email.trim());
+      formData.append("amount", amount.trim());
 
       const res = await fetch("/api/donations", {
         method: "POST",
@@ -41,6 +43,7 @@ export default function DonatePage() {
       setDonorName("");
       setPhone("");
       setEmail("");
+      setAmount("");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
     } finally {
@@ -162,6 +165,22 @@ export default function DonatePage() {
                   placeholder="supporter@example.com"
                   className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                 />
+              </div>
+
+              <div>
+                <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">{language === "en" ? "Donation Amount" : "दान राशि"}</label>
+                <div className="relative">
+                  <span className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 text-slate-500 font-bold text-xs md:text-sm">₹</span>
+                  <input
+                    type="number"
+                    required
+                    min="1"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    placeholder={language === "en" ? "Enter amount" : "राशि दर्ज करें"}
+                    className="w-full pl-8 pr-3 py-2.5 md:pl-9 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                  />
+                </div>
               </div>
 
               {error && <p className="text-red-600 text-[10px] md:text-xs font-bold mt-2">{error}</p>}

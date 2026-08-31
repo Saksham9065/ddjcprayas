@@ -4,6 +4,7 @@ export interface IDonation extends Document {
   donorName: string;
   phone: string;
   email: string;
+  amount: number;
   status: "Pending Verification" | "Verified" | "Rejected";
 }
 
@@ -12,6 +13,7 @@ const donationSchema = new Schema<IDonation>(
     donorName: { type: String, required: true, trim: true },
     phone: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true, lowercase: true },
+    amount: { type: Number, required: true, min: 1 },
     status: {
       type: String,
       enum: ["Pending Verification", "Verified", "Rejected"],

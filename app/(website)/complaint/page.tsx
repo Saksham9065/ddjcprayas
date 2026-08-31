@@ -55,7 +55,7 @@ export default function ComplaintPage() {
             {language === "en" ? "Grievance Redressal" : "शिकायत निवारण"}
           </span>
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
-            {language === "en" ? "File a Formal Complaint" : "आधिकारिक शिकायत दर्ज करें"}
+            {language === "en" ? "Report your CASE /Grievance" : "अपना मामला /शिकायत रिपोर्ट करें"}
           </h1>
           <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed">
             {language === "en" ? "Submit your grievance regarding caste discrimination, violence, police inaction, or land disputes. Our legal team will review your case promptly." : "जातिगत भेदभाव, हिंसा, पुलिस की निष्क्रियता या भूमि विवाद के बारे में अपनी शिकायत सबमिट करें। हमारी कानूनी टीम आपके मामले की जल्द से जल्द समीक्षा करेगी।"}

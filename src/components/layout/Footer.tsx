@@ -48,62 +48,51 @@ export default function Footer() {
     <footer className="relative bg-navy text-white overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gold/5 blur-[100px] pointer-events-none" />
 
-      <div className="container mx-auto px-5 md:px-8 pt-16 pb-10 relative z-10">
+      <div className="container mx-auto px-5 md:px-8 pt-10 pb-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          {/* LEFT: Floating social bar + Brand */}
-          <div className="lg:col-span-4">
-            <div className="flex gap-5">
-              {/* Floating social icons */}
-              <div className="flex flex-col gap-3">
-                {[
-                  { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter" },
-                  { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up" },
-                  { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP" },
-                  { icon: FaWhatsapp, href: "https://wa.me/919453645931" },
-                ].map((s, i) => (
-                  <a
-                    key={i}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-10 w-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/80 hover:bg-gold hover:text-navy hover:border-transparent transition-all duration-300"
-                  >
-                    <s.icon size={14} />
-                  </a>
-                ))}
+           {/* LEFT: Brand */}
+           <div className="lg:col-span-4">
+             <div className="flex items-center gap-3 mb-5">
+               <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-gold/40 bg-white shrink-0 relative">
+                 <Image src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" fill sizes="48px" className="h-full w-full object-cover" />
+               </div>
+               <div>
+                 <h2 className="font-extrabold text-base leading-tight tracking-wide">
+                   {t("Dalit Dignity & Justice Center", "दलित सम्मान व न्याय केन्द्र")}
+                 </h2>
+                 <p className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold mt-0.5">
+                   {t("Justice, Dignity and Constitutional Rights", "न्याय, गरिमा और संवैधानिक अधिकार")}
+                 </p>
+               </div>
+              </div>
+              <p className="text-white/70 text-xs leading-relaxed mb-4">
+                {t("A one-stop centre that helps communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.", "गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
+              </p>
+              <div className="bg-white/10 rounded-2xl p-4 border border-white/20 shadow-lg">
+               <p className="text-xs text-white/90 leading-relaxed">
+                 {t("Dr. B.R. Ambedkar", "बाबासाहेब डॉ. बी.आर. अम्बेडकर")} — {t("\"Justice has always given birth to the ideas of equality and complete evidence. In short, justice is another name for liberty, equality and fraternity.\"", "\"न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।\"")}
+               </p>
               </div>
 
-              {/* Brand info */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="h-12 w-12 rounded-full overflow-hidden border-2 border-gold/40 bg-white shrink-0 relative">
-                    <Image src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" fill sizes="48px" className="h-full w-full object-cover" />
-                  </div>
-                  <div>
-                    <h2 className="font-extrabold text-base leading-tight tracking-wide">
-                      {t("Dalit Dignity & Justice Center", "दलित सम्मान व न्याय केन्द्र")}
-                    </h2>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold">
-                      {"DDJC"}
-                    </span>
-                  </div>
-                </div>
-                <p className="text-white/60 text-sm leading-relaxed max-w-sm mb-6">
-                  {t("A village-level one-stop centre that helps communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.", "गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
-                </p>
-                <div className="bg-white/10 rounded-2xl p-5 border border-white/20 shadow-lg">
-                  <p className="text-xs text-white/90 leading-relaxed">
-                    {t("Dr. B.R. Ambedkar", "बाबासाहेब डॉ. बी.आर. अम्बेडकर")} — {t("\"Justice has always given birth to the ideas of equality and complete evidence. In short, justice is another name for liberty, equality and fraternity.\"", "\"न्याय ने हमेशा समानता, पूर्तिकर प्रमाण के विचारों को जन्म दिया है। संक्षिप्त में, न्याय स्वतंत्रता, समानता और बंधुता का एक ही नाम है।\"")}
-                  </p>
-                </div>
-                <div className="mt-5">
-                  <Link href="/admin/login" className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-gold transition-colors">
-                    {t("Admin Login", "एडमिन लॉगिन")}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+             <div className="flex gap-3 mt-5">
+               {[
+                 { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "#1877F2" },
+                 { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "#E4405F" },
+                 { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "#FF0000" },
+                 { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "#25D366" },
+               ].map((s, i) => (
+                 <a
+                   key={i}
+                   href={s.href}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="h-10 w-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-transparent transition-all duration-300"
+                 >
+                   <s.icon size={14} style={{ color: s.color }} />
+                 </a>
+               ))}
+             </div>
+           </div>
 
           {/* MIDDLE: Link groups */}
           <div className="lg:col-span-5">
@@ -177,15 +166,15 @@ export default function Footer() {
           </div>
 
           {/* RIGHT: QR only */}
-          <div className="lg:col-span-3 lg:translate-x-2">
-            <div className="rounded-2xl p-6 h-full">
-              <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-5">
+          <div className="lg:col-span-3 lg:translate-x-2 lg:-mt-8">
+            <div className="rounded-2xl p-5 h-full">
+              <h3 className="text-xs font-bold text-white uppercase tracking-[0.15em] mb-3">
                 {t("Donate", "दान करें")}
               </h3>
               <div className="relative w-full rounded-2xl overflow-hidden shadow-lg bg-white">
                 <Image src="/images/qr/qr.png" alt="Donation QR" width={400} height={400} priority className="w-full h-auto object-contain p-2" />
               </div>
-              <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-2">
+              <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-1">
                 {t("Scan to Donate", "दान करने के लिए स्कैन करें")}
               </p>
             </div>
@@ -197,12 +186,13 @@ export default function Footer() {
       <div className="border-t border-white/10 bg-navy-deep">
         <div className="container mx-auto px-5 md:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-white/50 tracking-wide text-center sm:text-left">
-            {t("© 2024 Dalit Dignity & Justice Center. All rights reserved.", "© 2024 दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।")}
+            {t("© 2026 Dalit Dignity & Justice Center. All rights reserved.", "© 2024 दलित सम्मान व न्याय केन्द्र। सर्वाधिकार सुरक्षित।")}
           </p>
           <div className="flex items-center gap-5 text-xs text-white/50">
             <Link href="/privacy" className="hover:text-gold transition-colors">{t("Privacy Policy", "गोपनीयता नीति")}</Link>
             <Link href="/terms" className="hover:text-gold transition-colors">{t("Terms & Conditions", "नियम और शर्तें")}</Link>
             <Link href="/sitemap" className="hover:text-gold transition-colors">{t("Sitemap", "साइटमैप")}</Link>
+            <Link href="/admin/login" className="hover:text-gold transition-colors font-semibold">{t("Admin", "एडमिन")}</Link>
           </div>
         </div>
       </div>

@@ -28,11 +28,3 @@ export interface UseChatReturn {
   newChat: () => void;
   stopGeneration: () => void;
 }
-
-export const SUGGESTED_QUESTIONS = [
-  "What is DDJC?",
-  "Explain SC/ST Act",
-  "How can I get legal aid?",
-  "How do I file an FIR?",
-  "Volunteer with DDJC",
-];

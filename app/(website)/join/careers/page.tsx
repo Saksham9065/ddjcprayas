@@ -61,7 +61,6 @@ export default function CareersPage() {
         statement: "",
       });
     } catch (error) {
-      console.error("Career submission error:", error);
       alert(error instanceof Error ? error.message : "Unable to submit application");
     } finally {
       setLoading(false);

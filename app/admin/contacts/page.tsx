@@ -21,23 +21,13 @@ export default function AdminContactsPage() {
 
   const columns: ColumnDef[] = [
     { key: "id", label: language === "en" ? "ID" : "आईडी", width: "80px" },
-    { key: "fullName", label: language === "en" ? "Full Name" : "पूरा नाम", render: (item) => (
+    { key: "fullName", label: language === "en" ? "Name" : "नाम", render: (item) => (
       <div>
         <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
         <span className="text-slate-500 font-mono text-[10px]">{String(item.mobile ?? "")}</span>
       </div>
     )},
-    { key: "fatherHusbandName", label: language === "en" ? "Father/Husband Name" : "पिता/पति का नाम", render: (item) => String(item.fatherHusbandName ?? "") },
-    { key: "age", label: language === "en" ? "Age" : "आयु", render: (item) => String(item.age ?? "") },
-    { key: "category", label: language === "en" ? "Category" : "श्रेणी", render: (item) => String(item.category ?? "") },
-    { key: "gender", label: language === "en" ? "Gender" : "लिंग", render: (item) => String(item.gender ?? "") },
-    { key: "education", label: language === "en" ? "Education" : "शिक्षा", render: (item) => String(item.education ?? "") },
-    { key: "mobile", label: language === "en" ? "Mobile" : "मोबाइल", render: (item) => String(item.mobile ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
-    { key: "address", label: language === "en" ? "Address" : "पता", render: (item) => String(item.address ?? "") },
-    { key: "incidentDescription", label: language === "en" ? "Incident Description" : "घटना विवरण", render: (item) => (
-      <span className="truncate block max-w-xs" title={String(item.incidentDescription ?? "")}>{String(item.incidentDescription ?? "")}</span>
-    )},
     { key: "helpType", label: language === "en" ? "Help Type" : "सहायता प्रकार", render: (item) => String(item.helpType ?? "") },
     { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {
