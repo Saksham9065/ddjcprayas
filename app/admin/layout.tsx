@@ -4,7 +4,7 @@ import React, { ReactNode, useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkAdminAuth } from "@/lib/auth";
-import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBars } from "react-icons/fa";
+import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBars, FaGlobe } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -101,7 +101,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
             );
           })}
         </nav>
-        <div className="p-4 border-t border-slate-800">
+        <div className="p-4 border-t border-slate-800 space-y-1">
+          <Link
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+          >
+            <FaGlobe size={14} />
+            {language === "en" ? "Back to Home" : "होम पर वापस जाएं"}
+          </Link>
           <button
             type="button"
             onClick={handleLogout}
