@@ -18,7 +18,6 @@ const LINK_GROUPS = [
     links: [
       { nameKey: "footerAboutUs", href: "/about" },
       { nameKey: "footerOurTeam", href: "/team" },
-      { nameKey: "footerMedia", href: "/media" },
     ],
   },
   {
@@ -134,7 +133,7 @@ export default function Footer() {
                            </li>
                          );
                        }
-                       const linkText = l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerMedia" ? t("Media", "मीडिया") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क");
+                        const linkText = l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क");
                        return (
                          <li key={l.nameKey}>
                            {l.href?.startsWith("/pdf/") ? (
