@@ -5,15 +5,15 @@ type MongooseCache = {
   promise: Promise<typeof mongoose> | null;
 };
 
-const MONGODB_URI = process.env.MONGODB_URI ?? "";
+const MONGODB_URI = process.env.MONGODB_URI;
 
 const globalWithMongoose = globalThis as typeof globalThis & {
   mongoose?: MongooseCache;
 };
 
 export async function connectToDatabase() {
-  if (MONGODB_URI.length === 0) {
-    throw new Error("Please define the MONGODB_URI environment variable in .env.local");
+  if (!MONGODB_URI) {
+    throw new Error("MONGODB_URI environment variable is not configured");
   }
 
   let cached = globalWithMongoose.mongoose;
@@ -41,8 +41,10 @@ export async function connectToDatabase() {
   } catch (error) {
     cached.promise = null;
     cached.conn = null;
+
     throw new Error(
-      `Failed to connect to MongoDB: ${error instanceof Error ? error.message : String(error)}`
+      `Failed to connect to MongoDB: ${error instanceof Error ? error.message : String(error)
+      }`
     );
   }
 }
