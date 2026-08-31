@@ -72,14 +72,25 @@ export default function DonatePage() {
               {language === "en" ? "Direct Bank Transfer / UPI" : "सीधे बैंक ट्रांसफर / UPI"}
             </span>
             <h3 className="text-xl md:text-2xl font-bold">{language === "en" ? "Official Bank Details" : "आधिकारिक बैंक विवरण"}</h3>
-            <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-300">
-              <p><strong className="text-white">{language === "en" ? "Account Name:" : "खाता का नाम:"}</strong> {language === "en" ? "Prayas Jan Utthan Samiti" : "प्रयास जन उत्थान समिति"}</p>
-              <p><strong className="text-white">{language === "en" ? "Account Number:" : "खाता संख्या:"}</strong> <span className="font-mono">7108466367</span></p>
-              <p><strong className="text-white">{language === "en" ? "Bank Name:" : "बैंक का नाम:"}</strong> {language === "en" ? "Indian Bank" : "इंडियन बैंक"}</p>
-              <p><strong className="text-white">{language === "en" ? "IFSC Code:" : "IFSC कोड:"}</strong> <span className="font-mono">IDIB000O029</span></p>
-              <p><strong className="text-white">{language === "en" ? "Branch Address:" : "शाखा पता:"}</strong> {language === "en" ? "Orai Branch, Prakash Complex, Opposite District Court, Orai – Jalaun, U.P." : "उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र."}</p>
-            </div>
-          </div>
+             <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-300">
+               <p><strong className="text-white">{language === "en" ? "Account Name:" : "खाता का नाम:"}</strong> {language === "en" ? "Prayas Jan Utthan Samiti" : "प्रयास जन उत्थान समिति"}</p>
+               <p><strong className="text-white">{language === "en" ? "Account Number:" : "खाता संख्या:"}</strong> <span className="font-mono">7108466367</span></p>
+               <p><strong className="text-white">{language === "en" ? "Bank Name:" : "बैंक का नाम:"}</strong> {language === "en" ? "Indian Bank" : "इंडियन बैंक"}</p>
+               <p><strong className="text-white">{language === "en" ? "IFSC Code:" : "IFSC कोड:"}</strong> <span className="font-mono">IDIB000O029</span></p>
+               <p><strong className="text-white">{language === "en" ? "Branch Address:" : "शाखा पता:"}</strong> {language === "en" ? "Orai Branch, Prakash Complex, Opposite District Court, Orai – Jalaun, U.P." : "उरई शाखा, प्रकाश कॉम्प्लेक्स, ऑप्पोसिट डिस्ट्रिक्ट कोर्ट, उरई – जालौन, उ.प्र."}</p>
+             </div>
+             <div className="flex flex-wrap gap-2 mt-4">
+               <a href="upi://pay?pa=7108466367@indianbank&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                 <Image src="/images/upi/gpay.png" alt="GPay" width={24} height={24} className="h-5 w-5 object-contain" />
+               </a>
+               <a href="upi://pay?pa=7108466367@indianbank&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                 <Image src="/images/upi/phonepe.png" alt="PhonePe" width={24} height={24} className="h-5 w-5 object-contain" />
+               </a>
+               <a href="upi://pay?pa=7108466367@indianbank&pn=Prayas%20Jan%20Utthan%20Samiti&cu=INR" className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                 <Image src="/images/upi/paytm.png" alt="Paytm" width={24} height={24} className="h-5 w-5 object-contain" />
+               </a>
+             </div>
+           </div>
 
           <div className="bg-white/10 p-4 md:p-6 rounded-xl md:rounded-2xl border border-white/20 text-center space-y-3 md:space-y-4 backdrop-blur-sm">
             <div className="flex justify-center mb-2">
