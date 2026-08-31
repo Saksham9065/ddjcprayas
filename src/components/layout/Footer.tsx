@@ -109,7 +109,7 @@ export default function Footer() {
                            <li key={l.nameKey}>
                              <span className="text-sm text-white/60 inline-flex items-start gap-1.5">
                                <MapPin size={12} className="text-gold mt-0.5 shrink-0" />
-                               {t("Police Line – Baghaora, Urai – Jalaun, U.P. - 285001", "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001")}
+                                {t("Police Line – Baghaora, Orai – Jalaun, U.P. - 285001", "पुलिस लाइन – बघौरा, उरई – जालौन, उ.प्र. - 285001")}
                              </span>
                            </li>
                          );
