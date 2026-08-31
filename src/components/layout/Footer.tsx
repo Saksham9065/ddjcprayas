@@ -172,7 +172,7 @@ export default function Footer() {
                 {t("Donate", "दान करें")}
               </h3>
               <div className="relative w-full rounded-2xl overflow-hidden shadow-lg bg-white">
-                <Image src="/images/qr/qr.png" alt="Donation QR" width={400} height={400} priority className="w-full h-auto object-contain p-2" />
+                <Image src="/images/qr/qr.png" alt="Donation QR" width={399} height={399} priority className="w-full h-auto object-contain p-2" />
               </div>
               <p className="text-[10px] text-gold font-semibold uppercase tracking-wider text-center mt-1">
                 {t("Scan to Donate", "दान करने के लिए स्कैन करें")}
