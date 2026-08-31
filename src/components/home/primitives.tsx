@@ -59,7 +59,7 @@ export function SectionHeading({
         </span>
       )}
       <h2
-        className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.08] ${
+        className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.08] whitespace-nowrap ${
           light ? "text-white" : "text-navy"
         }`}
       >
