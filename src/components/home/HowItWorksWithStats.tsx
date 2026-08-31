@@ -70,7 +70,7 @@ export default function HowItWorksWithStats() {
   return (
     <section className="py-10 md:py-16 bg-white border-b border-slate-200">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* LEFT: How It Works */}
           <div>
             <Reveal>

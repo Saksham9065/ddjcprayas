@@ -182,7 +182,7 @@ function Navbar() {
 
              <Link
                href="/donate"
-                className="hidden sm:inline-flex items-center gap-1.5 md:gap-2 border border-white/30 text-white hover:bg-white/10 font-bold px-3 md:px-4 lg:px-5 py-2 md:py-2.5 rounded-xl text-[10px] md:text-xs lg:text-sm transition-all hover:scale-[1.03]"
+                className="hidden sm:inline-flex items-center gap-1.5 md:gap-2 bg-black text-white hover:bg-black/80 font-bold px-3 md:px-4 lg:px-5 py-2 md:py-2.5 rounded-xl text-[10px] md:text-xs lg:text-sm transition-all hover:scale-[1.03]"
              >
                 <IndianRupeeIcon size={14} />
                {t("Donate", "दान करें")}
@@ -266,7 +266,7 @@ function Navbar() {
                    <Link
                      href="/donate"
                      onClick={closeMenu}
-                     className="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-bold px-4 py-2.5 rounded-xl text-sm"
+                     className="inline-flex items-center justify-center gap-2 bg-black text-white hover:bg-black/80 font-bold px-4 py-2.5 rounded-xl text-sm"
                    >
                      <IndianRupeeIcon size={14} />
                      {t("Donate", "दान करें")}

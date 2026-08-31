@@ -8,6 +8,7 @@ export default function ContactPage() {
   const { language } = useApp();
   const [formData, setFormData] = useState({
     fullName: "",
+    fatherHusbandName: "",
     mobile: "",
     email: "",
     address: "",
@@ -36,6 +37,7 @@ export default function ContactPage() {
       setSuccess(true);
       setFormData({
         fullName: "",
+        fatherHusbandName: "",
         mobile: "",
         email: "",
         address: "",
@@ -94,6 +96,19 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
+                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Father/Husband Name" : "पिता/पति का नाम"}</label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.fatherHusbandName}
+                      onChange={(e) => setFormData({ ...formData, fatherHusbandName: e.target.value })}
+                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
+                  <div>
                     <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Mobile Number" : "मोबाइल नंबर"}</label>
                     <input
                       type="tel"
@@ -103,9 +118,6 @@ export default function ContactPage() {
                       className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                     />
                   </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
                   <div>
                     <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Email (if available)" : "ईमेल (यदि हो तो)"}</label>
                     <input
@@ -115,15 +127,15 @@ export default function ContactPage() {
                       className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
                     />
                   </div>
-                  <div>
-                    <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Address" : "पूरा पता"}</label>
-                    <input
-                      type="text"
-                      value={formData.address}
-                      onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                    />
-                  </div>
+                </div>
+                <div>
+                  <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1 md:mb-1.5">{language === "en" ? "Full Address" : "पूरा पता"}</label>
+                  <input
+                    type="text"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
+                  />
                 </div>
 
                 <div>

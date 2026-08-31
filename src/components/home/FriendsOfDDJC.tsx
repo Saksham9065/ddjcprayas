@@ -11,7 +11,9 @@ const LOGOS = [
   "/images/friends%20logo/image%20copy%203.png",
   "/images/friends%20logo/image%20copy%204.png",
   "/images/friends%20logo/image%20copy%205.png",
-  "/images/friends%20logo/image%20copy%206.png",
+  "/images/friends%20logo/image%20copy%206.jpeg",
+  "/images/friends%20logo/image%20copy%207.png",
+
 ];
 
 export default function FriendsOfDDJC() {
