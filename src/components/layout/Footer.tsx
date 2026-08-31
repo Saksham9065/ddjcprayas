@@ -24,8 +24,8 @@ const LINK_GROUPS = [
     titleKey: "footerWhatWeDo",
     links: [
       { nameKey: "footerJusticeLegalSupport", href: "/work/in-court" },
-      { nameKey: "footerWomensSafety", href: "/work/out-court" },
-      { nameKey: "footerGovernmentSchemes", href: "/pdf/_Government Schemes.pdf" },
+      { nameKey: "footerCommunityEngagement", href: "/work/out-court" },
+      { nameKey: "footerLegalFellowship", href: "/work/legal-fellowship" },
     ],
   },
   {
@@ -74,23 +74,23 @@ export default function Footer() {
               </div>
 
              <div className="flex gap-3 mt-5">
-               {[
-                 { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "#1877F2" },
-                 { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "#E4405F" },
-                 { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "#FF0000" },
-                 { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "#25D366" },
-               ].map((s, i) => (
-                 <a
-                   key={i}
-                   href={s.href}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="h-10 w-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-transparent transition-all duration-300"
-                 >
-                   <s.icon size={14} style={{ color: s.color }} />
-                 </a>
-               ))}
-             </div>
+                {[
+                  { icon: FaFacebookF, href: "https://www.facebook.com/DalitDignityJusticeCenter", color: "#1877F2" },
+                  { icon: FaInstagram, href: "https://www.instagram.com/ddjc_up", color: "#E4405F" },
+                  { icon: FaYoutube, href: "https://www.youtube.com/@ddjcUP", color: "#FF0000" },
+                  { icon: FaWhatsapp, href: "https://wa.me/919453645931", color: "#25D366" },
+                ].map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 w-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:border-transparent transition-all duration-300"
+                  >
+                    <s.icon size={20} style={{ color: s.color }} />
+                  </a>
+                ))}
+              </div>
            </div>
 
           {/* MIDDLE: Link groups */}
@@ -133,7 +133,7 @@ export default function Footer() {
                            </li>
                          );
                        }
-                        const linkText = l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerJusticeLegalSupport" ? t("Justice & Legal Support", "न्याय और कानूनी सहायता") : l.nameKey === "footerWomensSafety" ? t("Women's Safety", "महिलाओं की सुरक्षा") : l.nameKey === "footerGovernmentSchemes" ? t("Government Schemes", "सरकारी योजनाएँ") : t("Contact", "संपर्क");
+                         const linkText = l.nameKey === "footerAboutUs" ? t("About Us", "हमारे बारे में") : l.nameKey === "footerOurTeam" ? t("Our Team", "हमारी टीम") : l.nameKey === "footerJusticeLegalSupport" ? t("In The Court", "अदालत में") : l.nameKey === "footerCommunityEngagement" ? t("Community engagement & field work", "सामुदायिक सहभागिता और क्षेत्रीय कार्य") : l.nameKey === "footerLegalFellowship" ? t("Legal Fellowship", "कानूनी फेलोशिप") : t("Contact", "संपर्क");
                        return (
                          <li key={l.nameKey}>
                            {l.href?.startsWith("/pdf/") ? (
