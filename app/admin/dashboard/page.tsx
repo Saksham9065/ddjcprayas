@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBriefcase, FaSpinner } from "react-icons/fa";
+import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaSpinner } from "react-icons/fa";
 import { checkAdminAuth } from "@/lib/auth";
 import { useApp } from "@/context/AppContext";
 
@@ -16,7 +16,6 @@ export default function AdminDashboardPage() {
     donations: 0,
     volunteers: 0,
     internships: 0,
-    jobs: 0,
   });
   const [authStatus] = useState<boolean | null>(() => checkAdminAuth());
 
@@ -48,7 +47,6 @@ export default function AdminDashboardPage() {
 
         const volunteerCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Volunteer").length;
         const internshipCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Internship").length;
-        const jobsCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Career" || a.joinType === "Jobs").length;
 
         setStats({
           contacts: contactsData.total || 0,
@@ -56,7 +54,6 @@ export default function AdminDashboardPage() {
           donations: donationsData.total || 0,
           volunteers: volunteerCount,
           internships: internshipCount,
-          jobs: jobsCount,
         });
       } catch (error) {
         console.error("Failed to fetch stats:", error);
@@ -72,7 +69,6 @@ export default function AdminDashboardPage() {
     { label: language === "en" ? "Donations" : "दान", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
     { label: language === "en" ? "Volunteers" : "स्वयंसेवक", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
     { label: language === "en" ? "Internships" : "इंटर्नशिप", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
-    { label: language === "en" ? "Jobs and Careers" : "नौकरी और करियर", value: stats.jobs, href: "/admin/jobs", color: "bg-slate-800" },
   ];
 
   if (authStatus === null) {
@@ -127,7 +123,6 @@ export default function AdminDashboardPage() {
                 {mod.label === (language === "en" ? "Donations" : "दान") && <FaHandHoldingHeart size={20} />}
                 {mod.label === (language === "en" ? "Volunteers" : "स्वयंसेवक") && <FaUserPlus size={20} />}
                 {mod.label === (language === "en" ? "Internships" : "इंटर्नशिप") && <FaGraduationCap size={20} />}
-                {mod.label === (language === "en" ? "Jobs and Careers" : "नौकरी और करियर") && <FaBriefcase size={20} />}
               </div>
               <span className="text-3xl font-black text-[#0A2540]">{mod.value}</span>
             </div>

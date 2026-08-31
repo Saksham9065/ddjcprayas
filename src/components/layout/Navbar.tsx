@@ -73,10 +73,20 @@ const NAV_ITEMS: NavItem[] = [
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const pathname = usePathname();
   const { language, toggleLanguage } = useApp();
 
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    setExpandedItems([]);
+  }, []);
+
+  const toggleExpand = useCallback((key: string) => {
+    setExpandedItems((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  }, []);
 
   const t = (en: string, hi: string) => (language === "en" ? en : hi);
 
@@ -95,11 +105,11 @@ function Navbar() {
                 priority
               />
             </div>
-            <div className="hidden sm:flex flex-col justify-center">
-              <h1 className="text-[13px] md:text-[15px] lg:text-[17px] font-black text-white leading-tight tracking-tight group-hover:text-gold transition-colors">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-[11px] sm:text-[13px] md:text-[15px] lg:text-[17px] font-black text-white leading-tight tracking-tight group-hover:text-gold transition-colors">
                 {t("Dalit Dignity & Justice Center", "दलित सम्मान व न्याय केन्द्र")}
               </h1>
-              <p className="text-[9px] md:text-[10px] font-bold text-white/80 uppercase tracking-[0.15em] md:tracking-[0.18em] mt-0.5">
+              <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold text-white/80 uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.18em] mt-0.5">
                  {t("Justice, Dignity and Constitutional Rights", "न्याय, गरिमा और संवैधानिक अधिकार")}
               </p>
             </div>
@@ -210,32 +220,40 @@ function Navbar() {
              className="lg:hidden overflow-hidden bg-navy border-t border-white/10"
           >
             <div className="flex flex-col px-4 py-4 gap-1 max-h-[80vh] overflow-y-auto">
-              {NAV_ITEMS.map((item) => (
-                <div key={item.key}>
-                  <Link
-                    href={item.path}
-                    onClick={closeMenu}
-                     className="flex items-center justify-between font-bold text-[15px] md:text-[16px] text-white hover:text-gold py-3 border-b border-white/10 transition-colors"
-                  >
-                     {item.nameKey === "about" ? t("About Us", "हमारे बारे में") : item.nameKey === "ourWork" ? t("Our Work", "हमारा काम") : item.nameKey === "media" ? t("Media", "मीडिया") : item.nameKey === "joinUs" ? t("Join Us", "हमसे जुड़ें") : t("Contact", "संपर्क")}
-                     {item.children && <ChevronDown size={12} className="opacity-60" />}
-                  </Link>
-                  {item.children && (
-                    <div className="pl-3 md:pl-4 pb-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.key}
-                          href={child.path}
-                          onClick={closeMenu}
-                          className="block py-2 text-sm font-semibold text-white/80 hover:text-gold transition-colors"
-                        >
+              {NAV_ITEMS.map((item) => {
+                const isExpanded = expandedItems.includes(item.key);
+                return (
+                  <div key={item.key}>
+                    <button
+                      onClick={() => {
+                        if (item.children) {
+                          toggleExpand(item.key);
+                        } else {
+                          closeMenu();
+                        }
+                      }}
+                      className="flex items-center justify-between font-bold text-[15px] md:text-[16px] text-white hover:text-gold py-3 border-b border-white/10 transition-colors w-full text-left"
+                    >
+                      {item.nameKey === "about" ? t("About Us", "हमारे बारे में") : item.nameKey === "ourWork" ? t("Our Work", "हमारा काम") : item.nameKey === "media" ? t("Media", "मीडिया") : item.nameKey === "joinUs" ? t("Join Us", "हमसे जुड़ें") : t("Contact", "संपर्क")}
+                      {item.children && <ChevronDown size={12} className={`opacity-60 transition-transform ${isExpanded ? "rotate-180" : ""}`} />}
+                    </button>
+                    {item.children && isExpanded && (
+                      <div className="pl-3 md:pl-4 pb-2">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.key}
+                            href={child.path}
+                            onClick={closeMenu}
+                            className="block py-2 text-sm font-semibold text-white/80 hover:text-gold transition-colors"
+                          >
 {child.nameKey === "aboutUs" ? t("About Us", "हमारे बारे में") : child.nameKey === "team" ? t("Team", "टीम") : child.nameKey === "resources" ? t("Resources", "संसाधन") : child.nameKey === "inCourt" ? t("In Court", "अदालत में") : child.nameKey === "communityEngagement" ? t("Community engagement & field work", "कम्युनिटी एंगेजमेंट और फील्ड वर्क") : child.nameKey === "legalFellowship" ? t("Legal Fellowship", "कानूनी फेलोशिप") : child.nameKey === "news" ? t("News", "समाचार") : child.nameKey === "photoGallery" ? t("Photo Gallery", "फोटो गैलरी") : child.nameKey === "storiesOfChange" ? t("Stories of Change", "बदलाव की कहानियाँ") : child.nameKey === "internships" ? t("Internships", "इन्टर्नशिप") : child.nameKey === "volunteers" ? t("Volunteers", "स्वयंसेवक") : t("Contact", "संपर्क")}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               <div className="flex flex-col gap-2 pt-4">
                 <button
                   onClick={toggleLanguage}

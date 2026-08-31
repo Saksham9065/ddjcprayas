@@ -153,35 +153,35 @@ export default function AdminPageShell({
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen py-10 px-6">
+    <div className="bg-slate-50 min-h-screen py-4 md:py-8 lg:py-10 px-3 md:px-4 lg:px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 md:mb-6 lg:mb-8 bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm">
           <div>
-            <h1 className="text-2xl font-black text-navy tracking-tight">{title}</h1>
-            <p className="text-xs text-slate-500 mt-1">{description}</p>
+            <h1 className="text-lg md:text-xl lg:text-2xl font-black text-navy tracking-tight">{title}</h1>
+            <p className="text-[10px] md:text-xs text-slate-500 mt-1">{description}</p>
           </div>
-          <div className="flex items-center gap-3 mt-4 sm:mt-0">
+          <div className="flex items-center gap-2 md:gap-3 mt-3 sm:mt-0">
             {extraActions}
             <button
               type="button"
               onClick={exportExcel}
-              className="px-4 py-2 bg-slate-800 text-white rounded-xl text-xs font-bold hover:bg-slate-700 transition-colors"
+              className="px-3 py-1.5 md:px-4 md:py-2 bg-slate-800 text-white rounded-lg md:rounded-xl text-[10px] md:text-xs font-bold hover:bg-slate-700 transition-colors"
             >
-              {language === "en" ? "Export Excel" : "एक्सेल निर्यात करें"}
+              {language === "en" ? "Export" : "निर्यात"}
             </button>
           </div>
         </div>
 
         {stats && stats.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 mb-8">
             {stats.map((stat, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${stat.color}`}>
-                    <span className="text-lg font-black text-white">{stat.value}</span>
+              <div key={idx} className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className={`w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl flex items-center justify-center ${stat.color}`}>
+                    <span className="text-base md:text-lg font-black text-white">{stat.value}</span>
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase font-bold tracking-wider text-slate-500">{stat.label}</p>
+                    <p className="text-[8px] md:text-[10px] uppercase font-bold tracking-wider text-slate-500">{stat.label}</p>
                   </div>
                 </div>
               </div>
@@ -189,24 +189,24 @@ export default function AdminPageShell({
           </div>
         )}
 
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-          <div className="p-6 md:p-8 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="flex items-center gap-3">
+        <div className="bg-white rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+          <div className="p-4 md:p-6 lg:p-8 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 md:gap-4">
+            <div className="flex items-center gap-3 w-full sm:w-auto">
               <input
                 type="text"
                 value={search}
                 onChange={(e) => handleSearchChange(e.target.value)}
                 placeholder={language === "en" ? `Search ${title}...` : `खोजें ${title}...`}
-                className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000] w-full sm:w-64"
+                className="px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000] w-full sm:w-56 md:w-64"
               />
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 md:gap-3 flex-wrap">
               {filters.map((filter) => (
                 <select
                   key={filter.key}
                   value={filterValues[filter.key] || ""}
                   onChange={(e) => handleFilterChange(filter.key, e.target.value)}
-                  className="px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-white font-medium focus:outline-none focus:border-[#000000]"
+                  className="px-3 py-2 md:px-4 md:py-2.5 rounded-lg md:rounded-xl border border-slate-200 text-xs md:text-sm bg-white font-medium focus:outline-none focus:border-[#000000]"
                 >
                   <option value="">{filter.label}</option>
                   {filter.options.map((opt) => (
@@ -226,12 +226,12 @@ export default function AdminPageShell({
                   {columns.map((col) => (
                     <th
                       key={col.key}
-                      className={`py-4 px-6 font-bold ${col.width ? `w-${col.width}` : ""}`}
+                      className={`py-3 px-3 md:py-4 md:px-6 font-bold text-[10px] md:text-xs ${col.width ? `w-${col.width}` : ""}`}
                     >
                       {col.label}
                     </th>
                   ))}
-                  <th className="py-4 px-6 font-bold text-right">{language === "en" ? "Actions" : "कार्रवाई"}</th>
+                  <th className="py-3 px-3 md:py-4 md:px-6 font-bold text-right text-[10px] md:text-xs">{language === "en" ? "Actions" : "कार्रवाई"}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700">
@@ -247,20 +247,20 @@ export default function AdminPageShell({
                       {language === "en" ? "No records found." : "कोई रिकॉर्ड नहीं मिला।"}
                     </td>
                   </tr>
-                ) : (
+                 ) : (
                   data.map((item) => (
                     <tr key={item.id} className="hover:bg-slate-50/60 transition-colors">
                       {columns.map((col) => (
-                        <td key={col.key} className={`py-4 px-6 ${col.width ? `w-${col.width}` : ""}`}>
+                        <td key={col.key} className={`py-3 px-3 md:py-4 md:px-6 text-[10px] md:text-xs ${col.width ? `w-${col.width}` : ""}`}>
                           {col.render ? col.render(item) : String(item[col.key] ?? "")}
                         </td>
                       ))}
-                      <td className="py-4 px-6 text-right">
-                        <div className="flex items-center justify-end gap-2">
+                      <td className="py-3 px-3 md:py-4 md:px-6 text-right">
+                        <div className="flex items-center justify-end gap-1 md:gap-2 flex-wrap">
                           <button
                             type="button"
                             onClick={() => setDetailItem(item)}
-                            className="px-3 py-1.5 rounded-lg border border-slate-200 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+                            className="px-2 py-1 md:px-3 md:py-1.5 rounded-md md:rounded-lg border border-slate-200 text-[10px] md:text-xs font-semibold text-slate-700 hover:bg-slate-50"
                           >
                             {language === "en" ? "View" : "देखें"}
                           </button>
@@ -268,7 +268,7 @@ export default function AdminPageShell({
                             <select
                               value={item.status as string}
                               onChange={(e) => handleStatusChange(item.id, e.target.value)}
-                              className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-xs bg-white font-medium text-slate-700 focus:outline-none focus:border-[#000000]"
+                              className="px-1.5 py-1 md:px-2.5 md:py-1.5 rounded-md md:rounded-lg border border-slate-200 text-[10px] md:text-xs bg-white font-medium text-slate-700 focus:outline-none focus:border-[#000000]"
                             >
                               {statusOptions.map((opt) => (
                                 <option key={opt.value} value={opt.value}>
@@ -280,7 +280,7 @@ export default function AdminPageShell({
                           <button
                             type="button"
                             onClick={() => setDeletingId(item.id)}
-                            className="px-3 py-1.5 rounded-lg border border-red-200 text-xs font-semibold text-red-700 hover:bg-red-50"
+                            className="px-2 py-1 md:px-3 md:py-1.5 rounded-md md:rounded-lg border border-red-200 text-[10px] md:text-xs font-semibold text-red-700 hover:bg-red-50"
                           >
                             {language === "en" ? "Delete" : "हटाएं"}
                           </button>
@@ -293,27 +293,27 @@ export default function AdminPageShell({
             </table>
           </div>
 
-          <div className="p-6 border-t border-slate-100 flex items-center justify-between">
-            <p className="text-xs text-slate-500">
-              {language === "en" ? `Showing ${(page - 1) * limit + 1} to ${Math.min(page * limit, total)} of ${total} entries` : `कुल ${total} प्रविष्टियों में से ${(page - 1) * limit + 1} से ${Math.min(page * limit, total)} दिखाया जा रहा है`}
+          <div className="p-4 md:p-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-[10px] md:text-xs text-slate-500">
+              {language === "en" ? `Showing ${(page - 1) * limit + 1} to ${Math.min(page * limit, total)} of ${total}` : `कुल ${total} में से ${(page - 1) * limit + 1}-${Math.min(page * limit, total)}`}
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 md:gap-2">
               <button
                 type="button"
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
+                className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg md:rounded-xl border border-slate-200 text-[10px] md:text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
               >
-                {language === "en" ? "Previous" : "पिछला"}
+                {language === "en" ? "Prev" : "पिछला"}
               </button>
-              <span className="text-xs text-slate-600 font-semibold">
-                {language === "en" ? `Page ${page} / ${totalPages}` : `पृष्ठ ${page} / ${totalPages}`}
+              <span className="text-[10px] md:text-xs text-slate-600 font-semibold px-1">
+                {page}/{totalPages}
               </span>
               <button
                 type="button"
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="px-4 py-2 rounded-xl border border-slate-200 text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
+                className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg md:rounded-xl border border-slate-200 text-[10px] md:text-xs font-bold disabled:opacity-50 hover:bg-slate-50"
               >
                 {language === "en" ? "Next" : "अगला"}
               </button>

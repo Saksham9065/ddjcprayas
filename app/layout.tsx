@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Chatbot from "@/components/chatbot/Chatbot";
 import { AppProvider } from "@/context/AppContext";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,20 @@ export const metadata: Metadata = {
   },
 };
 
+function RootContent({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isAdmin = pathname.startsWith("/admin");
+
+  return (
+    <>
+      {!isAdmin && <Navbar />}
+      <main>{children}</main>
+      {!isAdmin && <Footer />}
+      {!isAdmin && <Chatbot />}
+    </>
+  );
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -29,10 +44,7 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans scroll-smooth", geist.variable)} data-scroll-behavior="smooth">
       <body className={`${inter.className} bg-white text-slate-900 antialiased`}>
         <AppProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <Chatbot />
+          <RootContent>{children}</RootContent>
         </AppProvider>
       </body>
     </html>

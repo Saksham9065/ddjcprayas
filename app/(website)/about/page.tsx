@@ -172,14 +172,29 @@ export default function AboutPage() {
           <span className="text-xs font-bold uppercase tracking-widest bg-white/10 text-gold px-3 py-1 rounded-full border border-white/20 inline-block">
             {language === "en" ? "Founder's Message" : "संस्थापक का संदेश"}
           </span>
-          <blockquote className="italic text-slate-200 text-base md:text-lg leading-relaxed border-l-4 border-gold pl-4 py-1">
-            {language === "en"
-              ? `"Babasaheb Dr. B.R. Ambedkar reminded us that liberty, equality and fraternity must become principles of everyday life. Whenever a person's dignity and self-respect are denied because of caste, our democracy is diminished. DDJC is not doing anyone a favour. We are working to secure the constitutional rights that belong to every citizen. The Constitution guarantees these rights; our responsibility is to ensure that they reach those who have been historically denied them. Leave fear behind in the journey towards justice. We stand with you."`
-              : `बाबासाहेब डॉ. बी.आर. अम्बेडकर ने हमें याद दिलाया कि स्वतंत्रता, समानता और भाईचारा रोजमर्रा के जीवन के सिद्धांत बनने चाहिए। जब भी किसी व्यक्ति की गरिमा और आत्मसम्मान को जाति के आधार पर अस्वीकार किया जाता है, तब हमारी लोकतंत्र की कमी होती है। DDJC किसी का कोई एहसान नहीं कर रहा है। हम हर नागरिक के स्वामित्व वाले संवैधानिक अधिकारों को सुरक्षित करने के लिए काम कर रहे हैं। संविधान इन अधिकारों की गारंटी देता है; हमारी जिम्मेदारी है कि यह सुनिश्चित करें कि वे उन तक पहुंचें जिनसे ऐतिहासिक रूप से इन्हें वंचित किया गया है। न्याय की यात्रा में डर को पीछे छोड़ दो। हम आपके साथ खड़े हैं।`}
-          </blockquote>
-          <div className="pt-2">
-            <p className="font-bold text-white">Adv. Kuldeep Kumar Baudh</p>
-            <p className="text-xs text-gold">{language === "en" ? "Founder, Dalit Dignity & Justice Center (DDJC)" : "संस्थापक, दलित सम्मान व न्याय केन्द्र (DDJC)"}</p>
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+            <div className="flex flex-col items-center shrink-0">
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden border-2 border-gold/30 shadow-lg">
+                <Image
+                  src="/images/founder/kuldeep.jpg"
+                  alt="Adv. Kuldeep Kumar Baudh - Founder, DDJC"
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="mt-3 text-center">
+                <p className="font-bold text-white text-sm">Adv. Kuldeep Kumar Baudh</p>
+                <p className="text-xs text-gold">{language === "en" ? "Founder, DDJC" : "संस्थापक, DDJC"}</p>
+              </div>
+            </div>
+            <div className="flex-1 space-y-4">
+              <blockquote className="italic text-slate-200 text-base md:text-lg leading-relaxed border-l-4 border-gold pl-4 py-1">
+                {language === "en"
+                  ? `"Babasaheb Dr. B.R. Ambedkar reminded us that liberty, equality and fraternity must become principles of everyday life. Whenever a person's dignity and self-respect are denied because of caste, our democracy is diminished. DDJC is not doing anyone a favour. We are working to secure the constitutional rights that belong to every citizen. The Constitution guarantees these rights; our responsibility is to ensure that they reach those who have been historically denied them. Leave fear behind in the journey towards justice. We stand with you."`
+                  : `बाबासाहेब डॉ. बी.आर. अम्बेडकर ने हमें याद दिलाया कि स्वतंत्रता, समानता और भाईचारा रोजमर्रा के जीवन के सिद्धांत बनने चाहिए। जब भी किसी व्यक्ति की गरिमा और आत्मसम्मान को जाति के आधार पर अस्वीकार किया जाता है, तब हमारी लोकतंत्र की कमी होती है। DDJC किसी का कोई एहसान नहीं कर रहा है। हम हर नागरिक के स्वामित्व वाले संवैधानिक अधिकारों को सुरक्षित करने के लिए काम कर रहे हैं। संविधान इन अधिकारों की गारंटी देता है; हमारी जिम्मेदारी है कि यह सुनिश्चित करें कि वे उन तक पहुंचें जिनसे ऐतिहासिक रूप से इन्हें वंचित किया गया है। न्याय की यात्रा में डर को पीछे छोड़ दो। हम आपके साथ खड़े हैं।`}
+              </blockquote>
+            </div>
           </div>
         </div>
 
