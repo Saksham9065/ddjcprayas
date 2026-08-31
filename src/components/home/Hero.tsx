@@ -160,20 +160,20 @@ export default function Hero() {
                ))}
              </div>
 
-              {/* Four bottom points */}
-              <div className="flex flex-row flex-wrap gap-2 md:gap-3 w-full">
-                {bottomPoints.map((point, i) => (
-                  <a
-                    key={i}
-                    href={point.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[45%] sm:min-w-0 flex items-center justify-center rounded-xl border border-white/20 bg-white/90 p-2.5 hover:scale-105 transition-transform"
-                  >
-                    <point.icon size={18} style={{ color: point.color }} />
-                  </a>
-                ))}
-              </div>
+               {/* Social media icons */}
+               <div className="flex flex-row gap-2 md:gap-3 w-full">
+                 {bottomPoints.map((point, i) => (
+                   <a
+                     key={i}
+                     href={point.href}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center rounded-xl border border-white/20 bg-white/90 hover:scale-105 transition-transform"
+                   >
+                     <point.icon size={24} style={{ color: point.color }} />
+                   </a>
+                 ))}
+               </div>
           </div>
         </div>
       </div>
