@@ -17,13 +17,15 @@ export default function AdminDashboardPage() {
     volunteers: 0,
     internships: 0,
   });
-  const [authStatus] = useState<boolean | null>(() => checkAdminAuth());
+  const [authStatus, setAuthStatus] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!authStatus) {
+    const isAuth = checkAdminAuth();
+    setAuthStatus(isAuth);
+    if (!isAuth) {
       router.push("/admin/login");
     }
-  }, [router, authStatus]);
+  }, [router]);
 
   const handleLogout = () => {
     localStorage.removeItem("ddjc_admin_session");
