@@ -54,12 +54,12 @@ interface Stat {
 }
 
 const STATS: Stat[] = [
-  { to: 12450, suffix: "+", labelEn: "People Reached", labelHi: "लोगों तक पहुँच", icon: Users },
-  { to: 1280, suffix: "+", labelEn: "People Supported", labelHi: "सहायता प्राप्त लोग", icon: Handshake },
-  { to: 340, suffix: "+", labelEn: "Cases Assisted", labelHi: "सहायता प्राप्त मामले", icon: Scale },
-  { to: 95, suffix: "+", labelEn: "Villages Connected", labelHi: "जुड़े गाँव", icon: MapPin },
-  { to: 68, suffix: "+", labelEn: "Community Volunteers", labelHi: "सामुदायिक स्वयंसेवक", icon: Users },
-  { to: 42, suffix: "+", labelEn: "Youth Leaders", labelHi: "युवा नेता", icon: Baby },
+  { to: 16450, suffix: "+", labelEn: "Family Reached", labelHi: "परिवारों तक पहुँच", icon: Users },
+  { to: 2649, suffix: "+", labelEn: "People Supported", labelHi: "सहायता प्राप्त लोग", icon: Handshake },
+  { to: 341, suffix: "+", labelEn: "CASE Assisted", labelHi: "सहायता प्राप्त मामले", icon: Scale },
+  { to: 165, suffix: "+", labelEn: "Village Connected", labelHi: "जुड़े गाँव", icon: MapPin },
+  { to: 305, suffix: "+", labelEn: "Community Volunteers", labelHi: "सामुदायिक स्वयंसेवक", icon: Users },
+  { to: 79, suffix: "+", labelEn: "Youth Leaders", labelHi: "युवा नेता", icon: Baby },
 ];
 
 export default function HowItWorksWithStats() {
