@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import Chatbot from "@/components/chatbot/Chatbot";
 import { AppProvider } from "@/context/AppContext";
-import { usePathname } from "next/navigation";
+import RootContent from "./root-content";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -20,20 +17,6 @@ export const metadata: Metadata = {
     apple: "/images/logo/ddjc-logo-circular.png",
   },
 };
-
-function RootContent({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const isAdmin = pathname.startsWith("/admin");
-
-  return (
-    <>
-      {!isAdmin && <Navbar />}
-      <main>{children}</main>
-      {!isAdmin && <Footer />}
-      {!isAdmin && <Chatbot />}
-    </>
-  );
-}
 
 export default function RootLayout({
   children,
