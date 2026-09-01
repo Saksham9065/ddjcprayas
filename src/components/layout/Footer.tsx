@@ -65,7 +65,7 @@ export default function Footer() {
                </div>
               </div>
               <p className="text-white/70 text-xs leading-relaxed mb-4">
-                {t("A one-stop centre that helps communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.", "गाँव-स्तरीय एकल केन्द्र जो समुदायों को न्याय, अधिकार, जानकारी और अवसर तक पहुँचने में मदद करते हैं — सूचित और सशक्त नागरिकों की नई पीढ़ी का निर्माण करते हैं।")}
+                {t("A one-stop centre that helps communities access justice, rights, information and opportunities — building a new generation of informed and empowered citizens.", "एक ऐसा केंद्र जो समुदायों को न्याय, अधिकार, सूचना और अवसरों तक पहुँचने में मदद करता है - जिससे सूचित और सशक्त नागरिकों की एक नई पीढ़ी का निर्माण होता है।")}
               </p>
               <div className="bg-white/10 rounded-2xl p-4 border border-white/20 shadow-lg">
                <p className="text-xs text-white/90 leading-relaxed">
