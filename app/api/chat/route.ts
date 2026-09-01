@@ -151,7 +151,13 @@ export async function POST(request: Request) {
 
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
-      return NextResponse.json({ error: "Server misconfiguration" }, { status: 500 });
+      return NextResponse.json(
+        {
+          reply: "Chatbot is temporarily unavailable. The server is missing the GEMINI_API_KEY environment variable. Please contact the site administrator.",
+          debug: { reason: "missing-api-key" },
+        },
+        { status: 200 }
+      );
     }
 
     const ai = new GoogleGenAI({ apiKey });
