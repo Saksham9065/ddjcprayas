@@ -51,7 +51,7 @@ export default function FriendsOfDDJC() {
 
       <style jsx>{`
         .marquee-container {
-          animation: marquee 20s linear infinite;
+          animation: marquee 5s linear infinite;
         }
         .marquee-container:hover {
           animation-play-state: paused;
