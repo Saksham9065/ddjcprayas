@@ -29,7 +29,7 @@ export default function AdminLoginPage() {
         setIsAdminLoggedIn(true);
         router.push("/admin/dashboard");
       } else {
-        setError(language === "en" ? "Invalid email or password. Please use admin@ddjc.org / admin123." : "अमान्य ईमेल पता या पासवर्ड। कृपया admin@ddjc.org / admin123 का उपयोग करें।");
+        setError(language === "en" ? "Invalid email or password. Please try again." : "अमान्य ईमेल पता या पासवर्ड। कृपया पुनः प्रयास करें।");
       }
     }, 1000);
   };
@@ -69,7 +69,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@ddjc.org"
+                placeholder="admin@ddjc.org.in"
                 className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
               />
             </div>
@@ -90,12 +90,6 @@ export default function AdminLoginPage() {
                 className="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#000000]"
               />
             </div>
-          </div>
-
-          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-[11px] text-slate-500 space-y-1">
-            <p className="font-bold text-slate-700">{language === "en" ? "Demo Credentials:" : "डेमो क्रेडेंशियल:"}</p>
-            <p>{language === "en" ? "Email:" : "ईमेल:"} <span className="font-mono text-slate-800">admin@ddjc.org</span></p>
-            <p>{language === "en" ? "Password:" : "पासवर्ड:"} <span className="font-mono text-slate-800">admin123</span></p>
           </div>
 
           <Button type="submit" isLoading={loading} className="w-full py-4 text-sm">
