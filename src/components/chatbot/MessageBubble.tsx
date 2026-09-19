@@ -41,7 +41,7 @@ export default function MessageBubble({ message, isLast, onRegenerate, theme }: 
                 ? "rounded-br-md bg-gradient-to-br from-[#0A4DA2] to-[#2563EB] text-white"
                 : isDark
                   ? "rounded-bl-md bg-white/10 text-slate-200"
-                  : "rounded-bl-md bg-slate-100 text-slate-800"
+                  : "rounded-bl-md border border-slate-200 bg-white text-slate-800 shadow-sm"
             }`}
           >
             {isUser ? (
@@ -52,7 +52,7 @@ export default function MessageBubble({ message, isLast, onRegenerate, theme }: 
           </div>
 
           <div className={`mt-1 flex items-center gap-2 ${isUser ? "flex-row-reverse" : "flex-row"}`}>
-            <span className={`text-[10px] ${isDark ? "text-slate-500" : "text-slate-400"}`}>{time}</span>
+            <span className={`text-[10px] ${isDark ? "text-slate-400" : "text-slate-500"}`}>{time}</span>
             {!isUser && isLast && <MessageActions content={message.content} onRegenerate={onRegenerate} theme={theme} />}
           </div>
         </div>

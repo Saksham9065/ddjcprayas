@@ -21,13 +21,29 @@ export default function AdminContactsPage() {
 
   const columns: ColumnDef[] = [
     { key: "id", label: language === "en" ? "ID" : "आईडी", width: "80px" },
-    { key: "fullName", label: language === "en" ? "Name" : "नाम", render: (item) => (
-      <div>
+    {
+      key: "fullName",
+      label: language === "en" ? "Full Name" : "पूरा नाम",
+      render: (item) => (
         <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
-        <span className="text-slate-500 font-mono text-[10px]">{String(item.mobile ?? "")}</span>
-      </div>
-    )},
+      ),
+    },
+    { key: "fatherHusbandName", label: language === "en" ? "Father/Husband Name" : "पिता/पति का नाम", render: (item) => String(item.fatherHusbandName ?? "") },
+    { key: "mobile", label: language === "en" ? "Mobile Number" : "मोबाइल नंबर", render: (item) => String(item.mobile ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
+    { key: "address", label: language === "en" ? "Full Address" : "पूरा पता", render: (item) => String(item.address ?? "") },
+    {
+      key: "incidentDescription",
+      label: language === "en" ? "Message" : "संदेश",
+      render: (item) => {
+        const msg = String(item.incidentDescription ?? "");
+        return (
+          <span title={msg} className="block max-w-[180px] cursor-help">
+            {msg.length > 60 ? `${msg.slice(0, 60)}…` : msg}
+          </span>
+        );
+      },
+    },
     { key: "helpType", label: language === "en" ? "Help Type" : "सहायता प्रकार", render: (item) => String(item.helpType ?? "") },
     { key: "status", label: language === "en" ? "Status" : "स्थिति", render: (item) => {
       const styles: Record<string, string> = {

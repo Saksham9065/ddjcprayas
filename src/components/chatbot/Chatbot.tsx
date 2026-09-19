@@ -49,7 +49,11 @@ export default function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex h-[65vh] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border shadow-2xl backdrop-blur-xl md:h-[65vh] md:w-[420px]"
+             className={`flex h-[65vh] w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border shadow-2xl md:h-[65vh] md:w-[420px] ${
+               theme === "dark"
+                 ? "border-white/10 bg-[#0B1F3A] text-slate-100"
+                 : "border-slate-200 bg-slate-50 text-slate-900"
+             }`}
           >
             <ChatHeader
               onClose={() => setIsOpen(false)}

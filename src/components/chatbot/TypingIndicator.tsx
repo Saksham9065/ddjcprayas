@@ -12,14 +12,14 @@ export default function TypingIndicator({ theme = "dark" }: { theme?: "light" | 
       exit={{ opacity: 0, y: 8 }}
       className="flex w-full justify-start"
     >
-      <div className={`flex items-center gap-2 rounded-2xl rounded-bl-md px-4 py-3 ${
-        isDark ? "bg-white/10 text-slate-200" : "bg-slate-100 text-slate-600"
+      <div className={`flex items-center gap-2 rounded-2xl rounded-bl-md border px-4 py-3 ${
+        isDark ? "bg-white/10 text-slate-200" : "border-slate-200 bg-white text-slate-700"
       }`}>
         <span className="flex gap-1">
           {[0, 1, 2].map((i) => (
             <motion.span
               key={i}
-              className="inline-block h-2 w-2 rounded-full bg-slate-400"
+              className="inline-block h-2 w-2 rounded-full bg-slate-500"
               animate={{ opacity: [0.4, 1, 0.4], y: [0, -3, 0] }}
               transition={{
                 duration: 1.2,

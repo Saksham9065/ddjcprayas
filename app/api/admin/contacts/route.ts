@@ -18,9 +18,11 @@ export async function GET(request: Request) {
     if (search) {
       query.$or = [
         { fullName: { $regex: search, $options: "i" } },
+        { fatherHusbandName: { $regex: search, $options: "i" } },
         { mobile: { $regex: search, $options: "i" } },
         { email: { $regex: search, $options: "i" } },
         { address: { $regex: search, $options: "i" } },
+        { incidentDescription: { $regex: search, $options: "i" } },
       ];
     }
 
