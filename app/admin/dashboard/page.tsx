@@ -35,27 +35,14 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [contactsRes, complaintsRes, donationsRes, joinRes] = await Promise.all([
-          fetch("/api/admin/contacts"),
-          fetch("/api/admin/complaints"),
-          fetch("/api/admin/donations"),
-          fetch("/api/admin/join-applications"),
-        ]);
-
-        const contactsData = contactsRes.ok ? await contactsRes.json() : { total: 0 };
-        const complaintsData = complaintsRes.ok ? await complaintsRes.json() : { total: 0 };
-        const donationsData = donationsRes.ok ? await donationsRes.json() : { total: 0 };
-        const joinData = joinRes.ok ? await joinRes.json() : { data: [] };
-
-        const volunteerCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Volunteer").length;
-        const internshipCount = (joinData.data || []).filter((a: Record<string, unknown>) => a.joinType === "Internship").length;
-
+        const res = await fetch("/api/admin/stats");
+        const data = res.ok ? await res.json() : {};
         setStats({
-          contacts: contactsData.total || 0,
-          complaints: complaintsData.total || 0,
-          donations: donationsData.total || 0,
-          volunteers: volunteerCount,
-          internships: internshipCount,
+          contacts: data.contacts || 0,
+          complaints: data.complaints || 0,
+          donations: data.donations || 0,
+          volunteers: data.volunteers || 0,
+          internships: data.internships || 0,
         });
       } catch (error) {
         console.error("Failed to fetch stats:", error);

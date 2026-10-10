@@ -22,7 +22,7 @@ export default function AdminInternshipsPage() {
 
   const columns: ColumnDef[] = [
     { key: "id", label: language === "en" ? "ID" : "आईडी", width: "100px", render: (item) => (
-      <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
+      <span className="font-mono font-bold text-navy block">{String(item.id)}</span>
     )},
     { key: "fullName", label: language === "en" ? "Name" : "नाम", render: (item) => (
       <div>

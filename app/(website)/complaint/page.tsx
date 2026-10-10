@@ -7,12 +7,12 @@ import { useApp } from "@/context/AppContext";
 
 export default function ComplaintPage() {
   const { language } = useApp();
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
-    district: "Jalaun",
+    district: "",
     tehsil: "",
-                      category: "",
+    category: "",
     incidentDate: "",
     description: "",
   });
@@ -87,9 +87,9 @@ export default function ComplaintPage() {
                     setFormData({
                       fullName: "",
                       phone: "",
-                      district: "Jalaun",
+                      district: "",
                       tehsil: "",
-    category: "",
+                      category: "",
                       incidentDate: "",
                       description: "",
                     });
@@ -132,19 +132,14 @@ export default function ComplaintPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">{language === "en" ? "District" : "जिला"}</label>
-                  <select
+                  <input
+                    type="text"
+                    required
                     value={formData.district}
                     onChange={(e) => setFormData({ ...formData, district: e.target.value })}
+                    placeholder={language === "en" ? "Enter district name" : "जिले का नाम दर्ज करें"}
                     className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                  >
-                    <option value="Jalaun">{language === "en" ? "Jalaun" : "जालौन"}</option>
-                    <option value="Jhansi">{language === "en" ? "Jhansi" : "झांसी"}</option>
-                    <option value="Lalitpur">{language === "en" ? "Lalitpur" : "ललितपुर"}</option>
-                    <option value="Hamirpur">{language === "en" ? "Hamirpur" : "हमीरपुर"}</option>
-                    <option value="Banda">{language === "en" ? "Banda" : "बांदा"}</option>
-                    <option value="Chitrakoot">{language === "en" ? "Chitrakoot" : "चित्रकूट"}</option>
-                    <option value="Mahoba">{language === "en" ? "Mahoba" : "महोबा"}</option>
-                  </select>
+                  />
                 </div>
 
                 <div>

@@ -60,7 +60,7 @@ export default function ContactPage() {
             <span className="bg-slate-50 text-[#000000] px-3 py-1.5 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3 md:mb-4">
               {language === "en" ? "Help & Legal Support" : "सहायता और कानूनी समर्थन"}
             </span>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-navy tracking-tight mb-3 md:mb-4">
              {language === "en" ? "Get Help & Legal Support" : "सहायता और कानूनी समर्थन प्राप्त करें"}
            </h1>
            <p className="text-slate-600 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed mb-3">
@@ -82,7 +82,7 @@ export default function ContactPage() {
            {/* Intake Form */}
            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-4 md:space-y-6">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Contact" : "संपर्क करें"}</h3>
+               <h3 className="text-lg md:text-xl font-bold text-navy mb-3 md:mb-4">{language === "en" ? "Contact" : "संपर्क करें"}</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 lg:gap-6">
                   <div>
@@ -157,24 +157,24 @@ export default function ContactPage() {
            {/* Address & Map */}
            <div className="space-y-4 md:space-y-6">
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm space-y-3 md:space-y-4">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Our Office" : "हमारा कार्यालय"}</h3>
+               <h3 className="text-lg md:text-xl font-bold text-navy mb-3 md:mb-4">{language === "en" ? "Our Office" : "हमारा कार्यालय"}</h3>
                <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                 {language === "en" ? "Police Line - Baghauna, Urai - Jalaun, Uttar Pradesh - 285001" : "पुलिस लाइन – बघौरा, उरई – जालौन, उतर प्रदेश - 285001"}
+                 {language === "en" ? "Police Line - Baghauna, Orai - Jalaun, Uttar Pradesh - 285001" : "पुलिस लाइन – बघौरा, उरई – जालौन, उतर प्रदेश - 285001"}
                </p>
                <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm text-slate-600">
-                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Email:" : "ईमेल:"}</span> ddjc.prayas@gmail.com</p>
-                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Phone:" : "फोन:"}</span> +91 92357 37691, +91 94536 45931</p>
-                 <p><span className="font-bold text-[#0A2540]">{language === "en" ? "Hours:" : "समय:"}</span> {language === "en" ? "Mon - Sat: 9:00 AM - 6:00 PM" : "सोम - शनि: सुबह 9:00 बजे - शाम 6:00 बजे"}</p>
+                 <p><span className="font-bold text-navy">{language === "en" ? "Email:" : "ईमेल:"}</span> ddjc.prayas@gmail.com</p>
+                 <p><span className="font-bold text-navy">{language === "en" ? "Phone:" : "फोन:"}</span> +91 92357 37691, +91 94536 45931</p>
+                 <p><span className="font-bold text-navy">{language === "en" ? "Hours:" : "समय:"}</span> {language === "en" ? "Mon - Sat: 9:00 AM - 6:00 PM" : "सोम - शनि: सुबह 9:00 बजे - शाम 6:00 बजे"}</p>
                </div>
              </div>
 
              <div className="bg-white p-4 md:p-6 lg:p-8 xl:p-10 rounded-2xl md:rounded-3xl border border-slate-200 shadow-sm">
-               <h3 className="text-lg md:text-xl font-bold text-[#0A2540] mb-3 md:mb-4">{language === "en" ? "Location Map" : "स्थान मानचित्र"}</h3>
+               <h3 className="text-lg md:text-xl font-bold text-navy mb-3 md:mb-4">{language === "en" ? "Location Map" : "स्थान मानचित्र"}</h3>
                <div className="overflow-hidden rounded-xl md:rounded-2xl border border-slate-200">
                   <iframe
                     title="DDJC Office Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.2554086349876!2d79.4590809!3d26.0060011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399d7f0043955461%3A0x4a732dd1efb3257e!2sDalit%20Dignity%20%26%20Justice%20Center(DDJC)!5e0!3m2!1sen!2sin!4v1700000000000"
-                    className="w-full h-[250px] md:h-[300px]"
+                    className="w-full h-62.5 md:h-75"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"

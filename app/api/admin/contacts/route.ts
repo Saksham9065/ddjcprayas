@@ -58,6 +58,10 @@ export async function GET(request: Request) {
       total,
       page,
       totalPages: Math.ceil(total / limit) || 1,
+    }, {
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=60',
+      },
     });
   } catch (error) {
     console.error("Admin contacts fetch error:", error);

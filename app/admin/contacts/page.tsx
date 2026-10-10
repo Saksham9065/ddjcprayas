@@ -38,7 +38,7 @@ export default function AdminContactsPage() {
       render: (item) => {
         const msg = String(item.incidentDescription ?? "");
         return (
-          <span title={msg} className="block max-w-[180px] cursor-help">
+          <span title={msg} className="block max-w-45 cursor-help">
             {msg.length > 60 ? `${msg.slice(0, 60)}…` : msg}
           </span>
         );
