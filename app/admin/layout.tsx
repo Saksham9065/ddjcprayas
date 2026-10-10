@@ -4,7 +4,7 @@ import React, { ReactNode, useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { checkAdminAuth } from "@/lib/auth";
-import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBars, FaGlobe } from "react-icons/fa";
+import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBars, FaGlobe, FaBirthdayCake } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
@@ -27,6 +27,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { href: "/admin/donations", label: language === "en" ? "Donations" : "दान", icon: FaHandHoldingHeart },
     { href: "/admin/volunteers", label: language === "en" ? "Volunteers" : "स्वयंसेवक", icon: FaUserPlus },
     { href: "/admin/internships", label: language === "en" ? "Internships" : "इंटर्नशिप", icon: FaGraduationCap },
+    { href: "/admin/anniversary", label: language === "en" ? "Anniversary Popup" : "सालगिरह पॉपअप", icon: FaBirthdayCake },
   ];
 
   const handleLogout = () => {
