@@ -3,7 +3,6 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { checkAdminAuth } from "@/lib/auth";
 import { FaSignOutAlt, FaHome, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaBars, FaGlobe, FaBirthdayCake } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
@@ -12,13 +11,23 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { language } = useApp();
 
-  const isAuth = checkAdminAuth();
+  const [isAuth, setIsAuth] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!isAuth && pathname !== "/admin/login") {
-      window.location.href = "/admin/login";
-    }
-  }, [pathname, isAuth]);
+    if (pathname === "/admin/login") return;
+    let cancelled = false;
+    fetch("/api/admin/session", { cache: "no-store" })
+      .then((response) => response.ok ? response.json() : { authenticated: false })
+      .then((data: { authenticated?: boolean }) => {
+        if (cancelled) return;
+        setIsAuth(Boolean(data.authenticated));
+        if (!data.authenticated) window.location.href = "/admin/login";
+      })
+      .catch(() => {
+        if (!cancelled) window.location.href = "/admin/login";
+      });
+    return () => { cancelled = true; };
+  }, [pathname]);
 
   const navItems = [
     { href: "/admin", label: language === "en" ? "Dashboard" : "डैशबोर्ड", icon: FaHome },
@@ -30,14 +39,19 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     { href: "/admin/anniversary", label: language === "en" ? "Anniversary Popup" : "सालगिरह पॉपअप", icon: FaBirthdayCake },
   ];
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("ddjc_admin_session");
-    window.location.href = "/admin/login";
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } finally {
+      window.location.href = "/admin/login";
+    }
   };
 
   if (pathname === "/admin/login") {
     return <>{children}</>;
   }
+  if (isAuth !== true) return null;
 
   return (
     <div className="bg-slate-50 min-h-screen flex">
