@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaSpinner } from "react-icons/fa";
+import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaSpinner, FaBirthdayCake } from "react-icons/fa";
 import { checkAdminAuth } from "@/lib/auth";
 import { useApp } from "@/context/AppContext";
 
@@ -58,6 +58,7 @@ export default function AdminDashboardPage() {
     { label: language === "en" ? "Donations" : "दान", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
     { label: language === "en" ? "Volunteers" : "स्वयंसेवक", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
     { label: language === "en" ? "Internships" : "इंटर्नशिप", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
+    { label: language === "en" ? "Anniversary Popup" : "सालगिरह पॉपअप", value: "Manage", href: "/admin/anniversary", color: "bg-amber-500" },
   ];
 
   if (authStatus === null) {
@@ -112,6 +113,7 @@ export default function AdminDashboardPage() {
                 {mod.label === (language === "en" ? "Donations" : "दान") && <FaHandHoldingHeart size={20} />}
                 {mod.label === (language === "en" ? "Volunteers" : "स्वयंसेवक") && <FaUserPlus size={20} />}
                 {mod.label === (language === "en" ? "Internships" : "इंटर्नशिप") && <FaGraduationCap size={20} />}
+                {mod.label === (language === "en" ? "Anniversary Popup" : "सालगिरह पॉपअप") && <FaBirthdayCake size={20} />}
               </div>
               <span className="text-3xl font-black text-[#0A2540]">{mod.value}</span>
             </div>
