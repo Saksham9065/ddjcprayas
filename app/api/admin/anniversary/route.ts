@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { AnniversarySettings } from "@/models/AnniversarySettings";
 import { connectToDatabase } from "@/utils/db";
+import { verifyAdminSession } from "@/lib/admin-session";
 
 const defaults = {
   enabled: false,
@@ -9,7 +10,10 @@ const defaults = {
   delaySeconds: 3,
 };
 
-export async function GET() {
+export async function GET(request: Request) {
+  if (!verifyAdminSession(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     await connectToDatabase();
     const settings = await AnniversarySettings.findOne({ key: "homepage" }).lean();
@@ -26,6 +30,9 @@ export async function GET() {
 }
 
 export async function PATCH(request: Request) {
+  if (!verifyAdminSession(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
   try {
     const body: unknown = await request.json();
     if (!body || typeof body !== "object") {
