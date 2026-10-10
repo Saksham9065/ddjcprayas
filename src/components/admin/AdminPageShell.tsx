@@ -249,7 +249,7 @@ export default function AdminPageShell({
                   </tr>
                  ) : (
                   data.map((item) => (
-                    <tr key={item.id} className="hover:bg-slate-50/60 transition-colors">
+                    <tr key={item.id} className="hover:bg-slate-50/60 transition-colors hidden md:table-row">
                       {columns.map((col) => (
                         <td key={col.key} className={`py-3 px-3 md:py-4 md:px-6 text-[10px] md:text-xs ${col.width ? `w-${col.width}` : ""}`}>
                           {col.render ? col.render(item) : String(item[col.key] ?? "")}
@@ -288,6 +288,51 @@ export default function AdminPageShell({
                       </td>
                     </tr>
                   ))
+
+                  {/* Mobile Card View */}
+                  {data.map((item) => (
+                    <tr key={`card-${item.id}`} className="md:hidden">
+                      <td colSpan={columns.length + 1} className="p-4 md:p-0">
+                        <div className="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+                          {columns.map((col) => (
+                            <div key={col.key} className="flex justify-between gap-2 py-1 border-b border-slate-100 last:border-0">
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 w-1/3 shrink-0">{col.label}</span>
+                              <span className="text-[10px] text-slate-900 text-right flex-1 break-words">{col.render ? col.render(item) : String(item[col.key] ?? "")}</span>
+                            </div>
+                          ))}
+                          <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 flex-wrap">
+                            <button
+                              type="button"
+                              onClick={() => setDetailItem(item)}
+                              className="px-3 py-1.5 rounded-lg border border-slate-200 text-[10px] font-semibold text-slate-700 hover:bg-slate-50"
+                            >
+                              {language === "en" ? "View" : "देखें"}
+                            </button>
+                            {statusOptions && onStatusUpdate && (
+                              <select
+                                value={item.status as string}
+                                onChange={(e) => handleStatusChange(item.id, e.target.value)}
+                                className="px-2.5 py-1.5 rounded-lg border border-slate-200 text-[10px] bg-white font-medium text-slate-700 focus:outline-none focus:border-[#000000]"
+                              >
+                                {statusOptions.map((opt) => (
+                                  <option key={opt.value} value={opt.value}>
+                                    {opt.label}
+                                  </option>
+                                ))}
+                              </select>
+                            )}
+                            <button
+                              type="button"
+                              onClick={() => setDeletingId(item.id)}
+                              className="px-3 py-1.5 rounded-lg border border-red-200 text-[10px] font-semibold text-red-700 hover:bg-red-50"
+                            >
+                              {language === "en" ? "Delete" : "हटाएं"}
+                            </button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 )}
               </tbody>
             </table>

@@ -7,12 +7,12 @@ import { useApp } from "@/context/AppContext";
 
 export default function ComplaintPage() {
   const { language } = useApp();
-const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
-    district: "",
+    district: "Jalaun",
     tehsil: "",
-    category: "",
+                      category: "",
     incidentDate: "",
     description: "",
   });
@@ -54,7 +54,7 @@ const [formData, setFormData] = useState({
           <span className="bg-slate-50 text-[#000000] px-3 py-1.5 md:px-4 md:py-1.5 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-3 md:mb-4">
             {language === "en" ? "Grievance Redressal" : "शिकायत निवारण"}
           </span>
-          <h1 className="text-2xl md:text-3xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-3 md:mb-4">
+          <h1 className="text-2xl md:text-3xl lg:text-5xl font-black text-navy tracking-tight mb-3 md:mb-4">
             {language === "en" ? "Report your CASE /Grievance" : "अपना मामला /शिकायत रिपोर्ट करें"}
           </h1>
           <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed">
@@ -87,9 +87,9 @@ const [formData, setFormData] = useState({
                     setFormData({
                       fullName: "",
                       phone: "",
-                      district: "",
+                      district: "Jalaun",
                       tehsil: "",
-                      category: "",
+    category: "",
                       incidentDate: "",
                       description: "",
                     });
@@ -132,14 +132,19 @@ const [formData, setFormData] = useState({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label className="block text-[10px] md:text-xs font-bold uppercase text-slate-700 mb-1.5 md:mb-2">{language === "en" ? "District" : "जिला"}</label>
-                  <input
-                    type="text"
-                    required
+                  <select
                     value={formData.district}
                     onChange={(e) => setFormData({ ...formData, district: e.target.value })}
-                    placeholder={language === "en" ? "Enter district name" : "जिले का नाम दर्ज करें"}
                     className="w-full px-3 py-2.5 md:px-4 md:py-3.5 rounded-xl border border-slate-200 text-xs md:text-sm focus:outline-none focus:border-[#000000]"
-                  />
+                  >
+                    <option value="Jalaun">{language === "en" ? "Jalaun" : "जालौन"}</option>
+                    <option value="Jhansi">{language === "en" ? "Jhansi" : "झांसी"}</option>
+                    <option value="Lalitpur">{language === "en" ? "Lalitpur" : "ललितपुर"}</option>
+                    <option value="Hamirpur">{language === "en" ? "Hamirpur" : "हमीरपुर"}</option>
+                    <option value="Banda">{language === "en" ? "Banda" : "बांदा"}</option>
+                    <option value="Chitrakoot">{language === "en" ? "Chitrakoot" : "चित्रकूट"}</option>
+                    <option value="Mahoba">{language === "en" ? "Mahoba" : "महोबा"}</option>
+                  </select>
                 </div>
 
                 <div>
