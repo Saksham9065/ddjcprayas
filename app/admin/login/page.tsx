@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaLock, FaEnvelope, FaExclamationCircle } from "react-icons/fa";
-import { verifyAdminCredentials, setAdminAuth } from "@/lib/auth";
+import { setAdminAuth } from "@/lib/auth";
 import { useApp } from "@/context/AppContext";
 import Button from "@/components/ui/Button";
 
@@ -16,22 +16,28 @@ export default function AdminLoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      const isValid = verifyAdminCredentials(email, password);
-      if (isValid) {
-        setAdminAuth(true);
-        setIsAdminLoggedIn(true);
-        router.push("/admin/dashboard");
-      } else {
-        setError(language === "en" ? "Invalid email or password. Please try again." : "अमान्य ईमेल पता या पासवर्ड। कृपया पुनः प्रयास करें।");
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || "Invalid email or password.");
       }
-    }, 1000);
+      setAdminAuth(true);
+      setIsAdminLoggedIn(true);
+      router.push("/admin/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to sign in. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
