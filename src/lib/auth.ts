@@ -31,9 +31,4 @@ export function setAdminAuth(isAuthenticated: boolean): void {
   }
 }
 
-/**
- * Mock verifier for admin credentials login.
- */
-export function verifyAdminCredentials(email: string, pass: string): boolean {
-  return email.trim() === "admin@ddjc.org.in" && pass === "DDJC@2026#Admin";
-}
+/** Server APIs must verify the signed HttpOnly session cookie. */
