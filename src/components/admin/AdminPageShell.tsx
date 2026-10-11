@@ -52,7 +52,11 @@ export default function AdminPageShell({
   statusOptions?: { label: string; value: string }[];
   onStatusUpdate?: (id: string, status: string) => Promise<void>;
   baseUrlParams?: Record<string, string>;
+  detailEndpoint?: (id: string) => string;
+  detailFields?: Array<{ key: string; label: string }>;
+  renderDetailExtra?: (item: RowData) => React.ReactNode;
 }) {
+  const props = arguments[0] as any;
   const { language } = useApp();
   const [data, setData] = useState<RowData[]>([]);
   const [total, setTotal] = useState(0);
@@ -63,6 +67,7 @@ export default function AdminPageShell({
   const [filterValues, setFilterValues] = useState<Record<string, string>>({});
   const [detailItem, setDetailItem] = useState<RowData | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [detailLoading, setDetailLoading] = useState(false);
 
   const limit = 10;
 
@@ -104,6 +109,30 @@ export default function AdminPageShell({
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  const fetchDetail = async (id: string) => {
+    const ep = (props as any).detailEndpoint;
+    if (!ep) return;
+    setDetailLoading(true);
+    try {
+      const res = await fetch(ep(id));
+      if (!res.ok) throw new Error("Failed to fetch detail");
+      const json = await res.json();
+      setDetailItem(json);
+    } catch (error) {
+      console.error("Detail fetch error:", error);
+    } finally {
+      setDetailLoading(false);
+    }
+  };
+
+  const handleViewDetail = (item: RowData) => {
+    setDetailItem(item);
+    const ep = (props as any).detailEndpoint;
+    if (ep) {
+      fetchDetail(String(item.id));
+    }
+  };
 
   const handleSearchChange = (val: string) => {
     setSearch(val);
@@ -381,16 +410,17 @@ export default function AdminPageShell({
               </button>
             </div>
             <div className="p-6 space-y-4">
-              {columns.map((col) => (
+              {(((props as any).detailFields) || columns).map((col: any) => (
                 <div key={col.key}>
                   <p className="text-[10px] uppercase font-bold tracking-wider text-slate-500 mb-1">
                     {col.label}
                   </p>
                   <div className="text-sm text-slate-900 whitespace-pre-wrap wrap-break-word">
-                    {col.render ? col.render(detailItem) : String(detailItem[col.key] ?? "")}
+                    {columns.find((c) => c.key === col.key)?.render ? (columns.find((c) => c.key === col.key) as any)?.render(detailItem) : String((detailItem as any)[col.key] ?? "")}
                   </div>
                 </div>
               ))}
+              {((props as any).renderDetailExtra) && detailItem && ((props as any).renderDetailExtra)(detailItem)}
             </div>
             <div className="p-6 border-t border-slate-100 flex justify-end">
               <button

@@ -25,6 +25,43 @@ function saveHistory(messages: ChatMessage[]) {
   }
 }
 
+function getSessionId(): string {
+  if (typeof window === "undefined") return "server";
+  try {
+    const key = "ddjc_chat_session_id";
+    let sid = localStorage.getItem(key);
+    if (!sid) {
+      sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(key, sid);
+    }
+    return sid;
+  } catch {
+    return Math.random().toString(36).slice(2);
+  }
+}
+
+
+async function saveToDb(messages: ChatMessage[]) {
+  if (typeof window === "undefined" || messages.length === 0) return;
+  try {
+    const sessionId = getSessionId();
+    await fetch("/api/chat/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sessionId,
+        messages: messages.map((m) => ({
+          role: m.role,
+          content: m.content,
+          timestamp: new Date(m.timestamp),
+        })),
+      }),
+    });
+  } catch {
+    // ignore
+  }
+}
+
 export function useChat(): UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>(loadHistory);
   const [input, setInput] = useState("");
@@ -72,6 +109,7 @@ export function useChat(): UseChatReturn {
       setMessages((prev) => {
         const next = [...prev, botMessage];
         saveHistory(next);
+        void saveToDb(next);
         return next;
       });
     } catch (error) {
@@ -85,6 +123,7 @@ export function useChat(): UseChatReturn {
       setMessages((prev) => {
         const next = [...prev, errorMessage];
         saveHistory(next);
+        void saveToDb(next);
         return next;
       });
     } finally {
@@ -96,11 +135,29 @@ export function useChat(): UseChatReturn {
   const clearChat = useCallback(() => {
     setMessages([]);
     saveHistory([]);
+    try {
+      const sid = getSessionId();
+      void fetch("/api/chat/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: sid, messages: [], status: "Archived" }),
+      });
+    } catch {}
+
   }, []);
 
   const newChat = useCallback(() => {
     setMessages([]);
     saveHistory([]);
+    try {
+      const sid = getSessionId();
+      void fetch("/api/chat/save", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: sid, messages: [], status: "Archived" }),
+      });
+    } catch {}
+
     setInput("");
   }, []);
 

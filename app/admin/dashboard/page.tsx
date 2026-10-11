@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaSpinner } from "react-icons/fa";
+import { FaSignOutAlt, FaUsers, FaFileAlt, FaHandHoldingHeart, FaUserPlus, FaGraduationCap, FaSpinner, FaComments } from "react-icons/fa";
 import { checkAdminAuth } from "@/lib/auth";
 import { useApp } from "@/context/AppContext";
 
@@ -16,6 +16,7 @@ export default function AdminDashboardPage() {
     donations: 0,
     volunteers: 0,
     internships: 0,
+    chats: 0,
   });
   const [authStatus, setAuthStatus] = useState<boolean | null>(null);
 
@@ -35,14 +36,19 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("/api/admin/stats");
-        const data = res.ok ? await res.json() : {};
+        const [statsRes, chatsRes] = await Promise.all([
+          fetch("/api/admin/stats"),
+          fetch("/api/admin/chats/stats"),
+        ]);
+        const data = statsRes.ok ? await statsRes.json() : {};
+        const chatData = chatsRes.ok ? await chatsRes.json() : {};
         setStats({
           contacts: data.contacts || 0,
           complaints: data.complaints || 0,
           donations: data.donations || 0,
           volunteers: data.volunteers || 0,
           internships: data.internships || 0,
+          chats: chatData.total || 0,
         });
       } catch (error) {
         console.error("Failed to fetch stats:", error);
@@ -58,6 +64,7 @@ export default function AdminDashboardPage() {
     { label: language === "en" ? "Donations" : "दान", value: stats.donations, href: "/admin/donations", color: "bg-emerald-500" },
     { label: language === "en" ? "Volunteers" : "स्वयंसेवक", value: stats.volunteers, href: "/admin/volunteers", color: "bg-purple-500" },
     { label: language === "en" ? "Internships" : "इंटर्नशिप", value: stats.internships, href: "/admin/internships", color: "bg-pink-500" },
+    { label: language === "en" ? "Chatbot" : "चैटबॉट", value: stats.chats, href: "/admin/chats", color: "bg-cyan-500" },
   ];
 
   if (authStatus === null) {
@@ -112,6 +119,7 @@ export default function AdminDashboardPage() {
                 {mod.label === (language === "en" ? "Donations" : "दान") && <FaHandHoldingHeart size={20} />}
                 {mod.label === (language === "en" ? "Volunteers" : "स्वयंसेवक") && <FaUserPlus size={20} />}
                 {mod.label === (language === "en" ? "Internships" : "इंटर्नशिप") && <FaGraduationCap size={20} />}
+                {mod.label === (language === "en" ? "Chatbot" : "चैटबॉट") && <FaComments size={20} />}
               </div>
               <span className="text-3xl font-black text-[#0A2540]">{mod.value}</span>
             </div>

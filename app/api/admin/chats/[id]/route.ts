@@ -27,7 +27,7 @@ export async function GET(
     return NextResponse.json({
       id: conversation._id?.toString(),
       sessionId: conversation.sessionId,
-      messages: conversation.messages.map((m) => ({
+      messages: conversation.messages.map((m: any) => ({
         role: m.role,
         content: m.content,
         timestamp: m.timestamp?.toISOString?.() || "",
