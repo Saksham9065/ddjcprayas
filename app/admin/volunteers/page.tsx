@@ -25,11 +25,10 @@ export default function AdminVolunteersPage() {
       <span className="font-mono font-bold text-[#0A2540] block">{String(item.id)}</span>
     )},
     { key: "fullName", label: language === "en" ? "Name" : "नाम", render: (item) => (
-      <div>
-        <span className="font-bold block text-slate-900">{String(item.fullName ?? "")}</span>
-        <span className="text-slate-500 font-mono text-[10px]">{String(item.mobile ?? "")}</span>
-      </div>
+      <span className="font-bold text-slate-900">{String(item.fullName ?? "")}</span>
     )},
+    { key: "mobile", label: language === "en" ? "Contact" : "संपर्क", render: (item) => String(item.mobile ?? "") },
+    { key: "address", label: language === "en" ? "Address" : "पता", render: (item) => String(item.address ?? "") },
     { key: "email", label: language === "en" ? "Email" : "ईमेल", render: (item) => String(item.email ?? "") },
     { key: "occupation", label: language === "en" ? "Occupation" : "व्यवसाय", render: (item) => String(item.occupation ?? (language === "en" ? "Not Available" : "उपलब्ध नहीं")) },
     { key: "workMode", label: language === "en" ? "Work Mode" : "कार्य मोड", render: (item) => String(item.workMode ?? (language === "en" ? "Not Available" : "उपलब्ध नहीं")) },

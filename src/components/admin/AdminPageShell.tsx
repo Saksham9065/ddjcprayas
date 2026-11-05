@@ -168,17 +168,34 @@ export default function AdminPageShell({
     }
   };
 
-  const exportExcel = () => {
-    if (!data.length) return;
-    const headers = columns.map((col) => col.label);
-    const rows = data.map((item) =>
-      columns.map((col) => String(item[col.key] ?? ""))
-    );
-    const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, title);
-    const safeTitle = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-    XLSX.writeFile(workbook, `${safeTitle}-${new Date().toISOString().split("T")[0]}.xlsx`);
+  const exportExcel = async () => {
+    try {
+      const params = new URLSearchParams();
+      params.set("page", "1");
+      params.set("limit", "1000");
+      if (search) params.set("search", search);
+      for (const [key, value] of Object.entries(baseUrlParamsRef.current)) {
+        if (value) params.set(key, value);
+      }
+      for (const [key, value] of Object.entries(filterValues)) {
+        if (value) params.set(key, value);
+      }
+      const res = await fetch(`${apiEndpoint}?${params.toString()}`);
+      const json = await res.json();
+      const allData: RowData[] = json.data || [];
+      if (!allData.length) return;
+      const headers = columns.map((col) => col.label);
+      const rows = allData.map((item) =>
+        columns.map((col) => String(item[col.key] ?? ""))
+      );
+      const worksheet = XLSX.utils.aoa_to_sheet([headers, ...rows]);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, title);
+      const safeTitle = title.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      XLSX.writeFile(workbook, `${safeTitle}-${new Date().toISOString().split("T")[0]}.xlsx`);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

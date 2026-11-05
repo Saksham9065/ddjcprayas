@@ -15,7 +15,6 @@ import {
   Users,
   MapPin,
   Baby,
-  ArrowRight,
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 
@@ -56,10 +55,10 @@ interface Stat {
 const STATS: Stat[] = [
   { to: 16450, suffix: "+", labelEn: "Family Reached", labelHi: "परिवारों तक पहुँच", icon: Users },
   { to: 2649, suffix: "+", labelEn: "People Supported", labelHi: "सहायता प्राप्त लोग", icon: Handshake },
-  { to: 341, suffix: "+", labelEn: "CASE Assisted", labelHi: "सहायता प्राप्त मामले", icon: Scale },
+  { to: 341, suffix: "+", labelEn: "CASE ASSISTED\n157-SC/ST, 28-POCSO, 156-DVA/DPA/Others", labelHi: "सहायता प्राप्त मामले\n157-अ.जा./अ.पि., 28-पोक्सो, 156-डीवीए/डीपीए/अन्य", icon: Scale },
   { to: 165, suffix: "+", labelEn: "Village Connected", labelHi: "जुड़े गाँव", icon: MapPin },
   { to: 305, suffix: "+", labelEn: "Community Volunteers", labelHi: "सामुदायिक स्वयंसेवक", icon: Users },
-  { to: 79, suffix: "+", labelEn: "Youth Leaders", labelHi: "युवा नेता", icon: Baby },
+  { to: 79, suffix: "+", labelEn: "1st Generation Lawyers + Youth Leaders", labelHi: "पहली पीढ़ी के कानूनी + युवा नेता", icon: Baby },
 ];
 
 export default function HowItWorksWithStats() {
@@ -137,7 +136,7 @@ export default function HowItWorksWithStats() {
                     <span className="text-3xl md:text-4xl font-black text-gold block mb-1">
                       <CountUp to={stat.to} suffix={stat.suffix} />
                     </span>
-                    <span className="text-[11px] md:text-xs font-semibold uppercase tracking-wide text-white/70">
+                    <span className="text-[10px] md:text-[11px] font-semibold tracking-wide text-white/80 text-center whitespace-pre-line leading-relaxed">
                       {language === "en" ? stat.labelEn : stat.labelHi}
                     </span>
                   </div>
@@ -146,9 +145,14 @@ export default function HowItWorksWithStats() {
             </div>
 
             <div className="mt-6 text-center">
-              <Link href="/about" className="inline-flex items-center gap-2 bg-navy hover:bg-navy-deep text-white font-bold px-6 py-3 rounded-2xl transition-colors text-sm shadow-md">
-                {t("See All Our Work", "हमारा सारा काम देखें")} <ArrowRight size={12} />
-              </Link>
+              <div className="inline-flex flex-col items-center gap-1 bg-navy rounded-2xl px-6 py-4 shadow-md">
+                <span className="text-2xl md:text-3xl font-black text-gold">
+                  ₹84.87 Lakh
+                </span>
+                <span className="text-[11px] md:text-xs font-semibold uppercase tracking-wide text-white/80 text-center">
+                  {t("In Compensation/relief Secured For 69 Victims Across 52 Cases", "69 शिकारियों के 52 मामलों में मिले कुल ₹84.87 लाख की मुआवजा/राहत")}
+                </span>
+              </div>
             </div>
           </div>
         </div>
