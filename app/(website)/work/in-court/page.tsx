@@ -73,7 +73,7 @@ export default function InCourtPage() {
             </div>
             <h3 className="text-xl font-bold text-[#0A2540]">{language === "en" ? "Compensation Secured" : "मुआवजा सुरक्षित"}</h3>
             <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
-              {language === "en" ? <>Through active district administration coordination and rigorous courtroom advocacy, DDJC has secured <strong className="text-[#0A2540] font-mono">₹75 lakh+</strong> in statutory relief and compensation for victims, across <strong className="text-[#0A2540] font-mono">45+ cases</strong>.</> : <>सक्रिय जिला प्रशासन समन्वय और कठोर अदालती वकालत के माध्यम से, DDJC ने पीड़ितों के लिए <strong className="text-[#0A2540] font-mono">₹75 लाख+</strong> की वैधानिक राहत और मुआवजा सुरक्षित की है, जो <strong className="text-[#0A2540] font-mono">45+ मामलों</strong> में से है।</>}
+              {language === "en" ? <>Through active district administration coordination and rigorous courtroom advocacy, DDJC has secured <strong className="text-[#0A2540] font-mono">₹84.87 Lakh+</strong> in statutory relief and compensation for 69 victims, across <strong className="text-[#0A2540] font-mono"> 52 cases</strong>.</> : <>सक्रिय जिला प्रशासन समन्वय और कठोर अदालती वकालत के माध्यम से, DDJC ने पीड़ितों के लिए <strong className="text-[#0A2540] font-mono">₹84.87 लाख+</strong> की वैधानिक राहत और मुआवजा सुरक्षित की है, जो <strong className="text-[#0A2540] font-mono">52+ मामलों</strong> में से है।</>}
             </p>
           </div>
         </div>
