@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,7 +12,9 @@ export default function RootContent({ children }: { children: React.ReactNode })
   return (
     <>
       {!isAdmin && <Navbar />}
-      <main>{children}</main>
+      <main>
+        <Suspense fallback={null}>{children}</Suspense>
+      </main>
       {!isAdmin && <Footer />}
     </>
   );

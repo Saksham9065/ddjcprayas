@@ -95,12 +95,12 @@ function Navbar() {
       <div className="container mx-auto px-4 md:px-8 max-w-[1600px]">
         <nav className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" onClick={closeMenu} className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <div className="h-9 w-9 sm:h-11 sm:w-11 md:h-14 md:w-14 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform group-hover:scale-105 bg-white relative">
+            <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 rounded-full overflow-hidden shadow-sm border border-slate-200 transition-transform group-hover:scale-105 bg-white relative">
               <Image
                 src="/images/logo/ddjc-logo.jpg"
                 alt="DDJC Logo"
                 fill
-                sizes="36px sm:44px md:56px"
+                sizes="40px sm:48px md:64px"
                 className="object-cover object-center"
                 priority
               />

@@ -89,8 +89,8 @@ export default function HowItWorksWithStats() {
               </svg>
 
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-                <div className="w-20 h-20 rounded-full bg-navy flex items-center justify-center shadow-xl ring-4 ring-white">
-                  <Image src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" width={80} height={80} className="h-full w-full object-cover rounded-full" />
+                <div className="w-32 h-32 rounded-full bg-navy flex items-center justify-center shadow-xl ring-4 ring-white">
+                  <Image src="/images/logo/ddjc-logo.jpg" alt="DDJC Logo" width={128} height={128} className="h-full w-full object-cover rounded-full" />
                 </div>
               </div>
 

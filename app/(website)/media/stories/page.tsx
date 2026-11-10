@@ -2,11 +2,13 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 import { FaQuoteLeft, FaChevronDown, FaTimes } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 type Story = {
   id: number;
+  title: { en: string; hi: string };
   name: { en: string; hi: string };
   location: { en: string; hi: string };
   brief: { en: string; hi: string };
@@ -16,8 +18,15 @@ type Story = {
 const stories: Story[] = [
   {
     id: 1,
+    title: {
+      en: "Injustice Against a Dalit Daughter and the Fight for Justice",
+      hi: "एक दलित बेटी के खिलाफ अन्याय और न्याय की लड़ाई",
+    },
     name: { en: "Tota Kumari", hi: "तोता कुमारी" },
-    location: { en: "Harsinghpur, Jalaun, Uttar Pradesh", hi: "हरसिंहपुर, जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Harsinghpur, Jalaun, Uttar Pradesh",
+      hi: "हरसिंहपुर, जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "A Dalit mother fought for justice after her minor daughter was assaulted, facing police refusal and an allegedly altered charge sheet.",
       hi: "एक दलित माँ ने अपनी नाबालिग बेटी पर हमले के बाद न्याय के लिए संघर्ष किया, पुलिस की अनदेखी और कथित रूप से बदली गई चार्जशीट का सामना किया।",
@@ -29,7 +38,7 @@ Tota Kumari is an ordinary, uneducated woman who lives in the village with her f
 
 However, an argument broke out there. Anuj's mother, Meena Devi, and sister, Hemlata, misbehaved with Tota Kumari and her husband. They also used caste-based abusive language, saying, "You Chamars, get out of here. Whatever Anuj has done is right."
 
-A Daylight Assault Inside Their Home
+### A Daylight Assault Inside Their Home
 
 A few days later, on April 6, 2024, at around 1:30 PM, Tota Kumari was at home with her minor daughter when Anuj, his mother Meena, and his sister Premlata forcibly entered their house.
 
@@ -37,7 +46,7 @@ Anuj grabbed the girl with criminal intent and tore her clothes. When Tota Kumar
 
 At that moment, Tota Kumari's husband returned home and raised an alarm. Hearing his cries, some neighbours gathered at the spot. Seeing them, the accused fled after threatening to kill the family.
 
-Struggling from Door to Door for Justice
+### Struggling from Door to Door for Justice
 
 After the incident, Tota Kumari and her husband went with their daughter to the concerned police station in Kuthaund and submitted a written complaint. However, the police refused to register their complaint and sent them away.
 
@@ -45,7 +54,7 @@ They did not give up. The following day, they approached the Senior Superintende
 
 Finally, they approached the court and filed an application under Section 156(3) of the CrPC. After two months of legal struggle, the court passed an order directing action. The case included IPC Sections 354, 376, 511, 452, 323, 506 and 504, along with Sections 7 and 8 of the POCSO Act and Section 3(2)(5) of the SC/ST Act.
 
-Alleged Police Collusion and DDJC's Support
+### Alleged Police Collusion and DDJC's Support
 
 Following the court's order, an officer at the Circle Officer (CO) level initiated an investigation. However, it is alleged that the police accepted money and altered the entire charge sheet before filing it in court. Several serious charges were removed, allegedly to protect the accused.
 
@@ -60,15 +69,15 @@ This story demonstrates how difficult the fight for justice can become, especial
 
 लेकिन वहाँ विवाद हो गया। अनुज की माँ मीना देवी और बहन हेमलता ने तोता कुमारी और उनके पति के साथ दुर्व्यवहार किया। उन्होंने जातिसूचक गालियाँ भी दीं और कहा, "तुम चमार लोग यहाँ से चले जाओ। अनुज ने जो किया है, वह सही है।"
 
-दिनदहाड़े घर में हमला
+### दिनदहाड़े घर में हमला
 
 कुछ दिन बाद, 6 अप्रैल 2024 को लगभग दोपहर 1:30 बजे, तोता कुमारी अपनी नाबालिग बेटी के साथ घर पर थीं, तभी अनुज, उसकी माँ मीना और उसकी बहन प्रेमलता जबरन उनके घर में घुस आए।
 
 अनुज ने आपराधिक इरादे से लड़की को पकड़ लिया और उसके कपड़े फाड़ दिए। जब तोता कुमारी ने अपनी बेटी को बचाने की कोशिश की, तो मीना और प्रेमलता ने उन्हें पकड़ लिया और उनके साथ मारपीट की। इसी बीच अनुज ने जबरन लड़की को कमरे में खींच लिया और उसके साथ बलात्कार किया।
 
-उसी समय तोता कुमारी के पति घर लौट आए और उन्होंने शोर मचाया। उनकी आवाज़ सुनकर कुछ पड़ोसी मौके पर इकट्ठा हो गए। उन्हें देखकर आरोपी परिवार को जान से मारने की धमकी देकर भाग गए।
+उस समय तोता कुमारी के पति घर लौट आए और उन्होंने शोर मचाया। उनकी आवाज़ सुनकर कुछ पड़ोसी मौके पर इकट्ठा हो गए। उन्हें देखकर आरोपी परिवार को जान से मारने की धमकी देकर भाग गए।
 
-न्याय के लिए दर-दर भटकना
+### न्याय के लिए दर-दर भटकना
 
 घटना के बाद तोता कुमारी और उनके पति बेटी को लेकर कुठौंद के संबंधित थाने गए और लिखित शिकायत दी। लेकिन पुलिस ने उनकी शिकायत दर्ज करने से इनकार कर दिया और उन्हें लौटा दिया।
 
@@ -76,7 +85,7 @@ This story demonstrates how difficult the fight for justice can become, especial
 
 अंततः उन्होंने न्यायालय का सहारा लिया और सीआरपीसी की धारा 156(3) के तहत आवेदन दायर किया। दो महीने के कानूनी संघर्ष के बाद न्यायालय ने कार्रवाई का आदेश दिया। मामले में आईपीसी की धारा 354, 376, 511, 452, 323, 506 और 504, साथ ही पॉक्सो अधिनियम की धारा 7 और 8 तथा एससी/एसटी अधिनियम की धारा 3(2)(5) शामिल की गईं।
 
-पुलिस पर मिलीभगत का आरोप और DDJC का सहयोग
+### पुलिस पर मिलीभगत का आरोप और DDJC का सहयोग
 
 न्यायालय के आदेश के बाद क्षेत्राधिकारी (CO) स्तर के एक अधिकारी ने जांच शुरू की। हालांकि, आरोप है कि पुलिस ने पैसे लेकर न्यायालय में दाखिल करने से पहले पूरी चार्जशीट बदल दी। कई गंभीर धाराएँ हटा दी गईं, कथित तौर पर आरोपियों को बचाने के लिए।
 
@@ -89,8 +98,15 @@ This story demonstrates how difficult the fight for justice can become, especial
   },
   {
     id: 2,
+    title: {
+      en: "A Daughter of the Ravines – A Dream and a Fight for Justice",
+      hi: "रवाइयों की बेटी – एक सपना और न्याय की लड़ाई",
+    },
     name: { en: "Goldy Devi", hi: "गोल्डी देवी" },
-    location: { en: "Nibhahana, Chambal ravines, Jalaun", hi: "निभाहना, चंबल क्षेत्र, जालौन" },
+    location: {
+      en: "Nibhahana, Chambal ravines, Jalaun",
+      hi: "निभाहना, चंबल क्षेत्र, जालौन",
+    },
     brief: {
       en: "A young Dalit woman aspiring to be a doctor survived an attempted assault; DDJC helped secure justice and compensation.",
       hi: "डॉक्टर बनने का सपना देखने वाली दलित युवती हमले के प्रयास से बची; DDJC ने न्याय और मुआवजा दिलाने में मदद की।",
@@ -100,7 +116,7 @@ This story demonstrates how difficult the fight for justice can become, especial
 
 Goldy completed her graduation and began working as a compounder at a medical store in Mahewa, approximately 15 kilometres from her village. Her dream was to become a doctor because there was no female doctor in her village, particularly one from the Dalit community.
 
-A Dream and a Horrifying Incident
+### A Dream and a Horrifying Incident
 
 Goldy's journey was not easy. Since no government transport facility connected her village to the medical store, she had to walk approximately 4–5 kilometres every day.
 
@@ -112,7 +128,7 @@ Goldy shouted for help, but nobody was around. Fortunately, the sound of an appr
 
 Goldy somehow managed to reach home and narrated the entire incident to her family. Her family supported her and immediately approached the police station to register an FIR.
 
-Challenges and DDJC's Support
+### Challenges and DDJC's Support
 
 After the FIR was registered, Goldy and her family began receiving threats demanding that they withdraw the case. They were warned of serious consequences if they refused.
 
@@ -124,7 +140,7 @@ Goldy told them that she wanted to fight for justice but felt discouraged becaus
 
 The DDJC team counselled Goldy and her family, encouraged them and assured them of complete support throughout the legal struggle.
 
-The Fight for Justice and a Step Towards Success
+### The Fight for Justice and a Step Towards Success
 
 DDJC supported Goldy and her family emotionally as well as legally.
 
@@ -149,7 +165,7 @@ The case is still pending before the court. However, Goldy's courage and DDJC's 
 
 गोल्डी ने स्नातक की पढ़ाई पूरी की और अपने गाँव से लगभग 15 किलोमीटर दूर महेवा में एक मेडिकल स्टोर पर कंपाउंडर के रूप में काम शुरू किया। उनका सपना डॉक्टर बनने का था, क्योंकि उनके गाँव में कोई महिला डॉक्टर नहीं थी, खासकर दलित समुदाय से।
 
-एक सपना और एक भयावह घटना
+### एक सपना और एक भयावह घटना
 
 गोल्डी की यात्रा आसान नहीं थी। चूँकि उनके गाँव से मेडिकल स्टोर तक कोई सरकारी परिवहन सुविधा नहीं थी, इसलिए उन्हें हर दिन लगभग 4–5 किलोमीटर पैदल चलना पड़ता था।
 
@@ -161,7 +177,7 @@ The case is still pending before the court. However, Goldy's courage and DDJC's 
 
 गोल्डी किसी तरह घर पहुँचीं और पूरी घटना अपने परिवार को बताई। परिवार ने उनका साथ दिया और तुरंत थाने जाकर एफआईआर दर्ज कराई।
 
-चुनौतियाँ और DDJC का सहयोग
+### चुनौतियाँ और DDJC का सहयोग
 
 एफआईआर दर्ज होने के बाद गोल्डी और उनके परिवार को मामला वापस लेने की धमकियाँ मिलने लगीं। इनकार करने पर गंभीर परिणाम भुगतने की चेतावनी दी गई।
 
@@ -173,7 +189,7 @@ The case is still pending before the court. However, Goldy's courage and DDJC's 
 
 DDJC टीम ने गोल्डी और उनके परिवार को परामर्श दिया, उनका हौसला बढ़ाया और पूरी कानूनी लड़ाई में साथ देने का आश्वासन दिया।
 
-न्याय की लड़ाई और सफलता की ओर एक कदम
+### न्याय की लड़ाई और सफलता की ओर एक कदम
 
 DDJC ने गोल्डी और उनके परिवार को भावनात्मक और कानूनी दोनों तरह से सहयोग दिया।
 
@@ -198,8 +214,15 @@ DDJC के सहयोग से वे न केवल न्याय क�
   },
   {
     id: 3,
+    title: {
+      en: "From Sewers to the Courtroom – The Inspiring Story of Vijay Valmiki",
+      hi: "सीवर से अदालत तक – विजय वाल्मीकि की प्रेरणादायक कहानी",
+    },
     name: { en: "Vijay Valmiki", hi: "विजय वाल्मीकि" },
-    location: { en: "Valmiki Nagar, Jalaun, Uttar Pradesh", hi: "वाल्मीकि नगर, जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Valmiki Nagar, Jalaun, Uttar Pradesh",
+      hi: "वाल्मीकि नगर, जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "From sanitation work and caste discrimination to studying law, Vijay became a community advocate with DDJC's support.",
       hi: "सफाई कार्य और जातिगत भेदभाव से निकलकर विजय ने DDJC के सहयोग से कानून की पढ़ाई शुरू की और समुदाय के लिए आवाज बने।",
@@ -215,7 +238,7 @@ From childhood, Vijay faced untouchability and caste-based discrimination. Even 
 
 Society constantly reminded him that he belonged to a so-called "untouchable" caste, forcing him to face humiliation at every stage of life.
 
-A Period of Struggle and Rejection
+### A Period of Struggle and Rejection
 
 As he grew older, Vijay started working alongside his father cleaning dirty drains.
 
@@ -229,7 +252,7 @@ During this difficult period, his marriage was arranged. The marriage hall was b
 
 This incident deeply affected him emotionally.
 
-An Incident That Changed His Life
+### An Incident That Changed His Life
 
 One evening, some influential local people entered his house and assaulted his family members. They also used caste-based abusive language.
 
@@ -245,7 +268,7 @@ During the conversation, Vijay angrily asked the team:
 
 As he narrated his experiences, tears filled his eyes.
 
-The First Step Towards Justice
+### The First Step Towards Justice
 
 The DDJC team explained its work and encouraged Vijay to remain strong.
 
@@ -259,7 +282,7 @@ These training programmes transformed his life.
 
 Today, Vijay is studying law and independently pursuing legal matters. He regularly wears a black coat and visits the courtroom, working alongside DDJC to fight for the rights and dignity of Dalits and other marginalized communities.
 
-A Dream Turned into Reality
+### A Dream Turned into Reality
 
 Vijay says that he realised the true power of Dr. B. R. Ambedkar and the Indian Constitution quite late in life.
 
@@ -280,7 +303,7 @@ Vijay says:
 
 समाज बार-बार उन्हें याद दिलाता था कि वे तथाकथित "अछूत" जाति से हैं, जिसके कारण उन्हें जीवन के हर पड़ाव पर अपमान सहना पड़ा।
 
-संघर्ष और अस्वीकृति का दौर
+### संघर्ष और अस्वीकृति का दौर
 
 बड़े होने पर विजय ने अपने पिता के साथ गंदे नाले साफ करने का काम शुरू किया।
 
@@ -294,7 +317,7 @@ Vijay says:
 
 इस घटना ने उन्हें गहरे भावनात्मक आघात में डाल दिया।
 
-एक घटना जिसने जीवन बदल दिया
+### एक घटना जिसने जीवन बदल दिया
 
 एक शाम कुछ प्रभावशाली स्थानीय लोग उनके घर में घुस आए और परिवार के सदस्यों के साथ मारपीट की। उन्होंने जातिसूचक गालियाँ भी दीं।
 
@@ -310,7 +333,7 @@ Vijay says:
 
 अपने अनुभव बताते हुए उनकी आँखों में आँसू आ गए।
 
-न्याय की ओर पहला कदम
+### न्याय की ओर पहला कदम
 
 DDJC टीम ने अपना काम समझाया और विजय को मजबूत बने रहने के लिए प्रोत्साहित किया।
 
@@ -324,7 +347,7 @@ DDJC टीम ने अपना काम समझाया और विज
 
 आज विजय कानून की पढ़ाई कर रहे हैं और स्वतंत्र रूप से कानूनी मामलों को आगे बढ़ा रहे हैं। वे नियमित रूप से काला कोट पहनकर अदालत जाते हैं और DDJC के साथ मिलकर दलितों तथा अन्य हाशिए के समुदायों के अधिकारों और गरिमा के लिए काम करते हैं।
 
-सपने का साकार होना
+### सपने का साकार होना
 
 विजय कहते हैं कि उन्हें डॉ. बी. आर. अंबेडकर और भारतीय संविधान की असली ताकत का एहसास जीवन में काफी देर से हुआ।
 
@@ -339,8 +362,15 @@ DDJC टीम ने अपना काम समझाया और विज
   },
   {
     id: 4,
+    title: {
+      en: "From Struggle to Empowerment – The Inspiring Journey of Ayush",
+      hi: "संघर्ष से सशक्तिकरण तक – आयुष की प्रेरणादायक यात्रा",
+    },
     name: { en: "Ayush", hi: "आयुष" },
-    location: { en: "Bajida, Uttar Pradesh", hi: "बाजिदा, उत्तर प्रदेश" },
+    location: {
+      en: "Bajida, Uttar Pradesh",
+      hi: "बाजिदा, उत्तर प्रदेश",
+    },
     brief: {
       en: "Despite discrimination and hardship, Ayush built a coaching centre and became a DDJC Para Legal Volunteer serving his community.",
       hi: "भेदभाव और कठिनाइयों के बावजूद आयुष ने कोचिंग शुरू की और DDJC के पैरा लीगल वॉलंटियर बनकर समुदाय की सेवा की।",
@@ -350,7 +380,7 @@ DDJC टीम ने अपना काम समझाया और विज
 
 His journey demonstrates how education and determination can help overcome even the most difficult challenges.
 
-Early Life and Challenges
+### Early Life and Challenges
 
 Ayush, son of Santosh Kumar, spent his childhood in the narrow, unpaved streets of his village.
 
@@ -360,7 +390,7 @@ From childhood, he faced caste-based discrimination and insulting remarks. Peopl
 
 These experiences left deep emotional scars.
 
-Education as the Greatest Weapon
+### Education as the Greatest Weapon
 
 Despite these difficulties, Ayush never allowed his dreams to fade.
 
@@ -374,7 +404,7 @@ Alongside his college studies, he started a small coaching centre in his village
 
 Initially, only five students enrolled. However, through hard work, dedication and honest teaching, his reputation gradually spread throughout the surrounding area.
 
-Becoming an Agent of Social Change
+### Becoming an Agent of Social Change
 
 Ayush transformed his coaching centre into more than just an educational institution. He made it a centre for social transformation.
 
@@ -388,7 +418,7 @@ Although society attempted several times to discourage him, he converted every c
 
 Gradually, his coaching centre became known as a "Home of Hope", where broken dreams could be rebuilt.
 
-The Role of the Dalit Dignity and Justice Centre
+### The Role of the Dalit Dignity and Justice Centre
 
 During this journey, the DDJC team learned about Ayush through a survey.
 
@@ -398,7 +428,7 @@ After joining DDJC, Ayush received training on various laws at the Panchayat and
 
 He also participated in programmes such as Ambedkar Jayanti alongside the DDJC team, further strengthening his leadership abilities.
 
-Present Situation and Transformation
+### Present Situation and Transformation
 
 Today, Ayush's story serves as an inspiration to many people.
 
@@ -415,7 +445,7 @@ Ayush's journey proves that no matter how difficult the struggle may be, courage
 
 उनकी यात्रा दिखाती है कि शिक्षा और दृढ़ संकल्प से सबसे कठिन चुनौतियों को भी पार किया जा सकता है।
 
-प्रारंभिक जीवन और चुनौतियाँ
+### प्रारंभिक जीवन और चुनौतियाँ
 
 संतोष कुमार के पुत्र आयुष ने अपना बचपन गाँव की संकरी, कच्ची गलियों में बिताया।
 
@@ -425,7 +455,7 @@ Ayush's journey proves that no matter how difficult the struggle may be, courage
 
 इन अनुभवों ने उनके मन पर गहरे भावनात्मक घाव छोड़े।
 
-शिक्षा — सबसे बड़ा हथियार
+### शिक्षा — सबसे बड़ा हथियार
 
 इन कठिनाइयों के बावजूद आयुष ने अपने सपनों को धुंधलाने नहीं दिया।
 
@@ -439,7 +469,7 @@ Ayush's journey proves that no matter how difficult the struggle may be, courage
 
 शुरुआत में केवल पाँच छात्रों ने नामांकन कराया। लेकिन कड़ी मेहनत, समर्पण और ईमानदार शिक्षण से उनकी पहचान धीरे-धीरे आसपास के क्षेत्र में फैल गई।
 
-सामाजिक परिवर्तन का माध्यम
+### सामाजिक परिवर्तन का माध्यम
 
 आयुष ने अपने कोचिंग सेंटर को केवल एक शैक्षणिक संस्थान नहीं, बल्कि सामाजिक परिवर्तन का केंद्र बना दिया।
 
@@ -453,7 +483,7 @@ Ayush's journey proves that no matter how difficult the struggle may be, courage
 
 धीरे-धीरे उनका कोचिंग सेंटर "आशा का घर" के रूप में जाना जाने लगा, जहाँ टूटे हुए सपनों को फिर से गढ़ा जा सकता था।
 
-दलित डिग्निटी एंड जस्टिस सेंटर की भूमिका
+### दलित डिग्निटी एंड जस्टिस सेंटर की भूमिका
 
 इस यात्रा के दौरान DDJC टीम को एक सर्वेक्षण के माध्यम से आयुष के बारे में जानकारी मिली।
 
@@ -463,7 +493,7 @@ DDJC से जुड़ने के बाद आयुष ने पंचा
 
 उन्होंने DDJC टीम के साथ अंबेडकर जयंती जैसे कार्यक्रमों में भी भाग लिया, जिससे उनकी नेतृत्व क्षमता और मजबूत हुई।
 
-वर्तमान स्थिति और परिवर्तन
+### वर्तमान स्थिति और परिवर्तन
 
 आज आयुष की कहानी कई लोगों के लिए प्रेरणा है।
 
@@ -480,8 +510,15 @@ DDJC से जुड़ने के बाद आयुष ने पंचा
   },
   {
     id: 5,
+    title: {
+      en: "Fighting for Justice Against the Web of False Relationships – The Struggle of Vineeta and Pooja",
+      hi: "झूठे रिश्तों के जाल के खिलाफ न्याय की लड़ाई – विनीता और पूजा का संघर्ष",
+    },
     name: { en: "Vineeta and Pooja", hi: "विनीता और पूजा" },
-    location: { en: "Bajida, Uttar Pradesh", hi: "बाजिदा, उत्तर प्रदेश" },
+    location: {
+      en: "Bajida, Uttar Pradesh",
+      hi: "बाजिदा, उत्तर प्रदेश",
+    },
     brief: {
       en: "Two women deceived by the same husband stood together, stopped another marriage, and pursued justice with DDJC's legal support.",
       hi: "एक ही पति द्वारा ठगी गई दो महिलाओं ने साथ खड़े होकर दूसरी शादी रोकी और DDJC की कानूनी मदद से न्याय की लड़ाई लड़ी।",
@@ -491,7 +528,7 @@ DDJC से जुड़ने के बाद आयुष ने पंचा
 
 This is the story of Vineeta and Pooja, two courageous women who refused to surrender despite facing betrayal by their husband and the harsh realities of society.
 
-Vineeta's Pain: A Broken Marriage and False Rumours
+### Vineeta's Pain: A Broken Marriage and False Rumours
 
 Vineeta, a resident of Bajida village, got married in 2010.
 
@@ -511,7 +548,7 @@ Using this false story as an excuse, he married another woman, despite already h
 
 The second bride was Pooja.
 
-Pooja's Struggle: From Hope to Betrayal
+### Pooja's Struggle: From Hope to Betrayal
 
 Pooja also entered the marriage with hopes of a happy married life.
 
@@ -535,7 +572,7 @@ In desperation, Vineeta even poured petrol on herself in front of the District M
 
 Both women also approached the Chief Minister seeking justice, but were disappointed there as well.
 
-The Fight for Justice and DDJC's Support
+### The Fight for Justice and DDJC's Support
 
 Their difficulties did not end there.
 
@@ -557,7 +594,7 @@ Eventually, Vineeta and Pooja once again approached the Chief Minister with thei
 
 Reaching the Chief Minister with their concerns was not easy, but these courageous women refused to surrender.
 
-A Symbol of Struggle and Hope
+### A Symbol of Struggle and Hope
 
 This is not merely a story about a husband's betrayal.
 
@@ -572,7 +609,7 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
 
 यह विनीता और पूजा की कहानी है — दो साहसी महिलाओं की, जिन्होंने पति के विश्वासघात और समाज की कठोर सच्चाइयों के बावजूद हार नहीं मानी।
 
-विनीता का दर्द: टूटा विवाह और झूठी अफवाहें
+### विनीता का दर्द: टूटा विवाह और झूठी अफवाहें
 
 बाजिदा गाँव की रहने वाली विनीता की शादी 2010 में हुई थी।
 
@@ -592,13 +629,13 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
 
 दूसरी दुल्हन पूजा थी।
 
-पूजा का संघर्ष: उम्मीद से विश्वासघात तक
+### पूजा का संघर्ष: उम्मीद से विश्वासघात तक
 
 पूजा भी सुखद वैवाहिक जीवन की उम्मीद के साथ शादी में आई थीं।
 
 लेकिन जल्द ही उन्हें अपने पति का असली रूप पता चल गया।
 
-उसने न केवल विनीता को धोखा दिया था, बल्कि पूजा के साथ भी विश्वासघात किया। बेटी के जन्म के बाद उसने पूजा को छोड़ दिया और तीसरी शादी की तैयारी शुरू कर दी।
+उन्होंने न केवल विनीता को धोखा दिया था, बल्कि पूजा के साथ भी विश्वासघात किया। बेटी के जन्म के बाद उसने पूजा को छोड़ दिया और तीसरी शादी की तैयारी शुरू कर दी।
 
 तीसरी शादी का दिन आया। शहनाइयाँ बज रही थीं और रिश्तेदार जश्न मना रहे थे।
 
@@ -616,7 +653,7 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
 
 दोनों महिलाओं ने न्याय के लिए मुख्यमंत्री से भी गुहार लगाई, लेकिन वहाँ भी निराशा हाथ लगी।
 
-न्याय की लड़ाई और DDJC का सहयोग
+### न्याय की लड़ाई और DDJC का सहयोग
 
 उनकी मुश्किलें यहीं खत्म नहीं हुईं।
 
@@ -638,7 +675,7 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
 
 मुख्यमंत्री तक अपनी बात पहुँचाना आसान नहीं था, लेकिन इन साहसी महिलाओं ने हार नहीं मानी।
 
-संघर्ष और आशा का प्रतीक
+### संघर्ष और आशा का प्रतीक
 
 यह केवल एक पति के विश्वासघात की कहानी नहीं है।
 
@@ -653,8 +690,15 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
   },
   {
     id: 6,
+    title: {
+      en: "False Allegations and the Fight for Justice – The Struggle of Shri Ram",
+      hi: "झूठे आरोप और न्याय की लड़ाई – श्री राम का संघर्ष",
+    },
     name: { en: "Shri Ram", hi: "श्री राम" },
-    location: { en: "Jalaun, Uttar Pradesh", hi: "जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Jalaun, Uttar Pradesh",
+      hi: "जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "After a caste-based assault and a forced compromise, Shri Ram faced a false case; DDJC helped him defend his rights.",
       hi: "जातिगत हमले और दबाव में समझौते के बाद श्री राम पर झूठा मामला बना; DDJC ने उनके अधिकारों की रक्षा में मदद की।",
@@ -662,7 +706,7 @@ Their courage teaches us that even when truth takes time to emerge, the fight fo
     detail: {
       en: `This is the story of Shri Ram, who faced not only physical violence following a minor incident but also a false legal case when he attempted to seek justice.
 
-A Minor Incident Turns into a Serious Dispute
+### A Minor Incident Turns into a Serious Dispute
 
 My name is Shri Ram.
 
@@ -676,7 +720,7 @@ He then attacked me with an axe, striking my arm and causing a serious injury.
 
 I immediately approached the police and registered a complaint against Balak Ram under the SC/ST Act.
 
-Pressure and a Forced Compromise
+### Pressure and a Forced Compromise
 
 After the case was registered, Balak Ram became worried and started pressuring me to compromise.
 
@@ -690,7 +734,7 @@ However, he misused this compromise.
 
 He approached the Allahabad High Court and filed a false case against me, accusing me of fraud and misuse of the SC/ST Act.
 
-The Role of the Dalit Dignity and Justice Centre
+### The Role of the Dalit Dignity and Justice Centre
 
 When I became trapped in this false case and could see no way forward, Pradeep Kumar, the Tehsil Coordinator from Orai, registered my case with the Dalit Dignity and Justice Centre (DDJC).
 
@@ -700,7 +744,7 @@ Pradeep Kumar accompanied me to the Allahabad High Court. There, he helped docum
 
 Additionally, I had received compensation of ₹1.5 lakh under the SC/ST Act. At one point, I considered returning the amount, but with DDJC's assistance, I was able to avoid having to deposit the compensation back.
 
-Conclusion
+### Conclusion
 
 Shri Ram's story demonstrates that vulnerable and oppressed people do not suffer only from physical violence. Even when they fight for justice, they may face false allegations, threats and complicated legal proceedings.
 
@@ -709,7 +753,7 @@ However, with the support of organisations such as the Dalit Dignity and Justice
 This story highlights that caste-based discrimination and injustice still exist in society and that continuous efforts are necessary to challenge them.`,
       hi: `यह श्री राम की कहानी है, जिन्हें एक छोटी घटना के बाद न केवल शारीरिक हिंसा का सामना करना पड़ा, बल्कि न्याय माँगने पर एक झूठे कानूनी मामले में भी फँसना पड़ा।
 
-एक छोटी घटना बड़ा विवाद बनी
+### एक छोटी घटना बड़ा विवाद बनी
 
 मेरा नाम श्री राम है।
 
@@ -723,7 +767,7 @@ This story highlights that caste-based discrimination and injustice still exist 
 
 मैं तुरंत पुलिस के पास गया और बालक राम के खिलाफ एससी/एसटी अधिनियम के तहत शिकायत दर्ज कराई।
 
-दबाव और मजबूरी में समझौता
+### दबाव और मजबूरी में समझौता
 
 मामला दर्ज होने के बाद बालक राम घबरा गया और मुझ पर समझौते का दबाव बनाने लगा।
 
@@ -737,7 +781,7 @@ This story highlights that caste-based discrimination and injustice still exist 
 
 वह इलाहाबाद उच्च न्यायालय पहुँचा और मेरे खिलाफ एक झूठा मामला दायर कर दिया, जिसमें मुझ पर धोखाधड़ी और एससी/एसटी अधिनियम के दुरुपयोग का आरोप लगाया।
 
-दलित डिग्निटी एंड जस्टिस सेंटर की भूमिका
+### दलित डिग्निटी एंड जस्टिस सेंटर की भूमिका
 
 जब मैं इस झूठे मामले में फँस गया और मुझे कोई रास्ता नहीं दिख रहा था, तब उरई के तहसील समन्वयक प्रदीप कुमार ने मेरा मामला दलित डिग्निटी एंड जस्टिस सेंटर (DDJC) में दर्ज कराया।
 
@@ -747,7 +791,7 @@ This story highlights that caste-based discrimination and injustice still exist 
 
 इसके अलावा, मुझे एससी/एसटी अधिनियम के तहत ₹1.5 लाख का मुआवजा मिला था। एक समय पर मैंने वह राशि वापस करने के बारे में सोचा, लेकिन DDJC की सहायता से मुझे मुआवजा वापस जमा करने की स्थिति से बचने में मदद मिली।
 
-निष्कर्ष
+### निष्कर्ष
 
 श्री राम की कहानी दिखाती है कि कमजोर और उत्पीड़ित लोग केवल शारीरिक हिंसा का ही सामना नहीं करते। न्याय के लिए लड़ने पर भी उन्हें झूठे आरोपों, धमकियों और जटिल कानूनी प्रक्रियाओं का सामना करना पड़ सकता है।
 
@@ -758,8 +802,15 @@ This story highlights that caste-based discrimination and injustice still exist 
   },
   {
     id: 7,
+    title: {
+      en: "Exploitation, Blackmail and the Fight for Justice Against a Dalit Woman",
+      hi: "शोषण, ब्लैकमेल और एक दलित महिला के खिलाफ न्याय की लड़ाई",
+    },
     name: { en: "Sanjana Devi", hi: "संजना देवी" },
-    location: { en: "Kaith, Jalaun, Uttar Pradesh", hi: "कैथ, जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Kaith, Jalaun, Uttar Pradesh",
+      hi: "कैथ, जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "Blackmailed and exploited by a neighbour, Sanjana received DDJC's support to file an FIR; the accused was arrested.",
       hi: "पड़ोसी द्वारा ब्लैकमेल और शोषण की शिकार संजना को DDJC की मदद से FIR दर्ज हुई; आरोपी गिरफ्तार हुआ।",
@@ -807,7 +858,7 @@ He also boasted about his influence and claimed that nobody could harm him becau
 
 Sanjana feared that he might carry out a serious attack against her or her family.
 
-DDJC's Support and Steps Towards Justice
+### DDJC's Support and Steps Towards Justice
 
 When the DDJC team learned about the entire incident, they immediately met Sanjana Devi.
 
@@ -815,7 +866,7 @@ After listening to her complete account, the team helped prepare a detailed comp
 
 Through the team's efforts, an FIR was registered against Pappu, and the accused was arrested and sent to jail.
 
-Present Situation and Hope for Justice
+### Present Situation and Hope for Justice
 
 Today, Sanjana feels safer than before.
 
@@ -838,7 +889,7 @@ This incident demonstrates how timely legal assistance and social support can pl
 
 आरोप है कि उसने खाने में नशीला पदार्थ मिला दिया, जिससे संजना बेहोश हो गईं।
 
-इसी दौरान पप्पू ने चुपके से उनकी कुछ आपत्तिजनक और अश्लील तस्वीरें ले लीं।
+इस दौरान पप्पू ने चुपके से उनकी कुछ आपत्तिजनक और अश्लील तस्वीरें ले लीं।
 
 जब संजना को होश आया और उन्हें पता चला कि क्या हुआ है, तो उन्होंने पप्पू का सामना किया और चेतावनी दी कि वे अपने पति को शिकायत करेंगी।
 
@@ -862,11 +913,11 @@ This incident demonstrates how timely legal assistance and social support can pl
 
 पप्पू ने बेशर्मी से कहा कि जब तक उसे ₹5 लाख नहीं मिलेंगे, वह वीडियो फैलाता रहेगा।
 
-उसने अपने रसूख का भी दावा किया और कहा कि कोई उसका कुछ नहीं बिगाड़ सकता क्योंकि वह एक प्रभावशाली और खतरनाक व्यक्ति है।
+उन्होंने अपने रसूख का भी दावा किया और कहा कि कोई उसका कुछ नहीं बिगाड़ सकता क्योंकि वह एक प्रभावशाली और खतरनाक व्यक्ति है।
 
 संजना को डर था कि वह उनके या उनके परिवार के खिलाफ कोई गंभीर हमला कर सकता है।
 
-DDJC का सहयोग और न्याय की दिशा में कदम
+### DDJC का सहयोग और न्याय की दिशा में कदम
 
 जब DDJC टीम को पूरी घटना की जानकारी मिली, तो टीम ने तुरंत संजना देवी से मुलाकात की।
 
@@ -874,7 +925,7 @@ DDJC का सहयोग और न्याय की दिशा में
 
 टीम के प्रयासों से पप्पू के खिलाफ एफआईआर दर्ज हुई और आरोपी को गिरफ्तार कर जेल भेजा गया।
 
-वर्तमान स्थिति और न्याय की उम्मीद
+### वर्तमान स्थिति और न्याय की उम्मीद
 
 आज संजना पहले की तुलना में अधिक सुरक्षित महसूस करती हैं।
 
@@ -887,8 +938,15 @@ DDJC टीम ने उन्हें आश्वासन दिया ह�
   },
   {
     id: 8,
+    title: {
+      en: "The Unbreakable Struggle of a Dalit Woman for Justice",
+      hi: "न्याय के लिए एक दलित महिला का अटूट संघर्ष",
+    },
     name: { en: "Guddi Devi", hi: "गुड्डी देवी" },
-    location: { en: "Usargaon/Kadaura, Jalaun, Uttar Pradesh", hi: "उसारगांव/कदौरा, जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Usargaon/Kadaura, Jalaun, Uttar Pradesh",
+      hi: "उसारगांव/कदौरा, जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "After years of hardship and a sexual assault, Guddi refused to compromise; DDJC helped ensure the accused was arrested.",
       hi: "वर्षों की कठिनाइयों और यौन उत्पीड़न के बाद गुड्डी ने समझौते से इनकार किया; DDJC की मदद से आरोपी गिरफ्तार हुआ।",
@@ -922,7 +980,7 @@ Guddi eventually began working as a labourer to support her five children, while
 
 Finally, she decided to leave him.
 
-A New Beginning and Another Period of Struggle
+### A New Beginning and Another Period of Struggle
 
 To support her children, Guddi began working as a daily-wage labourer during the day and at a sand ghat at night.
 
@@ -954,7 +1012,7 @@ Some time later, her first husband died in a road accident.
 
 Eventually, Guddi and Devendra had two daughters.
 
-Sexual Assault and the Fight for Justice
+### Sexual Assault and the Fight for Justice
 
 One day, while Guddi was grazing her goats in a field, a young man from the village named Sibbu Rajput approached her and began abusing her.
 
@@ -972,7 +1030,7 @@ The team promised to support her, which gave Guddi renewed confidence.
 
 Although the accused and his family continued pressuring her to compromise, Guddi firmly refused.
 
-Hope for Justice and Present Situation
+### Hope for Justice and Present Situation
 
 Guddi felt that the accused was still moving freely and threatening her.
 
@@ -1017,7 +1075,7 @@ Her courage and DDJC's support demonstrate that even the most marginalized peopl
 
 आखिरकार उन्होंने उसे छोड़ने का फैसला किया।
 
-नई शुरुआत और संघर्ष का एक और दौर
+### नई शुरुआत और संघर्ष का एक और दौर
 
 बच्चों का भरण-पोषण करने के लिए गुड्डी ने दिन में दिहाड़ी मजदूरी और रात में रेत घाट पर काम शुरू किया।
 
@@ -1049,7 +1107,7 @@ Her courage and DDJC's support demonstrate that even the most marginalized peopl
 
 अंततः गुड्डी और देवेंद्र की दो बेटियाँ हुईं।
 
-यौन उत्पीड़न और न्याय की लड़ाई
+### यौन उत्पीड़न और न्याय की लड़ाई
 
 एक दिन, जब गुड्डी खेत में अपनी बकरियाँ चरा रही थीं, तभी गाँव का एक युवक सिब्बू राजपूत उनके पास आया और उन्हें गालियाँ देने लगा।
 
@@ -1067,7 +1125,7 @@ Her courage and DDJC's support demonstrate that even the most marginalized peopl
 
 हालाँकि आरोपी और उसका परिवार लगातार उन पर समझौते का दबाव बनाता रहा, लेकिन गुड्डी ने स्पष्ट इनकार कर दिया।
 
-न्याय की उम्मीद और वर्तमान स्थिति
+### न्याय की उम्मीद और वर्तमान स्थिति
 
 गुड्डी को लग रहा था कि आरोपी अभी भी खुलेआम घूम रहा है और उन्हें धमका रहा है।
 
@@ -1088,8 +1146,15 @@ Her courage and DDJC's support demonstrate that even the most marginalized peopl
   },
   {
     id: 9,
+    title: {
+      en: "Thirty Years of Waiting – The Unfulfilled Dream of Haripura",
+      hi: "तीस साल का इंतजार – हरिपुरा का अधूरा सपना",
+    },
     name: { en: "Haripura's Unfulfilled Promise", hi: "हरिपुरा का अधूरा संकल्प" },
-    location: { en: "Haripura, Uttar Pradesh", hi: "हरिपुरा, उत्तर प्रदेश" },
+    location: {
+      en: "Haripura, Uttar Pradesh",
+      hi: "हरिपुरा, उत्तर प्रदेश",
+    },
     brief: {
       en: "For thirty years, Babasaheb Ambedkar's statue in Haripura has awaited a dignified installation site despite repeated promises.",
       hi: "तीस वर्षों से हरिपुरा में बाबासाहेब अंबेडकर की प्रतिमा सम्मानजनक स्थान की प्रतीक्षा में है, बावजूद बार-बार किए गए वादों के।",
@@ -1107,7 +1172,7 @@ The statue was not merely a structure. It represented justice, equality and self
 
 Unfortunately, this dream remains unfulfilled.
 
-Thirty Years of Neglect
+### Thirty Years of Neglect
 
 The statue was temporarily placed near the village well with the expectation that the Gram Panchayat or village head would soon identify a suitable location.
 
@@ -1137,7 +1202,7 @@ However, seeing the condition of his statue in Haripura raises an important ques
 
 Have we truly succeeded in building the India that Babasaheb dreamed of?
 
-An Unfulfilled Promise During Every Election
+### An Unfulfilled Promise During Every Election
 
 During every election, this issue is raised and big promises are made.
 
@@ -1151,7 +1216,7 @@ This is not merely the story of a statue. It is the story of dignity that has re
 
 The day the children of Haripura see Babasaheb's statue installed at a proper and respectful location, they will gain faith that justice may be delayed but injustice cannot continue forever.
 
-A Call for Collective Action
+### A Call for Collective Action
 
 The time has come for the entire village to come together and take a collective pledge.
 
@@ -1168,7 +1233,7 @@ We must fulfil this thirty-year-old dream so that future generations do not have
 
 दुर्भाग्य से, यह सपना आज भी अधूरा है।
 
-तीस वर्षों की उपेक्षा
+### तीस वर्षों की उपेक्षा
 
 प्रतिमा को अस्थायी रूप से गाँव के कुएँ के पास रखा गया था, इस उम्मीद के साथ कि ग्राम पंचायत या प्रधान जल्द ही कोई उचित स्थान तय करेंगे।
 
@@ -1198,7 +1263,7 @@ We must fulfil this thirty-year-old dream so that future generations do not have
 
 क्या हम सच में वह भारत बना पाए हैं जिसका सपना बाबासाहेब ने देखा था?
 
-हर चुनाव में अधूरा वादा
+### हर चुनाव में अधूरा वादा
 
 हर चुनाव के दौरान यह मुद्दा उठाया जाता है और बड़े-बड़े वादे किए जाते हैं।
 
@@ -1212,7 +1277,7 @@ We must fulfil this thirty-year-old dream so that future generations do not have
 
 जिस दिन हरिपुरा के बच्चे बाबासाहेब की प्रतिमा को किसी उचित और सम्मानजनक स्थान पर स्थापित देखेंगे, उन्हें विश्वास होगा कि न्याय में देरी हो सकती है, लेकिन अन्याय हमेशा नहीं रह सकता।
 
-सामूहिक प्रयास का आह्वान
+### सामूहिक प्रयास का आह्वान
 
 अब समय आ गया है कि पूरा गाँव एकजुट होकर सामूहिक संकल्प ले।
 
@@ -1221,8 +1286,15 @@ We must fulfil this thirty-year-old dream so that future generations do not have
   },
   {
     id: 10,
+    title: {
+      en: "Fighting One Injustice While Facing Another – The Story of Rupali",
+      hi: "एक अन्याय से लड़ते हुए दूसरे का सामना – रुपाली की कहानी",
+    },
     name: { en: "Rupali", hi: "रुपाली" },
-    location: { en: "Jhansi/Datia", hi: "झाँसी/दतिया" },
+    location: {
+      en: "Jhansi/Datia",
+      hi: "झाँसी/दतिया",
+    },
     brief: {
       en: "While pursuing domestic violence cases, Rupali faced alleged misconduct by her lawyer and gathered evidence to seek accountability.",
       hi: "घरेलू हिंसा के मामलों की लड़ाई के दौरान रुपाली ने अपने वकील के कथित दुर्व्यवहार का सामना किया और जवाबदेही के लिए सबूत जुटाए।",
@@ -1232,7 +1304,7 @@ We must fulfil this thirty-year-old dream so that future generations do not have
 
 She married Sunder, a resident of Ghileni village in Datia district, Madhya Pradesh, on May 1, 2023.
 
-Domestic Violence and the Fight for Justice
+### Domestic Violence and the Fight for Justice
 
 Shortly after her marriage, Rupali's life became difficult.
 
@@ -1252,7 +1324,7 @@ She hoped to receive justice through the legal system.
 
 However, even after more than a year, her lawyer had made no significant progress in her cases.
 
-A Shocking Incident of Exploitation
+### A Shocking Incident of Exploitation
 
 One day, Ajay Gurjar called Rupali and told her that he was standing outside the hospital to discuss her cases.
 
@@ -1266,7 +1338,7 @@ He even said:
 
 "You are not the first girl I will take to a hotel. I have done this with many others."
 
-Courage and Evidence Against Exploitation
+### Courage and Evidence Against Exploitation
 
 After experiencing this horrifying incident, Rupali demonstrated remarkable courage and presence of mind.
 
@@ -1288,7 +1360,7 @@ Since the incident took place in the court premises, I did not take any further 
 
 However, strict action should be taken against him for his alleged misconduct.
 
-The Fight for Justice and Dignity
+### The Fight for Justice and Dignity
 
 Rupali's struggle was not limited to fighting against her husband.
 
@@ -1303,7 +1375,7 @@ Strict action is necessary to ensure that no other woman becomes a victim of suc
 
 उनकी शादी 1 मई 2023 को मध्य प्रदेश के दतिया जिले के घिलेनी गाँव के रहने वाले सुंदर से हुई थी।
 
-घरेलू हिंसा और न्याय की लड़ाई
+### घरेलू हिंसा और न्याय की लड़ाई
 
 शादी के कुछ समय बाद ही रुपाली का जीवन कठिन हो गया।
 
@@ -1323,7 +1395,7 @@ Strict action is necessary to ensure that no other woman becomes a victim of suc
 
 लेकिन एक साल से अधिक समय बीत जाने के बाद भी उनके वकील ने मामलों में कोई खास प्रगति नहीं की।
 
-शोषण की एक चौंकाने वाली घटना
+### शोषण की एक चौंकाने वाली घटना
 
 एक दिन अजय गुर्जर ने रुपाली को फोन किया और बताया कि वह उनके मामलों पर चर्चा करने के लिए अस्पताल के बाहर खड़ा है।
 
@@ -1337,7 +1409,7 @@ Strict action is necessary to ensure that no other woman becomes a victim of suc
 
 "तुम पहली लड़की नहीं हो जिसे मैं होटल ले जाऊँगा। मैंने ऐसा कई और लोगों के साथ किया है।"
 
-साहस और शोषण के खिलाफ सबूत
+### साहस और शोषण के खिलाफ सबूत
 
 इस भयावह घटना के बाद रुपाली ने remarkable साहस और सूझबूझ दिखाई।
 
@@ -1359,7 +1431,7 @@ Strict action is necessary to ensure that no other woman becomes a victim of suc
 
 हालाँकि, उसके कथित कदाचार के लिए उसके खिलाफ सख्त कार्रवाई होनी चाहिए।
 
-न्याय और गरिमा की लड़ाई
+### न्याय और गरिमा की लड़ाई
 
 रुपाली का संघर्ष केवल अपने पति के खिलाफ लड़ने तक सीमित नहीं था।
 
@@ -1374,8 +1446,15 @@ Strict action is necessary to ensure that no other woman becomes a victim of suc
   },
   {
     id: 11,
-    name: { en: "Surjeet", hi: "सुरजीत" },
-    location: { en: "Damra, Uttar Pradesh / Indore", hi: "डमरा, उत्तर प्रदेश / इंदौर" },
+    title: {
+      en: "From Daily-Wage Labour to Dignity – Surjeet's Success Story",
+      hi: "दैनिक मजदूरी से गरिमा तक – सूरजीत की सफलता की कहानी",
+    },
+    name: { en: "Surjeet", hi: "सूरजीत" },
+    location: {
+      en: "Damra, Uttar Pradesh / Indore",
+      hi: "डमरा, उत्तर प्रदेश / इंदौर",
+    },
     brief: {
       en: "A daily-wage labourer working away from family secured an ambulance driver job with DDJC's guidance and returned home.",
       hi: "परिवार से दूर मजदूरी कर रहे सुरजीत को DDJC के मार्गदर्शन से एम्बुलेंस ड्राइवर की नौकरी मिली और वे घर लौट सके।",
@@ -1387,7 +1466,7 @@ To support his two daughters and provide for his family, Surjeet was unable to f
 
 As a result, he had to leave his home and move to Indore, where he began working as a daily-wage labourer.
 
-The Difficulties of Living Away from Family
+### The Difficulties of Living Away from Family
 
 Surjeet had to work far away from his family.
 
@@ -1397,7 +1476,7 @@ Life was not easy for him.
 
 He constantly felt sad about being separated from his family and having to work in another city instead of living with them.
 
-An Opportunity That Changed His Life
+### An Opportunity That Changed His Life
 
 One day, a significant opportunity came his way.
 
@@ -1413,7 +1492,7 @@ Surjeet participated in the recruitment process with dedication and hard work.
 
 Eventually, his efforts paid off, and he secured a job in the ambulance service.
 
-A New Beginning
+### A New Beginning
 
 This was a major achievement for Surjeet.
 
@@ -1430,7 +1509,7 @@ Today, Surjeet is happy with his new job, and his life has improved significantl
 
 इस कारण उन्हें अपना घर छोड़कर इंदौर जाना पड़ा, जहाँ उन्होंने दिहाड़ी मजदूर के रूप में काम शुरू किया।
 
-परिवार से दूर रहने की कठिनाइयाँ
+### परिवार से दूर रहने की कठिनाइयाँ
 
 सुरजीत को अपने परिवार से दूर रहकर काम करना पड़ता था।
 
@@ -1440,7 +1519,7 @@ Today, Surjeet is happy with his new job, and his life has improved significantl
 
 परिवार से अलग रहने और अपने गाँव में रहने के बजाय दूसरे शहर में काम करने का दुख उन्हें हमेशा रहता था।
 
-एक अवसर जिसने जीवन बदल दिया
+### एक अवसर जिसने जीवन बदल दिया
 
 एक दिन उनके सामने एक महत्वपूर्ण अवसर आया।
 
@@ -1456,7 +1535,7 @@ DDJC की तहसील समन्वयक अनीता जी ने 
 
 अंततः उनकी मेहनत रंग लाई और उन्हें एम्बुलेंस सेवा में नौकरी मिल गई।
 
-एक नई शुरुआत
+### एक नई शुरुआत
 
 यह सुरजीत के लिए एक बड़ी उपलब्धि थी।
 
@@ -1471,8 +1550,15 @@ DDJC की तहसील समन्वयक अनीता जी ने 
   },
   {
     id: 12,
+    title: {
+      en: "A Widow's Struggle and a Ray of Hope",
+      hi: "एक विधवा का संघर्ष और आशा की एक किरण",
+    },
     name: { en: "Kiran Devi", hi: "किरन देवी" },
-    location: { en: "Konch/Biriyakhuurd, Jalaun", hi: "कोंच/बिरियाखुर्द, जालौन" },
+    location: {
+      en: "Konch/Biriyakhuurd, Jalaun",
+      hi: "कोंच/बिरियाखुर्द, जालौन",
+    },
     brief: {
       en: "After her husband's death, Kiran sought welfare support for her child; DDJC helped her apply for pension and child schemes.",
       hi: "पति की मृत्यु के बाद किरन ने अपने बच्चे के लिए कल्याणकारी सहायता माँगी; DDJC ने पेंशन और बाल योजनाओं के आवेदन में मदद की।",
@@ -1488,7 +1574,7 @@ Her husband was addicted to alcohol, and this addiction ultimately led to his de
 
 After his death, Kiran Devi was left alone with the responsibility of raising their four-year-old child.
 
-Financial Hardships and Responsibility
+### Financial Hardships and Responsibility
 
 There was no other earning member in the family.
 
@@ -1498,7 +1584,7 @@ It was one of the most challenging periods of her life.
 
 She was constantly worried about her child's future.
 
-Assistance Through Government Welfare Schemes
+### Assistance Through Government Welfare Schemes
 
 During this difficult period, she decided to seek assistance through government welfare schemes.
 
@@ -1518,7 +1604,7 @@ We assisted Kiran Devi in submitting applications for:
 - Mukhyamantri Bal Seva Yojana
 - Other applicable government welfare schemes
 
-A Ray of Hope for the Future
+### A Ray of Hope for the Future
 
 Although the applications have not yet produced any results and remain under process, Kiran Devi is hopeful that these schemes will provide financial support to her and her child.
 
@@ -1533,7 +1619,7 @@ Her story reflects the struggle of a widowed woman, her determination and her ho
 
 पति की मृत्यु के बाद किरन देवी पर अपने चार वर्षीय बच्चे के पालन-पोषण की पूरी जिम्मेदारी आ गई।
 
-आर्थिक कठिनाइयाँ और जिम्मेदारी
+### आर्थिक कठिनाइयाँ और जिम्मेदारी
 
 परिवार में कमाने वाला कोई दूसरा सदस्य नहीं था।
 
@@ -1543,7 +1629,7 @@ Her story reflects the struggle of a widowed woman, her determination and her ho
 
 वे लगातार अपने बच्चे के भविष्य को लेकर चिंतित रहती थीं।
 
-सरकारी कल्याणकारी योजनाओं के माध्यम से सहायता
+### सरकारी कल्याणकारी योजनाओं के माध्यम से सहायता
 
 इस कठिन समय में उन्होंने सरकारी कल्याणकारी योजनाओं से सहायता लेने का निर्णय लिया।
 
@@ -1563,7 +1649,7 @@ Her story reflects the struggle of a widowed woman, her determination and her ho
 - मुख्यमंत्री बाल सेवा योजना
 - अन्य लागू सरकारी कल्याणकारी योजनाएँ
 
-भविष्य के लिए आशा की किरण
+### भविष्य के लिए आशा की किरण
 
 हालाँकि आवेदनों का अभी कोई परिणाम नहीं आया है और वे प्रक्रिया में हैं, फिर भी किरन देवी को उम्मीद है कि ये योजनाएँ उन्हें और उनके बच्चे को आर्थिक सहारा देंगी।
 
@@ -1572,8 +1658,15 @@ Her story reflects the struggle of a widowed woman, her determination and her ho
   },
   {
     id: 13,
+    title: {
+      en: "From Struggle to Dignity – The Story of Shakuntala Devi",
+      hi: "संघर्ष से गरिमा तक – शकुंतला देवी की कहानी",
+    },
     name: { en: "Shakuntala Devi", hi: "शकुंतला देवी" },
-    location: { en: "Kharag, Uttar Pradesh", hi: "खरग, उत्तर प्रदेश" },
+    location: {
+      en: "Kharag, Uttar Pradesh",
+      hi: "खरग, उत्तर प्रदेश",
+    },
     brief: {
       en: "After decades of labour and her husband's death, Shakuntala received pension and family benefit support with DDJC's help.",
       hi: "दशकों के संघर्ष और पति की मृत्यु के बाद शकुंतला को DDJC की मदद से विधवा पेंशन और पारिवारिक लाभ मिला।",
@@ -1585,7 +1678,7 @@ For the past thirty years, Shakuntala has struggled against poverty and hardship
 
 She has two children: one son and one daughter.
 
-A Life of Responsibility and Struggle
+### A Life of Responsibility and Struggle
 
 Shakuntala's family owned no agricultural land.
 
@@ -1613,7 +1706,7 @@ Even today, she continues working as a labourer to support her family.
 
 Her daughter is still studying, but her son has discontinued his education because of the family's poor financial condition.
 
-Our Role in Her Empowerment
+### Our Role in Her Empowerment
 
 One day, I invited Shakuntala Devi to a community meeting.
 
@@ -1631,7 +1724,7 @@ After arranging the required documents, I helped her apply for the Widow Pension
 
 Shakuntala says that if she had not connected with DDJC (Dalit Dignity and Justice Centre), she might never have received these benefits.
 
-Present Situation and a New Beginning
+### Present Situation and a New Beginning
 
 Our efforts eventually succeeded.
 
@@ -1648,7 +1741,7 @@ This story is not only about one woman's struggle but also about the positive ch
 
 उनके दो बच्चे हैं — एक बेटा और एक बेटी।
 
-जिम्मेदारी और संघर्ष का जीवन
+### जिम्मेदारी और संघर्ष का जीवन
 
 शकुंतला के परिवार के पास कोई कृषि भूमि नहीं थी।
 
@@ -1676,11 +1769,11 @@ This story is not only about one woman's struggle but also about the positive ch
 
 उनकी बेटी अभी पढ़ाई कर रही है, लेकिन परिवार की कमजोर आर्थिक स्थिति के कारण उनके बेटे ने पढ़ाई छोड़ दी है।
 
-सशक्तिकरण में हमारी भूमिका
+### सशक्तिकरण में हमारी भूमिका
 
 एक दिन मैंने शकुंतला देवी को एक सामुदायिक बैठक में आमंत्रित किया।
 
-जब उन्होंने अपनी पूरी कहानी सुनाई, तो मैं उनके साहस और दृढ़ संकल्प से बहुत प्रभावित हुआ।
+जब उन्होंने अपनी पूरी कहानी सुनाई, तो मैं उनके साहस और दृढ़ संकल्प से बहुत प्रभाव हुआ।
 
 उनके कष्टदायक अनुभवों ने मुझे उनकी मदद करने के लिए प्रेरित किया।
 
@@ -1692,9 +1785,9 @@ This story is not only about one woman's struggle but also about the positive ch
 
 आवश्यक दस्तावेज़ तैयार कराने के बाद मैंने उन्हें विधवा पेंशन योजना और पारिवारिक लाभ योजना के लिए आवेदन करने में मदद की।
 
-शकुंतला कहती हैं कि अगर वे DDJC (दलित डिग्निटी एंड जस्टिस सेंटर) से नहीं जुड़ी होतीं, तो शायद उन्हें ये लाभ कभी नहीं मिल पाते।
+शकुंतला कहती हैं कि अगर वे DDJC (दलित डिग्निटी एंड जस्टिस सेंटर) से नहीं जुड़ी होतीं, तो शायद उन्हें ये लाभ कभी नहीं मिलते।
 
-वर्तमान स्थिति और नई शुरुआत
+### वर्तमान स्थिति और नई शुरुआत
 
 हमारे प्रयास अंततः सफल हुए।
 
@@ -1709,8 +1802,15 @@ This story is not only about one woman's struggle but also about the positive ch
   },
   {
     id: 14,
+    title: {
+      en: "A False Allegation and the Fight for Justice",
+      hi: "एक झूठा आरोप और न्याय की लड़ाई",
+    },
     name: { en: "Ramakant Verma", hi: "रामाकांत वर्मा" },
-    location: { en: "Orai, Jalaun, Uttar Pradesh", hi: "उरई, जालौन, उत्तर प्रदेश" },
+    location: {
+      en: "Orai, Jalaun, Uttar Pradesh",
+      hi: "उरई, जालौन, उत्तर प्रदेश",
+    },
     brief: {
       en: "Falsely accused of electricity theft with a ₹1 lakh penalty, Ramakant secured bail without paying the penalty through DDJC's legal help.",
       hi: "बिजली चोरी के झूठे आरोप और ₹1 लाख जुर्माने का सामना कर रहे रामाकांत को DDJC की कानूनी मदद से बिना जुर्माना भरे जमानत मिली।",
@@ -1724,7 +1824,7 @@ His father, Munna Lal Verma, and Ramakant himself work as daily-wage labourers i
 
 Due to poverty, Ramakant could not receive much formal education, but he is an honest and hardworking person.
 
-The Trap of a False Allegation
+### The Trap of a False Allegation
 
 In 2019, while Ramakant was at work, an electricity department inspection was taking place in his neighbourhood, Indira Nagar.
 
@@ -1742,7 +1842,7 @@ He was shocked to discover that he had been accused of electricity theft.
 
 The most surprising fact was that his house already had a legal electricity connection, and he regularly paid his monthly electricity bills.
 
-Searching for Justice from Door to Door
+### Searching for Justice from Door to Door
 
 When Ramakant approached the court to understand his case, the government lawyer advised him to pay a penalty and submit the receipt so that the case could be closed.
 
@@ -1752,7 +1852,7 @@ Ramakant could barely earn enough to provide two meals a day for his family. Pay
 
 He approached several people for help, but nobody came forward.
 
-DDJC's Support and the Victory for Justice
+### DDJC's Support and the Victory for Justice
 
 During this period, Ramakant's brother-in-law informed me about his situation because I was already handling one of his legal matters.
 
@@ -1772,7 +1872,7 @@ My hard work and determination eventually paid off.
 
 I filed the bail application, and Ramakant was granted bail on the same day.
 
-Present Situation
+### Present Situation
 
 The case is still pending before the court, and there is hope that it will be concluded within the next two or three hearings.
 
@@ -1787,7 +1887,7 @@ It highlights how a poor and helpless individual can receive support and access 
 
 गरीबी के कारण रामाकांत अधिक औपचारिक शिक्षा प्राप्त नहीं कर सके, लेकिन वे एक ईमानदार और मेहनती व्यक्ति हैं।
 
-झूठे आरोप का जाल
+### झूठे आरोप का जाल
 
 2019 में, जब रामाकांत काम पर थे, तब उनके मोहल्ले इंदिरा नगर में बिजली विभाग की जाँच चल रही थी।
 
@@ -1805,7 +1905,7 @@ It highlights how a poor and helpless individual can receive support and access 
 
 सबसे चौंकाने वाली बात यह थी कि उनके घर में पहले से ही वैध बिजली कनेक्शन था और वे नियमित रूप से मासिक बिल जमा करते थे।
 
-न्याय की तलाश में दर-दर भटकना
+### न्याय की तलाश में दर-दर भटकना
 
 जब रामाकांत अपने मामले को समझने के लिए न्यायालय गए, तो सरकारी वकील ने उन्हें जुर्माना भरकर रसीद जमा करने की सलाह दी, ताकि मामला बंद हो सके।
 
@@ -1815,7 +1915,7 @@ It highlights how a poor and helpless individual can receive support and access 
 
 उन्होंने कई लोगों से मदद माँगी, लेकिन कोई आगे नहीं आया।
 
-DDJC का सहयोग और न्याय की जीत
+### DDJC का सहयोग और न्याय की जीत
 
 इसी दौरान रामाकांत के साले ने मुझे उनकी स्थिति के बारे में बताया, क्योंकि मैं पहले से उनके एक कानूनी मामले को देख रहा था।
 
@@ -1835,7 +1935,7 @@ DDJC का सहयोग और न्याय की जीत
 
 मैंने जमानत अर्जी दाखिल की और रामाकांत को उसी दिन जमानत मिल गई।
 
-वर्तमान स्थिति
+### वर्तमान स्थिति
 
 मामला अभी न्यायालय में लंबित है और उम्मीद है कि अगले दो-तीन सुनवाई में इसका निपटारा हो जाएगा।
 
@@ -1848,38 +1948,41 @@ DDJC का सहयोग और न्याय की जीत
 
 export default function StoriesPage() {
   const { language } = useApp();
-  const [openId, setOpenId] = useState<number | null>(null);
+  const searchParams = useSearchParams();
+  const [openId, setOpenId] = useState<number | null>(() => {
+    const id = searchParams.get("id");
+    return id ? parseInt(id, 10) : null;
+  });
   const lang = language === "hi" ? "hi" : "en";
   const openStory = stories.find((s) => s.id === openId) ?? null;
 
   return (
     <div className="bg-white min-h-screen py-10 pt-16 md:py-16 md:pt-24">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <div className="flex justify-center mb-6">
-            <div className="relative h-20 w-20 rounded-full overflow-hidden shadow-md border border-slate-200 bg-slate-50">
+            <div className="relative h-32 w-32 rounded-full overflow-hidden shadow-md border border-slate-200 bg-slate-50">
               <Image
                 src="/images/logo/ddjc-logo.jpg"
                 alt="DDJC Logo"
                 fill
-                sizes="80px"
+                sizes="128px"
                 className="object-cover object-center"
               />
             </div>
           </div>
-          <span className="bg-slate-50 text-[#000000] px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-slate-200 inline-block mb-4">
-            {lang === "en" ? "Impact & Life" : "प्रभाव और जीवन"}
-          </span>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-4 md:mb-6">
-            {lang === "en" ? "Stories of Struggle & Justice" : "संघर्ष और न्याय की कहानियाँ"}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#0A2540] tracking-tight mb-6 md:mb-8">
+            {lang === "en" ? "DDJC Team's Efforts: Stories of Change and Struggle" : "DDJC टीम के प्रयास: बदलाव और संघर्ष की कहानियाँ"}
           </h1>
-          <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+          <p className="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
             {lang === "en"
-              ? "Brief accounts of courage, legal support, and dignity. Click a story to read the full details."
-              : "साहस, कानूनी सहायता और गरिमा की संक्षिप्त कहानियाँ। पूरी जानकारी पढ़ने के लिए कहानी पर क्लिक करें।"}
+              ? "These stories reveal the ground realities and harsh truths of an invisible India through the struggles for social justice. They present the real stories of people fighting against discrimination, exploitation, and injustice. Everyone should read these stories at least once."
+              : "ये कहानियाँ सामाजिक न्याय के संघर्ष के माध्यम से एक अदृश्य भारत की जमीनी हकीकत और कठोर सच्चाइयों को प्रकट करती हैं। ये भेदभाव, शोषण और अन्याय के खिलाफ लड़ रहे लोगों की वास्तविक कहानियाँ प्रस्तुत करती हैं। हर किसी को इन कहानियों को कम से कम एक बार पढ़ना चाहिए।"}
           </p>
         </div>
 
+        {/* Stories grid */}
         <div className="grid gap-5 md:grid-cols-2">
           {stories.map((item) => {
             const isOpen = openId === item.id;
@@ -1893,16 +1996,23 @@ export default function StoriesPage() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-start gap-3">
                     <FaQuoteLeft className="text-[#000000] text-xl opacity-35 mt-1 shrink-0" />
-                    <div>
-                      <h2 className="font-bold text-[#0A2540] text-lg leading-snug">{item.name[lang]}</h2>
-                      <p className="text-slate-400 text-xs mt-0.5">{item.location[lang]}</p>
+                    <div className="flex flex-col gap-1">
+                      <h2 className="font-bold text-[#0A2540] text-lg leading-snug">
+                        {item.title[lang]}
+                      </h2>
+                      <div className="flex items-baseline gap-2 text-slate-400 text-xs sm:text-sm">
+                        <span className="font-bold text-slate-700">{item.name[lang]}</span>
+                        <span className="font-normal">{item.location[lang]}</span>
+                      </div>
                     </div>
                   </div>
                   <FaChevronDown
                     className={`text-slate-400 mt-1 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}
                   />
                 </div>
-                <p className="text-slate-700 text-sm md:text-base leading-relaxed mt-4">{item.brief[lang]}</p>
+                <p className="text-slate-700 text-sm md:text-base leading-relaxed mt-4">
+                  {item.brief[lang]}
+                </p>
                 <span className="inline-block mt-4 text-xs font-semibold uppercase tracking-wide text-[#0A2540]">
                   {isOpen ? (lang === "en" ? "Hide details" : "विवरण छिपाएँ") : lang === "en" ? "Read details" : "विवरण पढ़ें"}
                 </span>
@@ -1910,46 +2020,52 @@ export default function StoriesPage() {
             );
           })}
         </div>
-      </div>
 
-      {openStory && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
-          role="dialog"
-          aria-modal="true"
-          aria-label={openStory.name[lang]}
-          onClick={() => setOpenId(null)}
-        >
+        {/* Modal (full story) */}
+        {openStory && (
           <div
-            className="bg-white max-w-3xl w-full max-h-[85vh] overflow-y-auto rounded-3xl shadow-xl border border-slate-200"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
+            role="dialog"
+            aria-modal="true"
+            aria-label={openStory.name[lang]}
+            onClick={() => setOpenId(null)}
           >
-            <div className="sticky top-0 bg-white/95 backdrop-blur border-b border-slate-200 p-5 md:p-6 flex items-start justify-between gap-4">
-              <div>
-                <h2 className="text-xl md:text-2xl font-black text-[#0A2540]">{openStory.name[lang]}</h2>
-                <p className="text-slate-500 text-sm mt-1">{openStory.location[lang]}</p>
+            <div
+              className="bg-white max-w-3xl w-full max-h-[85vh] overflow-y-auto rounded-3xl shadow-xl border border-slate-200"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="sticky top-0 bg-white/95 backdrop-blur border-b border-slate-200 p-5 md:p-6 flex items-start justify-between gap-4">
+                <div className="flex flex-col gap-1">
+                  <h2 className="text-xl md:text-2xl font-black text-[#0A2540]">
+                    {openStory.title[lang]}
+                  </h2>
+                  <div className="flex items-baseline gap-2 text-slate-500 text-sm sm:text-base">
+                    <span className="font-bold text-slate-700">{openStory.name[lang]}</span>
+                    <span className="font-normal">{openStory.location[lang]}</span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setOpenId(null)}
+                  className="p-2 rounded-full hover:bg-slate-100 text-slate-500"
+                  aria-label={lang === "en" ? "Close" : "बंद करें"}
+                >
+                  <FaTimes />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setOpenId(null)}
-                className="p-2 rounded-full hover:bg-slate-100 text-slate-500"
-                aria-label={lang === "en" ? "Close" : "बंद करें"}
-              >
-                <FaTimes />
-              </button>
-            </div>
-            <div className="p-5 md:p-6">
-              <div className="prose prose-slate max-w-none">
-                {openStory.detail[lang].split("\n\n").map((para, i) => (
-                  <p key={i} className="text-slate-700 text-sm md:text-base leading-relaxed mb-4 whitespace-pre-line">
-                    {para}
-                  </p>
-                ))}
+              <div className="p-5 md:p-6">
+                <div className="prose prose-slate max-w-none">
+                  {openStory.detail[lang].split("\n\n").map((para, i) => (
+                    <p key={i} className="text-slate-700 text-sm md:text-base leading-relaxed mb-4 whitespace-pre-line">
+                      {para}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

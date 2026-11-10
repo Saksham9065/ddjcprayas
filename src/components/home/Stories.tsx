@@ -1,60 +1,80 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { Reveal, SectionHeading } from "./primitives";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 
 interface Story {
+  id: number;
   name: string;
-  roleEn: string;
-  roleHi: string;
-  quoteEn: string;
-  quoteHi: string;
+  location: string;
+  summaryEn: string;
+  summaryHi: string;
   img: string;
 }
 
 const STORIES: Story[] = [
   {
-    name: "Savitri Bai",
-    roleEn: "Village Worker",
-    roleHi: "ग्राम कार्यकर्ता",
-    quoteEn:
-      "The centre helped me understand my rights and stand up against discrimination in my own village. Today I help other women do the same.",
-    quoteHi:
-      "केन्द्र ने मुझे मेरे अधिकार समझने और अपने गाँव में भेदभाव के खिलाफ खड़े होने में मदद की। आज मैं अन्य महिलाओं को भी ऐसा करने में मदद करती हूँ।",
+    id: 1,
+    name: "Tota Kumari",
+    location: "Harsinghpur, Jalaun, Uttar Pradesh",
+    summaryEn:
+      "A Dalit mother fought for justice after her minor daughter was assaulted.",
+    summaryHi:
+      "एक दलित माँ ने अपनी नाबालिग बेटी पर हमले के बाद न्याय के लिए संघर्ष किया।",
     img: "/images/team/usha.jpg",
   },
   {
-    name: "Raju",
-    roleEn: "Youth Volunteer",
-    roleHi: "युवा स्वयंसेवक",
-    quoteEn:
-      "I joined the youth hub to learn about the Constitution. Now I organise awareness camps in my block and lead other young people.",
-    quoteHi:
-      "मैं संविधान के बारे में जानने के लिए युवा हब से जुड़ा। अब मैं अपने ब्लॉक में जागरूकता शिविर लगाता हूँ और अन्य युवाओं का नेतृत्व करता हूँ।",
-    img: "/images/team/sachin.jpg",
-  },
-  {
-    name: "Pooja",
-    roleEn: "Student Leader",
-    roleHi: "छात्र नेता",
-    quoteEn:
-      "DDJC guided me to apply for the scholarship I didn't know existed. Education became a real possibility for my family.",
-    quoteHi:
-      "DDJC ने मुझे वह छात्रवृत्ति के लिए आवेदन करने में मार्गदर्शन दिया जिसके बारे में मुझे पता ही नहीं था। शिक्षा मेरे परिवार के लिए सच्चाई बन गई।",
+    id: 2,
+    name: "Goldy Devi",
+    location: "Nibhahana, Chambal ravines, Jalaun",
+    summaryEn:
+      "A young Dalit woman aspiring to be a doctor survived an attempted assault.",
+    summaryHi:
+      "डॉक्टर बनने का सपना देखने वाली दलित युवती हमले के प्रयास से बची।",
     img: "/images/team/anita.jpg",
   },
   {
-    name: "Ramdas",
-    roleEn: "Farmer",
-    roleHi: "किसान",
-    quoteEn:
-      "When my land papers were challenged, the centre connected me to legal aid. I kept my land and my dignity.",
-    quoteHi:
-      "जब मेरी ज़मीन के काग़ज़ात को चुनौती मिली, केन्द्र ने मुझे कानूनी सहायता से जोड़ा। मैंने अपनी ज़मीन और अपनी गरिमा दोनों बचाई।",
+    id: 3,
+    name: "Vijay Valmiki",
+    location: "Valmiki Nagar, Jalaun, Uttar Pradesh",
+    summaryEn:
+      "From sanitation work to studying law, Vijay became a community advocate.",
+    summaryHi:
+      "सफाई कार्य से कानून की पढ़ाई तक, विजय समुदाय के लिए आवाज बने।",
+    img: "/images/team/sachin.jpg",
+  },
+  {
+    id: 4,
+    name: "Ayush",
+    location: "Bajida, Uttar Pradesh",
+    summaryEn:
+      "Despite discrimination, Ayush built a coaching centre and became a PLV.",
+    summaryHi:
+      "भेदभाव के बावजूद आयुष ने कोचिंग शुरू किया और PLV बने।",
     img: "/images/team/pradeep.jpg",
+  },
+  {
+    id: 5,
+    name: "Vineeta and Pooja",
+    location: "Bajida, Uttar Pradesh",
+    summaryEn:
+      "Two women deceived by the same husband stood together and pursued justice.",
+    summaryHi:
+      "एक ही पति द्वारा ठगी गई दो महिलाओं ने साथ खड़े होकर न्याय की लड़ाई लड़ी।",
+    img: "/images/team/kuldeep.jpg",
+  },
+  {
+    id: 6,
+    name: "Shri Ram",
+    location: "Jalaun, Uttar Pradesh",
+    summaryEn:
+      "A Dalit farmer fought against false allegations and regained his land.",
+    summaryHi:
+      "एक दलित किसान ने झूठे आरोपों के खिलाफ लड़कर अपनी जमीन वापस पाई।",
+    img: "/images/team/usha.jpg",
   },
 ];
 
@@ -71,6 +91,22 @@ export default function Stories() {
     const width = card ? card.offsetWidth + 24 : 320;
     track.scrollBy({ left: dir * width, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const track = trackRef.current;
+      if (!track) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        const card = track.querySelector("div");
+        const width = card ? card.offsetWidth + 24 : 320;
+        track.scrollBy({ left: width, behavior: "smooth" });
+      }
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="stories" className="py-10 md:py-16 bg-white border-b border-slate-200">
@@ -108,25 +144,32 @@ export default function Stories() {
           className="mt-10 flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {STORIES.map((story) => (
-            <div
-              key={story.name}
-              className="snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            <Link
+              key={story.id}
+              href={{ pathname: "/media/stories", query: { id: String(story.id) } }}
+              passHref
+              legacyBehavior
+              className="block"
             >
-              <div className="p-6">
-                <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-4">
-                  “{language === "en" ? story.quoteEn : story.quoteHi}”
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-navy text-gold flex items-center justify-center font-bold text-sm">
-                    {story.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-bold text-navy text-sm leading-tight">{story.name}</p>
-                    <p className="text-xs text-slate-500">{language === "en" ? story.roleEn : story.roleHi}</p>
+              <div
+                className="snap-start shrink-0 w-[85%] sm:w-[48%] lg:w-[31%] bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+              >
+                <div className="p-6">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3">
+                    “{language === "en" ? story.summaryEn : story.summaryHi}”
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-navy text-gold flex items-center justify-center font-bold text-sm">
+                      {story.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-bold text-navy text-sm leading-tight">{story.name}</p>
+                      <p className="text-xs text-slate-500">{story.location}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

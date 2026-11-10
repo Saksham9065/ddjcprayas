@@ -7,6 +7,10 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
 const NEWS_IMAGES = [
+  { src: "/images/news/WhatsApp Image 2026-11-05 at 17.11.29.jpeg", alt: "WhatsApp Image 2026-11-05 at 17.11.29" },
+  { src: "/images/news/WhatsApp Image 2026-11-05 at 17.11.29 (1).jpeg", alt: "WhatsApp Image 2026-11-05 at 17.11.29 (1)" },
+  { src: "/images/news/WhatsApp Image 2026-11-05 at 17.11.34.jpeg", alt: "WhatsApp Image 2026-11-05 at 17.11.34" },
+  { src: "/images/news/WhatsApp Image 2026-11-05 at 17.11.35.jpeg", alt: "WhatsApp Image 2026-11-05 at 17.11.35" },
   { src: "/images/news/Advocate Meeting News- आज की पहचान.jpeg", alt: "Advocate Meeting News - Aaj Ki Pehchaan" },
   { src: "/images/news/Advocate Meeting News- परिधि समाचार.jpeg", alt: "Advocate Meeting News - Paridhi Samachar" },
   { src: "/images/news/Advocate Meeting News- यूथ इंडिया.jpeg", alt: "Advocate Meeting News - Youth India" },
