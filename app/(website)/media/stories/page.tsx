@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import { FaQuoteLeft, FaChevronDown, FaTimes } from "react-icons/fa";
 import { useApp } from "@/context/AppContext";
 
@@ -1948,11 +1947,7 @@ It highlights how a poor and helpless individual can receive support and access 
 
 export default function StoriesPage() {
   const { language } = useApp();
-  const searchParams = useSearchParams();
-  const [openId, setOpenId] = useState<number | null>(() => {
-    const id = searchParams.get("id");
-    return id ? parseInt(id, 10) : null;
-  });
+  const [openId, setOpenId] = useState<number | null>(null);
   const lang = language === "hi" ? "hi" : "en";
   const openStory = stories.find((s) => s.id === openId) ?? null;
 
